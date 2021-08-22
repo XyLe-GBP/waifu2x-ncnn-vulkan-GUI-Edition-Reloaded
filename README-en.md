@@ -17,8 +17,12 @@ GUI version of the image upscaling tool ([waifu2x-ncnn-vulkan](https://github.co
 
 ### What is this?
 
-You can enlarge in while keeping the image clean.
-
+NET port version of (C++) [waifu2x-ncnn-vulkan GUI Edition.](https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition)  
+With the port, previous C++ versions will no longer be supported.  
+  
+Super-Resolution Convolutional Neural Network (SRCNN) is used.  
+The image can be magnified beautifully while maintaining the clarity of the image.  
+  
 Examples:  
 **※Click on the image to enlarge.**  
 
