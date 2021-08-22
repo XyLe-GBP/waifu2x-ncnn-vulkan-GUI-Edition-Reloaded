@@ -13,7 +13,7 @@ Super-Resolution Convolutional Neural Network（SRCNN）Utility.
 
 ## ダウンロード
 
-[リリースビルド](https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI/releases)
+[リリースビルド](https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Reloaded/releases)
 
 ---
 
