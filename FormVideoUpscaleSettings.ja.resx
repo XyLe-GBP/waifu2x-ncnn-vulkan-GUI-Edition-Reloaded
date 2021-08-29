@@ -1,0 +1,328 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 19</value>
+  </data>
+  <data name="checkBox_Advanced.Text" xml:space="preserve">
+    <value>高度な設定を有効にする</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 25</value>
+  </data>
+  <data name="textBox_FPS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 15</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>FFmpeg.exe のパス：</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 15</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>アップスケール動画のFPS：</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>一般設定</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>高度な設定</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 155</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 15</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>H.264プリセット：</value>
+  </data>
+  <data name="comboBox_preset.Items" xml:space="preserve">
+    <value>ultrafast (低画質・高速)</value>
+  </data>
+  <data name="comboBox_preset.Items5" xml:space="preserve">
+    <value>medium (通常)</value>
+  </data>
+  <data name="comboBox_preset.Items8" xml:space="preserve">
+    <value>veryslow (高画質・低速)</value>
+  </data>
+  <data name="checkBox_preset.Text" xml:space="preserve">
+    <value>H.264プリセットを指定</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>193, 129</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 15</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>エンコード：</value>
+  </data>
+  <data name="checkBox_AE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 19</value>
+  </data>
+  <data name="checkBox_AE.Text" xml:space="preserve">
+    <value>音声出力コーデックを指定</value>
+  </data>
+  <data name="checkBox_AB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>535, 73</value>
+  </data>
+  <data name="checkBox_AB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 19</value>
+  </data>
+  <data name="checkBox_AB.Text" xml:space="preserve">
+    <value>音声ビットレートを指定</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 15</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>結合コマンドライン引数：</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 15</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>音声コマンドライン引数：</value>
+  </data>
+  <data name="checkBox_MAC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>383, 73</value>
+  </data>
+  <data name="checkBox_MAC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 19</value>
+  </data>
+  <data name="checkBox_MAC.Text" xml:space="preserve">
+    <value>音声コーデックを指定</value>
+  </data>
+  <data name="checkBox_MVC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 73</value>
+  </data>
+  <data name="checkBox_MVC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 19</value>
+  </data>
+  <data name="checkBox_MVC.Text" xml:space="preserve">
+    <value>動画コーデックを指定</value>
+  </data>
+  <data name="button_FC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 23</value>
+  </data>
+  <data name="button_FC.Text" xml:space="preserve">
+    <value>コーデックを調べる</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 15</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>音声保存先：</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 15</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>動画保存先：</value>
+  </data>
+  <data name="textBox_AB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>640, 99</value>
+  </data>
+  <data name="checkBox_MSOL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 19</value>
+  </data>
+  <data name="checkBox_MSOL.Text" xml:space="preserve">
+    <value>出力ファイルの保存場所を指定</value>
+  </data>
+  <data name="textBox_ACodec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 99</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>551, 102</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 15</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>音声ビットレート：</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>動画コマンドライン引数：</value>
+  </data>
+  <data name="checkBox_MI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>325, 48</value>
+  </data>
+  <data name="checkBox_MI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 19</value>
+  </data>
+  <data name="checkBox_MI.Text" xml:space="preserve">
+    <value>メタデータ情報設定</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>328, 102</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 15</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>使用する音声コーデック：</value>
+  </data>
+  <data name="checkBox_CC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 23</value>
+  </data>
+  <data name="checkBox_CC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 19</value>
+  </data>
+  <data name="checkBox_CC.Text" xml:space="preserve">
+    <value>チャプターコピーを行う</value>
+  </data>
+  <data name="checkBox_OAO.Location" type="System.Drawing.Point, System.Drawing">
+    <value>413, 23</value>
+  </data>
+  <data name="checkBox_OAO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 19</value>
+  </data>
+  <data name="checkBox_OAO.Text" xml:space="preserve">
+    <value>動画音声のみの出力</value>
+  </data>
+  <data name="checkBox_DS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 48</value>
+  </data>
+  <data name="checkBox_DS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 19</value>
+  </data>
+  <data name="checkBox_DS.Text" xml:space="preserve">
+    <value>データストリームの無効化</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 102</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>使用する動画コーデック：</value>
+  </data>
+  <data name="checkBox_DSS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 23</value>
+  </data>
+  <data name="checkBox_DSS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 19</value>
+  </data>
+  <data name="checkBox_DSS.Text" xml:space="preserve">
+    <value>サブタイトルの無効化</value>
+  </data>
+  <data name="checkBox_SO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 19</value>
+  </data>
+  <data name="checkBox_SO.Text" xml:space="preserve">
+    <value>フレーム連番出力を有効にする</value>
+  </data>
+  <data name="textBox_CRF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>193, 71</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 74</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 15</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>CRFレベル：</value>
+  </data>
+  <data name="checkBox_EIA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 19</value>
+  </data>
+  <data name="checkBox_EIA.Text" xml:space="preserve">
+    <value>内臓AACを有効にする</value>
+  </data>
+  <data name="checkBox_OOF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 48</value>
+  </data>
+  <data name="checkBox_OOF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 19</value>
+  </data>
+  <data name="checkBox_OOF.Text" xml:space="preserve">
+    <value>出力ファイルを上書きする</value>
+  </data>
+  <data name="checkBox_HI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>547, 23</value>
+  </data>
+  <data name="checkBox_HI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 19</value>
+  </data>
+  <data name="checkBox_HI.Text" xml:space="preserve">
+    <value>不要な情報を非表示にする</value>
+  </data>
+  <data name="checkBox_NVENC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 19</value>
+  </data>
+  <data name="checkBox_NVENC.Text" xml:space="preserve">
+    <value>NVENC CRFを使用</value>
+  </data>
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>動画アップスケール設定</value>
+  </data>
+</root>

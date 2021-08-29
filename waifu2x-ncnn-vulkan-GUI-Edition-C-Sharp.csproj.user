@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\kawak\source\repos\waifu2x-ncnn-vulkan-GUI-Edition-C-Sharp\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormImageUpscaleSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormVideoResolution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormVideoUpscaleSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

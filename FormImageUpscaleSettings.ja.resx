@@ -1,0 +1,214 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 110</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 15</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>ブロック</value>
+  </data>
+  <data name="textBox_Blocksize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 107</value>
+  </data>
+  <data name="comboBox_Rdlevel.Items" xml:space="preserve">
+    <value>除去しない</value>
+  </data>
+  <data name="comboBox_Rdlevel.Items1" xml:space="preserve">
+    <value>レベル0</value>
+  </data>
+  <data name="comboBox_Rdlevel.Items2" xml:space="preserve">
+    <value>レベル1</value>
+  </data>
+  <data name="comboBox_Rdlevel.Items3" xml:space="preserve">
+    <value>レベル2</value>
+  </data>
+  <data name="comboBox_Rdlevel.Items4" xml:space="preserve">
+    <value>レベル3</value>
+  </data>
+  <data name="comboBox_Rdlevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 22</value>
+  </data>
+  <data name="comboBox_GPU.Items" xml:space="preserve">
+    <value>自動</value>
+  </data>
+  <data name="comboBox_GPU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 78</value>
+  </data>
+  <data name="comboBox_Uplevel.Items" xml:space="preserve">
+    <value>1倍 (等倍)</value>
+  </data>
+  <data name="comboBox_Uplevel.Items1" xml:space="preserve">
+    <value>2倍</value>
+  </data>
+  <data name="comboBox_Uplevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 50</value>
+  </data>
+  <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 19</value>
+  </data>
+  <data name="checkBox_Advanced.Text" xml:space="preserve">
+    <value>高度な設定を有効にする</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 110</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 15</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>GPUブロックサイズ：</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 81</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 15</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>使用するGPU：</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 53</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>スケーリングのレベル：</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 15</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>ノイズ除去のレベル：</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>一般設定</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>高度な設定</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 138</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>コマンドライン引数：</value>
+  </data>
+  <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 69</value>
+  </data>
+  <data name="checkBox_TTA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 84</value>
+  </data>
+  <data name="checkBox_TTA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 19</value>
+  </data>
+  <data name="checkBox_TTA.Text" xml:space="preserve">
+    <value>TTA出力を有効にする</value>
+  </data>
+  <data name="checkBox_Verbose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 67</value>
+  </data>
+  <data name="checkBox_Verbose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 19</value>
+  </data>
+  <data name="checkBox_Verbose.Text" xml:space="preserve">
+    <value>詳細な出力 (Verbose output) を有効にする</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 26</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 15</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>アップスケーリング時に使用するモデル：</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 72</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 15</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>出力画像形式：</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 45</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 15</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>スレッド使用数：</value>
+  </data>
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>画像アップスケール設定</value>
+  </data>
+</root>

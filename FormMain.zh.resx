@@ -1,0 +1,205 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="button_Image.Text" xml:space="preserve">
+    <value>提高图像的缩放比例</value>
+  </data>
+  <data name="button_Video.Text" xml:space="preserve">
+    <value>视频的缩放比例</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="fileFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="fileFToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件 (&amp;F)</value>
+  </data>
+  <data name="openImegeIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 22</value>
+  </data>
+  <data name="openImegeIToolStripMenuItem.Text" xml:space="preserve">
+    <value>打开图像文件 (&amp;I)</value>
+  </data>
+  <data name="openVideoVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 22</value>
+  </data>
+  <data name="openVideoVToolStripMenuItem.Text" xml:space="preserve">
+    <value>打开一个视频文件 (&amp;V)</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 6</value>
+  </data>
+  <data name="closeFileCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 22</value>
+  </data>
+  <data name="closeFileCToolStripMenuItem.Text" xml:space="preserve">
+    <value>关闭文件 (&amp;C)</value>
+  </data>
+  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 6</value>
+  </data>
+  <data name="exitXToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 22</value>
+  </data>
+  <data name="exitXToolStripMenuItem.Text" xml:space="preserve">
+    <value>结束 (&amp;X)</value>
+  </data>
+  <data name="settingsCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="settingsCToolStripMenuItem.Text" xml:space="preserve">
+    <value>设置 (&amp;S)</value>
+  </data>
+  <data name="upscalingSettingsUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="upscalingSettingsUToolStripMenuItem.Text" xml:space="preserve">
+    <value>图像升格设置 (&amp;U)</value>
+  </data>
+  <data name="videoUpscalingSettingsVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="videoUpscalingSettingsVToolStripMenuItem.Text" xml:space="preserve">
+    <value>视频升频设置 (&amp;V)</value>
+  </data>
+  <data name="toolsTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="toolsTToolStripMenuItem.Text" xml:space="preserve">
+    <value>工具 (&amp;T)</value>
+  </data>
+  <data name="changeVideoResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
+    <value>改变视频分辨率</value>
+  </data>
+  <data name="aboutAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 20</value>
+  </data>
+  <data name="aboutAToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助 (&amp;H)</value>
+  </data>
+  <data name="checkForUpdatesUToolStripMenuItem.Text" xml:space="preserve">
+    <value>更新确认 (&amp;U)</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>处理器：</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>图形板：</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>系统信息</value>
+  </data>
+  <data name="label_OS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 30</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 15</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>操作系统：</value>
+  </data>
+  <data name="label_Graphic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 71</value>
+  </data>
+  <data name="label_Processor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 51</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>运作</value>
+  </data>
+  <data name="button_Merge.Text" xml:space="preserve">
+    <value>与FFmpeg合并</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="label_Size.Location" type="System.Drawing.Point, System.Drawing">
+    <value>42, 39</value>
+  </data>
+  <data name="label_File.Location" type="System.Drawing.Point, System.Drawing">
+    <value>42, 19</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>尺寸：</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>文件：</value>
+  </data>
+  <data name="toolStripStatusLabel_Status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 17</value>
+  </data>
+  <data name="toolStripStatusLabel_Status.Text" xml:space="preserve">
+    <value>文件没有被加载</value>
+  </data>
+</root>

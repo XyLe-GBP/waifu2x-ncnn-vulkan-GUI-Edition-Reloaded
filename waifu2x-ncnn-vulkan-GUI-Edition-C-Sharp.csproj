@@ -1,0 +1,111 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Company>XyLe</Company>
+    <Authors>XyLe</Authors>
+    <Product>waifu2x-ncnn-vulkan GUI Edition Reloaded</Product>
+    <Copyright>Copyright (C) 2021 - XyLe. All Rights Reserved.</Copyright>
+    <AssemblyVersion>1.1.2120.829</AssemblyVersion>
+    <FileVersion>1.1.2120.829</FileVersion>
+    <Version>1.1.2120.829</Version>
+    <Description>Super-Resolution Convolutional Neural Network（SRCNN）Utility.</Description>
+    <PackageIcon>csharp-logo.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageLicenseFile>LICENCE.txt</PackageLicenseFile>
+    <ApplicationIcon>WAIFU2X_MAINICON.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Strings - コピー %282%29 - コピー.Designer.cs">
+      <DependentUpon>Strings - コピー (2).Designer.cs</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Strings - コピー %282%29.Designer.cs">
+      <DependentUpon>Strings.Designer.cs</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Strings - コピー %283%29.Designer.cs">
+      <DependentUpon>Strings.Designer.cs</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Strings - コピー - コピー %282%29.Designer.cs">
+      <DependentUpon>Strings - コピー.Designer.cs</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Strings - コピー - コピー - コピー.Designer.cs">
+      <DependentUpon>Strings - コピー - コピー.Designer.cs</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Strings - コピー - コピー.Designer.cs">
+      <DependentUpon>Strings - コピー.Designer.cs</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Strings - コピー.Designer.cs">
+      <DependentUpon>Strings.Designer.cs</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Strings.zh.resx">
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Strings.ja.resx">
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Strings.en.resx">
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Properties\csharp-logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Properties\LICENCE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

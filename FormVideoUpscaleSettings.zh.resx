@@ -1,0 +1,319 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 19</value>
+  </data>
+  <data name="checkBox_Advanced.Text" xml:space="preserve">
+    <value>激活高级设置</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 25</value>
+  </data>
+  <data name="textBox_FPS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 22</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 15</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>FFmpeg.exe的路径：</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 15</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>升级后的视频的FPS：</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>一般设置</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>高级设置</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 155</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 15</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>H.264预置：</value>
+  </data>
+  <data name="comboBox_preset.Items" xml:space="preserve">
+    <value>ultrafast (低质量・和高速度)</value>
+  </data>
+  <data name="comboBox_preset.Items5" xml:space="preserve">
+    <value>medium (默认值)</value>
+  </data>
+  <data name="comboBox_preset.Items8" xml:space="preserve">
+    <value>veryslow (高质量・和低速度)</value>
+  </data>
+  <data name="checkBox_preset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 19</value>
+  </data>
+  <data name="checkBox_preset.Text" xml:space="preserve">
+    <value>指定H.264预设</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 129</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>编码：</value>
+  </data>
+  <data name="checkBox_AE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 19</value>
+  </data>
+  <data name="checkBox_AE.Text" xml:space="preserve">
+    <value>指定输出音频编解码器</value>
+  </data>
+  <data name="checkBox_AB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>480, 73</value>
+  </data>
+  <data name="checkBox_AB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 19</value>
+  </data>
+  <data name="checkBox_AB.Text" xml:space="preserve">
+    <value>指定音频比特率</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 15</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>结合命令行参数：</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 15</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>语音命令行参数：</value>
+  </data>
+  <data name="checkBox_MAC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>352, 73</value>
+  </data>
+  <data name="checkBox_MAC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 19</value>
+  </data>
+  <data name="checkBox_MAC.Text" xml:space="preserve">
+    <value>指定音频编解码器</value>
+  </data>
+  <data name="checkBox_MVC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 19</value>
+  </data>
+  <data name="checkBox_MVC.Text" xml:space="preserve">
+    <value>指定视频编解码器</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>617, 102</value>
+  </data>
+  <data name="button_FC.Text" xml:space="preserve">
+    <value>检查编解码器</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>音频输出位置：</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 15</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>视频输出位置：</value>
+  </data>
+  <data name="textBox_AB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>556, 99</value>
+  </data>
+  <data name="checkBox_MSOL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 19</value>
+  </data>
+  <data name="checkBox_MSOL.Text" xml:space="preserve">
+    <value>指定输出文件的保存位置</value>
+  </data>
+  <data name="textBox_ACodec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 99</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>471, 102</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>音频比特率：</value>
+  </data>
+  <data name="textBox_VCodec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 99</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>视频命令行参数：</value>
+  </data>
+  <data name="checkBox_MI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>251, 48</value>
+  </data>
+  <data name="checkBox_MI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 19</value>
+  </data>
+  <data name="checkBox_MI.Text" xml:space="preserve">
+    <value>元数据信息设置</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>291, 102</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 15</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>音频编解码器：</value>
+  </data>
+  <data name="checkBox_CC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 23</value>
+  </data>
+  <data name="checkBox_CC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 19</value>
+  </data>
+  <data name="checkBox_CC.Text" xml:space="preserve">
+    <value>制作一个章节的副本</value>
+  </data>
+  <data name="checkBox_OAO.Location" type="System.Drawing.Point, System.Drawing">
+    <value>330, 23</value>
+  </data>
+  <data name="checkBox_OAO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 19</value>
+  </data>
+  <data name="checkBox_OAO.Text" xml:space="preserve">
+    <value>只输出视频的音频</value>
+  </data>
+  <data name="checkBox_DS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 48</value>
+  </data>
+  <data name="checkBox_DS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 19</value>
+  </data>
+  <data name="checkBox_DS.Text" xml:space="preserve">
+    <value>禁用数据流</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>视频编解码器：</value>
+  </data>
+  <data name="checkBox_DSS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 23</value>
+  </data>
+  <data name="checkBox_DSS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 19</value>
+  </data>
+  <data name="checkBox_DSS.Text" xml:space="preserve">
+    <value>禁用字幕</value>
+  </data>
+  <data name="checkBox_SO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 19</value>
+  </data>
+  <data name="checkBox_SO.Text" xml:space="preserve">
+    <value>启用视频帧的顺序编号</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 15</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>CRF水平：</value>
+  </data>
+  <data name="checkBox_EIA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 19</value>
+  </data>
+  <data name="checkBox_EIA.Text" xml:space="preserve">
+    <value>启用内部AAC</value>
+  </data>
+  <data name="checkBox_OOF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 48</value>
+  </data>
+  <data name="checkBox_OOF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 19</value>
+  </data>
+  <data name="checkBox_OOF.Text" xml:space="preserve">
+    <value>覆盖输出文件</value>
+  </data>
+  <data name="checkBox_HI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>458, 23</value>
+  </data>
+  <data name="checkBox_HI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 19</value>
+  </data>
+  <data name="checkBox_HI.Text" xml:space="preserve">
+    <value>隐藏不需要的信息</value>
+  </data>
+  <data name="checkBox_NVENC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 19</value>
+  </data>
+  <data name="checkBox_NVENC.Text" xml:space="preserve">
+    <value>使用NVENC CRF</value>
+  </data>
+  <data name="button_OK.Text" xml:space="preserve">
+    <value>认可</value>
+  </data>
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>视频升频设置</value>
+  </data>
+</root>
