@@ -45,6 +45,10 @@ See the comparison video below.
 
 [Upscaling comparison video](https://www.youtube.com/embed/hU3T_Gu3Ehk)
 
+If you want to upscale your video, you need to download FFmpeg, place it in a desired location, and then  
+You need to specify the location from within the application.  
+Specify the location of FFmpeg.exe from `'Settings'→'Video Upscale Settings'→'FFmpeg.exe Path'` item.  
+
 When upscaling video, first use FFmpeg to perform frame splitting.  
 When you do this, it puts a very large load on your PC.  
 If you have a low-spec PC, it may take a very long time.  
