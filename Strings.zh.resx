@@ -127,6 +127,11 @@
   <data name="ButtonUpscaleVideo" xml:space="preserve">
     <value>视频的缩放比例</value>
   </data>
+  <data name="ConfirmClose" xml:space="preserve">
+    <value>目前有一个升格的框架文件。
+如果你在这时退出应用程序，所有被放大的
+文件将被丢失。 你确定你要退出吗？</value>
+  </data>
   <data name="CurrentString" xml:space="preserve">
     <value>当前版本：</value>
   </data>
@@ -136,14 +141,80 @@
   <data name="DELScalled" xml:space="preserve">
     <value>删除文件</value>
   </data>
+  <data name="DLAbortConfirm" xml:space="preserve">
+    <value>目前下载正在进行中。
+如果你停止，你的下载就会丢失。
+你确定你要停止这个过程吗？</value>
+  </data>
+  <data name="DLConfirm" xml:space="preserve">
+    <value>FFmpeg并不存在。 你想下载它吗？
+(你需要一个互联网连接来下载)</value>
+  </data>
+  <data name="DLInfo" xml:space="preserve">
+    <value>{0}% ({1} 个字节 中的 {2} 个字节) 下载完成</value>
+  </data>
+  <data name="DLProgress" xml:space="preserve">
+    <value>你正在下载一个文件。
+请稍等...</value>
+  </data>
+  <data name="DLSuccess" xml:space="preserve">
+    <value>你的下载现在已经完成。</value>
+  </data>
+  <data name="ErrorACodecNot" xml:space="preserve">
+    <value>有些字段没有正确输入。
+音频编解码器 "的值必须至少有2个字符长。</value>
+  </data>
+  <data name="ErrorALocNot" xml:space="preserve">
+    <value>一些字段的输入不正确。
+你没有在 "音频目的地 "字段中指定一个路径。</value>
+  </data>
+  <data name="ErrorBlockNot" xml:space="preserve">
+    <value>有些字段没有正确输入。
+GPU块大小 "的值必须至少是1个字符。</value>
+  </data>
+  <data name="ErrorFFmpegPath" xml:space="preserve">
+    <value>有些字段的输入是错误的。
+你没有在'FFmpeg.exe路径'栏中指定一个路径。</value>
+  </data>
+  <data name="ErrorFPS" xml:space="preserve">
+    <value>有些字段没有正确输入。
+升级视频的FPS "字段应采用以下格式
+应按以下格式输入：**。 **.
+
+例如：60fps &gt; 60.00，29.97fps &gt; 29.97</value>
+  </data>
+  <data name="ErrorFPSChar" xml:space="preserve">
+    <value>有些字段没有正确输入。
+'FPS for upscaled video'字段必须至少有4个字符长。</value>
+  </data>
+  <data name="ErrorFPSDot" xml:space="preserve">
+    <value>有些字段没有正确输入。
+必须用'.'来指定'升频视频的FPS'字段。 (点)。</value>
+  </data>
+  <data name="ErrorNVENCNot" xml:space="preserve">
+    <value>一些字段的输入不正确。
+CRF级别 "的值必须至少是一个字符。</value>
+  </data>
+  <data name="ErrorVCodecNot" xml:space="preserve">
+    <value>有些字段没有正确输入。
+视频编解码器 "的值必须至少有2个字符长。</value>
+  </data>
+  <data name="ErrorVLocNot" xml:space="preserve">
+    <value>一些字段的填写不正确。
+你没有在 "视频保存位置 "字段中指定一个路径。</value>
+  </data>
   <data name="FBDImageTitle" xml:space="preserve">
     <value>保存放大的图像</value>
+  </data>
+  <data name="FFUpdate" xml:space="preserve">
+    <value>你可以更新FFmpeg。
+你想更新吗？</value>
   </data>
   <data name="FieldError" xml:space="preserve">
     <value>有些字段的输入是错误的。</value>
   </data>
   <data name="FilterImage" xml:space="preserve">
-    <value>图像文件 (*.jpg;*.png;*.webp)|*.jpg;*.png;*.webp</value>
+    <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All files (*.*)|*.*;||</value>
   </data>
   <data name="FilterVideo" xml:space="preserve">
     <value>视频文件 (*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm)|*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm</value>

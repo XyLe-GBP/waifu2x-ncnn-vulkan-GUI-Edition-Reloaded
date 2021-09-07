@@ -754,7 +754,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         {
             if (textBox_Blocksize.Text == "")
             {
-                MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.ErrorBlockNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

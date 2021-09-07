@@ -57,1565 +57,1565 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_OK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OAO.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button_FFmpeg_path.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;checkBox_DS.Name" xml:space="preserve">
-    <value>checkBox_DS</value>
-  </data>
-  <data name="label10.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDA.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="checkBox_DS.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MAC.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;textBox_AL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox_HI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 19</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 344</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 15</value>
-  </data>
-  <data name="button_VL.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>632, 591</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MSOL.Name" xml:space="preserve">
-    <value>checkBox_MSOL</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
-    <value>pictureBox1</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_CRF.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Video command line arguments:</value>
-  </data>
-  <data name="comboBox_AE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 126</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 15</value>
-  </data>
-  <data name="checkBox_OOF.Text" xml:space="preserve">
-    <value>Overwrite output file</value>
-  </data>
-  <data name="checkBox_OOF.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 15</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;button_AL.Name" xml:space="preserve">
-    <value>button_AL</value>
-  </data>
-  <data name="&gt;&gt;textBox_VL.Name" xml:space="preserve">
-    <value>textBox_VL</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Advanced.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 626</value>
-  </data>
-  <data name="comboBox_AE.Items3" xml:space="preserve">
-    <value>Advanced Audio Coding (AAC)</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDA.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="checkBox_OOF.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_HI.Name" xml:space="preserve">
-    <value>checkBox_HI</value>
-  </data>
-  <data name="comboBox_preset.Items6" xml:space="preserve">
-    <value>slow</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Kbps</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label12.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBox_DS.Text" xml:space="preserve">
-    <value>Disable data stream</value>
-  </data>
-  <data name="&gt;&gt;comboBox_AE.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;textBox_VL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_MVC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 19</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDA.Name" xml:space="preserve">
-    <value>textBox_CMDA</value>
-  </data>
-  <data name="checkBox_OOF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 19</value>
-  </data>
-  <data name="label15.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBox_OAO.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 19</value>
-  </data>
-  <data name="textBox_CMDA.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;textBox_FPS.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 74</value>
-  </data>
-  <data name="checkBox_MI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 19</value>
-  </data>
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="comboBox_preset.Items2" xml:space="preserve">
-    <value>veryfast</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MI.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="textBox_CMDA.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="comboBox_preset.Items4" xml:space="preserve">
-    <value>fast</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>695, 102</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
-    <value>button_Cancel</value>
-  </data>
-  <data name="&gt;&gt;comboBox_preset.Name" xml:space="preserve">
-    <value>comboBox_preset</value>
-  </data>
-  <data name="checkBox_HI.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBox_AB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
-  </data>
-  <data name="checkBox_OAO.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;checkBox_EIA.ZOrder" xml:space="preserve">
-    <value>38</value>
-  </data>
-  <data name="&gt;&gt;checkBox_CC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 15</value>
-  </data>
-  <data name="textBox_VL.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="button_FC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="&gt;&gt;comboBox_AE.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Video location:</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="textBox_ACodec.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDV.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MVC.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBox_SO.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Video codec argument:</value>
-  </data>
-  <data name="comboBox_AE.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBox_AB.Text" xml:space="preserve">
-    <value>Specify the audio bitrate</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MAC.Name" xml:space="preserve">
-    <value>checkBox_MAC</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 13</value>
-  </data>
-  <data name="&gt;&gt;checkBox_HI.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;textBox_AB.Name" xml:space="preserve">
-    <value>textBox_AB</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="&gt;&gt;textBox_AB.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="textBox_FFmpeg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 23</value>
-  </data>
-  <data name="textBox_AB.MaxLength" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="checkBox_HI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>546, 23</value>
-  </data>
-  <data name="&gt;&gt;button_FFmpeg_path.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="textBox_VL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 221</value>
-  </data>
-  <data name="textBox_FFmpeg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 67</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>455, 8</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDF.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;textBox_CRF.ZOrder" xml:space="preserve">
-    <value>36</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_DSS.ZOrder" xml:space="preserve">
-    <value>34</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 48</value>
-  </data>
-  <data name="&gt;&gt;checkBox_preset.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="checkBox_preset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 154</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBox_CC.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="checkBox_AB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>539, 73</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 15</value>
-  </data>
-  <data name="checkBox_DSS.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBox_AL.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;checkBox_DSS.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="button_AL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 20</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OOF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_preset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_HI.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Audio Location:</value>
-  </data>
-  <data name="&gt;&gt;button_VL.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OAO.Name" xml:space="preserve">
-    <value>checkBox_OAO</value>
-  </data>
-  <data name="label11.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;textBox_CRF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_VL.Name" xml:space="preserve">
-    <value>button_VL</value>
-  </data>
-  <data name="checkBox_EIA.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>33</value>
-  </data>
-  <data name="checkBox_DSS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 23</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Audio codec argument:</value>
-  </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 389</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_DS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="comboBox_preset.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="textBox_CMDA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 363</value>
-  </data>
-  <data name="label4.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;textBox_VCodec.Name" xml:space="preserve">
-    <value>textBox_VCodec</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Advanced</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="checkBox_NVENC.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBox_Advanced.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox_MSOL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 19</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_DS.ZOrder" xml:space="preserve">
-    <value>32</value>
-  </data>
-  <data name="checkBox_MI.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="comboBox_AE.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>557, 102</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBox_AL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 270</value>
-  </data>
-  <data name="&gt;&gt;checkBox_SO.ZOrder" xml:space="preserve">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;comboBox_preset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_CC.ZOrder" xml:space="preserve">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MVC.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="button_FFmpeg_path.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 68</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_CC.Name" xml:space="preserve">
-    <value>checkBox_CC</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDF.Name" xml:space="preserve">
-    <value>textBox_CMDF</value>
-  </data>
-  <data name="&gt;&gt;checkBox_preset.Name" xml:space="preserve">
-    <value>checkBox_preset</value>
-  </data>
-  <data name="checkBox_preset.Text" xml:space="preserve">
-    <value>Specify H.264 preset</value>
-  </data>
-  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_MI.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBox_CC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 19</value>
-  </data>
-  <data name="&gt;&gt;checkBox_NVENC.Name" xml:space="preserve">
-    <value>checkBox_NVENC</value>
-  </data>
-  <data name="checkBox_AB.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;button_VL.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;button_FFmpeg_path.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_AL.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Upscalled Video FPS:</value>
-  </data>
-  <data name="button_FFmpeg_path.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 20</value>
-  </data>
-  <data name="checkBox_MSOL.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="button_FC.Text" xml:space="preserve">
-    <value>Find Codecs</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 15</value>
-  </data>
-  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>AutoSize</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OOF.Name" xml:space="preserve">
-    <value>checkBox_OOF</value>
-  </data>
-  <data name="textBox_VL.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="textBox_AB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>639, 99</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 15</value>
-  </data>
-  <data name="comboBox_preset.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="checkBox_DSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 19</value>
-  </data>
-  <data name="&gt;&gt;textBox_VCodec.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label15.Text" xml:space="preserve">
+    <value>H.264 preset:</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>37</value>
   </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBox_VCodec.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 19</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Video Upscaling Settings</value>
-  </data>
-  <data name="comboBox_preset.Items5" xml:space="preserve">
-    <value>medium (Nomally)</value>
-  </data>
-  <data name="button_VL.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="checkBox_NVENC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 73</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;button_FC.Type" xml:space="preserve">
+  <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_DSS.Name" xml:space="preserve">
-    <value>checkBox_DSS</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Kbps</value>
   </data>
-  <data name="&gt;&gt;checkBox_NVENC.ZOrder" xml:space="preserve">
-    <value>41</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 15</value>
-  </data>
-  <data name="&gt;&gt;checkBox_preset.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="textBox_CMDA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>762, 23</value>
-  </data>
-  <data name="comboBox_AE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 23</value>
-  </data>
-  <data name="checkBox_SO.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 48</value>
-  </data>
-  <data name="comboBox_AE.Items1" xml:space="preserve">
-    <value>24bit Linear PCM</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MSOL.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_AE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 128</value>
-  </data>
-  <data name="&gt;&gt;checkBox_AB.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="textBox_VL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>722, 23</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormVideoUpscaleSettings</value>
-  </data>
-  <data name="textBox_CMDF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 404</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Merge command line arguments:</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MI.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="comboBox_preset.Items8" xml:space="preserve">
-    <value>veryslow (Best)</value>
-  </data>
-  <data name="textBox_FPS.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 25</value>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
   </data>
-  <data name="checkBox_MVC.Text" xml:space="preserve">
-    <value>Specify the video codec</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Audio Bitrate:</value>
   </data>
-  <data name="checkBox_NVENC.Text" xml:space="preserve">
-    <value>Use NVENC CRF</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox_AE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 19</value>
   </data>
-  <data name="textBox_ACodec.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="checkBox_NVENC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 19</value>
-  </data>
-  <data name="button_VL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>733, 222</value>
-  </data>
-  <data name="checkBox_OAO.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox_preset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 19</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Advanced.Name" xml:space="preserve">
-    <value>checkBox_Advanced</value>
-  </data>
-  <data name="&gt;&gt;checkBox_SO.Name" xml:space="preserve">
-    <value>checkBox_SO</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OAO.ZOrder" xml:space="preserve">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;textBox_ACodec.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;checkBox_DSS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBox_AE.Items4" xml:space="preserve">
-    <value>LAME (MP3)</value>
-  </data>
-  <data name="textBox_CRF.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="textBox_CMDV.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="checkBox_DS.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox_MI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>305, 48</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Encode:</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="checkBox_MI.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBox_EIA.Name" xml:space="preserve">
-    <value>checkBox_EIA</value>
-  </data>
-  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 155</value>
-  </data>
-  <data name="checkBox_MVC.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox_MAC.Enabled" type="System.Boolean, mscorlib">
+  <data name="checkBox_AE.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="button_AL.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="button_Cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>FPS</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;textBox_CRF.Name" xml:space="preserve">
-    <value>textBox_CRF</value>
-  </data>
-  <data name="checkBox_OAO.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 23</value>
-  </data>
-  <data name="textBox_CMDV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>762, 23</value>
-  </data>
-  <data name="&gt;&gt;textBox_ACodec.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label9.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OAO.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;button_FC.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="checkBox_CC.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox_MAC.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_MAC.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
   </data>
   <data name="&gt;&gt;button_OK.Name" xml:space="preserve">
     <value>button_OK</value>
   </data>
-  <data name="&gt;&gt;checkBox_EIA.Type" xml:space="preserve">
+  <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 19</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MSOL.Name" xml:space="preserve">
+    <value>checkBox_MSOL</value>
+  </data>
+  <data name="&gt;&gt;checkBox_SO.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="checkBox_CC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 19</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Upscalled Video FPS:</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDA.Name" xml:space="preserve">
+    <value>textBox_CMDA</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>775, 436</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AB.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="&gt;&gt;textBox_VL.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_AE.Items1" xml:space="preserve">
+    <value>24bit Linear PCM</value>
+  </data>
+  <data name="&gt;&gt;textBox_FPS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_DSS.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="checkBox_MSOL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 179</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>FPS</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;textBox_FPS.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_OOF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 19</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 344</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="checkBox_CC.Text" xml:space="preserve">
+    <value>Copying chapters</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 389</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 129</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MAC.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_MSOL.Type" xml:space="preserve">
+  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>632, 591</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Advanced.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="textBox_AB.Enabled" type="System.Boolean, mscorlib">
+  <data name="checkBox_OAO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 19</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MVC.Name" xml:space="preserve">
+    <value>checkBox_MVC</value>
+  </data>
+  <data name="textBox_CMDF.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="textBox_CRF.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDF.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;checkBox_EIA.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;textBox_AL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 15</value>
+  </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Audio codec argument:</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MAC.Name" xml:space="preserve">
+    <value>checkBox_MAC</value>
+  </data>
+  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>713, 591</value>
+  </data>
+  <data name="&gt;&gt;comboBox_AE.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button_VL.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="checkBox_OAO.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_preset.Items6" xml:space="preserve">
+    <value>slow</value>
+  </data>
+  <data name="&gt;&gt;textBox_FFmpeg.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="textBox_VCodec.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
+  <data name="&gt;&gt;textBox_FFmpeg.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;checkBox_AE.Name" xml:space="preserve">
-    <value>checkBox_AE</value>
+  <data name="textBox_CMDA.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="checkBox_preset.Enabled" type="System.Boolean, mscorlib">
+  <data name="checkBox_MI.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_MVC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 19</value>
+  </data>
+  <data name="textBox_FPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 23</value>
+  </data>
+  <data name="&gt;&gt;button_VL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_VL.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="checkBox_HI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 19</value>
+  </data>
+  <data name="checkBox_DSS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 23</value>
+  </data>
+  <data name="&gt;&gt;comboBox_AE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="textBox_AB.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="checkBox_NVENC.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 15</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="checkBox_SO.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="comboBox_AE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 126</value>
+  </data>
+  <data name="checkBox_EIA.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBox_OAO.Text" xml:space="preserve">
+    <value>Output audio only</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;checkBox_SO.Name" xml:space="preserve">
+    <value>checkBox_SO</value>
+  </data>
+  <data name="checkBox_preset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 154</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>455, 8</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;textBox_ACodec.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;button_FFmpeg_path.Name" xml:space="preserve">
+    <value>button_FFmpeg_path</value>
+  </data>
+  <data name="checkBox_AE.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;checkBox_HI.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="checkBox_CC.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="textBox_AB.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_FFmpeg_path.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="checkBox_DSS.Text" xml:space="preserve">
+    <value>Disable subtitle stream</value>
+  </data>
+  <data name="&gt;&gt;checkBox_preset.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="button_AL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>733, 271</value>
+  </data>
+  <data name="checkBox_SO.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBox_ACodec.MaxLength" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 202</value>
+  </data>
+  <data name="&gt;&gt;textBox_AL.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;button_AL.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="textBox_AL.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AB.Name" xml:space="preserve">
+    <value>checkBox_AB</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="checkBox_DS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 48</value>
+  </data>
+  <data name="&gt;&gt;checkBox_HI.ZOrder" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="checkBox_EIA.Text" xml:space="preserve">
+    <value>Enable Internal AAC</value>
+  </data>
+  <data name="textBox_ACodec.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 23</value>
+  </data>
+  <data name="&gt;&gt;checkBox_preset.Name" xml:space="preserve">
+    <value>checkBox_preset</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_preset.Items7" xml:space="preserve">
+    <value>slower</value>
+  </data>
+  <data name="checkBox_Advanced.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormVideoUpscaleSettings</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 15</value>
+  </data>
+  <data name="checkBox_MI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 19</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 15</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_FC.Text" xml:space="preserve">
+    <value>Find Codecs</value>
+  </data>
+  <data name="textBox_ACodec.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
+  <data name="checkBox_MAC.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="checkBox_AE.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDA.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label15.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="comboBox_preset.Items5" xml:space="preserve">
+    <value>medium (Nomally)</value>
+  </data>
+  <data name="checkBox_MSOL.Text" xml:space="preserve">
+    <value>Manually specify the file output location</value>
+  </data>
+  <data name="checkBox_DSS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 19</value>
+  </data>
+  <data name="textBox_CMDA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 363</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="comboBox_preset.Items" xml:space="preserve">
+    <value>ultrafast (Low)</value>
+  </data>
+  <data name="checkBox_EIA.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBox_CMDV.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="comboBox_AE.Items4" xml:space="preserve">
+    <value>LAME (MP3)</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Merge command line arguments:</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>CRF Level:</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_OAO.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;textBox_VCodec.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 15</value>
+  </data>
+  <data name="&gt;&gt;button_VL.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkBox_DS.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;comboBox_preset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_AB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 19</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Advanced.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox_CRF.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="textBox_FPS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="&gt;&gt;checkBox_OAO.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_ACodec.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_preset.Name" xml:space="preserve">
+    <value>comboBox_preset</value>
+  </data>
+  <data name="&gt;&gt;checkBox_NVENC.Name" xml:space="preserve">
+    <value>checkBox_NVENC</value>
+  </data>
+  <data name="&gt;&gt;checkBox_OAO.Name" xml:space="preserve">
+    <value>checkBox_OAO</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_SO.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_AE.Items" xml:space="preserve">
+    <value>16bit Linear PCM</value>
+  </data>
+  <data name="checkBox_MVC.Text" xml:space="preserve">
+    <value>Specify the video codec</value>
+  </data>
+  <data name="comboBox_preset.Items4" xml:space="preserve">
+    <value>fast</value>
+  </data>
+  <data name="comboBox_preset.Items1" xml:space="preserve">
+    <value>superfast</value>
+  </data>
+  <data name="comboBox_preset.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;checkBox_DSS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_AL.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_VCodec.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBox_preset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 152</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="checkBox_HI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>546, 23</value>
+  </data>
+  <data name="&gt;&gt;checkBox_DSS.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;textBox_AB.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="textBox_AB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
+  <data name="checkBox_AE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 128</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Advanced.Name" xml:space="preserve">
+    <value>checkBox_Advanced</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 251</value>
+  </data>
+  <data name="&gt;&gt;checkBox_DS.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="textBox_CMDF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>763, 23</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;textBox_FFmpeg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_VCodec.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label11.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_AB.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="textBox_FFmpeg.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 296</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="textBox_CMDV.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MVC.Name" xml:space="preserve">
-    <value>checkBox_MVC</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_AB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBox_preset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 152</value>
-  </data>
-  <data name="checkBox_SO.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 15</value>
-  </data>
-  <data name="textBox_VCodec.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="checkBox_DS.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MSOL.ZOrder" xml:space="preserve">
-    <value>22</value>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 296</value>
   </data>
   <data name="&gt;&gt;textBox_FPS.Name" xml:space="preserve">
     <value>textBox_FPS</value>
   </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+  <data name="&gt;&gt;checkBox_NVENC.ZOrder" xml:space="preserve">
+    <value>41</value>
   </data>
-  <data name="checkBox_EIA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 23</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 15</value>
   </data>
-  <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
   </data>
-  <data name="comboBox_preset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 23</value>
-  </data>
-  <data name="&gt;&gt;textBox_VCodec.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="checkBox_OAO.Text" xml:space="preserve">
-    <value>Output audio only</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Audio command line arguments:</value>
-  </data>
-  <data name="checkBox_DSS.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>405, 130</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDF.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>775, 436</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="checkBox_preset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 19</value>
   </data>
   <data name="checkBox_MAC.Text" xml:space="preserve">
     <value>Specify the audio codec</value>
   </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBox_CRF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_AL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 270</value>
+  </data>
+  <data name="button_AL.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="checkBox_HI.Text" xml:space="preserve">
+    <value>Hide Informations</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Video codec argument:</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_CMDF.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;textBox_VL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
   </data>
-  <data name="checkBox_EIA.Text" xml:space="preserve">
-    <value>Enable Internal AAC</value>
+  <data name="checkBox_preset.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 13</value>
   </data>
   <data name="&gt;&gt;checkBox_MI.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox_FFmpeg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_FFmpeg_path.Location" type="System.Drawing.Point, System.Drawing">
+    <value>365, 68</value>
   </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 25</value>
   </data>
   <data name="&gt;&gt;textBox_VCodec.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>18</value>
+  <data name="textBox_CMDV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>762, 23</value>
   </data>
-  <data name="comboBox_preset.Items" xml:space="preserve">
-    <value>ultrafast (Low)</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 102</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_HI.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;comboBox_AE.Name" xml:space="preserve">
-    <value>comboBox_AE</value>
-  </data>
-  <data name="&gt;&gt;button_FC.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="checkBox_MVC.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;textBox_AL.Name" xml:space="preserve">
-    <value>textBox_AL</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 15</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 15</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBox_AB.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="textBox_VL.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
   </data>
-  <data name="checkBox_Advanced.Text" xml:space="preserve">
-    <value>Enable Advanced Settings</value>
-  </data>
-  <data name="label2.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBox_SO.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 19</value>
-  </data>
-  <data name="&gt;&gt;checkBox_AE.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBox_preset.Items1" xml:space="preserve">
-    <value>superfast</value>
-  </data>
-  <data name="checkBox_MAC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>381, 73</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>14</value>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_ACodec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>466, 99</value>
+  </data>
+  <data name="&gt;&gt;checkBox_CC.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;checkBox_OOF.ZOrder" xml:space="preserve">
+    <value>39</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDF.Name" xml:space="preserve">
+    <value>textBox_CMDF</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="checkBox_CC.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_FFmpeg_path.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MI.Name" xml:space="preserve">
+    <value>checkBox_MI</value>
+  </data>
+  <data name="button_AL.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="checkBox_AB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>539, 73</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 146</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Video Upscaling Settings</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;checkBox_OOF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;textBox_ACodec.Name" xml:space="preserve">
+    <value>textBox_ACodec</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 15</value>
+  </data>
+  <data name="textBox_FFmpeg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>351, 23</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDF.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label14.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;button_FC.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBox_OAO.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="textBox_VCodec.MaxLength" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;textBox_VCodec.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="checkBox_HI.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkBox_CC.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDA.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;checkBox_NVENC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MVC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_VCodec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 99</value>
+  </data>
+  <data name="textBox_AL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>722, 23</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="button_FC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 98</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Audio command line arguments:</value>
+  </data>
+  <data name="checkBox_CC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 23</value>
+  </data>
+  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBox_CMDA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>762, 23</value>
+  </data>
   <data name="&gt;&gt;checkBox_Advanced.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
+  <data name="textBox_AB.MaxLength" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;checkBox_NVENC.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBox_AB.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="textBox_CMDA.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="textBox_AB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>639, 99</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_EIA.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBox_CMDV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 314</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>695, 102</value>
+  </data>
+  <data name="textBox_CMDV.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MAC.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="checkBox_MI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 48</value>
+  </data>
+  <data name="checkBox_AB.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;button_FC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_OAO.Location" type="System.Drawing.Point, System.Drawing">
+    <value>417, 23</value>
+  </data>
+  <data name="&gt;&gt;checkBox_DSS.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDV.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="comboBox_AE.Items2" xml:space="preserve">
+    <value>32bit Linear PCM</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="comboBox_preset.Items2" xml:space="preserve">
+    <value>veryfast</value>
+  </data>
+  <data name="&gt;&gt;textBox_CRF.ZOrder" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;button_FC.Name" xml:space="preserve">
+    <value>button_FC</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_AL.Name" xml:space="preserve">
+    <value>textBox_AL</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="comboBox_AE.Items3" xml:space="preserve">
+    <value>Advanced Audio Coding (AAC)</value>
+  </data>
+  <data name="button_FC.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;textBox_FPS.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkBox_CC.Name" xml:space="preserve">
+    <value>checkBox_CC</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 15</value>
+  </data>
+  <data name="&gt;&gt;checkBox_OOF.Name" xml:space="preserve">
+    <value>checkBox_OOF</value>
+  </data>
+  <data name="&gt;&gt;textBox_AB.Name" xml:space="preserve">
+    <value>textBox_AB</value>
+  </data>
+  <data name="checkBox_MVC.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AB.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkBox_MI.Text" xml:space="preserve">
+    <value>Metadata informations</value>
+  </data>
+  <data name="&gt;&gt;button_FFmpeg_path.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_DS.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;button_AL.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDV.Name" xml:space="preserve">
+    <value>textBox_CMDV</value>
+  </data>
+  <data name="&gt;&gt;checkBox_DS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 15</value>
+  </data>
+  <data name="&gt;&gt;comboBox_AE.Name" xml:space="preserve">
+    <value>comboBox_AE</value>
+  </data>
+  <data name="&gt;&gt;button_AL.Name" xml:space="preserve">
+    <value>button_AL</value>
+  </data>
+  <data name="checkBox_SO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 19</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDV.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="checkBox_MVC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 73</value>
+  </data>
+  <data name="button_FC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 15</value>
+  </data>
+  <data name="&gt;&gt;checkBox_CC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MVC.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label7.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 15</value>
+  </data>
+  <data name="comboBox_AE.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBox_AB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 23</value>
+  </data>
+  <data name="&gt;&gt;button_AL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="checkBox_OOF.Text" xml:space="preserve">
+    <value>Overwrite output file</value>
+  </data>
+  <data name="textBox_CRF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 23</value>
+  </data>
+  <data name="label10.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_OOF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 48</value>
+  </data>
+  <data name="&gt;&gt;checkBox_SO.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="button_VL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 20</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 626</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;textBox_AL.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="button_AL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 20</value>
+  </data>
+  <data name="&gt;&gt;checkBox_SO.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_CRF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>183, 71</value>
+  </data>
+  <data name="&gt;&gt;checkBox_DSS.Name" xml:space="preserve">
+    <value>checkBox_DSS</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
+    <value>button_Cancel</value>
+  </data>
+  <data name="checkBox_OAO.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="checkBox_DSS.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_MSOL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 19</value>
+  </data>
+  <data name="checkBox_MAC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>381, 73</value>
+  </data>
+  <data name="&gt;&gt;textBox_AB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_AE.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;checkBox_OOF.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>329, 102</value>
   </data>
-  <data name="&gt;&gt;textBox_FFmpeg.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="checkBox_Advanced.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 101</value>
   </data>
-  <data name="&gt;&gt;textBox_FPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="textBox_VL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 221</value>
   </data>
-  <data name="textBox_ACodec.MaxLength" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Advanced</value>
   </data>
-  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_AB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 15</value>
   </data>
   <data name="checkBox_DSS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;textBox_VL.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MAC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_OOF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 48</value>
-  </data>
-  <data name="checkBox_MSOL.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="button_FC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 98</value>
-  </data>
-  <data name="&gt;&gt;textBox_AL.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;checkBox_SO.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Path with FFmpeg.exe:</value>
-  </data>
-  <data name="checkBox_HI.Text" xml:space="preserve">
-    <value>Hide Informations</value>
-  </data>
-  <data name="checkBox_MVC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 73</value>
-  </data>
-  <data name="checkBox_DS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 48</value>
-  </data>
-  <data name="textBox_AB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 23</value>
-  </data>
-  <data name="checkBox_AE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 19</value>
-  </data>
-  <data name="&gt;&gt;checkBox_SO.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_DSS.Text" xml:space="preserve">
-    <value>Disable subtitle stream</value>
-  </data>
-  <data name="checkBox_CC.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDV.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="checkBox_SO.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox_EIA.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBox_NVENC.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Advanced.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label7.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MVC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_AL.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="textBox_AL.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBox_EIA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 19</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 15</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 251</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 15</value>
-  </data>
-  <data name="&gt;&gt;comboBox_preset.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MAC.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="textBox_FPS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="textBox_CRF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 23</value>
-  </data>
-  <data name="checkBox_AB.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox_OOF.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBox_CMDF.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBox_Advanced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 101</value>
-  </data>
-  <data name="checkBox_OAO.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>H.264 preset:</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="textBox_CRF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 71</value>
-  </data>
-  <data name="checkBox_MSOL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 179</value>
-  </data>
-  <data name="textBox_ACodec.Location" type="System.Drawing.Point, System.Drawing">
-    <value>466, 99</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label8.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_EIA.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 202</value>
-  </data>
-  <data name="textBox_ACodec.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OOF.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="textBox_CMDF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>763, 23</value>
-  </data>
-  <data name="&gt;&gt;button_FC.Name" xml:space="preserve">
-    <value>button_FC</value>
-  </data>
-  <data name="checkBox_AE.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBox_VCodec.MaxLength" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="checkBox_MSOL.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="checkBox_NVENC.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;textBox_ACodec.Name" xml:space="preserve">
-    <value>textBox_ACodec</value>
-  </data>
-  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 146</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OOF.ZOrder" xml:space="preserve">
-    <value>39</value>
-  </data>
-  <data name="&gt;&gt;textBox_ACodec.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="textBox_VCodec.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 99</value>
-  </data>
-  <data name="button_AL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>733, 271</value>
-  </data>
-  <data name="checkBox_MSOL.Text" xml:space="preserve">
-    <value>Manually specify the file output location</value>
-  </data>
-  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 15</value>
-  </data>
-  <data name="&gt;&gt;textBox_AL.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMDV.Name" xml:space="preserve">
-    <value>textBox_CMDV</value>
-  </data>
-  <data name="textBox_CMDF.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_NVENC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_FFmpeg_path.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="checkBox_preset.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="textBox_AB.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;button_AL.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;comboBox_AE.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="button_FC.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;checkBox_MI.Name" xml:space="preserve">
-    <value>checkBox_MI</value>
-  </data>
-  <data name="checkBox_EIA.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;comboBox_preset.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>713, 591</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 149</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;button_AL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_Advanced.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;textBox_AB.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 15</value>
-  </data>
-  <data name="checkBox_MI.Text" xml:space="preserve">
-    <value>Metadata informations</value>
-  </data>
-  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="checkBox_AB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 19</value>
-  </data>
-  <data name="label3.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="button_FC.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="comboBox_AE.Items" xml:space="preserve">
-    <value>16bit Linear PCM</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_AE.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Audio Bitrate:</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBox_HI.ZOrder" xml:space="preserve">
-    <value>40</value>
-  </data>
-  <data name="textBox_AL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>722, 23</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_AE.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="comboBox_AE.Items2" xml:space="preserve">
-    <value>32bit Linear PCM</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_CC.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="button_VL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 20</value>
-  </data>
-  <data name="checkBox_MAC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 19</value>
-  </data>
-  <data name="textBox_VCodec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 23</value>
-  </data>
-  <data name="label13.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBox_CRF.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label14.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 102</value>
-  </data>
-  <data name="checkBox_AE.Text" xml:space="preserve">
-    <value>Specify the audio output codec</value>
-  </data>
-  <data name="checkBox_AE.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;checkBox_DS.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="checkBox_AE.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>CRF Level:</value>
-  </data>
-  <data name="checkBox_CC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 23</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;textBox_FFmpeg.Name" xml:space="preserve">
-    <value>textBox_FFmpeg</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;textBox_VL.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="button_AL.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;textBox_FFmpeg.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="checkBox_MVC.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBox_FPS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 23</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 129</value>
-  </data>
-  <data name="textBox_ACodec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 23</value>
-  </data>
-  <data name="checkBox_SO.Text" xml:space="preserve">
-    <value>Enable Sequential output</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="textBox_CMDV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 314</value>
-  </data>
-  <data name="checkBox_DS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 19</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_FPS.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;textBox_ACodec.ZOrder" xml:space="preserve">
+    <value>23</value>
   </data>
   <data name="comboBox_preset.Items3" xml:space="preserve">
     <value>faster</value>
   </data>
-  <data name="comboBox_preset.Items7" xml:space="preserve">
-    <value>slower</value>
+  <data name="comboBox_AE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 23</value>
   </data>
-  <data name="&gt;&gt;button_FFmpeg_path.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="label3.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;button_FFmpeg_path.Name" xml:space="preserve">
-    <value>button_FFmpeg_path</value>
-  </data>
-  <data name="checkBox_preset.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;checkBox_HI.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBox_AE.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBox_AB.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="checkBox_CC.Text" xml:space="preserve">
-    <value>Copying chapters</value>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox2</value>
   </data>
   <data name="button_VL.Text" xml:space="preserve">
     <value>...</value>
   </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="comboBox_preset.Items8" xml:space="preserve">
+    <value>veryslow (Best)</value>
   </data>
-  <data name="&gt;&gt;button_VL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBox_MSOL.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;checkBox_AB.Name" xml:space="preserve">
-    <value>checkBox_AB</value>
+  <data name="&gt;&gt;button_FFmpeg_path.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="checkBox_AB.Enabled" type="System.Boolean, mscorlib">
+  <data name="checkBox_DS.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>405, 130</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="button_VL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>733, 222</value>
+  </data>
+  <data name="&gt;&gt;checkBox_EIA.ZOrder" xml:space="preserve">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MSOL.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="textBox_ACodec.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AE.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;button_FC.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="checkBox_MI.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="checkBox_CC.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="comboBox_preset.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;checkBox_EIA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_DS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 19</value>
+  </data>
+  <data name="&gt;&gt;checkBox_HI.Name" xml:space="preserve">
+    <value>checkBox_HI</value>
+  </data>
+  <data name="&gt;&gt;button_VL.Name" xml:space="preserve">
+    <value>button_VL</value>
+  </data>
+  <data name="checkBox_preset.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;textBox_VCodec.Name" xml:space="preserve">
+    <value>textBox_VCodec</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_ACodec.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="textBox_VL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>722, 23</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBox_FFmpeg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 67</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Encode:</value>
+  </data>
+  <data name="checkBox_HI.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MI.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="label9.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_OOF.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>557, 102</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MVC.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="checkBox_AE.Text" xml:space="preserve">
+    <value>Specify the audio output codec</value>
+  </data>
+  <data name="checkBox_MSOL.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="checkBox_MVC.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_OAO.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="label13.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="checkBox_NVENC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 19</value>
+  </data>
+  <data name="checkBox_SO.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 48</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 149</value>
+  </data>
+  <data name="textBox_CMDF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 404</value>
+  </data>
+  <data name="&gt;&gt;textBox_CRF.Name" xml:space="preserve">
+    <value>textBox_CRF</value>
+  </data>
+  <data name="checkBox_Advanced.Text" xml:space="preserve">
+    <value>Enable Advanced Settings</value>
+  </data>
+  <data name="&gt;&gt;comboBox_preset.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="textBox_AL.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 74</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MSOL.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="checkBox_MI.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="checkBox_EIA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 19</value>
+  </data>
+  <data name="checkBox_MAC.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBox_FFmpeg.Name" xml:space="preserve">
+    <value>textBox_FFmpeg</value>
+  </data>
+  <data name="checkBox_OOF.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 155</value>
+  </data>
+  <data name="checkBox_MAC.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Audio Location:</value>
+  </data>
+  <data name="checkBox_DS.Text" xml:space="preserve">
+    <value>Disable data stream</value>
+  </data>
+  <data name="&gt;&gt;button_VL.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="textBox_FPS.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkBox_preset.Text" xml:space="preserve">
+    <value>Specify H.264 preset</value>
+  </data>
+  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_NVENC.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AE.Name" xml:space="preserve">
+    <value>checkBox_AE</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 15</value>
+  </data>
+  <data name="label12.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_MVC.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_HI.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_OK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 15</value>
+  </data>
+  <data name="checkBox_AB.Text" xml:space="preserve">
+    <value>Specify the audio bitrate</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Path with FFmpeg.exe:</value>
+  </data>
+  <data name="button_FFmpeg_path.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 20</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MAC.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label4.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_SO.Text" xml:space="preserve">
+    <value>Enable Sequential output</value>
+  </data>
+  <data name="&gt;&gt;checkBox_DS.Name" xml:space="preserve">
+    <value>checkBox_DS</value>
+  </data>
+  <data name="checkBox_preset.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Video command line arguments:</value>
+  </data>
+  <data name="comboBox_AE.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label8.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;checkBox_AE.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="checkBox_MSOL.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_NVENC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 73</value>
+  </data>
+  <data name="button_FC.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 48</value>
+  </data>
+  <data name="&gt;&gt;comboBox_preset.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_preset.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="checkBox_MAC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 19</value>
+  </data>
+  <data name="&gt;&gt;checkBox_NVENC.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;textBox_VL.Name" xml:space="preserve">
+    <value>textBox_VL</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MSOL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Video location:</value>
+  </data>
+  <data name="checkBox_EIA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 23</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_VCodec.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 23</value>
+  </data>
+  <data name="checkBox_DS.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMDA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="checkBox_NVENC.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_Advanced.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_NVENC.Text" xml:space="preserve">
+    <value>Use NVENC CRF</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBox_MI.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_HI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBox_CRF.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBox_preset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 23</value>
+  </data>
+  <data name="&gt;&gt;checkBox_preset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button_FFmpeg_path.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox_VL.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;checkBox_EIA.Name" xml:space="preserve">
+    <value>checkBox_EIA</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="textBox_VL.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_OOF.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

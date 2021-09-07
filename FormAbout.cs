@@ -29,24 +29,16 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             {
                 base.OnPaint(e);
                 Bitmap canvas = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
                 Graphics g = Graphics.FromImage(canvas);
-
-                //楕円の領域を追加する
                 GraphicsPath gp = new GraphicsPath();
                 gp.AddEllipse(g.VisibleClipBounds);
-
-                //Regionを作成する
                 Region rgn = new Region(gp);
-                /*using GraphicsPath gp = new();
-                gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
-                Region rg = new(gp);*/
                 pictureBox1.Region = rgn;
                 return;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("予期せぬエラーが発生しました。\r\n\r\n" + ex.ToString(), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(Strings.UnExpectedError, ex.ToString()), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
                 return;
             }

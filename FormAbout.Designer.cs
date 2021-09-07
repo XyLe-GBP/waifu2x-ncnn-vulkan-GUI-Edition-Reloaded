@@ -35,12 +35,16 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // button_OK
             // 
-            this.button_OK.Location = new System.Drawing.Point(281, 124);
+            this.button_OK.Location = new System.Drawing.Point(282, 226);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
             this.button_OK.TabIndex = 0;
@@ -69,7 +73,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(23, 70);
+            this.pictureBox1.Location = new System.Drawing.Point(24, 172);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -80,7 +84,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(102, 91);
+            this.linkLabel1.Location = new System.Drawing.Point(103, 193);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(81, 15);
             this.linkLabel1.TabIndex = 4;
@@ -91,7 +95,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(213, 91);
+            this.linkLabel2.Location = new System.Drawing.Point(214, 193);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(124, 15);
             this.linkLabel2.TabIndex = 5;
@@ -99,12 +103,43 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.linkLabel2.Text = "XyLe\'s Official website";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel2_LinkClicked);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp.Properties.Resources.opencv_logo;
+            this.pictureBox2.Location = new System.Drawing.Point(24, 72);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(103, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(250, 15);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "This application uses the OpenCVSharp library.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(134, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(181, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = " Copyright © 2021, OpenCV team";
+            // 
             // FormAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 161);
+            this.ClientSize = new System.Drawing.Size(374, 261);
             this.ControlBox = false;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pictureBox1);
@@ -117,6 +152,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.Text = "About waifu2x-ncnn-vulkan GUI Edition Reloaded";
             this.Load += new System.EventHandler(this.FormAbout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +166,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -1330,22 +1330,22 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         {
             if (textBox_FPS.Text == "")
             {
-                MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.ErrorFPS, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (textBox_FPS.TextLength <= 4)
             {
-                MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.ErrorFPSChar, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (textBox_FPS.Text.Contains(".") != true)
             {
-                MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.ErrorFPSDot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (textBox_FFmpeg.Text == "")
             {
-                MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.ErrorFFmpegPath, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (checkBox_Advanced.Checked != false)
@@ -1354,7 +1354,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 {
                     if (textBox_CRF.TextLength < 1)
                     {
-                        MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Strings.ErrorNVENCNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -1362,7 +1362,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 {
                     if (textBox_VCodec.TextLength < 2)
                     {
-                        MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Strings.ErrorVCodecNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -1370,7 +1370,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 {
                     if (textBox_ACodec.TextLength < 2)
                     {
-                        MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Strings.ErrorACodecNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -1378,12 +1378,12 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 {
                     if (textBox_AL.Text == "")
                     {
-                        MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Strings.ErrorALocNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else if (textBox_VL.Text == "")
                     {
-                        MessageBox.Show(Strings.FieldError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Strings.ErrorVLocNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }

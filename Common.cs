@@ -12,7 +12,9 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 {
     class Common
     {
-        public static int ProgressFlag, UpscaleFlag, ProgMin, ProgMax, FramesCount, AbortFlag, DeleteFlag, VRCFlag;
+        public static System.Net.WebClient downloadClient = null;
+        public static int ProgressFlag, UpscaleFlag, ProgMin, ProgMax, DLProgMax, DLProgchanged, DlsFlag, DlFlag = 0, AbortFlag, DeleteFlag, VRCFlag;
+        public static string DLlog, DLInfo;
         public static string DeletePath, DeletePathFrames, DeletePathFrames2x, DeletePathAudio;
         public static string FFmpegPath;
         public static string[] ImageFile;
@@ -80,6 +82,12 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             }
 
             return;
+        }
+
+        public static string SFDRandomNumber()
+        {
+            DateTime dt = DateTime.Now;
+            return dt.Year + "-" + dt.Month + "-" + dt.Day + "-" + dt.Hour + "-" + dt.Minute + "-" + dt.Second;
         }
 
         public static void DeleteDirectory(string targetDirectoryPath)

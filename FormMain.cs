@@ -1,4 +1,5 @@
-﻿using PrivateProfile;
+﻿using OpenCvSharp;
+using PrivateProfile;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -24,7 +26,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            Text = "waifu2x-ncnn-vulkan GUI ( build: 1.1.2120.829-Beta )";
+            Text = "waifu2x-ncnn-vulkan GUI ( build: 1.2.2120.907-Beta )";
             var ini = new IniFile(@".\settings.ini");
             string[] OSInfo = new string[17];
             string[] CPUInfo = new string[3];
@@ -73,6 +75,164 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             }
             
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+
+            string netversion;
+            WebClient wc = new();
+
+            Stream st = wc.OpenRead("https://www.gyan.dev/ffmpeg/builds/release-version");
+            StreamReader sr = new(st);
+            netversion = sr.ReadToEnd();
+
+            sr.Close();
+            st.Close();
+
+            if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+            {
+                DialogResult dr = MessageBox.Show(Strings.DLConfirm, Strings.MSGWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    Common.ProgressFlag = 6;
+                    Common.ProgMin = 0;
+                    FormProgress Form = new();
+                    Form.ShowDialog();
+                    Form.Dispose();
+
+                    if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                    {
+                        using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                        foreach (ZipArchiveEntry entry in archive.Entries)
+                        {
+                            if (entry.FullName == "ffmpeg-" + netversion + "-essentials_build/bin/ffmpeg.exe")
+                            {
+                                entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
+                            }
+                        }
+                        File.Delete(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+
+                        if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                        {
+                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                            MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+            if (ini.GetString("FFMPEG", "LATEST_VERSION") == "")
+            {
+                ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
+            }
+            else
+            {
+                switch (ini.GetString("FFMPEG", "LATEST_VERSION").CompareTo(netversion))
+                {
+                    case -1:
+                        DialogResult dr = MessageBox.Show(this, Strings.LatestString + netversion + "\n" + Strings.CurrentString + ini.GetString("FFMPEG", "LATEST_VERSION") + "\n" + Strings.FFUpdate, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dr == DialogResult.Yes)
+                        {
+                            if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                            {
+                                File.Delete(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                                Common.ProgressFlag = 6;
+                                Common.ProgMin = 0;
+                                FormProgress Form = new();
+                                Form.ShowDialog();
+                                Form.Dispose();
+
+                                if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                                {
+                                    using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                                    foreach (ZipArchiveEntry entry in archive.Entries)
+                                    {
+                                        if (entry.FullName == "ffmpeg-" + netversion + @"-essentials_build/bin/ffmpeg.exe")
+                                        {
+                                            entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name);
+                                        }
+                                    }
+                                    File.Delete(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+
+                                    if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                                    {
+                                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                                        MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else
+                                {
+                                    ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                dr = MessageBox.Show(Strings.DLConfirm, Strings.MSGWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                if (dr == DialogResult.Yes)
+                                {
+                                    Common.ProgressFlag = 6;
+                                    Common.ProgMin = 0;
+                                    FormProgress Form = new();
+                                    Form.ShowDialog();
+                                    Form.Dispose();
+
+                                    if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                                    {
+                                        using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                                        foreach (ZipArchiveEntry entry in archive.Entries)
+                                        {
+                                            if (entry.FullName == "ffmpeg-" + netversion + @"-essentials_build/bin/ffmpeg.exe")
+                                            {
+                                                entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name);
+                                            }
+                                        }
+                                        File.Delete(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+
+                                        if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                                        {
+                                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                                            MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+                            return;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
+
+            
         }
 
         private void OpenImegeIToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,13 +259,13 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 {
                     FileInfo file = new(ofd.FileName);
                     long FileSize = file.Length;
-                    string sz = string.Format("{0} ", FileSize);
+                    string sz = string.Format("{ 0} ", FileSize);
                     toolStripStatusLabel_Status.Text = Strings.ReadedString;
                     toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
                     label_File.Text = ofd.FileName;
                     label_Size.Text = sz + Strings.SizeString;
                     button_Image.Enabled = true;
-                    File.Copy(ofd.FileName, Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name);
+                    //File.Copy(ofd.FileName, Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name);
                     return;
                 }
                 else
@@ -115,7 +275,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     {
                         FileInfo fi = new(file);
                         FS += fi.Length;
-                        File.Copy(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\" + fi.Name);
+                        //File.Copy(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\" + fi.Name);
                     }
                     string sz = string.Format("{0} ", FS);
                     toolStripStatusLabel_Status.Text = Strings.ReadedString;
@@ -373,24 +533,47 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             {
                 if (Common.ImageFile.Length <= 1)
                 {
+                    ProcessStartInfo pi = new();
+                    Process ps;
+                    pi.FileName = @".\res\image2png.exe";
+                    pi.Arguments = Common.ImageFile[0];
+                    pi.WindowStyle = ProcessWindowStyle.Normal;
+                    pi.UseShellExecute = true;
+                    ps = Process.Start(pi);
+                    ps.WaitForExit();
+
+                    FileInfo file = new(Common.ImageFile[0]);
+
+                    if (File.Exists(file.Directory + "\\" + file.Name.Replace(".png", "_e.png")))
+                    {
+                        File.Move(file.Directory + "\\" + file.Name.Replace(".png", "_e.png"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name);
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                        return;
+                    }
+
                     switch (fmt)
                     {
                         case 0:
-                            ft = "JPEG (*.jpg)|*.jpg";
+                            ft = "Joint Photographic Experts Group (*.jpg)|*.jpg";
                             break;
                         case 1:
-                            ft = "PNG (*.png)|*.png";
+                            ft = "Portable Network Graphics (*.png)|*.png";
                             break;
                         case 2:
-                            ft = "WEBP (*.webp)|*.webp";
+                            ft = "Google webp (*.webp)|*.webp";
                             break;
                         default:
-                            ft = "PNG (*.png)|*.png";
+                            ft = "Portable Network Graphics (*.png)|*.png";
                             break;
                     }
+                    
                     SaveFileDialog sfd = new()
                     {
-                        FileName = "",
+                        FileName = Common.SFDRandomNumber() + "_Upscaled",
                         InitialDirectory = "",
                         Filter = ft,
                         FilterIndex = 1,
@@ -444,6 +627,31 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 }
                 else
                 {
+                    foreach (var sources in Common.ImageFile)
+                    {
+                        ProcessStartInfo pi = new();
+                        Process ps;
+                        pi.FileName = @".\res\image2png.exe";
+                        pi.Arguments = sources;
+                        pi.WindowStyle = ProcessWindowStyle.Normal;
+                        pi.UseShellExecute = true;
+                        ps = Process.Start(pi);
+                        ps.WaitForExit();
+
+                        FileInfo file = new(sources);
+
+                        if (File.Exists(file.Directory + "\\" + file.Name.Replace(".png", "_e.png")))
+                        {
+                            File.Move(file.Directory + "\\" + file.Name.Replace(".png", "_e.png"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name);
+                        }
+                        else
+                        {
+                            MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                            return;
+                        }
+                    }
+
                     FolderBrowserDialog fbd = new();
                     fbd.Description = Strings.FBDImageTitle;
                     fbd.RootFolder = Environment.SpecialFolder.Desktop;
@@ -591,27 +799,15 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     alpath = Directory.GetCurrentDirectory() + @"\_temp-project\audio\" + acodec;
                 }
 
-                ProcessStartInfo pi = new();
-                Process ps;
-                pi.FileName = ffp;
-                pi.Arguments = Common.VideoParam.Replace("$InFile", Common.VideoPath).Replace("$OutFile", vlpath).Replace(ffp + " ", "");
-                pi.WindowStyle = ProcessWindowStyle.Hidden;
-                pi.UseShellExecute = true;
-                ps = Process.Start(pi);
-                ps.WaitForExit();
+                var video = new VideoCapture(Common.VideoPath);
+                ini.WriteString("VIDEO_SETTINGS", "FPS_INDEX", video.Fps.ToString());
 
                 Common.DeletePath = delvlpath;
-                Common.ProgressFlag = 4;
-                Common.DeleteFlag = 0;
-                Common.ProgMin = 0;
-                Common.ProgMax = Directory.GetFiles(Common.DeletePath, "*.*").Length;
-                Common.FramesCount = Directory.GetFiles(Common.DeletePath, "*.*").Length;
-
-                Form.ShowDialog();
-
                 Common.ProgressFlag = 5;
                 Common.ProgMin = 0;
-                Common.ProgMax = Common.FramesCount;
+                Common.ProgMax = video.FrameCount;
+
+                video.Dispose();
 
                 Form.ShowDialog();
 
@@ -666,6 +862,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
                     delvlpath2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
                 }
+                var video = new VideoCapture(Common.VideoPath);
 
                 Common.ProgressFlag = 4;
                 Common.DeleteFlag = 0;
@@ -677,7 +874,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 foreach (var file in Directory.GetFiles(delvlpath2x, "*.*"))
                 {
                     FileInfo fi = new(file);
-                    File.Move(file, delvlpath + fi.Name);
+                    File.Move(file, delvlpath + "\\" + fi.Name);
                 }
 
                 Common.ProgressFlag = 3;
@@ -746,7 +943,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
             SaveFileDialog sfd = new()
             {
-                FileName = "",
+                FileName = Common.SFDRandomNumber() + "_Upscaled",
                 InitialDirectory = "",
                 Filter = Strings.FilterVideo,
                 FilterIndex = 1,
@@ -760,7 +957,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 ProcessStartInfo pi = new();
                 Process ps;
                 pi.FileName = ffp;
-                pi.Arguments = Common.MergeParam.Replace("$InImage", vlpath).Replace("$InAudio", alpath).Replace("$OutFile", Common.SFDSavePath).Replace(ffp + " ", "");
+                pi.Arguments = Common.MergeParam.Replace("$InImage", vlpath).Replace("$InAudio", alpath).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace(ffp + " ", "");
                 pi.WindowStyle = ProcessWindowStyle.Normal;
                 pi.UseShellExecute = true;
                 ps = Process.Start(pi);
@@ -815,6 +1012,33 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             }
         }
 
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var ini = new IniFile(@".\settings.ini");
+            string vl = ini.GetString("VIDEO_SETTINGS", "VL_INDEX");
+            string vlpath;
+
+            if (vl != "")
+            {
+                vlpath = vl + @"\image-frames2x";
+            }
+            else
+            {
+                vlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
+            }
+
+            DialogResult dr;
+
+            if (Directory.GetFiles(vlpath, "*.*").Length != 0)
+            {
+                dr = MessageBox.Show(Strings.ConfirmClose, Strings.MSGWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             var ini = new IniFile(@".\settings.ini");
@@ -829,5 +1053,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             }
             Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project");
         }
+
+
     }
 }

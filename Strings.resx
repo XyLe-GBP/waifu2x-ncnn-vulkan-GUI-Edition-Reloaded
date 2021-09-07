@@ -127,6 +127,11 @@ If you have enabled advanced settings, please check your settings.</value>
   <data name="ButtonUpscaleVideo" xml:space="preserve">
     <value>Upscaling Video</value>
   </data>
+  <data name="ConfirmClose" xml:space="preserve">
+    <value>There is currently an upscaled frame file.
+If you exit the application at this point, all upscaled
+file will be lost. Are you sure you want to exit?</value>
+  </data>
   <data name="CurrentString" xml:space="preserve">
     <value>Current version:</value>
   </data>
@@ -136,14 +141,80 @@ If you have enabled advanced settings, please check your settings.</value>
   <data name="DELScalled" xml:space="preserve">
     <value>files deleted</value>
   </data>
+  <data name="DLAbortConfirm" xml:space="preserve">
+    <value>The download is currently in progress.
+If you stop the process, the downloaded content will be lost.
+Are you sure you want to stop the process?</value>
+  </data>
+  <data name="DLConfirm" xml:space="preserve">
+    <value>FFmpeg does not exist. Do you want to download it?
+(Internet connection is required to download)</value>
+  </data>
+  <data name="DLInfo" xml:space="preserve">
+    <value>{0}% ({1} byte out of {2} byte) Download completed</value>
+  </data>
+  <data name="DLProgress" xml:space="preserve">
+    <value>The file is downloading.
+Please wait a moment...</value>
+  </data>
+  <data name="DLSuccess" xml:space="preserve">
+    <value>Download is complete.</value>
+  </data>
+  <data name="ErrorACodecNot" xml:space="preserve">
+    <value>Some fields are not entered correctly.
+'Audio codec' value must be at least two characters long.</value>
+  </data>
+  <data name="ErrorALocNot" xml:space="preserve">
+    <value>There is an incorrectly entered field.
+The path is not specified in the 'Audio destination' field.</value>
+  </data>
+  <data name="ErrorBlockNot" xml:space="preserve">
+    <value>Some fields are not entered correctly.
+'GPU Block Size' value must be at least 1 character.</value>
+  </data>
+  <data name="ErrorFFmpegPath" xml:space="preserve">
+    <value>There is an incorrect field to enter.
+The path is not specified in the 'FFmpeg.exe path' field.</value>
+  </data>
+  <data name="ErrorFPS" xml:space="preserve">
+    <value>Some fields are not entered correctly.
+The 'FPS of upscaled video' field should be entered in the following format
+It should be entered in the following format: **. **.
+
+Example: 60fps &gt; 60.00, 29.97fps &gt; 29.97</value>
+  </data>
+  <data name="ErrorFPSChar" xml:space="preserve">
+    <value>Some fields are not entered correctly.
+'FPS for upscaled video' field must be at least 4 characters.</value>
+  </data>
+  <data name="ErrorFPSDot" xml:space="preserve">
+    <value>Some fields are not entered correctly.
+'FPS of upscaled video' field must be specified using '. (dot) to be specified.</value>
+  </data>
+  <data name="ErrorNVENCNot" xml:space="preserve">
+    <value>Some fields are not entered correctly.
+The 'CRF level' value must be at least one character.</value>
+  </data>
+  <data name="ErrorVCodecNot" xml:space="preserve">
+    <value>Some fields are not entered correctly.
+'Video codec' value must be at least two characters long.</value>
+  </data>
+  <data name="ErrorVLocNot" xml:space="preserve">
+    <value>There is an incorrectly entered field.
+The path is not specified in the 'Video destination' field.</value>
+  </data>
   <data name="FBDImageTitle" xml:space="preserve">
     <value>Save Upscalled Images</value>
+  </data>
+  <data name="FFUpdate" xml:space="preserve">
+    <value>FFmpeg can be updated.
+Do you want to update it?</value>
   </data>
   <data name="FieldError" xml:space="preserve">
     <value>Some fields are not entered correctly.</value>
   </data>
   <data name="FilterImage" xml:space="preserve">
-    <value>Image (*.jpg;*.png;*.webp)|*.jpg;*.png;*.webp</value>
+    <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All files (*.*)|*.*;||</value>
   </data>
   <data name="FilterVideo" xml:space="preserve">
     <value>Video (*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm)|*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm</value>

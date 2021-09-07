@@ -127,6 +127,11 @@
   <data name="ButtonUpscaleVideo" xml:space="preserve">
     <value>動画のアップスケーリング</value>
   </data>
+  <data name="ConfirmClose" xml:space="preserve">
+    <value>現在、アップスケールされたフレームファイルが存在します。
+このままアプリケーションを終了すると、アップスケールされた
+ファイルは全て失われます。本当に終了しますか？</value>
+  </data>
   <data name="CurrentString" xml:space="preserve">
     <value>現在のバージョン：</value>
   </data>
@@ -136,14 +141,80 @@
   <data name="DELScalled" xml:space="preserve">
     <value>ファイルを削除</value>
   </data>
+  <data name="DLAbortConfirm" xml:space="preserve">
+    <value>現在、ダウンロードが進行中です。
+このまま中止すると、ダウンロードした内容は失われます。
+本当に処理を中止しますか？</value>
+  </data>
+  <data name="DLConfirm" xml:space="preserve">
+    <value>FFmpegが存在しません。ダウンロードを行いますか？
+(ダウンロードにはインターネット接続が必要です)</value>
+  </data>
+  <data name="DLInfo" xml:space="preserve">
+    <value>{0}% ({1}バイト 中 {2}バイト) ダウンロード完了</value>
+  </data>
+  <data name="DLProgress" xml:space="preserve">
+    <value>ファイルのダウンロード中です。
+しばらくお待ちください…</value>
+  </data>
+  <data name="DLSuccess" xml:space="preserve">
+    <value>ダウンロードが完了しました。</value>
+  </data>
+  <data name="ErrorACodecNot" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'音声コーデック'の値は2文字以上である必要があります。</value>
+  </data>
+  <data name="ErrorALocNot" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'音声保存先'項目にパスが指定されていません。</value>
+  </data>
+  <data name="ErrorBlockNot" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'GPUブロックサイズ'の値は1文字以上である必要があります。</value>
+  </data>
+  <data name="ErrorFFmpegPath" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'FFmpeg.exeのパス'項目にパスが指定されていません。</value>
+  </data>
+  <data name="ErrorFPS" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'アップスケール動画のFPS'項目は次のような形式で
+入力する必要があります：**.**
+
+例：60fps &gt; 60.00, 29.97fps &gt; 29.97</value>
+  </data>
+  <data name="ErrorFPSChar" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'アップスケール動画のFPS'項目は4文字以上である必要があります。</value>
+  </data>
+  <data name="ErrorFPSDot" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'アップスケール動画のFPS'項目は'.'(ドット)を使用して指定する必要があります。</value>
+  </data>
+  <data name="ErrorNVENCNot" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'CRFレベル'の値は1文字以上である必要があります。</value>
+  </data>
+  <data name="ErrorVCodecNot" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'動画コーデック'の値は2文字以上である必要があります。</value>
+  </data>
+  <data name="ErrorVLocNot" xml:space="preserve">
+    <value>入力が正しくないフィールドがあります。
+'動画保存先'項目にパスが指定されていません。</value>
+  </data>
   <data name="FBDImageTitle" xml:space="preserve">
     <value>アップスケーリングされた画像を保存</value>
+  </data>
+  <data name="FFUpdate" xml:space="preserve">
+    <value>FFmpegのアップデートが可能です。
+アップデートしますか？</value>
   </data>
   <data name="FieldError" xml:space="preserve">
     <value>入力が正しくないフィールドがあります。</value>
   </data>
   <data name="FilterImage" xml:space="preserve">
-    <value>画像ファイル (*.jpg;*.png;*.webp)|*.jpg;*.png;*.webp</value>
+    <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All files (*.*)|*.*;||</value>
   </data>
   <data name="FilterVideo" xml:space="preserve">
     <value>動画ファイル (*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm)|*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm</value>

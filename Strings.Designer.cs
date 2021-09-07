@@ -89,6 +89,17 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp {
         }
         
         /// <summary>
+        ///   There is currently an upscaled frame file.
+        ///If you exit the application at this point, all upscaled
+        ///file will be lost. Are you sure you want to exit? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ConfirmClose {
+            get {
+                return ResourceManager.GetString("ConfirmClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Current version: に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string CurrentString {
@@ -116,11 +127,173 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp {
         }
         
         /// <summary>
+        ///   The download is currently in progress.
+        ///If you stop the process, the downloaded content will be lost.
+        ///Are you sure you want to stop the process? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string DLAbortConfirm {
+            get {
+                return ResourceManager.GetString("DLAbortConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   FFmpeg does not exist. Do you want to download it?
+        ///(Internet connection is required to download) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string DLConfirm {
+            get {
+                return ResourceManager.GetString("DLConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0}% ({1} byte out of {2} byte) Download completed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string DLInfo {
+            get {
+                return ResourceManager.GetString("DLInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The file is downloading.
+        ///Please wait a moment... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string DLProgress {
+            get {
+                return ResourceManager.GetString("DLProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Download is complete. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string DLSuccess {
+            get {
+                return ResourceManager.GetString("DLSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Some fields are not entered correctly.
+        ///&apos;Audio codec&apos; value must be at least two characters long. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorACodecNot {
+            get {
+                return ResourceManager.GetString("ErrorACodecNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   There is an incorrectly entered field.
+        ///The path is not specified in the &apos;Audio destination&apos; field. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorALocNot {
+            get {
+                return ResourceManager.GetString("ErrorALocNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Some fields are not entered correctly.
+        ///&apos;GPU Block Size&apos; value must be at least 1 character. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorBlockNot {
+            get {
+                return ResourceManager.GetString("ErrorBlockNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   There is an incorrect field to enter.
+        ///The path is not specified in the &apos;FFmpeg.exe path&apos; field. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorFFmpegPath {
+            get {
+                return ResourceManager.GetString("ErrorFFmpegPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Some fields are not entered correctly.
+        ///The &apos;FPS of upscaled video&apos; field should be entered in the following format
+        ///It should be entered in the following format: **. **.
+        ///
+        ///Example: 60fps &gt; 60.00, 29.97fps &gt; 29.97 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorFPS {
+            get {
+                return ResourceManager.GetString("ErrorFPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Some fields are not entered correctly.
+        ///&apos;FPS for upscaled video&apos; field must be at least 4 characters. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorFPSChar {
+            get {
+                return ResourceManager.GetString("ErrorFPSChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Some fields are not entered correctly.
+        ///&apos;FPS of upscaled video&apos; field must be specified using &apos;. (dot) to be specified. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorFPSDot {
+            get {
+                return ResourceManager.GetString("ErrorFPSDot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Some fields are not entered correctly.
+        ///The &apos;CRF level&apos; value must be at least one character. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorNVENCNot {
+            get {
+                return ResourceManager.GetString("ErrorNVENCNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Some fields are not entered correctly.
+        ///&apos;Video codec&apos; value must be at least two characters long. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorVCodecNot {
+            get {
+                return ResourceManager.GetString("ErrorVCodecNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   There is an incorrectly entered field.
+        ///The path is not specified in the &apos;Video destination&apos; field. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorVLocNot {
+            get {
+                return ResourceManager.GetString("ErrorVLocNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Save Upscalled Images に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string FBDImageTitle {
             get {
                 return ResourceManager.GetString("FBDImageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   FFmpeg can be updated.
+        ///Do you want to update it? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string FFUpdate {
+            get {
+                return ResourceManager.GetString("FFUpdate", resourceCulture);
             }
         }
         
@@ -134,7 +307,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp {
         }
         
         /// <summary>
-        ///   Image (*.jpg;*.png;*.webp)|*.jpg;*.png;*.webp に類似しているローカライズされた文字列を検索します。
+        ///   Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All files (*.*) [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string FilterImage {
             get {
