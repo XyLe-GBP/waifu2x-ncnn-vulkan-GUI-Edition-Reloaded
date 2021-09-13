@@ -168,6 +168,14 @@
     <value>入力が正しくないフィールドがあります。
 '音声保存先'項目にパスが指定されていません。</value>
   </data>
+  <data name="ErrorBlockIncorrect" xml:space="preserve">
+    <value>ブロックサイズ値が不正です。
+ブロックサイズ値は'0'(自動)、または'21'以上の値である必要があります。</value>
+  </data>
+  <data name="ErrorBlockIncorrect2" xml:space="preserve">
+    <value>ブロックサイズ値が不正です。
+ブロックサイズ値は'0'(自動)、または'5000'以下の値である必要があります。</value>
+  </data>
   <data name="ErrorBlockNot" xml:space="preserve">
     <value>入力が正しくないフィールドがあります。
 'GPUブロックサイズ'の値は1文字以上である必要があります。</value>
@@ -214,7 +222,7 @@
     <value>入力が正しくないフィールドがあります。</value>
   </data>
   <data name="FilterImage" xml:space="preserve">
-    <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All files (*.*)|*.*;||</value>
+    <value>ビットマップ イメージ (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|GIF イメージ (*.gif)|*.gif;|アイコン (*.ico,*.icns)|*.ico;*.icns;|JPEG イメージ (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|PNG イメージ (*.png)|*.png;|QuickDraw ピクチャー (*.pict)|*.pict;|SVG イメージ (*.svg,*.svgz)|*.svg;*.svgz;|TIFF イメージ (*.tif,*.tiff)|*.tif;*.tiff;|サポートされているすべての形式|*.bmp;*.dib;*.eps;*.webp;*.gif;*.ico;*.icns;*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;*.png;*.pict;*.svg;*.svgz;*.tif;*.tiff</value>
   </data>
   <data name="FilterVideo" xml:space="preserve">
     <value>動画ファイル (*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm)|*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm</value>

@@ -26,7 +26,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            Text = "waifu2x-ncnn-vulkan GUI ( build: 1.2.2120.907-Beta )";
+            Text = "waifu2x-ncnn-vulkan GUI ( build: 1.21.2120.913-Beta )";
             var ini = new IniFile(@".\settings.ini");
             string[] OSInfo = new string[17];
             string[] CPUInfo = new string[3];
@@ -107,7 +107,6 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                 entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
                             }
                         }
-                        File.Delete(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
 
                         if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                         {
@@ -158,7 +157,6 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                             entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name);
                                         }
                                     }
-                                    File.Delete(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
 
                                     if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                                     {
@@ -197,7 +195,6 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                                 entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name);
                                             }
                                         }
-                                        File.Delete(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
 
                                         if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                                         {
@@ -207,6 +204,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                         else
                                         {
                                             MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                                         }
                                     }
                                     else
@@ -242,7 +240,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 FileName = "",
                 InitialDirectory = "",
                 Filter = Strings.FilterImage,
-                FilterIndex = 1,
+                FilterIndex = 11,
                 Title = Strings.OFDImageTitle,
                 Multiselect = true,
                 RestoreDirectory = true
@@ -255,17 +253,16 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     lst.Add(files);
                 }
                 Common.ImageFile = lst.ToArray();
-                if (Common.ImageFile.Length <= 1)
+                if (Common.ImageFile.Length == 1)
                 {
                     FileInfo file = new(ofd.FileName);
                     long FileSize = file.Length;
-                    string sz = string.Format("{ 0} ", FileSize);
+                    string sz = string.Format("{0} ", FileSize);
                     toolStripStatusLabel_Status.Text = Strings.ReadedString;
                     toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
                     label_File.Text = ofd.FileName;
                     label_Size.Text = sz + Strings.SizeString;
                     button_Image.Enabled = true;
-                    //File.Copy(ofd.FileName, Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name);
                     return;
                 }
                 else
@@ -275,7 +272,6 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     {
                         FileInfo fi = new(file);
                         FS += fi.Length;
-                        //File.Copy(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\" + fi.Name);
                     }
                     string sz = string.Format("{0} ", FS);
                     toolStripStatusLabel_Status.Text = Strings.ReadedString;
@@ -294,6 +290,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void OpenVideoVToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var ini = new IniFile(@".\settings.ini");
             OpenFileDialog ofd = new()
             {
                 FileName = "",
@@ -314,6 +311,30 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 label_File.Text = ofd.FileName;
                 label_Size.Text = sz + Strings.SizeString;
                 button_Video.Enabled = true;
+
+                var video = new VideoCapture(Common.VideoPath);
+                switch (video.Fps.ToString())
+                {
+                    case "30":
+                        ini.WriteString("VIDEO_SETTINGS", "FPS_INDEX", video.Fps.ToString().Replace("30", "30.00"));
+                        break;
+                    case "60":
+                        ini.WriteString("VIDEO_SETTINGS", "FPS_INDEX", video.Fps.ToString().Replace("60", "60.00"));
+                        break;
+                    default:
+                        if (video.Fps.ToString().Length > 5)
+                        {
+                            ini.WriteString("VIDEO_SETTINGS", "FPS_INDEX", video.Fps.ToString().Substring(0, 5));
+                        }
+                        else
+                        {
+                            ini.WriteString("VIDEO_SETTINGS", "FPS_INDEX", video.Fps.ToString());
+                        }
+                        break;
+                }
+                
+                video.Dispose();
+
                 return;
             }
             else
@@ -497,7 +518,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         DialogResult dr = MessageBox.Show(this, Strings.LatestString + netversion[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.UpdateConfirm, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (dr == DialogResult.Yes)
                         {
-                            Common.OpenURI("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded");
+                            Common.OpenURI("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases");
                             return;
                         }
                         else
@@ -536,8 +557,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     ProcessStartInfo pi = new();
                     Process ps;
                     pi.FileName = @".\res\image2png.exe";
-                    pi.Arguments = Common.ImageFile[0];
-                    pi.WindowStyle = ProcessWindowStyle.Normal;
+                    pi.Arguments = "\"" + Common.ImageFile[0] + "\"";
+                    pi.WindowStyle = ProcessWindowStyle.Hidden;
                     pi.UseShellExecute = true;
                     ps = Process.Start(pi);
                     ps.WaitForExit();
@@ -611,6 +632,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
                             MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Process.Start("EXPLORER.EXE", @"/select,""" + sfd.FileName + @"""");
                         }
                         else
                         {
@@ -632,8 +654,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         ProcessStartInfo pi = new();
                         Process ps;
                         pi.FileName = @".\res\image2png.exe";
-                        pi.Arguments = sources;
-                        pi.WindowStyle = ProcessWindowStyle.Normal;
+                        pi.Arguments = "\"" + sources + "\"";
+                        pi.WindowStyle = ProcessWindowStyle.Hidden;
                         pi.UseShellExecute = true;
                         ps = Process.Start(pi);
                         ps.WaitForExit();
@@ -725,6 +747,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                         button_Image.Enabled = false;
                         MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Process.Start("EXPLORER.EXE", Common.FBDSavePath);
                     }
                 }
             }
@@ -751,10 +774,9 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             FormProgress Form = new();
             var ini = new IniFile(@".\settings.ini");
             int enc = ini.GetInt("VIDEO_SETTINGS", "ENCODE_INDEX", 65535);
-            string ffp = ini.GetString("VIDEO_SETTINGS", "FFMPEG_INDEX");
             string vl = ini.GetString("VIDEO_SETTINGS", "VL_INDEX");
             string al = ini.GetString("VIDEO_SETTINGS", "AL_INDEX");
-            string vlpath, delvlpath, delvlpath2x, alpath, acodec;
+            string delvlpath, delvlpath2x, alpath, acodec;
 
             switch (enc)
             {
@@ -778,12 +800,10 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         Directory.CreateDirectory(vl + @"\image-frames\");
                         Directory.CreateDirectory(vl + @"\image-frames2x\");
                     }
-                    vlpath = vl + @"\image-frames\image-%09d.png";
                     delvlpath = vl + @"\image-frames\";
                 }
                 else
                 {
-                    vlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames\image-%09d.png";
                     delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
                 }
                 if (al != "")
@@ -800,7 +820,6 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 }
 
                 var video = new VideoCapture(Common.VideoPath);
-                ini.WriteString("VIDEO_SETTINGS", "FPS_INDEX", video.Fps.ToString());
 
                 Common.DeletePath = delvlpath;
                 Common.ProgressFlag = 5;
@@ -862,7 +881,6 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
                     delvlpath2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
                 }
-                var video = new VideoCapture(Common.VideoPath);
 
                 Common.ProgressFlag = 4;
                 Common.DeleteFlag = 0;
@@ -957,7 +975,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 ProcessStartInfo pi = new();
                 Process ps;
                 pi.FileName = ffp;
-                pi.Arguments = Common.MergeParam.Replace("$InImage", vlpath).Replace("$InAudio", alpath).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace(ffp + " ", "");
+                pi.Arguments = Common.MergeParam.Replace("$InImage", vlpath).Replace("$InAudio", alpath).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace(Common.FFmpegPath + " ", "");
                 pi.WindowStyle = ProcessWindowStyle.Normal;
                 pi.UseShellExecute = true;
                 ps = Process.Start(pi);
@@ -983,6 +1001,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     button_Video.Enabled = false;
                     button_Merge.Enabled = false;
                     MessageBox.Show(Strings.VRUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
                 }
                 else
                 {
@@ -1050,6 +1069,10 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             if (ini.GetString("VIDEO_SETTINGS", "AL_INDEX") != "")
             {
                 Common.DeleteDirectory(ini.GetString("VIDEO_SETTINGS", "AL_INDEX") + @"\audio");
+            }
+            if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+            {
+                File.Delete(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
             }
             Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project");
         }

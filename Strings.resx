@@ -168,6 +168,14 @@ Please wait a moment...</value>
     <value>There is an incorrectly entered field.
 The path is not specified in the 'Audio destination' field.</value>
   </data>
+  <data name="ErrorBlockIncorrect" xml:space="preserve">
+    <value>The block size value is invalid.
+The block size value must be '0' (automatic) or greater than '21'.</value>
+  </data>
+  <data name="ErrorBlockIncorrect2" xml:space="preserve">
+    <value>The block size value is invalid.
+The block size value must be '0' (automatic) or less than '5000'.</value>
+  </data>
   <data name="ErrorBlockNot" xml:space="preserve">
     <value>Some fields are not entered correctly.
 'GPU Block Size' value must be at least 1 character.</value>
@@ -214,7 +222,7 @@ Do you want to update it?</value>
     <value>Some fields are not entered correctly.</value>
   </data>
   <data name="FilterImage" xml:space="preserve">
-    <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All files (*.*)|*.*;||</value>
+    <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All supported formats|*.bmp;*.dib;*.eps;*.webp;*.gif;*.ico;*.icns;*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;*.png;*.pict;*.svg;*.svgz;*.tif;*.tiff</value>
   </data>
   <data name="FilterVideo" xml:space="preserve">
     <value>Video (*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm)|*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm</value>

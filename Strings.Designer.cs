@@ -196,6 +196,26 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp {
         }
         
         /// <summary>
+        ///   The block size value is invalid.
+        ///The block size value must be &apos;0&apos; (automatic) or greater than &apos;21&apos;. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorBlockIncorrect {
+            get {
+                return ResourceManager.GetString("ErrorBlockIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The block size value is invalid.
+        ///The block size value must be &apos;0&apos; (automatic) or less than &apos;5000&apos;. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ErrorBlockIncorrect2 {
+            get {
+                return ResourceManager.GetString("ErrorBlockIncorrect2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Some fields are not entered correctly.
         ///&apos;GPU Block Size&apos; value must be at least 1 character. に類似しているローカライズされた文字列を検索します。
         /// </summary>
@@ -307,7 +327,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp {
         }
         
         /// <summary>
-        ///   Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All files (*.*) [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///   Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All supported f [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string FilterImage {
             get {

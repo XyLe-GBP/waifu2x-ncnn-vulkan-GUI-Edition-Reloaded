@@ -39,6 +39,11 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     MessageBox.Show("The required file 'waifu2x-ncnn-vulkan.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\image2png.exe"))
+                {
+                    MessageBox.Show("The required file 'image2png.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
                 Application.EnableVisualStyles();

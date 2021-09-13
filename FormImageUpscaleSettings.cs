@@ -346,10 +346,20 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void TextBox_Blocksize_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar < '0' || '9' < e.KeyChar)
+            ToolTip tT1 = new(components);
+            tT1.IsBalloon = true;
+            tT1.ToolTipTitle = "許可されていない文字";
+            tT1.ToolTipIcon = ToolTipIcon.Error;
+            tT1.SetToolTip(textBox_Blocksize, "このフィールドには数値以外の値を入力することはできません。");
+
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
             {
+                tT1.Active = true;
                 e.Handled = true;
             }
+
+            tT1.Active = false;
+            tT1.SetToolTip(textBox_Blocksize, null);
         }
 
         private void ComboBox_Rdlevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -757,12 +767,52 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 MessageBox.Show(Strings.ErrorBlockNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox_Blocksize.Text, "[^0-9]") != false)
+            {
+                MessageBox.Show(Strings.ErrorBlockNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (uint.Parse(textBox_Blocksize.Text) != 0 && uint.Parse(textBox_Blocksize.Text) < 21)
+            {
+                MessageBox.Show(Strings.ErrorBlockIncorrect, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (uint.Parse(textBox_Blocksize.Text) != 0 && uint.Parse(textBox_Blocksize.Text) > 5000)
+            {
+                MessageBox.Show(Strings.ErrorBlockIncorrect2, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             var ini = new IniFile(@".\settings.ini");
             ini.WriteString("IMAGE_SETTINGS", "REDUCTION_INDEX", comboBox_Rdlevel.SelectedIndex.ToString());
             ini.WriteString("IMAGE_SETTINGS", "UPSCALE_INDEX", comboBox_Uplevel.SelectedIndex.ToString());
             ini.WriteString("IMAGE_SETTINGS", "GPU_INDEX", comboBox_GPU.SelectedIndex.ToString());
-            ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text);
+            switch (textBox_Blocksize.Text)
+            {
+                case "0":
+                    ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", "0");
+                    break;
+                case "00":
+                    ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text.Replace("00", "0"));
+                    break;
+                case "000":
+                    ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text.Replace("000", "0"));
+                    break;
+                case "0000":
+                    ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text.Replace("0000", "0"));
+                    break;
+                default:
+                    if (textBox_Blocksize.Text.StartsWith("0"))
+                    {
+                        ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text.Replace("0", ""));
+                    }
+                    else
+                    {
+                        ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text);
+                    }
+                    break;
+            }
+            
             if (checkBox_Advanced.Checked == false)
             {
                 ini.WriteString("IMAGE_SETTINGS", "ADVANCED_INDEX", "0");

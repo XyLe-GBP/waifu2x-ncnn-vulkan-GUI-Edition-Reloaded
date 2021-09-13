@@ -67,8 +67,17 @@
   <data name="label8.Text" xml:space="preserve">
     <value>ブロック</value>
   </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox_Blocksize.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 107</value>
+  </data>
+  <data name="textBox_Blocksize.ToolTip" xml:space="preserve">
+    <value>GPUに割り当てるブロックサイズを指定します。
+'0'を指定すると自動的にブロックサイズを割り当てます。
+値が大きいほど変換は高速になりますが、GPUのメモリ使用量が増加します。
+この項目はGPU性能に依存するので、値を大きくしすぎると変換に失敗します。</value>
   </data>
   <data name="comboBox_Rdlevel.Items" xml:space="preserve">
     <value>除去しない</value>
@@ -88,11 +97,23 @@
   <data name="comboBox_Rdlevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 22</value>
   </data>
+  <data name="comboBox_Rdlevel.ToolTip" xml:space="preserve">
+    <value>画像のノイズ除去レベルを指定します。
+'除去しない'を指定するとノイズは除去されません。
+除去レベルを高くしすぎると細部が潰れる恐れがあります。</value>
+  </data>
   <data name="comboBox_GPU.Items" xml:space="preserve">
     <value>自動</value>
   </data>
   <data name="comboBox_GPU.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 78</value>
+  </data>
+  <data name="comboBox_GPU.ToolTip" xml:space="preserve">
+    <value>変換時に使用するGPUを指定します。
+'自動'を指定すると、変換時に自動的に使用するGPUを決定します。
+'iGPU'を指定すると、CPU内臓グラフィックで変換を行います。
+(内蔵グラフィック機能が存在しないCPUではiGPUは指定できません)
+マルチGPU環境の場合は'dGPU'のいづれかを指定することも可能です。</value>
   </data>
   <data name="comboBox_Uplevel.Items" xml:space="preserve">
     <value>1倍 (等倍)</value>
@@ -103,11 +124,19 @@
   <data name="comboBox_Uplevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 50</value>
   </data>
+  <data name="comboBox_Uplevel.ToolTip" xml:space="preserve">
+    <value>画像アップスケールのレベルを指定します。
+'2倍'を指定すると、元画像の2倍のピクセルで出力を行います。
+'1倍'を指定すると、元画像と同じピクセルで出力を行います。</value>
+  </data>
   <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 19</value>
   </data>
   <data name="checkBox_Advanced.Text" xml:space="preserve">
     <value>高度な設定を有効にする</value>
+  </data>
+  <data name="checkBox_Advanced.ToolTip" xml:space="preserve">
+    <value>'高度な設定'項目を有効にします。</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 110</value>
@@ -118,6 +147,9 @@
   <data name="label4.Text" xml:space="preserve">
     <value>GPUブロックサイズ：</value>
   </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 81</value>
   </data>
@@ -126,6 +158,9 @@
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>使用するGPU：</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 53</value>
@@ -136,17 +171,32 @@
   <data name="label2.Text" xml:space="preserve">
     <value>スケーリングのレベル：</value>
   </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 15</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>ノイズ除去のレベル：</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>一般設定</value>
   </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>高度な設定</value>
+  </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox_CMD.ToolTip" xml:space="preserve">
+    <value>コマンドライン引数を手動で指定します。</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 138</value>
@@ -157,8 +207,28 @@
   <data name="label9.Text" xml:space="preserve">
     <value>コマンドライン引数：</value>
   </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 69</value>
+  </data>
+  <data name="comboBox_Format.ToolTip" xml:space="preserve">
+    <value>変換後の画像出力形式を指定します。
+通常は'.png'で出力されますが、形式を変更したい場合は
+この項目を変更してください。</value>
+  </data>
+  <data name="comboBox_Thread.ToolTip" xml:space="preserve">
+    <value>変換時のスレッド使用数を指定します。
+'load:proc:save'の順で、使用スレッド数を指定することができます。
+この項目は、マルチGPU環境でのみ変更可能です。
+通常は'1:2:2'を指定してください。</value>
+  </data>
+  <data name="comboBox_Model.ToolTip" xml:space="preserve">
+    <value>アップスケール時に使用するモデルを指定します。
+CUnet: デフォルトではこちらが選択されています。
+RGB: イラスト等をアップスケールする際に適したモデルです。
+Photo: 写真等をアップスケールする際に適したモデルです。</value>
   </data>
   <data name="checkBox_TTA.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 84</value>
@@ -169,6 +239,11 @@
   <data name="checkBox_TTA.Text" xml:space="preserve">
     <value>TTA出力を有効にする</value>
   </data>
+  <data name="checkBox_TTA.ToolTip" xml:space="preserve">
+    <value>TTAモードを有効にします。
+これを有効にすると画像指数が向上しますが
+変換に多くの時間を要します。</value>
+  </data>
   <data name="checkBox_Verbose.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 67</value>
   </data>
@@ -177,6 +252,10 @@
   </data>
   <data name="checkBox_Verbose.Text" xml:space="preserve">
     <value>詳細な出力 (Verbose output) を有効にする</value>
+  </data>
+  <data name="checkBox_Verbose.ToolTip" xml:space="preserve">
+    <value>詳細な出力を有効にします。
+この項目は開発者向けの為、通常は有効にする必要はありません。</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 26</value>
@@ -187,6 +266,9 @@
   <data name="label7.Text" xml:space="preserve">
     <value>アップスケーリング時に使用するモデル：</value>
   </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 72</value>
   </data>
@@ -195,6 +277,9 @@
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>出力画像形式：</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 45</value>
@@ -205,10 +290,25 @@
   <data name="label5.Text" xml:space="preserve">
     <value>スレッド使用数：</value>
   </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_OK.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>キャンセル</value>
   </data>
+  <data name="button_Cancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>画像アップスケール設定</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
