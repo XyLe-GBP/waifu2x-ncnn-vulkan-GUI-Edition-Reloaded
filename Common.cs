@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageMagick;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -127,6 +128,51 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 file.Delete();
             }
             return;
+        }
+    }
+
+    class ImageConvert
+    {
+        public static bool IMAGEtoPNG(string IMAGEpath, string PNGpath)
+        {
+            if (!File.Exists(IMAGEpath))
+            {
+                return false;
+            }
+            else
+            {
+                using var image = new MagickImage(IMAGEpath);
+                image.Write(PNGpath, MagickFormat.Png);
+                if (File.Exists(PNGpath))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static bool IMAGEtoICON(string IMAGEpath, string ICONpath)
+        {
+            if (!File.Exists(IMAGEpath))
+            {
+                return false;
+            }
+            else
+            {
+                using var image = new MagickImage(IMAGEpath);
+                image.Write(ICONpath, MagickFormat.Ico);
+                if (File.Exists(ICONpath))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
     }
 

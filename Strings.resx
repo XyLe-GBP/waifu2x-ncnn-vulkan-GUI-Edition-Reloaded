@@ -272,8 +272,11 @@ Do you wish to continue?</value>
   <data name="MSGWarning" xml:space="preserve">
     <value>Warning</value>
   </data>
+  <data name="NotReadedStatusString" xml:space="preserve">
+    <value>Not ready - please open the file.</value>
+  </data>
   <data name="NotReadedString" xml:space="preserve">
-    <value>Not Readed.</value>
+    <value>Please open the file.</value>
   </data>
   <data name="OFDImageTitle" xml:space="preserve">
     <value>Open Upscaling Image(s)</value>
@@ -290,7 +293,7 @@ Do you want to abort the process?</value>
     <value>The process has been aborted.</value>
   </data>
   <data name="ReadedString" xml:space="preserve">
-    <value>Readed!</value>
+    <value>Ready!</value>
   </data>
   <data name="SettingError" xml:space="preserve">
     <value>The operation cannot be continued because the settings are not correct.

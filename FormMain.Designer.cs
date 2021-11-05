@@ -94,16 +94,17 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // 
             // menuStrip1
             // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileFToolStripMenuItem,
             this.settingsCToolStripMenuItem,
             this.toolsTToolStripMenuItem,
             this.aboutAToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // fileFToolStripMenuItem
             // 
+            resources.ApplyResources(this.fileFToolStripMenuItem, "fileFToolStripMenuItem");
             this.fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openImegeIToolStripMenuItem,
             this.openVideoVToolStripMenuItem,
@@ -112,99 +113,98 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.toolStripMenuItem2,
             this.exitXToolStripMenuItem});
             this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
-            resources.ApplyResources(this.fileFToolStripMenuItem, "fileFToolStripMenuItem");
             // 
             // openImegeIToolStripMenuItem
             // 
-            this.openImegeIToolStripMenuItem.Name = "openImegeIToolStripMenuItem";
             resources.ApplyResources(this.openImegeIToolStripMenuItem, "openImegeIToolStripMenuItem");
+            this.openImegeIToolStripMenuItem.Name = "openImegeIToolStripMenuItem";
             this.openImegeIToolStripMenuItem.Click += new System.EventHandler(this.OpenImegeIToolStripMenuItem_Click);
             // 
             // openVideoVToolStripMenuItem
             // 
-            this.openVideoVToolStripMenuItem.Name = "openVideoVToolStripMenuItem";
             resources.ApplyResources(this.openVideoVToolStripMenuItem, "openVideoVToolStripMenuItem");
+            this.openVideoVToolStripMenuItem.Name = "openVideoVToolStripMenuItem";
             this.openVideoVToolStripMenuItem.Click += new System.EventHandler(this.OpenVideoVToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             // 
             // closeFileCToolStripMenuItem
             // 
-            this.closeFileCToolStripMenuItem.Name = "closeFileCToolStripMenuItem";
             resources.ApplyResources(this.closeFileCToolStripMenuItem, "closeFileCToolStripMenuItem");
+            this.closeFileCToolStripMenuItem.Name = "closeFileCToolStripMenuItem";
             this.closeFileCToolStripMenuItem.Click += new System.EventHandler(this.CloseFileCToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             // 
             // exitXToolStripMenuItem
             // 
-            this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
             resources.ApplyResources(this.exitXToolStripMenuItem, "exitXToolStripMenuItem");
+            this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
             this.exitXToolStripMenuItem.Click += new System.EventHandler(this.ExitXToolStripMenuItem_Click);
             // 
             // settingsCToolStripMenuItem
             // 
+            resources.ApplyResources(this.settingsCToolStripMenuItem, "settingsCToolStripMenuItem");
             this.settingsCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.upscalingSettingsUToolStripMenuItem,
             this.videoUpscalingSettingsVToolStripMenuItem});
             this.settingsCToolStripMenuItem.Name = "settingsCToolStripMenuItem";
-            resources.ApplyResources(this.settingsCToolStripMenuItem, "settingsCToolStripMenuItem");
             // 
             // upscalingSettingsUToolStripMenuItem
             // 
-            this.upscalingSettingsUToolStripMenuItem.Name = "upscalingSettingsUToolStripMenuItem";
             resources.ApplyResources(this.upscalingSettingsUToolStripMenuItem, "upscalingSettingsUToolStripMenuItem");
+            this.upscalingSettingsUToolStripMenuItem.Name = "upscalingSettingsUToolStripMenuItem";
             this.upscalingSettingsUToolStripMenuItem.Click += new System.EventHandler(this.UpscalingSettingsUToolStripMenuItem_Click);
             // 
             // videoUpscalingSettingsVToolStripMenuItem
             // 
-            this.videoUpscalingSettingsVToolStripMenuItem.Name = "videoUpscalingSettingsVToolStripMenuItem";
             resources.ApplyResources(this.videoUpscalingSettingsVToolStripMenuItem, "videoUpscalingSettingsVToolStripMenuItem");
+            this.videoUpscalingSettingsVToolStripMenuItem.Name = "videoUpscalingSettingsVToolStripMenuItem";
             this.videoUpscalingSettingsVToolStripMenuItem.Click += new System.EventHandler(this.VideoUpscalingSettingsVToolStripMenuItem_Click);
             // 
             // toolsTToolStripMenuItem
             // 
+            resources.ApplyResources(this.toolsTToolStripMenuItem, "toolsTToolStripMenuItem");
             this.toolsTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeVideoResolutionToolStripMenuItem});
             this.toolsTToolStripMenuItem.Name = "toolsTToolStripMenuItem";
-            resources.ApplyResources(this.toolsTToolStripMenuItem, "toolsTToolStripMenuItem");
             // 
             // changeVideoResolutionToolStripMenuItem
             // 
-            this.changeVideoResolutionToolStripMenuItem.Name = "changeVideoResolutionToolStripMenuItem";
             resources.ApplyResources(this.changeVideoResolutionToolStripMenuItem, "changeVideoResolutionToolStripMenuItem");
+            this.changeVideoResolutionToolStripMenuItem.Name = "changeVideoResolutionToolStripMenuItem";
             this.changeVideoResolutionToolStripMenuItem.Click += new System.EventHandler(this.ChangeVideoResolutionToolStripMenuItem_Click);
             // 
             // aboutAToolStripMenuItem
             // 
+            resources.ApplyResources(this.aboutAToolStripMenuItem, "aboutAToolStripMenuItem");
             this.aboutAToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem,
             this.toolStripMenuItem3,
             this.checkForUpdatesUToolStripMenuItem});
             this.aboutAToolStripMenuItem.Name = "aboutAToolStripMenuItem";
-            resources.ApplyResources(this.aboutAToolStripMenuItem, "aboutAToolStripMenuItem");
             // 
             // aboutWaifu2xncnnvulkanGUIToolStripMenuItem
             // 
-            this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Name = "aboutWaifu2xncnnvulkanGUIToolStripMenuItem";
             resources.ApplyResources(this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem, "aboutWaifu2xncnnvulkanGUIToolStripMenuItem");
+            this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Name = "aboutWaifu2xncnnvulkanGUIToolStripMenuItem";
             this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Click += new System.EventHandler(this.AboutWaifu2xncnnvulkanGUIToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             // 
             // checkForUpdatesUToolStripMenuItem
             // 
-            this.checkForUpdatesUToolStripMenuItem.Name = "checkForUpdatesUToolStripMenuItem";
             resources.ApplyResources(this.checkForUpdatesUToolStripMenuItem, "checkForUpdatesUToolStripMenuItem");
+            this.checkForUpdatesUToolStripMenuItem.Name = "checkForUpdatesUToolStripMenuItem";
             this.checkForUpdatesUToolStripMenuItem.Click += new System.EventHandler(this.CheckForUpdatesUToolStripMenuItem_Click);
             // 
             // label2
@@ -219,13 +219,13 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label_OS);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label_Graphic);
             this.groupBox1.Controls.Add(this.label_Processor);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -251,10 +251,10 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.button_Merge);
             this.groupBox2.Controls.Add(this.button_Image);
             this.groupBox2.Controls.Add(this.button_Video);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -267,11 +267,11 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // 
             // groupBox3
             // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.label_Size);
             this.groupBox3.Controls.Add(this.label_File);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -297,15 +297,15 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // 
             // statusStrip1
             // 
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel_Status});
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
             // toolStripStatusLabel_Status
             // 
-            this.toolStripStatusLabel_Status.Name = "toolStripStatusLabel_Status";
             resources.ApplyResources(this.toolStripStatusLabel_Status, "toolStripStatusLabel_Status");
+            this.toolStripStatusLabel_Status.Name = "toolStripStatusLabel_Status";
             // 
             // FormMain
             // 

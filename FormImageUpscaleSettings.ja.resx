@@ -67,9 +67,6 @@
   <data name="label8.Text" xml:space="preserve">
     <value>ブロック</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="textBox_Blocksize.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 107</value>
   </data>
@@ -147,9 +144,6 @@
   <data name="label4.Text" xml:space="preserve">
     <value>GPUブロックサイズ：</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 81</value>
   </data>
@@ -158,9 +152,6 @@
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>使用するGPU：</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 53</value>
@@ -171,29 +162,17 @@
   <data name="label2.Text" xml:space="preserve">
     <value>スケーリングのレベル：</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 15</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>ノイズ除去のレベル：</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>一般設定</value>
   </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>高度な設定</value>
-  </data>
-  <data name="groupBox2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="textBox_CMD.ToolTip" xml:space="preserve">
     <value>コマンドライン引数を手動で指定します。</value>
@@ -207,11 +186,11 @@
   <data name="label9.Text" xml:space="preserve">
     <value>コマンドライン引数：</value>
   </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 69</value>
+  </data>
+  <data name="comboBox_Format.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 23</value>
   </data>
   <data name="comboBox_Format.ToolTip" xml:space="preserve">
     <value>変換後の画像出力形式を指定します。
@@ -231,7 +210,7 @@ RGB: イラスト等をアップスケールする際に適したモデルです
 Photo: 写真等をアップスケールする際に適したモデルです。</value>
   </data>
   <data name="checkBox_TTA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 84</value>
+    <value>349, 87</value>
   </data>
   <data name="checkBox_TTA.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 19</value>
@@ -245,13 +224,13 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
 変換に多くの時間を要します。</value>
   </data>
   <data name="checkBox_Verbose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 67</value>
+    <value>349, 71</value>
   </data>
   <data name="checkBox_Verbose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 19</value>
+    <value>145, 19</value>
   </data>
   <data name="checkBox_Verbose.Text" xml:space="preserve">
-    <value>詳細な出力 (Verbose output) を有効にする</value>
+    <value>詳細な出力を有効にする</value>
   </data>
   <data name="checkBox_Verbose.ToolTip" xml:space="preserve">
     <value>詳細な出力を有効にします。
@@ -266,9 +245,6 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
   <data name="label7.Text" xml:space="preserve">
     <value>アップスケーリング時に使用するモデル：</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 72</value>
   </data>
@@ -277,9 +253,6 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>出力画像形式：</value>
-  </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 45</value>
@@ -290,25 +263,10 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
   <data name="label5.Text" xml:space="preserve">
     <value>スレッド使用数：</value>
   </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="button_OK.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>キャンセル</value>
   </data>
-  <data name="button_Cancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>画像アップスケール設定</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

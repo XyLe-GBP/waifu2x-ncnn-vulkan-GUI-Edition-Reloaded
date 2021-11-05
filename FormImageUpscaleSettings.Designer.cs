@@ -205,7 +205,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.comboBox_Format.Items.AddRange(new object[] {
             resources.GetString("comboBox_Format.Items"),
             resources.GetString("comboBox_Format.Items1"),
-            resources.GetString("comboBox_Format.Items2")});
+            resources.GetString("comboBox_Format.Items2"),
+            resources.GetString("comboBox_Format.Items3")});
             this.comboBox_Format.Name = "comboBox_Format";
             this.toolTip1.SetToolTip(this.comboBox_Format, resources.GetString("comboBox_Format.ToolTip"));
             this.comboBox_Format.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Format_SelectedIndexChanged);

@@ -230,6 +230,10 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         format = " -f webp";
                         comboBox_Format.SelectedIndex = fi;
                         break;
+                    case 3:
+                        format = " -f png";
+                        comboBox_Format.SelectedIndex = fi;
+                        break;
                     default:
                         format = " -f png";
                         comboBox_Format.SelectedIndex = 1;

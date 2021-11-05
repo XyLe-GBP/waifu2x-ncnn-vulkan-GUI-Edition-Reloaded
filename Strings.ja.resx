@@ -272,8 +272,11 @@
   <data name="MSGWarning" xml:space="preserve">
     <value>警告</value>
   </data>
+  <data name="NotReadedStatusString" xml:space="preserve">
+    <value>準備未完了- ファイルを開いてください…</value>
+  </data>
   <data name="NotReadedString" xml:space="preserve">
-    <value>ファイルを読み込んでいません</value>
+    <value>ファイルを開いてください…</value>
   </data>
   <data name="OFDImageTitle" xml:space="preserve">
     <value>アップスケーリングする画像ファイルを開く</value>
@@ -290,7 +293,7 @@
     <value>処理が中断されました。</value>
   </data>
   <data name="ReadedString" xml:space="preserve">
-    <value>ファイルの読み込み完了</value>
+    <value>準備完了！</value>
   </data>
   <data name="SettingError" xml:space="preserve">
     <value>設定が正しく行われていないため、操作を続行できません。

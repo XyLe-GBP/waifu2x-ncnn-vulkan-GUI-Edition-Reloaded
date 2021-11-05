@@ -169,6 +169,9 @@
   <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 69</value>
   </data>
+  <data name="comboBox_Format.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 23</value>
+  </data>
   <data name="comboBox_Format.ToolTip" xml:space="preserve">
     <value>指定升级后的图像的输出格式。
 通常情况下'.png'是可以的，但如果你想使用不同的格式
@@ -187,7 +190,7 @@ RGB：这种模式适用于对插图进行升格。
 Photo：该模型适合用于放大照片。</value>
   </data>
   <data name="checkBox_TTA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 84</value>
+    <value>305, 87</value>
   </data>
   <data name="checkBox_TTA.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 19</value>
@@ -201,7 +204,7 @@ Photo：该模型适合用于放大照片。</value>
 但图像转换需要大量的时间。</value>
   </data>
   <data name="checkBox_Verbose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 67</value>
+    <value>305, 71</value>
   </data>
   <data name="checkBox_Verbose.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 19</value>

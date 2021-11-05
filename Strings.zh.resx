@@ -272,8 +272,11 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="MSGWarning" xml:space="preserve">
     <value>警告</value>
   </data>
+  <data name="NotReadedStatusString" xml:space="preserve">
+    <value>未准备好 - 打开任何文件。</value>
+  </data>
   <data name="NotReadedString" xml:space="preserve">
-    <value>文件没有被加载</value>
+    <value>打开任何文件。</value>
   </data>
   <data name="OFDImageTitle" xml:space="preserve">
     <value>打开要升格的图像文件</value>
@@ -290,7 +293,7 @@ CRF级别 "的值必须至少是一个字符。</value>
     <value>这个过程已经被打断了。</value>
   </data>
   <data name="ReadedString" xml:space="preserve">
-    <value>文件加载完成</value>
+    <value>一切就绪!</value>
   </data>
   <data name="SettingError" xml:space="preserve">
     <value>设置不正确，不能继续操作。

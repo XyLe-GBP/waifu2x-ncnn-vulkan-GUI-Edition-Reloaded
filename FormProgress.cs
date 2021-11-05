@@ -29,13 +29,47 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 case 0:
                     foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images", "*.*"))
                     {
-                        Process ps;
+                        var ini = new IniFile(@".\settings.ini");
+                        int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535);
+                        string ft;
+                        switch (fmt)
+                        {
+                            case 0:
+                                ft = ".jpg";
+                                break;
+                            case 1:
+                                ft = ".png";
+                                break;
+                            case 2:
+                                ft = ".webp";
+                                break;
+                            case 3:
+                                ft = ".ico";
+                                break;
+                            default:
+                                ft = ".png";
+                                break;
+                        }
+
+                        Process ps = new();
                         ProcessStartInfo pi = new();
-                        pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
-                        pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("waifu2x-ncnn-vulkan ", "");
-                        pi.WindowStyle = ProcessWindowStyle.Hidden;
-                        pi.UseShellExecute = true;
-                        ps = Process.Start(pi);
+
+                        if (ft == ".ico")
+                        {
+                            pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
+                            pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.SFDSavePath.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                            pi.WindowStyle = ProcessWindowStyle.Hidden;
+                            pi.UseShellExecute = true;
+                            ps = Process.Start(pi);
+                        }
+                        else
+                        {
+                            pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
+                            pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                            pi.WindowStyle = ProcessWindowStyle.Hidden;
+                            pi.UseShellExecute = true;
+                            ps = Process.Start(pi);
+                        }
 
                         while (!ps.HasExited)
                         {
@@ -65,56 +99,74 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     }
                     break;
                 case 1:
-                    var ini = new IniFile(@".\settings.ini");
-                    int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535);
-                    string ft;
-                    switch (fmt)
                     {
-                        case 0:
-                            ft = ".jpg";
-                            break;
-                        case 1:
-                            ft = ".png";
-                            break;
-                        case 2:
-                            ft = ".webp";
-                            break;
-                        default:
-                            ft = ".png";
-                            break;
-                    }
-
-                    foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images", "*.*"))
-                    {
-                        ProcessStartInfo pi = new();
-                        Process ps;
-                        pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
-                        pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ft + "\"").Replace("waifu2x-ncnn-vulkan ", "");
-                        pi.WindowStyle = ProcessWindowStyle.Hidden;
-                        pi.UseShellExecute = true;
-                        ps = Process.Start(pi);
-
-                        while (!ps.HasExited)
+                        var ini = new IniFile(@".\settings.ini");
+                        int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535);
+                        string ft;
+                        switch (fmt)
                         {
-                            if (backgroundWorker_Progress.CancellationPending)
-                            {
-                                if (!ps.HasExited)
-                                {
-                                    ps.Kill();
-                                }
-                                ps.Close();
-                                e.Cancel = true;
-                                return;
-                            }
-                            else if (ps.HasExited == true)
-                            {
-                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
+                            case 0:
+                                ft = ".jpg";
                                 break;
+                            case 1:
+                                ft = ".png";
+                                break;
+                            case 2:
+                                ft = ".webp";
+                                break;
+                            case 3:
+                                ft = ".ico";
+                                break;
+                            default:
+                                ft = ".png";
+                                break;
+                        }
+
+                        foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images", "*.*"))
+                        {
+                            ProcessStartInfo pi = new();
+                            Process ps = new();
+
+                            if (ft == ".ico")
+                            {
+                                pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
+                                pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png" + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                                pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                pi.UseShellExecute = true;
+                                ps = Process.Start(pi);
                             }
                             else
                             {
-                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
-                                continue;
+                                pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
+                                pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ft + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                                pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                pi.UseShellExecute = true;
+                                ps = Process.Start(pi);
+
+                            }
+
+                            while (!ps.HasExited)
+                            {
+                                if (backgroundWorker_Progress.CancellationPending)
+                                {
+                                    if (!ps.HasExited)
+                                    {
+                                        ps.Kill();
+                                    }
+                                    ps.Close();
+                                    e.Cancel = true;
+                                    return;
+                                }
+                                else if (ps.HasExited == true)
+                                {
+                                    worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
+                                    break;
+                                }
+                                else
+                                {
+                                    worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
+                                    continue;
+                                }
                             }
                         }
                     }

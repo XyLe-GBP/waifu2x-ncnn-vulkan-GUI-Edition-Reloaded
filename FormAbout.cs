@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrivateProfile;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,9 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void FormAbout_Load(object sender, EventArgs e)
         {
+            var ini = new IniFile(@".\settings.ini");
             pictureBox1.ImageLocation = "https://avatars.githubusercontent.com/u/59692068?v=4";
+            label_FFVersion.Text = ini.GetString("FFMPEG", "LATEST_VERSION", "Unknown");
         }
 
         private void PictureBox1_Paint(object sender, PaintEventArgs e)

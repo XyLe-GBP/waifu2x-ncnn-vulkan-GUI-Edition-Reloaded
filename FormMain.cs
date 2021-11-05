@@ -26,7 +26,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            Text = "waifu2x-ncnn-vulkan GUI ( build: 1.21.2120.913-Beta )";
+            Text = "waifu2x-ncnn-vulkan GUI ( build: 1.22.2120.1105-Beta )";
             var ini = new IniFile(@".\settings.ini");
             string[] OSInfo = new string[17];
             string[] CPUInfo = new string[3];
@@ -111,6 +111,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                         {
                             ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                            ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
                             MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -126,10 +127,6 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 }
             }
 
-            if (ini.GetString("FFMPEG", "LATEST_VERSION") == "")
-            {
-                ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
-            }
             else
             {
                 switch (ini.GetString("FFMPEG", "LATEST_VERSION").CompareTo(netversion))
@@ -161,6 +158,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                     if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                                     {
                                         ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                                        ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
                                         MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
@@ -199,6 +197,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                         if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                                         {
                                             ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                                            ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
                                             MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         }
                                         else
@@ -228,9 +227,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         break;
                 }
             }
-            
 
-            
         }
 
         private void OpenImegeIToolStripMenuItem_Click(object sender, EventArgs e)
@@ -542,7 +539,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void Button_Image_Click(object sender, EventArgs e)
         {
-            if (Common.ImageParam.Length < 69)
+            if (Common.ImageParam.Length < 69 || Common.ImageParam == "")
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -554,26 +551,34 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             {
                 if (Common.ImageFile.Length <= 1)
                 {
-                    ProcessStartInfo pi = new();
-                    Process ps;
-                    pi.FileName = @".\res\image2png.exe";
-                    pi.Arguments = "\"" + Common.ImageFile[0] + "\"";
-                    pi.WindowStyle = ProcessWindowStyle.Hidden;
-                    pi.UseShellExecute = true;
-                    ps = Process.Start(pi);
-                    ps.WaitForExit();
-
                     FileInfo file = new(Common.ImageFile[0]);
 
-                    if (File.Exists(file.Directory + "\\" + file.Name.Replace(".png", "_e.png")))
+                    switch (file.Extension.ToUpper())
                     {
-                        File.Move(file.Directory + "\\" + file.Name.Replace(".png", "_e.png"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name);
-                    }
-                    else
-                    {
-                        MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                        return;
+                        case ".GIF":
+                            if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                            {
+                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name.Replace(file.Extension, ".png"));
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                return;
+                            }
+                        default:
+                            if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                            {
+                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name.Replace(file.Extension, ".png"));
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                return;
+                            }
                     }
 
                     switch (fmt)
@@ -586,6 +591,9 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             break;
                         case 2:
                             ft = "Google webp (*.webp)|*.webp";
+                            break;
+                        case 3:
+                            ft = "Icon (*.ico)|*.ico";
                             break;
                         default:
                             ft = "Portable Network Graphics (*.png)|*.png";
@@ -612,12 +620,18 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         Form.ShowDialog();
                         Form.Dispose();
 
+                        if (fmt == 3)
+                        {
+                            ImageConvert.IMAGEtoICON(sfd.FileName.Replace(".ico", ".png"), sfd.FileName);
+                            File.Delete(sfd.FileName.Replace(".ico", ".png"));
+                        }
+
                         if (Common.AbortFlag != 0)
                         {
                             Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
                             label_File.Text = Strings.NotReadedString;
                             label_Size.Text = Strings.NotReadedString;
-                            toolStripStatusLabel_Status.Text = Strings.NotReadedString;
+                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
                             return;
@@ -628,7 +642,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
                             label_File.Text = Strings.NotReadedString;
                             label_Size.Text = Strings.NotReadedString;
-                            toolStripStatusLabel_Status.Text = Strings.NotReadedString;
+                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
                             MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -639,7 +653,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
                             label_File.Text = Strings.NotReadedString;
                             label_Size.Text = Strings.NotReadedString;
-                            toolStripStatusLabel_Status.Text = Strings.NotReadedString;
+                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
                             MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -651,26 +665,33 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 {
                     foreach (var sources in Common.ImageFile)
                     {
-                        ProcessStartInfo pi = new();
-                        Process ps;
-                        pi.FileName = @".\res\image2png.exe";
-                        pi.Arguments = "\"" + sources + "\"";
-                        pi.WindowStyle = ProcessWindowStyle.Hidden;
-                        pi.UseShellExecute = true;
-                        ps = Process.Start(pi);
-                        ps.WaitForExit();
-
                         FileInfo file = new(sources);
-
-                        if (File.Exists(file.Directory + "\\" + file.Name.Replace(".png", "_e.png")))
+                        switch (file.Extension.ToUpper())
                         {
-                            File.Move(file.Directory + "\\" + file.Name.Replace(".png", "_e.png"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name);
-                        }
-                        else
-                        {
-                            MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                            return;
+                            case ".GIF":
+                                if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                                {
+                                    File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name.Replace(file.Extension, ".png"));
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                    return;
+                                }
+                            default:
+                                if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                                {
+                                    File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name.Replace(file.Extension, ".png"));
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                    return;
+                                }
                         }
                     }
 
@@ -702,7 +723,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                 Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
                                 label_File.Text = Strings.NotReadedString;
                                 label_Size.Text = Strings.NotReadedString;
-                                toolStripStatusLabel_Status.Text = Strings.NotReadedString;
+                                toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                                 toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                                 button_Image.Enabled = false;
                                 return;
@@ -720,7 +741,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
                             label_File.Text = Strings.NotReadedString;
                             label_Size.Text = Strings.NotReadedString;
-                            toolStripStatusLabel_Status.Text = Strings.NotReadedString;
+                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
                             return;
@@ -733,17 +754,22 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                 Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
                                 label_File.Text = Strings.NotReadedString;
                                 label_Size.Text = Strings.NotReadedString;
-                                toolStripStatusLabel_Status.Text = Strings.NotReadedString;
+                                toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                                 toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                                 button_Image.Enabled = false;
                                 MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
+                            if (fmt == 3)
+                            {
+                                ImageConvert.IMAGEtoICON(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png", Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".ico");
+                                File.Delete(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png");
+                            }
                         }
                         Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
                         label_File.Text = Strings.NotReadedString;
                         label_Size.Text = Strings.NotReadedString;
-                        toolStripStatusLabel_Status.Text = Strings.NotReadedString;
+                        toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                         toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                         button_Image.Enabled = false;
                         MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -755,17 +781,17 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void Button_Video_Click(object sender, EventArgs e)
         {
-            if (Common.ImageParam.Length < 69)
+            if (Common.ImageParam.Length < 69 || Common.ImageParam == "")
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (Common.VideoParam.Length <= 50)
+            if (Common.VideoParam.Length <= 50 || Common.VideoParam == "")
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (Common.AudioParam.Length <= 50)
+            if (Common.AudioParam.Length <= 50 || Common.AudioParam == "")
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -995,7 +1021,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     Common.UpscaleFlag = 0;
                     label_File.Text = Strings.NotReadedString;
                     label_Size.Text = Strings.NotReadedString;
-                    toolStripStatusLabel_Status.Text = Strings.NotReadedString;
+                    toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                     toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                     button_Video.Text = Strings.ButtonUpscaleVideo;
                     button_Video.Enabled = false;
@@ -1018,7 +1044,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     button_Video.Text = Strings.ButtonUpscaleVideo;
                     label_File.Text = Strings.NotReadedString;
                     label_Size.Text = Strings.NotReadedString;
-                    toolStripStatusLabel_Status.Text = Strings.NotReadedString;
+                    toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                     toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                     button_Video.Enabled = false;
                     button_Merge.Enabled = false;

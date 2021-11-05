@@ -474,7 +474,16 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp {
         }
         
         /// <summary>
-        ///   Not Readed. に類似しているローカライズされた文字列を検索します。
+        ///   Not ready - please open the file. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string NotReadedStatusString {
+            get {
+                return ResourceManager.GetString("NotReadedStatusString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please open the file. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string NotReadedString {
             get {
@@ -521,7 +530,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp {
         }
         
         /// <summary>
-        ///   Readed! に類似しているローカライズされた文字列を検索します。
+        ///   Ready! に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string ReadedString {
             get {
