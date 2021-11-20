@@ -5,9 +5,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 {
@@ -18,8 +20,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         public static string DLlog, DLInfo;
         public static string DeletePath, DeletePathFrames, DeletePathFrames2x, DeletePathAudio;
         public static string FFmpegPath;
-        public static string[] ImageFile;
-        public static string VideoPath;
+        public static string[] ImageFile = null;
+        public static string VideoPath = null;
         public static string SFDSavePath, FBDSavePath;
         public static string VROpenPath;
         public static string VRSavePath;
@@ -83,6 +85,37 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             }
 
             return;
+        }
+
+        public static async Task<string> GetWebPageAsync(Uri uri)
+        {
+            using HttpClient client = new();
+            client.DefaultRequestHeaders.Add(
+                "User-Agent",
+                "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko");
+            client.DefaultRequestHeaders.Add("Accept-Language", "ja-JP");
+            client.Timeout = TimeSpan.FromSeconds(10.0);
+
+            try
+            {
+                return await client.GetStringAsync(uri);
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show("An exception occured.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Exception ex = e;
+                while (ex != null)
+                {
+                    MessageBox.Show(string.Format("log: {0} ", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ex = ex.InnerException;
+                }
+            }
+            catch (TaskCanceledException e)
+            {
+                MessageBox.Show("Connection timed out.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("log: {0} ", e.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
         }
 
         public static string SFDRandomNumber()

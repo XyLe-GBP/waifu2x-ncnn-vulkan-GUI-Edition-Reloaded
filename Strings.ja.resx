@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioNot" xml:space="preserve">
     <value>音声ファイルの抜き出しに失敗しました。
@@ -220,6 +220,9 @@
   </data>
   <data name="FieldError" xml:space="preserve">
     <value>入力が正しくないフィールドがあります。</value>
+  </data>
+  <data name="FileNotReadedWarning" xml:space="preserve">
+    <value>ファイルがなにも読み込まれていません。</value>
   </data>
   <data name="FilterImage" xml:space="preserve">
     <value>ビットマップ イメージ (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|GIF イメージ (*.gif)|*.gif;|アイコン (*.ico,*.icns)|*.ico;*.icns;|JPEG イメージ (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|PNG イメージ (*.png)|*.png;|QuickDraw ピクチャー (*.pict)|*.pict;|SVG イメージ (*.svg,*.svgz)|*.svg;*.svgz;|TIFF イメージ (*.tif,*.tiff)|*.tif;*.tiff;|サポートされているすべての形式|*.bmp;*.dib;*.eps;*.webp;*.gif;*.ico;*.icns;*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;*.png;*.pict;*.svg;*.svgz;*.tif;*.tiff</value>

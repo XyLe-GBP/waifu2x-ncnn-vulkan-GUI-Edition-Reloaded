@@ -58,108 +58,618 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 15</value>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 10pt</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 24</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel_Status.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Text" xml:space="preserve">
-    <value>About waifu2x-ncnn-vulkan-GUI</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 26</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="label_File.Text" xml:space="preserve">
-    <value>File Info</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>waifu2x-ncnn-vulkan GUI Edition Reloaded (.NET Edition)</value>
   </data>
-  <data name="statusStrip1.Text" xml:space="preserve">
-    <value>statusStrip1</value>
+  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
   </data>
-  <data name="closeFileCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
   </data>
-  <data name="settingsCToolStripMenuItem.Text" xml:space="preserve">
-    <value>Settings (&amp;S)</value>
-  </data>
-  <data name="exitXToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="button_Video.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 22</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;videoUpscalingSettingsVToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="aboutAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help (&amp;H)</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label_File.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 15</value>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="fileFToolStripMenuItem.Text" xml:space="preserve">
-    <value>File (&amp;F)</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;label_OS.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="button_Image.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+  <data name="button_Image.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 22</value>
+  </data>
+  <data name="button_Image.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 30</value>
+  </data>
+  <data name="button_Image.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="button_Image.Text" xml:space="preserve">
+    <value>Upscaling Image</value>
+  </data>
+  <data name="&gt;&gt;button_Image.Name" xml:space="preserve">
+    <value>button_Image</value>
+  </data>
+  <data name="&gt;&gt;button_Image.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_Image.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;button_Image.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_Video.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_Video.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="button_Video.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 30</value>
+  </data>
+  <data name="button_Video.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="upscalingSettingsUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 22</value>
+  <data name="button_Video.Text" xml:space="preserve">
+    <value>Upscaling Video</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;button_Video.Name" xml:space="preserve">
+    <value>button_Video</value>
+  </data>
+  <data name="&gt;&gt;button_Video.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_Video.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;button_Video.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="openImegeIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="openImegeIToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open Imege (&amp;I)</value>
+  </data>
+  <data name="openVideoVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="openVideoVToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open Video (&amp;V)</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 6</value>
+  </data>
+  <data name="closeFileCToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="closeFileCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="closeFileCToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close File (&amp;C)</value>
+  </data>
+  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 6</value>
+  </data>
+  <data name="exitXToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="exitXToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit (&amp;X)</value>
   </data>
   <data name="fileFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 20</value>
   </data>
-  <data name="&gt;&gt;label_Processor.Parent" xml:space="preserve">
+  <data name="fileFToolStripMenuItem.Text" xml:space="preserve">
+    <value>File (&amp;F)</value>
+  </data>
+  <data name="upscalingSettingsUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 22</value>
+  </data>
+  <data name="upscalingSettingsUToolStripMenuItem.Text" xml:space="preserve">
+    <value>Image Upscaling Settings (&amp;U)</value>
+  </data>
+  <data name="videoUpscalingSettingsVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 22</value>
+  </data>
+  <data name="videoUpscalingSettingsVToolStripMenuItem.Text" xml:space="preserve">
+    <value>Video Upscaling Settings (&amp;V)</value>
+  </data>
+  <data name="settingsCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 20</value>
+  </data>
+  <data name="settingsCToolStripMenuItem.Text" xml:space="preserve">
+    <value>Settings (&amp;S)</value>
+  </data>
+  <data name="changeVideoResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 22</value>
+  </data>
+  <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Change Video Resolution</value>
+  </data>
+  <data name="toolsTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 20</value>
+  </data>
+  <data name="toolsTToolStripMenuItem.Text" xml:space="preserve">
+    <value>Tools (&amp;T)</value>
+  </data>
+  <data name="aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 22</value>
+  </data>
+  <data name="aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Text" xml:space="preserve">
+    <value>About waifu2x-ncnn-vulkan-GUI</value>
+  </data>
+  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 6</value>
+  </data>
+  <data name="checkForUpdatesUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 22</value>
+  </data>
+  <data name="checkForUpdatesUToolStripMenuItem.Text" xml:space="preserve">
+    <value>Check for Updates (&amp;U)</value>
+  </data>
+  <data name="aboutAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 20</value>
+  </data>
+  <data name="aboutAToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help (&amp;H)</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>524, 24</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 51</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 15</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Prosessor:</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 71</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 15</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Graphic Board:</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label_OS.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_OS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 30</value>
+  </data>
+  <data name="label_OS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 15</value>
+  </data>
+  <data name="label_OS.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label_OS.Text" xml:space="preserve">
+    <value>OS Information</value>
+  </data>
+  <data name="&gt;&gt;label_OS.Name" xml:space="preserve">
+    <value>label_OS</value>
+  </data>
+  <data name="&gt;&gt;label_OS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_OS.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label_OS.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 30</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 15</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Operating System:</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label_Graphic.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_Graphic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 71</value>
+  </data>
+  <data name="label_Graphic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 15</value>
+  </data>
+  <data name="label_Graphic.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label_Graphic.Text" xml:space="preserve">
+    <value>GPU Information</value>
+  </data>
+  <data name="&gt;&gt;label_Graphic.Name" xml:space="preserve">
+    <value>label_Graphic</value>
+  </data>
+  <data name="&gt;&gt;label_Graphic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_Graphic.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label_Graphic.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label_Processor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_Processor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 51</value>
+  </data>
+  <data name="label_Processor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 15</value>
+  </data>
+  <data name="label_Processor.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label_Processor.Text" xml:space="preserve">
+    <value>CPU Information</value>
+  </data>
+  <data name="&gt;&gt;label_Processor.Name" xml:space="preserve">
+    <value>label_Processor</value>
+  </data>
+  <data name="&gt;&gt;label_Processor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_Processor.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label_Processor.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 195</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 105</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>System Information</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button_Merge.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_Merge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 22</value>
+  </data>
+  <data name="button_Merge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 30</value>
+  </data>
+  <data name="button_Merge.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="button_Merge.Text" xml:space="preserve">
+    <value>Merge with FFmpeg</value>
+  </data>
+  <data name="&gt;&gt;button_Merge.Name" xml:space="preserve">
+    <value>button_Merge</value>
+  </data>
+  <data name="&gt;&gt;button_Merge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_Merge.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;button_Merge.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 124</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 65</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label_Size.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_Size.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 39</value>
+  </data>
+  <data name="label_Size.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 15</value>
+  </data>
+  <data name="label_Size.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label_Size.Text" xml:space="preserve">
+    <value>Size Info</value>
+  </data>
   <data name="&gt;&gt;label_Size.Name" xml:space="preserve">
     <value>label_Size</value>
   </data>
-  <data name="&gt;&gt;checkForUpdatesUToolStripMenuItem.Name" xml:space="preserve">
-    <value>checkForUpdatesUToolStripMenuItem</value>
+  <data name="&gt;&gt;label_Size.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="openVideoVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open Video (&amp;V)</value>
+  <data name="&gt;&gt;label_Size.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label_Size.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label_File.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_File.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 19</value>
+  </data>
+  <data name="label_File.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="label_File.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label_File.Text" xml:space="preserve">
+    <value>File Info</value>
+  </data>
+  <data name="&gt;&gt;label_File.Name" xml:space="preserve">
+    <value>label_File</value>
+  </data>
+  <data name="&gt;&gt;label_File.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_File.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label_File.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 39</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 15</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 15</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>File:</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 53</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 65</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
+  <data name="toolStripStatusLabel_Status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 17</value>
+  </data>
+  <data name="toolStripStatusLabel_Status.Text" xml:space="preserve">
+    <value>Not ready - please open the file.</value>
+  </data>
+  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 314</value>
+  </data>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>524, 22</value>
+  </data>
+  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>524, 336</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6398,626 +6908,119 @@
         AAAAAAAA
 </value>
   </data>
-  <data name="button_Image.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
-    <value>toolStripMenuItem2</value>
-  </data>
-  <data name="&gt;&gt;button_Merge.Name" xml:space="preserve">
-    <value>button_Merge</value>
-  </data>
-  <data name="&gt;&gt;button_Merge.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;button_Video.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Operating System:</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>524, 336</value>
-  </data>
-  <data name="button_Image.Text" xml:space="preserve">
-    <value>Upscaling Image</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 10pt</value>
-  </data>
-  <data name="button_Video.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 30</value>
-  </data>
-  <data name="&gt;&gt;label_Size.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label_Graphic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 15</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label_OS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 15</value>
-  </data>
-  <data name="&gt;&gt;label_Size.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;button_Video.Name" xml:space="preserve">
-    <value>button_Video</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="button_Merge.Text" xml:space="preserve">
-    <value>Merge with FFmpeg</value>
-  </data>
-  <data name="button_Merge.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="upscalingSettingsUToolStripMenuItem.Text" xml:space="preserve">
-    <value>Image Upscaling Settings (&amp;U)</value>
-  </data>
-  <data name="&gt;&gt;upscalingSettingsUToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="openImegeIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 15</value>
-  </data>
-  <data name="&gt;&gt;openImegeIToolStripMenuItem.Name" xml:space="preserve">
-    <value>openImegeIToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label_Size.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 15</value>
-  </data>
-  <data name="&gt;&gt;label_File.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeVideoResolutionToolStripMenuItem.Name" xml:space="preserve">
-    <value>changeVideoResolutionToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;button_Image.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Name" xml:space="preserve">
-    <value>aboutWaifu2xncnnvulkanGUIToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;button_Image.Name" xml:space="preserve">
-    <value>button_Image</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="&gt;&gt;button_Video.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="label_File.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="openVideoVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 124</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 65</value>
-  </data>
-  <data name="changeVideoResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
-  </data>
-  <data name="&gt;&gt;aboutAToolStripMenuItem.Name" xml:space="preserve">
-    <value>aboutAToolStripMenuItem</value>
-  </data>
-  <data name="button_Video.Text" xml:space="preserve">
-    <value>Upscaling Video</value>
-  </data>
-  <data name="button_Image.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 22</value>
-  </data>
-  <data name="closeFileCToolStripMenuItem.Text" xml:space="preserve">
-    <value>Close File (&amp;C)</value>
-  </data>
-  <data name="&gt;&gt;openImegeIToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;aboutAToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="settingsCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 20</value>
-  </data>
-  <data name="&gt;&gt;videoUpscalingSettingsVToolStripMenuItem.Name" xml:space="preserve">
-    <value>videoUpscalingSettingsVToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>waifu2x-ncnn-vulkan GUI Edition Reloaded</value>
-  </data>
-  <data name="&gt;&gt;exitXToolStripMenuItem.Name" xml:space="preserve">
-    <value>exitXToolStripMenuItem</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 30</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabel_Status.Name" xml:space="preserve">
-    <value>toolStripStatusLabel_Status</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;changeVideoResolutionToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_File.Name" xml:space="preserve">
-    <value>label_File</value>
-  </data>
-  <data name="label_Size.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 39</value>
-  </data>
-  <data name="button_Merge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 22</value>
-  </data>
-  <data name="&gt;&gt;toolsTToolStripMenuItem.Name" xml:space="preserve">
-    <value>toolsTToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;closeFileCToolStripMenuItem.Name" xml:space="preserve">
-    <value>closeFileCToolStripMenuItem</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 65</value>
-  </data>
-  <data name="toolStripStatusLabel_Status.Text" xml:space="preserve">
-    <value>Not ready - please open the file.</value>
-  </data>
-  <data name="label_Processor.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 24</value>
-  </data>
-  <data name="label_OS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 30</value>
-  </data>
-  <data name="label_Processor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 39</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 15</value>
-  </data>
-  <data name="toolStripStatusLabel_Status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 17</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_Image.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label_OS.Name" xml:space="preserve">
-    <value>label_OS</value>
-  </data>
-  <data name="button_Merge.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkForUpdatesUToolStripMenuItem.Text" xml:space="preserve">
-    <value>Check for Updates (&amp;U)</value>
-  </data>
-  <data name="aboutAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 20</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 71</value>
-  </data>
-  <data name="&gt;&gt;label_Graphic.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="openImegeIToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open Imege (&amp;I)</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
-  </data>
-  <data name="label_Graphic.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label_Graphic.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="toolsTToolStripMenuItem.Text" xml:space="preserve">
-    <value>Tools (&amp;T)</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button_Image.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="button_Image.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="button_Image.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 30</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;button_Merge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 15</value>
-  </data>
-  <data name="&gt;&gt;label_Processor.Name" xml:space="preserve">
-    <value>label_Processor</value>
-  </data>
-  <data name="button_Video.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 24</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>waifu2x-nvge Reloaded</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;fileFToolStripMenuItem.Name" xml:space="preserve">
+    <value>fileFToolStripMenuItem</value>
   </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>waifu2x-ncnn-vulkan GUI Edition Reloaded (.NET Edition)</value>
-  </data>
-  <data name="label_Processor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 51</value>
-  </data>
-  <data name="exitXToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exit (&amp;X)</value>
-  </data>
-  <data name="button_Video.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="videoUpscalingSettingsVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 22</value>
-  </data>
-  <data name="label_Size.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormMain</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 15</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Process</value>
-  </data>
-  <data name="videoUpscalingSettingsVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Video Upscaling Settings (&amp;V)</value>
-  </data>
-  <data name="label_OS.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label_Size.Text" xml:space="preserve">
-    <value>Size Info</value>
-  </data>
-  <data name="label_Processor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 15</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>File:</value>
-  </data>
-  <data name="aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="toolsTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 20</value>
-  </data>
-  <data name="&gt;&gt;settingsCToolStripMenuItem.Name" xml:space="preserve">
-    <value>settingsCToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 6</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Prosessor:</value>
-  </data>
-  <data name="&gt;&gt;openVideoVToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;fileFToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
+  <data name="&gt;&gt;openImegeIToolStripMenuItem.Name" xml:space="preserve">
+    <value>openImegeIToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;toolsTToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Size:</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label_Processor.Text" xml:space="preserve">
-    <value>CPU Information</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label_Processor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;closeFileCToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;openImegeIToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;openVideoVToolStripMenuItem.Name" xml:space="preserve">
     <value>openVideoVToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;fileFToolStripMenuItem.Name" xml:space="preserve">
-    <value>fileFToolStripMenuItem</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 53</value>
-  </data>
-  <data name="&gt;&gt;settingsCToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;openVideoVToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 105</value>
+  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Graphic Board:</value>
+  <data name="&gt;&gt;closeFileCToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeFileCToolStripMenuItem</value>
   </data>
-  <data name="label_OS.Text" xml:space="preserve">
-    <value>OS Information</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 195</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label_Size.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;label_File.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label_Graphic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 71</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 22</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label_Graphic.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;button_Video.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkForUpdatesUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 26</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;checkForUpdatesUToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;closeFileCToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
+    <value>toolStripMenuItem2</value>
   </data>
-  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 314</value>
+  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label_File.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 19</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label_OS.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Informations</value>
-  </data>
-  <data name="label_Size.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;upscalingSettingsUToolStripMenuItem.Name" xml:space="preserve">
-    <value>upscalingSettingsUToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;button_Merge.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="label_Graphic.Text" xml:space="preserve">
-    <value>GPU Information</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_Merge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 30</value>
-  </data>
-  <data name="&gt;&gt;label_Graphic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label_OS.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label_File.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;exitXToolStripMenuItem.Name" xml:space="preserve">
+    <value>exitXToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exitXToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;settingsCToolStripMenuItem.Name" xml:space="preserve">
+    <value>settingsCToolStripMenuItem</value>
   </data>
-  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+  <data name="&gt;&gt;settingsCToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label_OS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;upscalingSettingsUToolStripMenuItem.Name" xml:space="preserve">
+    <value>upscalingSettingsUToolStripMenuItem</value>
   </data>
-  <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Change Video Resolution</value>
+  <data name="&gt;&gt;upscalingSettingsUToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label_File.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;videoUpscalingSettingsVToolStripMenuItem.Name" xml:space="preserve">
+    <value>videoUpscalingSettingsVToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;fileFToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;videoUpscalingSettingsVToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolsTToolStripMenuItem.Name" xml:space="preserve">
+    <value>toolsTToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;toolsTToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;changeVideoResolutionToolStripMenuItem.Name" xml:space="preserve">
+    <value>changeVideoResolutionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;changeVideoResolutionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aboutAToolStripMenuItem.Name" xml:space="preserve">
+    <value>aboutAToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;aboutAToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Name" xml:space="preserve">
+    <value>aboutWaifu2xncnnvulkanGUIToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem3.Name" xml:space="preserve">
     <value>toolStripMenuItem3</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
+  <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label_Graphic.Name" xml:space="preserve">
-    <value>label_Graphic</value>
+  <data name="&gt;&gt;checkForUpdatesUToolStripMenuItem.Name" xml:space="preserve">
+    <value>checkForUpdatesUToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;checkForUpdatesUToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>System Information</value>
+  <data name="&gt;&gt;toolStripStatusLabel_Status.Name" xml:space="preserve">
+    <value>toolStripStatusLabel_Status</value>
   </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;toolStripStatusLabel_Status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label_Processor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormMain</value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

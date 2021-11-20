@@ -73,9 +73,29 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap magick_logo {
+            get {
+                object obj = ResourceManager.GetObject("magick_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap opencv_logo {
             get {
                 object obj = ResourceManager.GetObject("opencv_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap w2xr_64 {
+            get {
+                object obj = ResourceManager.GetObject("w2xr_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

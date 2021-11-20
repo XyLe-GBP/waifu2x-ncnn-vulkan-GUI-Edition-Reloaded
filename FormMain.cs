@@ -10,6 +10,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            Text = "waifu2x-ncnn-vulkan GUI ( build: 1.22.2120.1105-Beta )";
+            Text = "waifu2x-nvge ( build: 1.23.2120.1120-Beta )";
             var ini = new IniFile(@".\settings.ini");
             string[] OSInfo = new string[17];
             string[] CPUInfo = new string[3];
@@ -76,7 +77,10 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
 
-            string netversion;
+            /*Uri ffsources = new("https://www.gyan.dev/ffmpeg/builds/release-version");
+            Task<string> webTask = Common.GetWebPageAsync(ffsources);
+            webTask.Wait();*/
+            string netversion;// = webTask.Result;
             WebClient wc = new();
 
             Stream st = wc.OpenRead("https://www.gyan.dev/ffmpeg/builds/release-version");
@@ -127,6 +131,50 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 }
             }
 
+            if (ini.GetString("FFMPEG", "LATEST_VERSION") == "")
+            {
+                DialogResult dr = MessageBox.Show(Strings.DLConfirm, Strings.MSGWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                    {
+                        File.Delete(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                    }
+                    Common.ProgressFlag = 6;
+                    Common.ProgMin = 0;
+                    FormProgress Form = new();
+                    Form.ShowDialog();
+                    Form.Dispose();
+
+                    if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                    {
+                        using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                        foreach (ZipArchiveEntry entry in archive.Entries)
+                        {
+                            if (entry.FullName == "ffmpeg-" + netversion + "-essentials_build/bin/ffmpeg.exe")
+                            {
+                                entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
+                            }
+                        }
+
+                        if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                        {
+                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                            ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
+                            MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
             else
             {
                 switch (ini.GetString("FFMPEG", "LATEST_VERSION").CompareTo(netversion))
@@ -227,7 +275,6 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         break;
                 }
             }
-
         }
 
         private void OpenImegeIToolStripMenuItem_Click(object sender, EventArgs e)
@@ -260,6 +307,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     label_File.Text = ofd.FileName;
                     label_Size.Text = sz + Strings.SizeString;
                     button_Image.Enabled = true;
+                    closeFileCToolStripMenuItem.Enabled = true;
                     return;
                 }
                 else
@@ -276,6 +324,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     label_File.Text = Strings.IMGS;
                     label_Size.Text = sz + Strings.SizeString;
                     button_Image.Enabled = true;
+                    closeFileCToolStripMenuItem.Enabled = true;
                     return;
                 }
             }
@@ -308,6 +357,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 label_File.Text = ofd.FileName;
                 label_Size.Text = sz + Strings.SizeString;
                 button_Video.Enabled = true;
+                closeFileCToolStripMenuItem.Enabled = true;
 
                 var video = new VideoCapture(Common.VideoPath);
                 switch (video.Fps.ToString())
@@ -342,23 +392,32 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void CloseFileCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (button_Image.Enabled == true)
+            if (Common.ImageFile == null && Common.VideoPath == null || Common.VideoPath == "")
             {
-                button_Image.Enabled = false;
+                MessageBox.Show(Strings.FileNotReadedWarning, Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            if (button_Video.Enabled == true)
+            else
             {
-                button_Video.Enabled = false;
+                if (button_Image.Enabled == true)
+                {
+                    button_Image.Enabled = false;
+                }
+                if (button_Video.Enabled == true)
+                {
+                    button_Video.Enabled = false;
+                }
+                if (button_Merge.Enabled == true)
+                {
+                    button_Merge.Enabled = false;
+                }
+                button_Video.Text = Strings.ButtonUpscaleVideo;
+                label_File.Text = Strings.NotReadedString;
+                label_Size.Text = Strings.NotReadedString;
+                toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                closeFileCToolStripMenuItem.Enabled = false;
             }
-            if (button_Merge.Enabled == true)
-            {
-                button_Merge.Enabled = false;
-            }
-            button_Video.Text = Strings.ButtonUpscaleVideo;
-            label_File.Text = Strings.NotReadedString;
-            label_Size.Text = Strings.NotReadedString;
-            toolStripStatusLabel_Status.Text = Strings.NotReadedString;
-            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
         }
 
         private void ExitXToolStripMenuItem_Click(object sender, EventArgs e)
@@ -507,7 +566,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 sr.Close();
                 st.Close();
 
-                FileVersionInfo ver = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                //FileVersionInfo ver = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
 
                 switch (ver.FileVersion.ToString().CompareTo(netversion[8..].Replace("\n", "")))
                 {
@@ -634,6 +694,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
+                            closeFileCToolStripMenuItem.Enabled = false;
                             return;
                         }
 
@@ -645,6 +706,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
+                            closeFileCToolStripMenuItem.Enabled = false;
                             MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Process.Start("EXPLORER.EXE", @"/select,""" + sfd.FileName + @"""");
                         }
@@ -656,6 +718,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
+                            closeFileCToolStripMenuItem.Enabled = false;
                             MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
@@ -726,6 +789,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                 toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                                 toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                                 button_Image.Enabled = false;
+                                closeFileCToolStripMenuItem.Enabled = false;
                                 return;
                             }
                         }
@@ -744,6 +808,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
+                            closeFileCToolStripMenuItem.Enabled = false;
                             return;
                         }
 
@@ -757,6 +822,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                 toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                                 toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                                 button_Image.Enabled = false;
+                                closeFileCToolStripMenuItem.Enabled = false;
                                 MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
@@ -772,6 +838,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                         toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                         button_Image.Enabled = false;
+                        closeFileCToolStripMenuItem.Enabled = false;
                         MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Process.Start("EXPLORER.EXE", Common.FBDSavePath);
                     }
@@ -1026,6 +1093,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     button_Video.Text = Strings.ButtonUpscaleVideo;
                     button_Video.Enabled = false;
                     button_Merge.Enabled = false;
+                    closeFileCToolStripMenuItem.Enabled = false;
                     MessageBox.Show(Strings.VRUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
                 }
@@ -1048,6 +1116,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                     button_Video.Enabled = false;
                     button_Merge.Enabled = false;
+                    closeFileCToolStripMenuItem.Enabled = false;
                     MessageBox.Show(Strings.VRUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

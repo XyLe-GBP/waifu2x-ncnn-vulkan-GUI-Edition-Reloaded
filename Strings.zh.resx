@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioNot" xml:space="preserve">
     <value>音频文件的提取失败。
@@ -220,6 +220,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   </data>
   <data name="FieldError" xml:space="preserve">
     <value>有些字段的输入是错误的。</value>
+  </data>
+  <data name="FileNotReadedWarning" xml:space="preserve">
+    <value>没有文件被加载。</value>
   </data>
   <data name="FilterImage" xml:space="preserve">
     <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All supported formats|*.bmp;*.dib;*.eps;*.webp;*.gif;*.ico;*.icns;*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;*.png;*.pict;*.svg;*.svgz;*.tif;*.tiff</value>

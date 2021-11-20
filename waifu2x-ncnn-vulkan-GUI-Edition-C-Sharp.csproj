@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -10,16 +10,19 @@
     <Authors>XyLe</Authors>
     <Product>waifu2x-ncnn-vulkan GUI Edition Reloaded</Product>
     <Copyright>Copyright (C) 2021 - XyLe. All Rights Reserved.</Copyright>
-    <AssemblyVersion>1.22.2120.1105</AssemblyVersion>
-    <FileVersion>1.22.2120.1105</FileVersion>
-    <Version>1.22.2120.1105</Version>
+    <AssemblyVersion>1.23.2120.1120</AssemblyVersion>
+    <FileVersion>1.23.2120.1120</FileVersion>
+    <Version>1.23.2120.1120</Version>
     <Description>Super-Resolution Convolutional Neural Network（SRCNN）Utility.</Description>
     <PackageIcon>csharp-logo.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded</RepositoryUrl>
-    <RepositoryType>GitHub</RepositoryType>
+    <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENCE.txt</PackageLicenseFile>
     <ApplicationIcon>w2xr_multi.ico</ApplicationIcon>
+    <StartupObject>waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp.Program</StartupObject>
+    <AnalysisLevel>6.0</AnalysisLevel>
+    <AssemblyName>waifu2x-nvge</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
