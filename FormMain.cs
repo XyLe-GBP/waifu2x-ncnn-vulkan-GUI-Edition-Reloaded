@@ -21,13 +21,15 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
     {
         public FormMain()
         {
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh");
             InitializeComponent();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            Text = "waifu2x-nvge ( build: 1.23.2120.1120-Beta )";
+            FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
+            Text = "waifu2x-nvge ( build: " + ver.FileVersion.ToString() + "-Beta)";
             var ini = new IniFile(@".\settings.ini");
             string[] OSInfo = new string[17];
             string[] CPUInfo = new string[3];
@@ -101,37 +103,50 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     Form.ShowDialog();
                     Form.Dispose();
 
-                    if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                    if (Common.AbortFlag != 0)
                     {
-                        using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
-                        foreach (ZipArchiveEntry entry in archive.Entries)
-                        {
-                            if (entry.FullName == "ffmpeg-" + netversion + "-essentials_build/bin/ffmpeg.exe")
-                            {
-                                entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
-                            }
-                        }
-
-                        if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
-                        {
-                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
-                            ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
-                            MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        Common.DlcancelFlag = 0;
+                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
-                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                        {
+                            using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                            foreach (ZipArchiveEntry entry in archive.Entries)
+                            {
+                                if (entry.FullName == "ffmpeg-" + netversion + "-essentials_build/bin/ffmpeg.exe")
+                                {
+                                    entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
+                                }
+                            }
+
+                            if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                            {
+                                ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                                ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
+                                MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                            MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                    if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                    {
+                        File.Delete(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
                     }
                 }
             }
-
-            if (ini.GetString("FFMPEG", "LATEST_VERSION") == "")
+            else if (ini.GetString("FFMPEG", "LATEST_VERSION") == "")
             {
                 DialogResult dr = MessageBox.Show(Strings.DLConfirm, Strings.MSGWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
@@ -146,32 +161,41 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     Form.ShowDialog();
                     Form.Dispose();
 
-                    if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                    if (Common.AbortFlag != 0)
                     {
-                        using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
-                        foreach (ZipArchiveEntry entry in archive.Entries)
-                        {
-                            if (entry.FullName == "ffmpeg-" + netversion + "-essentials_build/bin/ffmpeg.exe")
-                            {
-                                entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
-                            }
-                        }
-
-                        if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
-                        {
-                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
-                            ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
-                            MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        Common.DlcancelFlag = 0;
+                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
-                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                        {
+                            using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                            foreach (ZipArchiveEntry entry in archive.Entries)
+                            {
+                                if (entry.FullName == "ffmpeg-" + netversion + "-essentials_build/bin/ffmpeg.exe")
+                                {
+                                    entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
+                                }
+                            }
+
+                            if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                            {
+                                ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                                ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
+                                MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                            MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -192,32 +216,41 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                 Form.ShowDialog();
                                 Form.Dispose();
 
-                                if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                                if (Common.AbortFlag != 0)
                                 {
-                                    using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
-                                    foreach (ZipArchiveEntry entry in archive.Entries)
-                                    {
-                                        if (entry.FullName == "ffmpeg-" + netversion + @"-essentials_build/bin/ffmpeg.exe")
-                                        {
-                                            entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name);
-                                        }
-                                    }
-
-                                    if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
-                                    {
-                                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
-                                        ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
-                                        MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
+                                    Common.DlcancelFlag = 0;
+                                    ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                                 else
                                 {
-                                    ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
-                                    MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                                    {
+                                        using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                                        foreach (ZipArchiveEntry entry in archive.Entries)
+                                        {
+                                            if (entry.FullName == "ffmpeg-" + netversion + "-essentials_build/bin/ffmpeg.exe")
+                                            {
+                                                entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
+                                            }
+                                        }
+
+                                        if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                                        {
+                                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                                            ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
+                                            MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
                             else
@@ -231,33 +264,41 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                     Form.ShowDialog();
                                     Form.Dispose();
 
-                                    if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                                    if (Common.AbortFlag != 0)
                                     {
-                                        using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
-                                        foreach (ZipArchiveEntry entry in archive.Entries)
-                                        {
-                                            if (entry.FullName == "ffmpeg-" + netversion + @"-essentials_build/bin/ffmpeg.exe")
-                                            {
-                                                entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name);
-                                            }
-                                        }
-
-                                        if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
-                                        {
-                                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
-                                            ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
-                                            MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                                        }
+                                        Common.DlcancelFlag = 0;
+                                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     }
                                     else
                                     {
-                                        ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
-                                        MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                                        {
+                                            using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                                            foreach (ZipArchiveEntry entry in archive.Entries)
+                                            {
+                                                if (entry.FullName == "ffmpeg-" + netversion + "-essentials_build/bin/ffmpeg.exe")
+                                                {
+                                                    entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
+                                                }
+                                            }
+
+                                            if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                                            {
+                                                ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                                                ini.WriteString("FFMPEG", "LATEST_VERSION", netversion);
+                                                MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", "");
+                                            MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
                                     }
                                 }
                             }
@@ -611,108 +652,62 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             {
                 if (Common.ImageFile.Length <= 1)
                 {
-                    FileInfo file = new(Common.ImageFile[0]);
-
-                    switch (file.Extension.ToUpper())
-                    {
-                        case ".GIF":
-                            if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
-                            {
-                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name.Replace(file.Extension, ".png"));
-                                break;
-                            }
-                            else
-                            {
-                                MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                                return;
-                            }
-                        default:
-                            if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
-                            {
-                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name.Replace(file.Extension, ".png"));
-                                break;
-                            }
-                            else
-                            {
-                                MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                                return;
-                            }
-                    }
+                    string ext;
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
 
                     switch (fmt)
                     {
                         case 0:
                             ft = "Joint Photographic Experts Group (*.jpg)|*.jpg";
+                            ext = ".jpg";
                             break;
                         case 1:
                             ft = "Portable Network Graphics (*.png)|*.png";
+                            ext = ".png";
                             break;
                         case 2:
                             ft = "Google webp (*.webp)|*.webp";
+                            ext = ".webp";
                             break;
                         case 3:
                             ft = "Icon (*.ico)|*.ico";
+                            ext = ".ico";
                             break;
                         default:
                             ft = "Portable Network Graphics (*.png)|*.png";
+                            ext = ".png";
                             break;
                     }
-                    
-                    SaveFileDialog sfd = new()
+
+                    Common.ProgressFlag = 7;
+                    Common.ConvMultiFlag = 0;
+                    Common.ProgMin = 0;
+                    Common.ProgMax = Common.ImageFile.Length;
+
+                    FormProgress Form = new();
+                    Form.ShowDialog();
+
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+
+                    Common.ProgressFlag = 0;
+                    Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + Common.ImageFileName[0].Replace(Common.ImageFileExt[0], ext);
+                    Common.ProgMin = 0;
+                    Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                    Common.stopwatch = new Stopwatch();
+                    Common.stopwatch.Start();
+
+                    Form.ShowDialog();
+                    Form.Dispose();
+
+                    if (fmt == 3)
                     {
-                        FileName = Common.SFDRandomNumber() + "_Upscaled",
-                        InitialDirectory = "",
-                        Filter = ft,
-                        FilterIndex = 1,
-                        Title = "",
-                        OverwritePrompt = true,
-                        RestoreDirectory = true
-                    };
-                    if (sfd.ShowDialog() == DialogResult.OK)
-                    {
-                        Common.ProgressFlag = 0;
-                        Common.SFDSavePath = sfd.FileName;
-                        Common.ProgMin = 0;
-                        Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images", "*.*").Length;
-                        FormProgress Form = new();
-                        Form.ShowDialog();
-                        Form.Dispose();
-
-                        if (fmt == 3)
+                        bool err = ImageConvert.IMAGEtoICON(Common.SFDSavePath.Replace(".ico", ".png"), Common.SFDSavePath);
+                        File.Delete(Common.SFDSavePath.Replace(".ico", ".png"));
+                        if (err != true)
                         {
-                            ImageConvert.IMAGEtoICON(sfd.FileName.Replace(".ico", ".png"), sfd.FileName);
-                            File.Delete(sfd.FileName.Replace(".ico", ".png"));
-                        }
-
-                        if (Common.AbortFlag != 0)
-                        {
-                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                            label_File.Text = Strings.NotReadedString;
-                            label_Size.Text = Strings.NotReadedString;
-                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
-                            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-                            button_Image.Enabled = false;
-                            closeFileCToolStripMenuItem.Enabled = false;
-                            return;
-                        }
-
-                        if (File.Exists(sfd.FileName))
-                        {
-                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                            label_File.Text = Strings.NotReadedString;
-                            label_Size.Text = Strings.NotReadedString;
-                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
-                            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-                            button_Image.Enabled = false;
-                            closeFileCToolStripMenuItem.Enabled = false;
-                            MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Process.Start("EXPLORER.EXE", @"/select,""" + sfd.FileName + @"""");
-                        }
-                        else
-                        {
-                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
                             label_File.Text = Strings.NotReadedString;
                             label_Size.Text = Strings.NotReadedString;
                             toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
@@ -720,103 +715,145 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             button_Image.Enabled = false;
                             closeFileCToolStripMenuItem.Enabled = false;
                             MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                     }
 
-                }
-                else
-                {
-                    foreach (var sources in Common.ImageFile)
+                    if (Common.AbortFlag != 0)
                     {
-                        FileInfo file = new(sources);
-                        switch (file.Extension.ToUpper())
-                        {
-                            case ".GIF":
-                                if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
-                                {
-                                    File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name.Replace(file.Extension, ".png"));
-                                    break;
-                                }
-                                else
-                                {
-                                    MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                                    return;
-                                }
-                            default:
-                                if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
-                                {
-                                    File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\" + file.Name.Replace(file.Extension, ".png"));
-                                    break;
-                                }
-                                else
-                                {
-                                    MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                                    return;
-                                }
-                        }
+                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                        label_File.Text = Strings.NotReadedString;
+                        label_Size.Text = Strings.NotReadedString;
+                        toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                        button_Image.Enabled = false;
+                        closeFileCToolStripMenuItem.Enabled = false;
+                        Common.stopwatch.Stop();
+                        Common.stopwatch.Reset();
+                        return;
                     }
 
-                    FolderBrowserDialog fbd = new();
-                    fbd.Description = Strings.FBDImageTitle;
-                    fbd.RootFolder = Environment.SpecialFolder.Desktop;
-                    fbd.SelectedPath = @"C:\";
-                    fbd.ShowNewFolderButton = true;
+                    Common.stopwatch.Stop();
+                    Common.timeSpan = Common.stopwatch.Elapsed;
 
-                    if (fbd.ShowDialog(this) == DialogResult.OK)
+                    FormImageUpscaleDetail formImageUpscaleDetail = new();
+                    formImageUpscaleDetail.ShowDialog();
+                    formImageUpscaleDetail.Dispose();
+
+                    Common.stopwatch.Reset();
+
+                    if (Common.ImgDetFlag == 0)
                     {
-                        Common.ProgressFlag = 1;
-                        Common.FBDSavePath = fbd.SelectedPath;
-                        Common.ProgMin = 0;
-                        Common.ProgMax = Common.ImageFile.Length;
-
-                        if (Directory.GetFiles(Common.FBDSavePath, "*.*").Length != 0)
+                        SaveFileDialog sfd = new()
                         {
-                            DialogResult dr = MessageBox.Show(Strings.MSGAlready, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (dr == DialogResult.Yes)
+                            FileName = Common.SFDRandomNumber() + "_Upscaled",
+                            InitialDirectory = "",
+                            Filter = ft,
+                            FilterIndex = 1,
+                            Title = "",
+                            OverwritePrompt = true,
+                            RestoreDirectory = true
+                        };
+                        if (sfd.ShowDialog() == DialogResult.OK)
+                        {
+                            if (File.Exists(sfd.FileName))
                             {
-                                Common.DeleteDirectoryFiles(Common.FBDSavePath);
-                                FormProgress Form = new();
-                                Form.ShowDialog();
-                                Form.Dispose();
+                                File.Delete(sfd.FileName);
+                                File.Move(Common.SFDSavePath, sfd.FileName);
                             }
                             else
                             {
-                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                File.Move(Common.SFDSavePath, sfd.FileName);
+                            }
+                            
+                            if (File.Exists(sfd.FileName))
+                            {
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
                                 label_File.Text = Strings.NotReadedString;
                                 label_Size.Text = Strings.NotReadedString;
                                 toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                                 toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                                 button_Image.Enabled = false;
                                 closeFileCToolStripMenuItem.Enabled = false;
-                                return;
+                                MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Process.Start("EXPLORER.EXE", @"/select,""" + sfd.FileName + @"""");
+                            }
+                            else
+                            {
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                label_File.Text = Strings.NotReadedString;
+                                label_Size.Text = Strings.NotReadedString;
+                                toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                button_Image.Enabled = false;
+                                closeFileCToolStripMenuItem.Enabled = false;
+                                MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
                         {
-                            FormProgress Form = new();
-                            Form.ShowDialog();
-                            Form.Dispose();
-                        }
-
-                        if (Common.AbortFlag != 0)
-                        {
-                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
                             label_File.Text = Strings.NotReadedString;
                             label_Size.Text = Strings.NotReadedString;
                             toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                             button_Image.Enabled = false;
                             closeFileCToolStripMenuItem.Enabled = false;
-                            return;
                         }
+                    }
+                    else
+                    {
+                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                        label_File.Text = Strings.NotReadedString;
+                        label_Size.Text = Strings.NotReadedString;
+                        toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                        button_Image.Enabled = false;
+                        closeFileCToolStripMenuItem.Enabled = false;
+                    }
 
-                        foreach (var file in Directory.GetFiles(Common.FBDSavePath, "*.*"))
+                }
+                else
+                {
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+
+                    Common.ProgressFlag = 7;
+                    Common.ConvMultiFlag = 1;
+                    Common.ProgMin = 0;
+                    Common.ProgMax = Common.ImageFile.Length;
+
+                    FormProgress Form = new();
+                    Form.ShowDialog();
+
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+
+                    Common.ProgressFlag = 1;
+                    Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                    Common.ProgMin = 0;
+                    Common.ProgMax = Common.ImageFile.Length;
+
+                    Common.stopwatch = new Stopwatch();
+                    Common.stopwatch.Start();
+
+                    Form.ShowDialog();
+                    Form.Dispose();
+
+                    if (fmt == 3)
+                    {
+                        foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*"))
                         {
-                            if (!File.Exists(file))
+                            FileInfo fi = new(file);
+                            bool err = ImageConvert.IMAGEtoICON(Common.FBDSavePath + @"\" + fi.Name, Common.FBDSavePath + @"\" + fi.Name.Replace(fi.Extension, ".ico"));
+                            File.Delete(Common.FBDSavePath + @"\" + fi.Name);
+                            if (err != true)
                             {
-                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
                                 label_File.Text = Strings.NotReadedString;
                                 label_Size.Text = Strings.NotReadedString;
                                 toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
@@ -826,21 +863,156 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                 MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            if (fmt == 3)
-                            {
-                                ImageConvert.IMAGEtoICON(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png", Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".ico");
-                                File.Delete(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png");
-                            }
                         }
-                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                    }
+
+                    if (Common.AbortFlag != 0)
+                    {
+                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
                         label_File.Text = Strings.NotReadedString;
                         label_Size.Text = Strings.NotReadedString;
                         toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
                         toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
                         button_Image.Enabled = false;
                         closeFileCToolStripMenuItem.Enabled = false;
-                        MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Process.Start("EXPLORER.EXE", Common.FBDSavePath);
+                        Common.stopwatch.Stop();
+                        Common.stopwatch.Reset();
+                        return;
+                    }
+
+                    Common.stopwatch.Stop();
+                    Common.timeSpan = Common.stopwatch.Elapsed;
+
+                    FormImageUpscaleDetail formImageUpscaleDetail = new();
+                    formImageUpscaleDetail.ShowDialog();
+                    formImageUpscaleDetail.Dispose();
+
+                    Common.stopwatch.Reset();
+
+                    if (Common.ImgDetFlag == 0)
+                    {
+                        FolderBrowserDialog fbd = new();
+                        fbd.Description = Strings.FBDImageTitle;
+                        fbd.RootFolder = Environment.SpecialFolder.Desktop;
+                        fbd.SelectedPath = Application.ExecutablePath.Replace(Path.GetFileName(Application.ExecutablePath), "");
+                        fbd.ShowNewFolderButton = true;
+
+                        if (fbd.ShowDialog(this) == DialogResult.OK)
+                        {
+                            Common.ProgressFlag = 1;
+                            Common.FBDSavePath = fbd.SelectedPath;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Common.ImageFile.Length;
+
+                            if (Directory.GetFiles(Common.FBDSavePath, "*.*").Length != 0)
+                            {
+                                DialogResult dr = MessageBox.Show(Strings.MSGAlready, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                if (dr == DialogResult.Yes)
+                                {
+                                    Common.DeleteDirectoryFiles(Common.FBDSavePath);
+                                    foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*"))
+                                    {
+                                        FileInfo fi = new(file);
+                                        File.Move(file, Common.FBDSavePath + @"\" + fi.Name);
+                                        if (!File.Exists(Common.FBDSavePath + @"\" + fi.Name))
+                                        {
+                                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                            label_File.Text = Strings.NotReadedString;
+                                            label_Size.Text = Strings.NotReadedString;
+                                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                            button_Image.Enabled = false;
+                                            closeFileCToolStripMenuItem.Enabled = false;
+                                            MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                        
+                                    }
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                    label_File.Text = Strings.NotReadedString;
+                                    label_Size.Text = Strings.NotReadedString;
+                                    toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                    button_Image.Enabled = false;
+                                    closeFileCToolStripMenuItem.Enabled = false;
+                                    MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Process.Start("EXPLORER.EXE", Common.FBDSavePath);
+                                }
+                                else
+                                {
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                    label_File.Text = Strings.NotReadedString;
+                                    label_Size.Text = Strings.NotReadedString;
+                                    toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                    button_Image.Enabled = false;
+                                    closeFileCToolStripMenuItem.Enabled = false;
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*"))
+                                {
+                                    FileInfo fi = new(file);
+                                    File.Move(file, Common.FBDSavePath + @"\" + fi.Name);
+                                    if (!File.Exists(Common.FBDSavePath + @"\" + fi.Name))
+                                    {
+                                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                        label_File.Text = Strings.NotReadedString;
+                                        label_Size.Text = Strings.NotReadedString;
+                                        toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                        button_Image.Enabled = false;
+                                        closeFileCToolStripMenuItem.Enabled = false;
+                                        MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    if (fmt == 3)
+                                    {
+                                        ImageConvert.IMAGEtoICON(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png", Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".ico");
+                                        File.Delete(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png");
+                                    }
+                                }
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                label_File.Text = Strings.NotReadedString;
+                                label_Size.Text = Strings.NotReadedString;
+                                toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                button_Image.Enabled = false;
+                                closeFileCToolStripMenuItem.Enabled = false;
+                                MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Process.Start("EXPLORER.EXE", Common.FBDSavePath);
+                            }
+                        }
+                        else
+                        {
+                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                            label_File.Text = Strings.NotReadedString;
+                            label_Size.Text = Strings.NotReadedString;
+                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                            button_Image.Enabled = false;
+                            closeFileCToolStripMenuItem.Enabled = false;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                        label_File.Text = Strings.NotReadedString;
+                        label_Size.Text = Strings.NotReadedString;
+                        toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                        button_Image.Enabled = false;
+                        closeFileCToolStripMenuItem.Enabled = false;
+                        return;
                     }
                 }
             }
@@ -1012,118 +1184,236 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
         private void Button_Merge_Click(object sender, EventArgs e)
         {
-            if (Common.MergeParam.Length <= 70)
-            {
-                MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             var ini = new IniFile(@".\settings.ini");
-            int enc = ini.GetInt("VIDEO_SETTINGS", "ENCODE_INDEX", 65535);
-            string ffp = ini.GetString("VIDEO_SETTINGS", "FFMPEG_INDEX");
-            string vl = ini.GetString("VIDEO_SETTINGS", "VL_INDEX");
-            string al = ini.GetString("VIDEO_SETTINGS", "AL_INDEX");
-            string vlpath, alpath, acodec;
-            switch (enc)
-            {
-                case 3:
-                    acodec = "audio.m4a";
-                    break;
-                case 4:
-                    acodec = "audio.mp3";
-                    break;
-                default:
-                    acodec = "audio.wav";
-                    break;
-            }
-            if (vl != "")
-            {
-                vlpath = vl + @"\image-frames2x\image-%09d.png";
-            }
-            else
-            {
-                vlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x\image-%09d.png";
-            }
-            if (al != "")
-            {
-                alpath = al + @"\audio\" + acodec;
-            }
-            else
-            {
-                alpath = Directory.GetCurrentDirectory() + @"\_temp-project\audio\" + acodec;
-            }
+            int cvot = ini.GetInt("VIDEO_SETTINGS", "CVOT_INDEX", 65535), vot = ini.GetInt("VIDEO_SETTINGS", "VOT_INDEX", 65535);
 
-            SaveFileDialog sfd = new()
+            if (cvot != 0)
             {
-                FileName = Common.SFDRandomNumber() + "_Upscaled",
-                InitialDirectory = "",
-                Filter = Strings.FilterVideo,
-                FilterIndex = 1,
-                Title = Strings.SFDVideoTitle,
-                OverwritePrompt = true,
-                RestoreDirectory = true
-            };
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                Common.SFDSavePath = sfd.FileName;
-                ProcessStartInfo pi = new();
-                Process ps;
-                pi.FileName = ffp;
-                pi.Arguments = Common.MergeParam.Replace("$InImage", vlpath).Replace("$InAudio", alpath).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace(Common.FFmpegPath + " ", "");
-                pi.WindowStyle = ProcessWindowStyle.Normal;
-                pi.UseShellExecute = true;
-                ps = Process.Start(pi);
-                ps.WaitForExit();
-
-                if (File.Exists(Common.SFDSavePath))
+                if (vot != 0) // OpenCV
                 {
-                    Common.ProgressFlag = 4;
-                    Common.DeleteFlag = 1;
-                    Common.ProgMin = 0;
-                    Common.ProgMax = Directory.GetFiles(Common.DeletePathFrames, "*.*").Length + Directory.GetFiles(Common.DeletePathFrames2x, "*.*").Length + 1;
+                    SaveFileDialog sfd = new()
+                    {
+                        FileName = Common.SFDRandomNumber() + "_Upscaled",
+                        InitialDirectory = "",
+                        Filter = Strings.FilterVideo,
+                        FilterIndex = 1,
+                        Title = Strings.SFDVideoTitle,
+                        OverwritePrompt = true,
+                        RestoreDirectory = true
+                    };
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        Common.SFDSavePath = sfd.FileName;
 
-                    FormProgress Form = new();
-                    Form.ShowDialog();
-                    Form.Dispose();
+                        string sfps = ini.GetString("VIDEO_SETTINGS", "FPS_INDEX");
+                        if (sfps != "")
+                        {
+                            if (sfps.Contains('.'))
+                            {
+                                float fps = float.Parse(sfps);
+                                Mat mat;
 
-                    Common.UpscaleFlag = 0;
-                    label_File.Text = Strings.NotReadedString;
-                    label_Size.Text = Strings.NotReadedString;
-                    toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
-                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-                    button_Video.Text = Strings.ButtonUpscaleVideo;
-                    button_Video.Enabled = false;
-                    button_Merge.Enabled = false;
-                    closeFileCToolStripMenuItem.Enabled = false;
-                    MessageBox.Show(Strings.VRUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                                double[] imgsize = Common.GetImageSize(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x", "*")[0]);
+
+                                using var writer = new VideoWriter(sfd.FileName, FourCC.H264, fps, new OpenCvSharp.Size(imgsize[0], imgsize[1]));
+
+                                foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x", "*"))
+                                {
+                                    mat = Cv2.ImRead(item);
+                                    writer.Write(mat);
+                                    mat.Dispose();
+                                }
+                            }
+                            else
+                            {
+                                int fps = int.Parse(sfps);
+                                Mat mat;
+
+                                double[] imgsize = Common.GetImageSize(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x", "*")[0]);
+
+                                using var writer = new VideoWriter(sfd.FileName, FourCC.H264, fps, new OpenCvSharp.Size(imgsize[0], imgsize[1]));
+
+                                foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x", "*"))
+                                {
+                                    mat = Cv2.ImRead(item);
+                                    writer.Write(mat);
+                                    mat.Dispose();
+                                }
+                            }
+
+                            if (File.Exists(Common.SFDSavePath))
+                            {
+                                Common.ProgressFlag = 4;
+                                Common.DeleteFlag = 1;
+                                Common.ProgMin = 0;
+                                Common.ProgMax = Directory.GetFiles(Common.DeletePathFrames, "*.*").Length + Directory.GetFiles(Common.DeletePathFrames2x, "*.*").Length + 1;
+
+                                FormProgress Form = new();
+                                Form.ShowDialog();
+                                Form.Dispose();
+
+                                Common.UpscaleFlag = 0;
+                                label_File.Text = Strings.NotReadedString;
+                                label_Size.Text = Strings.NotReadedString;
+                                toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                button_Video.Text = Strings.ButtonUpscaleVideo;
+                                button_Video.Enabled = false;
+                                button_Merge.Enabled = false;
+                                closeFileCToolStripMenuItem.Enabled = false;
+                                MessageBox.Show(Strings.VRUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                            }
+                            else
+                            {
+                                Common.ProgressFlag = 4;
+                                Common.DeleteFlag = 1;
+                                Common.ProgMin = 0;
+                                Common.ProgMax = Directory.GetFiles(Common.DeletePathFrames, "*.*").Length + Directory.GetFiles(Common.DeletePathFrames2x, "*.*").Length + 1;
+
+                                FormProgress Form = new();
+                                Form.ShowDialog();
+                                Form.Dispose();
+
+                                Common.UpscaleFlag = 0;
+                                button_Video.Text = Strings.ButtonUpscaleVideo;
+                                label_File.Text = Strings.NotReadedString;
+                                label_Size.Text = Strings.NotReadedString;
+                                toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                button_Video.Enabled = false;
+                                button_Merge.Enabled = false;
+                                closeFileCToolStripMenuItem.Enabled = false;
+                                MessageBox.Show(Strings.VRUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
-                else
+                else // FFmpeg
                 {
-                    Common.ProgressFlag = 4;
-                    Common.DeleteFlag = 1;
-                    Common.ProgMin = 0;
-                    Common.ProgMax = Directory.GetFiles(Common.DeletePathFrames, "*.*").Length + Directory.GetFiles(Common.DeletePathFrames2x, "*.*").Length + 1;
+                    if (Common.MergeParam.Length <= 70)
+                    {
+                        MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                    FormProgress Form = new();
-                    Form.ShowDialog();
-                    Form.Dispose();
+                    int enc = ini.GetInt("VIDEO_SETTINGS", "ENCODE_INDEX", 65535);
+                    string ffp = ini.GetString("VIDEO_SETTINGS", "FFMPEG_INDEX");
+                    string vl = ini.GetString("VIDEO_SETTINGS", "VL_INDEX");
+                    string al = ini.GetString("VIDEO_SETTINGS", "AL_INDEX");
+                    string vlpath, alpath, acodec;
+                    switch (enc)
+                    {
+                        case 3:
+                            acodec = "audio.m4a";
+                            break;
+                        case 4:
+                            acodec = "audio.mp3";
+                            break;
+                        default:
+                            acodec = "audio.wav";
+                            break;
+                    }
+                    if (vl != "")
+                    {
+                        vlpath = vl + @"\image-frames2x\image-%09d.png";
+                    }
+                    else
+                    {
+                        vlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x\image-%09d.png";
+                    }
+                    if (al != "")
+                    {
+                        alpath = al + @"\audio\" + acodec;
+                    }
+                    else
+                    {
+                        alpath = Directory.GetCurrentDirectory() + @"\_temp-project\audio\" + acodec;
+                    }
 
-                    Common.UpscaleFlag = 0;
-                    button_Video.Text = Strings.ButtonUpscaleVideo;
-                    label_File.Text = Strings.NotReadedString;
-                    label_Size.Text = Strings.NotReadedString;
-                    toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
-                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-                    button_Video.Enabled = false;
-                    button_Merge.Enabled = false;
-                    closeFileCToolStripMenuItem.Enabled = false;
-                    MessageBox.Show(Strings.VRUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SaveFileDialog sfd = new()
+                    {
+                        FileName = Common.SFDRandomNumber() + "_Upscaled",
+                        InitialDirectory = "",
+                        Filter = Strings.FilterVideo,
+                        FilterIndex = 1,
+                        Title = Strings.SFDVideoTitle,
+                        OverwritePrompt = true,
+                        RestoreDirectory = true
+                    };
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        Common.SFDSavePath = sfd.FileName;
+                        ProcessStartInfo pi = new();
+                        Process ps;
+                        pi.FileName = ffp;
+                        pi.Arguments = Common.MergeParam.Replace("$InImage", vlpath).Replace("$InAudio", alpath).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace(Common.FFmpegPath + " ", "");
+                        pi.WindowStyle = ProcessWindowStyle.Normal;
+                        pi.UseShellExecute = true;
+                        ps = Process.Start(pi);
+                        ps.WaitForExit();
+
+                        if (File.Exists(Common.SFDSavePath))
+                        {
+                            Common.ProgressFlag = 4;
+                            Common.DeleteFlag = 1;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(Common.DeletePathFrames, "*.*").Length + Directory.GetFiles(Common.DeletePathFrames2x, "*.*").Length + 1;
+
+                            FormProgress Form = new();
+                            Form.ShowDialog();
+                            Form.Dispose();
+
+                            Common.UpscaleFlag = 0;
+                            label_File.Text = Strings.NotReadedString;
+                            label_Size.Text = Strings.NotReadedString;
+                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                            button_Video.Text = Strings.ButtonUpscaleVideo;
+                            button_Video.Enabled = false;
+                            button_Merge.Enabled = false;
+                            closeFileCToolStripMenuItem.Enabled = false;
+                            MessageBox.Show(Strings.VRUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                        }
+                        else
+                        {
+                            Common.ProgressFlag = 4;
+                            Common.DeleteFlag = 1;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(Common.DeletePathFrames, "*.*").Length + Directory.GetFiles(Common.DeletePathFrames2x, "*.*").Length + 1;
+
+                            FormProgress Form = new();
+                            Form.ShowDialog();
+                            Form.Dispose();
+
+                            Common.UpscaleFlag = 0;
+                            button_Video.Text = Strings.ButtonUpscaleVideo;
+                            label_File.Text = Strings.NotReadedString;
+                            label_Size.Text = Strings.NotReadedString;
+                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                            button_Video.Enabled = false;
+                            button_Merge.Enabled = false;
+                            closeFileCToolStripMenuItem.Enabled = false;
+                            MessageBox.Show(Strings.VRUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
-            else
-            {
-                return;
-            }
+            
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)

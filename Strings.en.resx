@@ -132,6 +132,13 @@ If you have enabled advanced settings, please check your settings.</value>
 If you exit the application at this point, all upscaled
 file will be lost. Are you sure you want to exit?</value>
   </data>
+  <data name="ConvertProgress" xml:space="preserve">
+    <value>The image is being converted.
+Please wait a moment...</value>
+  </data>
+  <data name="ConvertScalled" xml:space="preserve">
+    <value>files converted</value>
+  </data>
   <data name="CurrentString" xml:space="preserve">
     <value>Current version:</value>
   </data>
@@ -151,7 +158,7 @@ Are you sure you want to stop the process?</value>
 (Internet connection is required to download)</value>
   </data>
   <data name="DLInfo" xml:space="preserve">
-    <value>{0}% ({1} byte out of {2} byte) Download completed</value>
+    <value>{0}% ({1} KiB out of {2} KiB) Download completed</value>
   </data>
   <data name="DLProgress" xml:space="preserve">
     <value>The file is downloading.

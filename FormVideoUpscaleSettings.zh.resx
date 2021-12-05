@@ -88,6 +88,21 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>高级设置</value>
   </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>489, 155</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 15</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>如何生成一个视频：</value>
+  </data>
+  <data name="checkBox_VOT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 19</value>
+  </data>
+  <data name="checkBox_VOT.Text" xml:space="preserve">
+    <value>指定视频的生成方式</value>
+  </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 155</value>
   </data>

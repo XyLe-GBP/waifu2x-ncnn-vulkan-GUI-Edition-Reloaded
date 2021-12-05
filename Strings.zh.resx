@@ -132,6 +132,12 @@
 如果你在这时退出应用程序，所有被放大的
 文件将被丢失。 你确定你要退出吗？</value>
   </data>
+  <data name="ConvertProgress" xml:space="preserve">
+    <value>图像正在被转换。 请稍等...</value>
+  </data>
+  <data name="ConvertScalled" xml:space="preserve">
+    <value>文件已转换</value>
+  </data>
   <data name="CurrentString" xml:space="preserve">
     <value>当前版本：</value>
   </data>
@@ -151,7 +157,7 @@
 (你需要一个互联网连接来下载)</value>
   </data>
   <data name="DLInfo" xml:space="preserve">
-    <value>{0}% ({1} 个字节 中的 {2} 个字节) 下载完成</value>
+    <value>{0}% ({1} KiB 中的 {2} KiB) 下载完成</value>
   </data>
   <data name="DLProgress" xml:space="preserve">
     <value>你正在下载一个文件。

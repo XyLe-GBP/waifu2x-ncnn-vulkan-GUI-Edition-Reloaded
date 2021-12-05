@@ -100,6 +100,25 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp {
         }
         
         /// <summary>
+        ///   The image is being converted.
+        ///Please wait a moment... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ConvertProgress {
+            get {
+                return ResourceManager.GetString("ConvertProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   files converted に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ConvertScalled {
+            get {
+                return ResourceManager.GetString("ConvertScalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Current version: に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string CurrentString {
@@ -148,7 +167,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp {
         }
         
         /// <summary>
-        ///   {0}% ({1} byte out of {2} byte) Download completed に類似しているローカライズされた文字列を検索します。
+        ///   {0}% ({1} KiB out of {2} KiB) Download completed に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string DLInfo {
             get {

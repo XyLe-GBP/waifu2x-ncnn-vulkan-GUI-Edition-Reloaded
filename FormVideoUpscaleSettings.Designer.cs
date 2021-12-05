@@ -39,6 +39,9 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.checkBox_VOT = new System.Windows.Forms.CheckBox();
+            this.comboBox_VOT = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.comboBox_preset = new System.Windows.Forms.ComboBox();
             this.checkBox_preset = new System.Windows.Forms.CheckBox();
@@ -147,6 +150,9 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.checkBox_VOT);
+            this.groupBox2.Controls.Add(this.comboBox_VOT);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.comboBox_preset);
             this.groupBox2.Controls.Add(this.checkBox_preset);
@@ -191,6 +197,29 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.groupBox2.Controls.Add(this.checkBox_NVENC);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // checkBox_VOT
+            // 
+            resources.ApplyResources(this.checkBox_VOT, "checkBox_VOT");
+            this.checkBox_VOT.Name = "checkBox_VOT";
+            this.checkBox_VOT.UseVisualStyleBackColor = true;
+            this.checkBox_VOT.CheckedChanged += new System.EventHandler(this.CheckBox_VOT_CheckedChanged);
+            // 
+            // comboBox_VOT
+            // 
+            resources.ApplyResources(this.comboBox_VOT, "comboBox_VOT");
+            this.comboBox_VOT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_VOT.FormattingEnabled = true;
+            this.comboBox_VOT.Items.AddRange(new object[] {
+            resources.GetString("comboBox_VOT.Items"),
+            resources.GetString("comboBox_VOT.Items1")});
+            this.comboBox_VOT.Name = "comboBox_VOT";
+            this.comboBox_VOT.SelectedIndexChanged += new System.EventHandler(this.ComboBox_VOT_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -567,5 +596,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         private System.Windows.Forms.ComboBox comboBox_preset;
         private System.Windows.Forms.CheckBox checkBox_preset;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox checkBox_VOT;
+        private System.Windows.Forms.ComboBox comboBox_VOT;
     }
 }

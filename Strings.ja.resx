@@ -132,6 +132,12 @@
 このままアプリケーションを終了すると、アップスケールされた
 ファイルは全て失われます。本当に終了しますか？</value>
   </data>
+  <data name="ConvertProgress" xml:space="preserve">
+    <value>画像を変換中です。しばらくお待ちください…</value>
+  </data>
+  <data name="ConvertScalled" xml:space="preserve">
+    <value>ファイル 変換済み</value>
+  </data>
   <data name="CurrentString" xml:space="preserve">
     <value>現在のバージョン：</value>
   </data>
@@ -151,7 +157,7 @@
 (ダウンロードにはインターネット接続が必要です)</value>
   </data>
   <data name="DLInfo" xml:space="preserve">
-    <value>{0}% ({1}バイト 中 {2}バイト) ダウンロード完了</value>
+    <value>{0}% ({1} KiB 中 {2} KiB) ダウンロード完了</value>
   </data>
   <data name="DLProgress" xml:space="preserve">
     <value>ファイルのダウンロード中です。

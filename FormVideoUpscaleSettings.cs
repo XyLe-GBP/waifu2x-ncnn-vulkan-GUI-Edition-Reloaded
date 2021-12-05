@@ -54,7 +54,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         {
             var ini = new IniFile(@".\settings.ini");
 
-            int eas = ini.GetInt("VIDEO_SETTINGS", "ADVANCED_INDEX", 65535), eiaac = ini.GetInt("VIDEO_SETTINGS", "IAAC_INDEX", 65535), dss = ini.GetInt("VIDEO_SETTINGS", "DSS_INDEX", 65535), cc = ini.GetInt("VIDEO_SETTINGS", "CC_INDEX", 65535), oao = ini.GetInt("VIDEO_SETTINGS", "OAO_INDEX", 65535), hi = ini.GetInt("VIDEO_SETTINGS", "HI_INDEX", 65535), eso = ini.GetInt("VIDEO_SETTINGS", "SO_INDEX", 65535), dds = ini.GetInt("VIDEO_SETTINGS", "DS_INDEX", 65535), mi = ini.GetInt("VIDEO_SETTINGS", "MI_INDEX", 65535), oof = ini.GetInt("VIDEO_SETTINGS", "OOF_INDEX", 65535), useNVENC = ini.GetInt("VIDEO_SETTINGS", "NVENC_INDEX", 65535), mvc = ini.GetInt("VIDEO_SETTINGS", "MVC_INDEX", 65535), mac = ini.GetInt("VIDEO_SETTINGS", "MAC_INDEX", 65535), ab = ini.GetInt("VIDEO_SETTINGS", "AB_INDEX", 65535), ae = ini.GetInt("VIDEO_SETTINGS", "AE_INDEX", 65535), pre = ini.GetInt("VIDEO_SETTINGS", "PRESET_INDEX", 65535), msol = ini.GetInt("VIDEO_SETTINGS", "MSOL_INDEX", 65535);
+            int eas = ini.GetInt("VIDEO_SETTINGS", "ADVANCED_INDEX", 65535), eiaac = ini.GetInt("VIDEO_SETTINGS", "IAAC_INDEX", 65535), dss = ini.GetInt("VIDEO_SETTINGS", "DSS_INDEX", 65535), cc = ini.GetInt("VIDEO_SETTINGS", "CC_INDEX", 65535), oao = ini.GetInt("VIDEO_SETTINGS", "OAO_INDEX", 65535), hi = ini.GetInt("VIDEO_SETTINGS", "HI_INDEX", 65535), eso = ini.GetInt("VIDEO_SETTINGS", "SO_INDEX", 65535), dds = ini.GetInt("VIDEO_SETTINGS", "DS_INDEX", 65535), mi = ini.GetInt("VIDEO_SETTINGS", "MI_INDEX", 65535), oof = ini.GetInt("VIDEO_SETTINGS", "OOF_INDEX", 65535), useNVENC = ini.GetInt("VIDEO_SETTINGS", "NVENC_INDEX", 65535), mvc = ini.GetInt("VIDEO_SETTINGS", "MVC_INDEX", 65535), mac = ini.GetInt("VIDEO_SETTINGS", "MAC_INDEX", 65535), ab = ini.GetInt("VIDEO_SETTINGS", "AB_INDEX", 65535), ae = ini.GetInt("VIDEO_SETTINGS", "AE_INDEX", 65535), pre = ini.GetInt("VIDEO_SETTINGS", "PRESET_INDEX", 65535), msol = ini.GetInt("VIDEO_SETTINGS", "MSOL_INDEX", 65535), cvot = ini.GetInt("VIDEO_SETTINGS", "CVOT_INDEX", 65535);
             string vfps = ini.GetString("VIDEO_SETTINGS", "FPS_INDEX");
             string pathFFmpeg = ini.GetString("VIDEO_SETTINGS", "FFMPEG_INDEX");
             string crf = ini.GetString("VIDEO_SETTINGS", "CRF_INDEX");
@@ -63,6 +63,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             string abitrate = ini.GetString("VIDEO_SETTINGS", "BIT_INDEX");
             int enc = ini.GetInt("VIDEO_SETTINGS", "ENCODE_INDEX", 65535);
             int h264 = ini.GetInt("VIDEO_SETTINGS", "H264_INDEX", 65535);
+            int vot = ini.GetInt("VIDEO_SETTINGS", "VOT_INDEX", 65535);
             string vl = ini.GetString("VIDEO_SETTINGS", "VL_INDEX");
             string al = ini.GetString("VIDEO_SETTINGS", "AL_INDEX");
             string cmdparam1 = ini.GetString("VIDEO_SETTINGS", "CMDV_INDEX");
@@ -125,6 +126,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         checkBox_preset.Checked = false;
                         checkBox_MSOL.Enabled = false;
                         checkBox_MSOL.Checked = false;
+                        checkBox_VOT.Enabled = false;
+                        checkBox_VOT.Checked = false;
                         label2.Enabled = false;
                         label3.Enabled = false;
                         label4.Enabled = false;
@@ -137,6 +140,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         label13.Enabled = false;
                         label14.Enabled = false;
                         label15.Enabled = false;
+                        label16.Enabled = false;
                         textBox_CMDV.Enabled = false;
                         textBox_CMDA.Enabled = false;
                         textBox_CMDF.Enabled = false;
@@ -159,6 +163,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         checkBox_AB.Enabled = true;
                         checkBox_preset.Enabled = true;
                         checkBox_MSOL.Enabled = true;
+                        checkBox_VOT.Enabled = true;
                         label9.Enabled = true;
                         label12.Enabled = true;
                         label13.Enabled = true;
@@ -714,6 +719,76 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             Videoloc = " $OutFile";
                             Audioloc = " $OutFile";
                         }
+                        if (cvot != 65535)
+                        {
+                            switch (cvot)
+                            {
+                                case 0:
+                                    checkBox_VOT.Checked = false;
+                                    comboBox_VOT.Enabled = false;
+                                    label16.Enabled = false;
+                                    break;
+                                case 1:
+                                    {
+                                        checkBox_EIA.Checked = false;
+                                        checkBox_EIA.Enabled = false;
+                                        checkBox_DS.Checked = false;
+                                        checkBox_DS.Enabled = false;
+                                        checkBox_DSS.Checked = false;
+                                        checkBox_DSS.Enabled = false;
+                                        checkBox_CC.Enabled = false;
+                                        checkBox_CC.Checked = false;
+                                        checkBox_OAO.Enabled = false;
+                                        checkBox_OAO.Checked = false;
+                                        checkBox_HI.Enabled = false;
+                                        checkBox_HI.Checked = false;
+                                        checkBox_SO.Enabled = false;
+                                        checkBox_SO.Checked = false;
+                                        checkBox_MI.Enabled = false;
+                                        checkBox_MI.Checked = false;
+                                        checkBox_OOF.Enabled = false;
+                                        checkBox_OOF.Checked = false;
+                                        checkBox_NVENC.Enabled = false;
+                                        checkBox_NVENC.Checked = false;
+                                        label8.Enabled = false;
+                                        textBox_CRF.Text = null;
+                                        textBox_CRF.Enabled = false;
+                                        checkBox_AE.Enabled = false;
+                                        checkBox_AE.Checked = false;
+                                        label14.Enabled = false;
+                                        comboBox_AE.Enabled = false;
+                                        checkBox_preset.Enabled = false;
+                                        checkBox_preset.Checked = false;
+                                        label15.Enabled = false;
+                                        comboBox_preset.Enabled = false;
+                                        textBox_CMDA.Enabled = false;
+                                        textBox_CMDA.Text = null;
+                                        textBox_CMDF.Enabled = false;
+                                        textBox_CMDF.Text = null;
+                                        textBox_CMDV.Enabled = false;
+                                        textBox_CMDV.Text = null;
+
+                                        checkBox_VOT.Checked = true;
+                                        comboBox_VOT.Enabled = true;
+                                        label16.Enabled = true;
+                                        switch (vot)
+                                        {
+                                            case 0:
+                                                comboBox_VOT.SelectedIndex = vot;
+                                                break;
+                                            case 1:
+                                                comboBox_VOT.SelectedIndex = vot;
+                                                break;
+                                            default:
+                                                comboBox_VOT.SelectedIndex = 0;
+                                                break;
+                                        }
+                                        break;
+                                    }
+                                default:
+                                    break;
+                            }
+                        }
                         if (cmdparam1 != "")
                         {
                             textBox_CMDV.Text = cmdparam1;
@@ -777,6 +852,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 checkBox_preset.Checked = false;
                 checkBox_MSOL.Enabled = false;
                 checkBox_MSOL.Checked = false;
+                checkBox_VOT.Enabled = false;
+                checkBox_VOT.Checked = false;
                 label2.Enabled = false;
                 label3.Enabled = false;
                 label4.Enabled = false;
@@ -789,6 +866,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 label13.Enabled = false;
                 label14.Enabled = false;
                 label15.Enabled = false;
+                label16.Enabled = false;
                 textBox_CMDV.Enabled = false;
                 textBox_CMDA.Enabled = false;
                 textBox_CMDF.Enabled = false;
@@ -1108,6 +1186,20 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             }
         }
 
+        private void CheckBox_VOT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_VOT.Checked != false)
+            {
+                comboBox_VOT.Enabled = true;
+                label16.Enabled = true;
+            }
+            else
+            {
+                comboBox_VOT.Enabled = false;
+                label16.Enabled = false;
+            }
+        }
+
         private void CheckBox_Advanced_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_Advanced.Checked != false)
@@ -1147,6 +1239,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 checkBox_AB.Enabled = true;
                 checkBox_preset.Enabled = true;
                 checkBox_MSOL.Enabled = true;
+                checkBox_VOT.Enabled = true;
                 label9.Enabled = true;
                 label12.Enabled = true;
                 label13.Enabled = true;
@@ -1212,6 +1305,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 checkBox_preset.Checked = false;
                 checkBox_MSOL.Enabled = false;
                 checkBox_MSOL.Checked = false;
+                checkBox_VOT.Enabled = false;
+                checkBox_VOT.Checked = false;
                 label2.Enabled = false;
                 label3.Enabled = false;
                 label4.Enabled = false;
@@ -1224,6 +1319,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 label13.Enabled = false;
                 label14.Enabled = false;
                 label15.Enabled = false;
+                label16.Enabled = false;
                 textBox_CMDV.Enabled = false;
                 textBox_CMDA.Enabled = false;
                 textBox_CMDF.Enabled = false;
@@ -1260,7 +1356,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             {
                 FileName = "",
                 InitialDirectory = "",
-                Filter = "Application (ffmpeg.exe)|ffmpeg.exe",
+                Filter = "Application|ffmpeg.exe",
                 FilterIndex = 1,
                 Title = "Select FFmpeg Application Location",
                 RestoreDirectory = true
@@ -1297,7 +1393,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             FolderBrowserDialog fbd = new();
             fbd.Description = "";
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
-            fbd.SelectedPath = @"C:\";
+            fbd.SelectedPath = Application.ExecutablePath.Replace(Path.GetFileName(Application.ExecutablePath), "");
             fbd.ShowNewFolderButton = true;
 
             if (fbd.ShowDialog(this) == DialogResult.OK)
@@ -1314,7 +1410,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             FolderBrowserDialog fbd = new();
             fbd.Description = "";
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
-            fbd.SelectedPath = @"C:\";
+            fbd.SelectedPath = Application.ExecutablePath.Replace(Path.GetFileName(Application.ExecutablePath), "");
             fbd.ShowNewFolderButton = true;
 
             if (fbd.ShowDialog(this) == DialogResult.OK)
@@ -1534,6 +1630,15 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             {
                 ini.WriteString("VIDEO_SETTINGS", "MSOL_INDEX", "1");
             }
+            ini.WriteString("VIDEO_SETTINGS", "VOT_INDEX", comboBox_VOT.SelectedIndex.ToString());
+            if (checkBox_VOT.Checked == false)
+            {
+                ini.WriteString("VIDEO_SETTINGS", "CVOT_INDEX", "0");
+            }
+            else
+            {
+                ini.WriteString("VIDEO_SETTINGS", "CVOT_INDEX", "1");
+            }
             ini.WriteString("VIDEO_SETTINGS", "VL_INDEX", textBox_VL.Text);
             ini.WriteString("VIDEO_SETTINGS", "AL_INDEX", textBox_AL.Text);
             ini.WriteString("VIDEO_SETTINGS", "CMDV_INDEX", cmdparam_v1);
@@ -1657,6 +1762,86 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             }
         }
 
+        private void ComboBox_VOT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox_VOT.SelectedIndex)
+            {
+                case 0:
+                    checkBox_EIA.Enabled = true;
+                    checkBox_DS.Enabled = true;
+                    checkBox_DSS.Enabled = true;
+                    checkBox_CC.Enabled = true;
+                    checkBox_OAO.Enabled = true;
+                    checkBox_HI.Enabled = true;
+                    checkBox_SO.Enabled = true;
+                    checkBox_MI.Enabled = true;
+                    checkBox_OOF.Enabled = true;
+                    checkBox_NVENC.Enabled = true;
+                    checkBox_AE.Enabled = true;
+                    checkBox_preset.Enabled = true;
+                    textBox_CMDA.Enabled = true;
+                    textBox_CMDF.Enabled = true;
+                    textBox_CMDV.Enabled = true;
+                    break;
+                case 1:
+                    checkBox_EIA.Checked = false;
+                    checkBox_EIA.Enabled = false;
+                    checkBox_DS.Checked = false;
+                    checkBox_DS.Enabled = false;
+                    checkBox_DSS.Checked = false;
+                    checkBox_DSS.Enabled = false;
+                    checkBox_CC.Enabled = false;
+                    checkBox_CC.Checked = false;
+                    checkBox_OAO.Enabled = false;
+                    checkBox_OAO.Checked = false;
+                    checkBox_HI.Enabled = false;
+                    checkBox_HI.Checked = false;
+                    checkBox_SO.Enabled = false;
+                    checkBox_SO.Checked = false;
+                    checkBox_MI.Enabled = false;
+                    checkBox_MI.Checked = false;
+                    checkBox_OOF.Enabled = false;
+                    checkBox_OOF.Checked = false;
+                    checkBox_NVENC.Enabled = false;
+                    checkBox_NVENC.Checked = false;
+                    label8.Enabled = false;
+                    textBox_CRF.Text = null;
+                    textBox_CRF.Enabled = false;
+                    checkBox_AE.Enabled = false;
+                    checkBox_AE.Checked = false;
+                    label14.Enabled = false;
+                    comboBox_AE.Enabled = false;
+                    checkBox_preset.Enabled = false;
+                    checkBox_preset.Checked = false;
+                    label15.Enabled = false;
+                    comboBox_preset.Enabled = false;
+                    textBox_CMDA.Enabled = false;
+                    textBox_CMDA.Text = null;
+                    textBox_CMDF.Enabled = false;
+                    textBox_CMDF.Text = null;
+                    textBox_CMDV.Enabled = false;
+                    textBox_CMDV.Text = null;
+                    break;
+                default:
+                    checkBox_EIA.Enabled = true;
+                    checkBox_DS.Enabled = true;
+                    checkBox_DSS.Enabled = true;
+                    checkBox_CC.Enabled = true;
+                    checkBox_OAO.Enabled = true;
+                    checkBox_HI.Enabled = true;
+                    checkBox_SO.Enabled = true;
+                    checkBox_MI.Enabled = true;
+                    checkBox_OOF.Enabled = true;
+                    checkBox_NVENC.Enabled = true;
+                    checkBox_AE.Enabled = true;
+                    checkBox_preset.Enabled = true;
+                    textBox_CMDA.Enabled = true;
+                    textBox_CMDF.Enabled = true;
+                    textBox_CMDV.Enabled = true;
+                    break;
+            }
+        }
+
         private void TextBox_FFmpeg_TextChanged(object sender, EventArgs e)
         {
             if (checkBox_Advanced.Checked != false)
@@ -1732,5 +1917,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             cmdparam_v3 = pathFF + videofps + hidebnr + intaac + " -i $InImage -i $InAudio -r" + videofps.Replace(" -framerate", "") + qpl + Videocodec + preset + Audiocodec + Audiobitrate + overw + " $OutFile";
             textBox_CMDF.Text = cmdparam_v3;
         }
+
+        
     }
 }

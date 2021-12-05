@@ -38,6 +38,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.backgroundWorker_Video = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker_Delete = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker_Split = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker_Convert = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -88,6 +89,14 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.backgroundWorker_Split.WorkerSupportsCancellation = true;
             this.backgroundWorker_Split.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_Split_DoWork);
             // 
+            // backgroundWorker_Convert
+            // 
+            this.backgroundWorker_Convert.WorkerReportsProgress = true;
+            this.backgroundWorker_Convert.WorkerSupportsCancellation = true;
+            this.backgroundWorker_Convert.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Convert_DoWork);
+            this.backgroundWorker_Convert.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Convert_ProgressChanged);
+            this.backgroundWorker_Convert.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_Convert_RunWorkerCompleted);
+            // 
             // FormProgress
             // 
             resources.ApplyResources(this, "$this");
@@ -115,5 +124,6 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         private System.ComponentModel.BackgroundWorker backgroundWorker_Video;
         private System.ComponentModel.BackgroundWorker backgroundWorker_Delete;
         private System.ComponentModel.BackgroundWorker backgroundWorker_Split;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_Convert;
     }
 }

@@ -66,6 +66,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.label6 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_Status = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -282,6 +283,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             // 
             // label_File
             // 
+            this.label_File.AutoEllipsis = true;
             resources.ApplyResources(this.label_File, "label_File");
             this.label_File.Name = "label_File";
             // 
@@ -307,10 +309,16 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             this.toolStripStatusLabel_Status.Name = "toolStripStatusLabel_Status";
             resources.ApplyResources(this.toolStripStatusLabel_Status, "toolStripStatusLabel_Status");
             // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -376,6 +384,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Status;
         private System.Windows.Forms.Label label_OS;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

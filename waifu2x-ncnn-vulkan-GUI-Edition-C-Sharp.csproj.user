@@ -7,6 +7,9 @@
     <Compile Update="FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormImageUpscaleDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormImageUpscaleSettings.cs">
       <SubType>Form</SubType>
     </Compile>

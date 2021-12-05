@@ -27,7 +27,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             switch (Common.ProgressFlag)
             {
                 case 0:
-                    foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images", "*.*"))
+                    foreach (var filename in Common.ImageFileName) // Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*")
                     {
                         var ini = new IniFile(@".\settings.ini");
                         int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535);
@@ -51,13 +51,15 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                 break;
                         }
 
+                        string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[0], ".png") + "\"";//FileInfo fi = new(file);
+
                         Process ps = new();
                         ProcessStartInfo pi = new();
 
                         if (ft == ".ico")
                         {
                             pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
-                            pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.SFDSavePath.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
                             pi.WindowStyle = ProcessWindowStyle.Hidden;
                             pi.UseShellExecute = true;
                             ps = Process.Start(pi);
@@ -65,7 +67,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         else
                         {
                             pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
-                            pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("waifu2x-ncnn-vulkan ", "");
                             pi.WindowStyle = ProcessWindowStyle.Hidden;
                             pi.UseShellExecute = true;
                             ps = Process.Start(pi);
@@ -85,14 +87,12 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             }
                             else if (ps.HasExited == true)
                             {
-                                FileInfo fi = new(file);
-                                worker.ReportProgress(Directory.GetFiles(fi.DirectoryName, fi.Name).Length);
+                                worker.ReportProgress(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*").Length);
                                 break;
                             }
                             else
                             {
-                                FileInfo fi = new(file);
-                                worker.ReportProgress(Directory.GetFiles(fi.DirectoryName, fi.Name).Length);
+                                worker.ReportProgress(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*").Length);
                                 continue;
                             }
                         }
@@ -101,7 +101,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 case 1:
                     {
                         var ini = new IniFile(@".\settings.ini");
-                        int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535);
+                        int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535), i = 0;
                         string ft;
                         switch (fmt)
                         {
@@ -122,15 +122,18 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                                 break;
                         }
 
-                        foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images", "*.*"))
+                        foreach (var filename in Common.ImageFileName) // Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*")
                         {
+                            
+                            string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[i], ".png") + "\"";//FileInfo fi = new(file);
+
                             ProcessStartInfo pi = new();
                             Process ps = new();
 
                             if (ft == ".ico")
                             {
                                 pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
-                                pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png" + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                                pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
                                 pi.WindowStyle = ProcessWindowStyle.Hidden;
                                 pi.UseShellExecute = true;
                                 ps = Process.Start(pi);
@@ -138,12 +141,13 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                             else
                             {
                                 pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
-                                pi.Arguments = Common.ImageParam.Replace("$InFile", file).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ft + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                                pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(Common.ImageFileExt[i], ft) + "\"").Replace("waifu2x-ncnn-vulkan ", "");
                                 pi.WindowStyle = ProcessWindowStyle.Hidden;
                                 pi.UseShellExecute = true;
                                 ps = Process.Start(pi);
-
                             }
+
+                            i++;
 
                             while (!ps.HasExited)
                             {
@@ -236,25 +240,26 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                         if (backgroundWorker_Progress.CancellationPending)
                         {
                             e.Cancel = true;
+                            Common.DlcancelFlag = 1;
                             return;
-                        }
-                        if (Common.DlFlag == 1) // OK
-                        {
-                            break;
-                        }
-                        else if (Common.DlFlag == 2) // Cancelled
-                        {
-                            break;
-                        }
-                        else if (Common.DlFlag == 3) // Error
-                        {
-                            break;
                         }
                         else
                         {
                             worker.ReportProgress(Directory.GetFiles(Common.DeletePathFrames, "*.*").Length); // Dummy RP
-                            continue;
                         }
+                    }
+                    Common.downloadClient.Dispose();
+                    break;
+                case 7:
+                    backgroundWorker_Convert.RunWorkerAsync();
+                    while (backgroundWorker_Convert.IsBusy)
+                    {
+                        if (backgroundWorker_Progress.CancellationPending)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+                        worker.ReportProgress(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*").Length);
                     }
                     break;
                 default:
@@ -294,6 +299,10 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     progressBar1.Value = Common.DLProgchanged;
                     label_Pos.Text = Common.DLInfo;
                     break;
+                case 7:
+                    progressBar1.Value = e.ProgressPercentage;
+                    label_Pos.Text = e.ProgressPercentage.ToString() + " / " + Common.ProgMax + " " + Strings.ConvertScalled;
+                    break;
                 default:
                     break;
             }
@@ -303,9 +312,18 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         {
             if (e.Cancelled)
             {
-                MessageBox.Show(Strings.ProgressAborted, Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Common.AbortFlag = 1;
-                Close();
+                if (Common.DlcancelFlag != 0)
+                {
+                    Common.AbortFlag = 1;
+                    Common.downloadClient.Dispose();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show(Strings.ProgressAborted, Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Common.AbortFlag = 1;
+                    Close();
+                }
             }
             else
             {
@@ -361,6 +379,14 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                     label_Pos.Text = Strings.Initalize;
                     backgroundWorker_Progress.RunWorkerAsync();
                     break;
+                case 7:
+                    progressBar1.Maximum = Common.ImageFile.Length;
+                    label_ProgressText.Text = Strings.ConvertProgress;
+                    label_Pos.Text = Strings.Initalize;
+                    button_Abort.Enabled = false;
+                    button_Abort.Visible = false;
+                    backgroundWorker_Progress.RunWorkerAsync();
+                    break;
                 default:
                     Close();
                     break;
@@ -411,6 +437,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 {
                     if (Common.downloadClient != null)
                     {
+                        backgroundWorker_Progress.CancelAsync();
                         Common.downloadClient.CancelAsync();
                     }
 
@@ -548,7 +575,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 Common.DlsFlag = 0;
             }
             Common.DLProgchanged = e.ProgressPercentage;
-            Common.DLInfo = string.Format(Strings.DLInfo, e.ProgressPercentage, e.TotalBytesToReceive, e.BytesReceived);
+            Common.DLInfo = string.Format(Strings.DLInfo, e.ProgressPercentage, e.TotalBytesToReceive / 1024, e.BytesReceived / 1024);
         }
 
         private void DownloadClient_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
@@ -557,17 +584,178 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             {
                 Common.DlFlag = 2;
                 Common.DLlog = Common.SFDRandomNumber() + ": Download cancelled.";
+                Common.downloadClient.Dispose();
             }   
             else if (e.Error != null)
             {
                 Common.DlFlag = 3;
                 Common.DLlog = Common.SFDRandomNumber() + ": " + e.Error.Message;
+                Common.downloadClient.Dispose();
             }
             else
             {
                 Common.DlFlag = 1;
                 Common.DLlog = Common.SFDRandomNumber() + ": Download completed.";
+                Common.downloadClient.Dispose();
             }
+        }
+
+        private void backgroundWorker_Convert_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var ini = new IniFile(@".\settings.ini");
+            int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535);
+            string ext;
+
+            List<string> lst = new();
+            List<string> lst2 = new();
+
+            switch (fmt)
+            {
+                case 0:
+                    ext = ".jpg";
+                    break;
+                case 1:
+                    ext = ".png";
+                    break;
+                case 2:
+                    ext = ".webp";
+                    break;
+                case 3:
+                    ext = ".ico";
+                    break;
+                default:
+                    ext = ".png";
+                    break;
+            }
+
+            if (Common.ConvMultiFlag == 0)
+            {
+                FileInfo file = new(Common.ImageFile[0]);
+
+                lst.Add(file.Name);
+                lst2.Add(file.Extension);
+                Common.ImageFileName = lst.ToArray();
+                Common.ImageFileExt = lst2.ToArray();
+
+                switch (file.Extension.ToUpper())
+                {
+                    case ".GIF":
+                        if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                        {
+                            File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                            break;
+                        }
+                        else
+                        {
+                            MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                            return;
+                        }
+                    default:
+                        if (fmt == 1 || fmt == 3 || ext == ".png")
+                        {
+                            if (ImageConvert.IMAGEtoPNG32(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                            {
+                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                            {
+                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                return;
+                            }
+                        }
+                }
+            }
+            else
+            {
+                foreach (var sources in Common.ImageFile)
+                {
+                    FileInfo file = new(sources);
+
+                    lst.Add(file.Name);
+                    lst2.Add(file.Extension);
+
+                    switch (file.Extension.ToUpper())
+                    {
+                        case ".GIF":
+                            if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                            {
+                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                return;
+                            }
+                        default:
+                            if (fmt == 1 || fmt == 3 || ext == ".png")
+                            {
+                                if (ImageConvert.IMAGEtoPNG32(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                                {
+                                    File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                                {
+                                    File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, "no such file or directory."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                    return;
+                                }
+                            }
+                    }
+                }
+
+                Common.ImageFileName = lst.ToArray();
+                Common.ImageFileExt = lst2.ToArray();
+            }
+        }
+
+        private void backgroundWorker_Convert_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker_Convert_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
     }
 }

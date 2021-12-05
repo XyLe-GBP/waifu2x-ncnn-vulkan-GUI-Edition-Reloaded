@@ -88,6 +88,21 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>高度な設定</value>
   </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>503, 155</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 15</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>動画の生成方法：</value>
+  </data>
+  <data name="checkBox_VOT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 19</value>
+  </data>
+  <data name="checkBox_VOT.Text" xml:space="preserve">
+    <value>動画の生成方法を指定</value>
+  </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 155</value>
   </data>

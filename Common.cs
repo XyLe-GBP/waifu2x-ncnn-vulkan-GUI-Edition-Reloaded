@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
@@ -15,21 +16,81 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 {
     class Common
     {
+        /// <summary>
+        /// ダウンロード機能用変数
+        /// </summary>
         public static System.Net.WebClient downloadClient = null;
-        public static int ProgressFlag, UpscaleFlag, ProgMin, ProgMax, DLProgMax, DLProgchanged, DlsFlag, DlFlag = 0, AbortFlag, DeleteFlag, VRCFlag;
+
+        /// <summary>
+        /// フラグ用変数
+        /// </summary>
+        public static int ProgressFlag;
+        public static int UpscaleFlag;
+        public static int DlcancelFlag;
+        public static int DlFlag = 0;
+        /// <summary>
+        /// ダウンロードが開始されたかのフラグ
+        /// </summary>
+        public static int DlsFlag;
+        /// <summary>
+        /// 処理がキャンセルされたかどうかのフラグ
+        /// </summary>
+        public static int AbortFlag;
+        public static int DeleteFlag;
+        public static int VRCFlag;
+        public static int ImgDetFlag;
+        /// <summary>
+        /// 複数画像を変換するかどうかのフラグ
+        /// </summary>
+        public static int ConvMultiFlag;
+        /// <summary>
+        /// プログレスバー下限
+        /// </summary>
+        public static int ProgMin;
+        /// <summary>
+        /// プログレスバー上限
+        /// </summary>
+        public static int ProgMax;
+        /// <summary>
+        /// ダウンロード用プログレスバー上限
+        /// </summary>
+        public static int DLProgMax;
+        /// <summary>
+        /// ダウンロード用プログレスバー進行状況
+        /// </summary>
+        public static int DLProgchanged;
+        
+
         public static string DLlog, DLInfo;
         public static string DeletePath, DeletePathFrames, DeletePathFrames2x, DeletePathAudio;
         public static string FFmpegPath;
-        public static string[] ImageFile = null;
+        public static string[] ImageFile = null, ImageFileName = null, ImageFileExt = null;
         public static string VideoPath = null;
         public static string SFDSavePath, FBDSavePath;
         public static string VROpenPath;
         public static string VRSavePath;
         public static string VRParam;
+        /// <summary>
+        /// コマンドライン引数の格納用変数
+        /// </summary>
         public static string ImageParam;
+        /// <summary>
+        /// コマンドライン引数の格納用変数
+        /// </summary>
         public static string VideoParam;
+        /// <summary>
+        /// コマンドライン引数の格納用変数
+        /// </summary>
         public static string AudioParam;
+        /// <summary>
+        /// コマンドライン引数の格納用変数
+        /// </summary>
         public static string MergeParam;
+        /// <summary>
+        /// 処理時間を計測するための変数
+        /// </summary>
+        public static Stopwatch stopwatch = null;
+        public static TimeSpan timeSpan;
 
         public static string CheckVideoAudioCodec(string VideoPath)
         {
@@ -118,12 +179,41 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             return null;
         }
 
+        /// <summary>
+        /// 画像ファイルのピクセルサイズを取得
+        /// </summary>
+        /// <param name="path">画像ファイルのパス</param>
+        /// <returns>画像ファイルのピクセル</returns>
+        public static double[] GetImageSize(string path)
+        {
+            double[] array = new double[1];
+            using Bitmap bmp = new(path);
+            array[0] = bmp.Width;
+            array[1] = bmp.Height;
+            if (array[0] != 0 && array[1] != 0)
+            {
+                return array;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 現在の時刻を取得する
+        /// </summary>
+        /// <returns>YYYY-MM-DD-HH-MM-SS (例：2000-01-01-00-00-00)</returns>
         public static string SFDRandomNumber()
         {
             DateTime dt = DateTime.Now;
             return dt.Year + "-" + dt.Month + "-" + dt.Day + "-" + dt.Hour + "-" + dt.Minute + "-" + dt.Second;
         }
 
+        /// <summary>
+        /// 指定したディレクトリ内のファイルも含めてディレクトリを削除する
+        /// </summary>
+        /// <param name="targetDirectoryPath">削除するディレクトリのパス</param>
         public static void DeleteDirectory(string targetDirectoryPath)
         {
             if (!Directory.Exists(targetDirectoryPath))
@@ -147,6 +237,10 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             Directory.Delete(targetDirectoryPath, false);
         }
 
+        /// <summary>
+        /// 指定したディレクトリ内のファイルのみを削除する
+        /// </summary>
+        /// <param name="targetDirectoryPath">削除するディレクトリのパス</param>
         public static void DeleteDirectoryFiles(string targetDirectoryPath)
         {
             if (!Directory.Exists(targetDirectoryPath))
@@ -166,6 +260,12 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
 
     class ImageConvert
     {
+        /// <summary>
+        /// 画像をPNGに変換する
+        /// </summary>
+        /// <param name="IMAGEpath">変換する元画像のパス</param>
+        /// <param name="PNGpath">変換画像の保存パス</param>
+        /// <returns>真偽値 (true:変換成功, false:変換失敗)</returns>
         public static bool IMAGEtoPNG(string IMAGEpath, string PNGpath)
         {
             if (!File.Exists(IMAGEpath))
@@ -187,7 +287,13 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             }
         }
 
-        public static bool IMAGEtoICON(string IMAGEpath, string ICONpath)
+        /// <summary>
+        /// 画像をPNGに変換する (透過画像対応)
+        /// </summary>
+        /// <param name="IMAGEpath">変換する元画像のパス</param>
+        /// <param name="PNGpath">変換画像の保存パス</param>
+        /// <returns>真偽値 (true:変換成功, false:変換失敗)</returns>
+        public static bool IMAGEtoPNG32(string IMAGEpath, string PNGpath)
         {
             if (!File.Exists(IMAGEpath))
             {
@@ -196,8 +302,8 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
             else
             {
                 using var image = new MagickImage(IMAGEpath);
-                image.Write(ICONpath, MagickFormat.Ico);
-                if (File.Exists(ICONpath))
+                image.Write(PNGpath, MagickFormat.Png32);
+                if (File.Exists(PNGpath))
                 {
                     return true;
                 }
@@ -205,6 +311,41 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
                 {
                     return false;
                 }
+            }
+        }
+
+        /// <summary>
+        /// 画像をアイコンファイルに変換する
+        /// </summary>
+        /// <param name="IMAGEpath">変換する元画像のパス</param>
+        /// <param name="ICONpath">変換アイコンの保存パス</param>
+        /// <returns>真偽値 (true:変換成功, false:変換失敗)</returns>
+        public static bool IMAGEtoICON(string IMAGEpath, string ICONpath)
+        {
+            try
+            {
+                if (!File.Exists(IMAGEpath))
+                {
+                    return false;
+                }
+                else
+                {
+                    using var image = new MagickImage(IMAGEpath);
+                    image.Write(ICONpath, MagickFormat.Ico);
+                    if (File.Exists(ICONpath))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The allowed pixels (256x256) of the icon file have been exceeded.\n\n" + ex.Message, "An error occured.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }

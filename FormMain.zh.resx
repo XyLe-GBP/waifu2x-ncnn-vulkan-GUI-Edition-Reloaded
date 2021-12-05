@@ -179,7 +179,7 @@
     <value>信息</value>
   </data>
   <data name="label_Size.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 39</value>
+    <value>43, 39</value>
   </data>
   <data name="label_File.Location" type="System.Drawing.Point, System.Drawing">
     <value>42, 19</value>
