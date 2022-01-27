@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
+namespace NVGE
 {
     static class Program
     {
@@ -15,7 +12,7 @@ namespace waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp
         [STAThread]
         static void Main()
         {
-            string mutexName = "waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp";
+            string mutexName = "NVGE";
             System.Threading.Mutex mutex = new(false, mutexName);
 
             bool hasHandle = false;
