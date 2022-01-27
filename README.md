@@ -1,8 +1,3 @@
----
-title: "w2xnvger-README"
-tags: ""
----
-
 # waifu2x ncnn Vulkan - GUI Edition Reloaded (waifu2x-nVGE)
 ![Downloads](https://img.shields.io/github/downloads/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/total.svg)
 [![GitHub (pre-)release](https://img.shields.io/github/release/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/all.svg)](https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases)
