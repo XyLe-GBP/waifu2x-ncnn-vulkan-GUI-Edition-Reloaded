@@ -4,25 +4,31 @@
     <_LastSelectedProfileId>C:\Users\kawak\source\repos\waifu2x-ncnn-vulkan-GUI-Edition-C-Sharp\Properties\PublishProfiles\Profile-NET6-Public.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="FormAbout.cs">
+    <Compile Update="src\Forms\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormImageUpscaleDetail.cs">
+    <Compile Update="src\Forms\FormImageLoading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormImageUpscaleSettings.cs">
+    <Compile Update="src\Forms\FormImageUpscaleDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormMain.cs">
+    <Compile Update="src\Forms\FormImageUpscaleSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormProgress.cs">
+    <Compile Update="src\Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormVideoResolution.cs">
+    <Compile Update="src\Forms\FormProgress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormVideoUpscaleSettings.cs">
+    <Compile Update="src\Forms\FormShowPicture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="src\Forms\FormVideoResolution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="src\Forms\FormVideoUpscaleSettings.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

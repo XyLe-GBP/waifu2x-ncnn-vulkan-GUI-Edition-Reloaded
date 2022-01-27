@@ -3,16 +3,16 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp</RootNamespace>
+    <RootNamespace>NVGE</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Company>XyLe</Company>
     <Authors>XyLe</Authors>
     <Product>waifu2x-ncnn-vulkan GUI Edition Reloaded</Product>
-    <Copyright>Copyright (C) 2021 - XyLe. All Rights Reserved.</Copyright>
-    <AssemblyVersion>1.24.2120.1205</AssemblyVersion>
-    <FileVersion>1.24.2120.1205</FileVersion>
-    <Version>1.24.2120.1205</Version>
+    <Copyright>Copyright (C) 2022 - XyLe. All Rights Reserved.</Copyright>
+    <AssemblyVersion>1.25.2220.127</AssemblyVersion>
+    <FileVersion>1.25.2220.127</FileVersion>
+    <Version>1.25.2220.127</Version>
     <Description>Super-Resolution Convolutional Neural Network（SRCNN）Utility.</Description>
     <PackageIcon>csharp-logo.png</PackageIcon>
     <PackageIconUrl />
@@ -20,7 +20,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENCE.txt</PackageLicenseFile>
     <ApplicationIcon>w2xr_multi.ico</ApplicationIcon>
-    <StartupObject>waifu2x_ncnn_vulkan_GUI_Edition_C_Sharp.Program</StartupObject>
+    <StartupObject>NVGE.Program</StartupObject>
     <AnalysisLevel>6.0</AnalysisLevel>
     <AssemblyName>waifu2x-nvge</AssemblyName>
   </PropertyGroup>
@@ -30,9 +30,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="8.4.0" />
-    <PackageReference Include="OpenCvSharp4" Version="4.5.3.20210817" />
-    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.5.3.20210817" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="8.6.1" />
+    <PackageReference Include="OpenCvSharp4" Version="4.5.5.20211231" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.5.5.20211231" />
     <PackageReference Include="System.Management" Version="6.0.0" />
   </ItemGroup>
 
@@ -77,7 +77,7 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Update="Strings.Designer.cs">
+    <Compile Update="Localization\Strings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Strings.resx</DependentUpon>
@@ -89,19 +89,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Strings.zh.resx">
+    <EmbeddedResource Update="Localization\Strings.zh.resx">
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Strings.ja.resx">
+    <EmbeddedResource Update="Localization\Strings.ja.resx">
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Strings.en.resx">
+    <EmbeddedResource Update="Localization\Strings.en.resx">
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Strings.resx">
+    <EmbeddedResource Update="Localization\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
