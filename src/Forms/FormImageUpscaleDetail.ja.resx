@@ -1,0 +1,246 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 9</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>380, 80</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>アップスケールが完了しました。
+この画像でよければ'OK'ボタンをクリックしてください。
+最初からやり直す場合は'キャンセル'ボタンをクリックしてください。
+（画像をクリックすることで拡大表示することが出来ます。）</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>215, 580</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 20</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>元の画像</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>675, 580</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 20</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>アップスケール後の画像</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 591</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>前の画像</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>874, 591</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>次の画像</value>
+  </data>
+  <data name="button_cancel.Text" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 15</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>変換に要した時間：</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 15</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>モデル：</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 25</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 15</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>アップスケールレベル：</value>
+  </data>
+  <data name="label_sec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 25</value>
+  </data>
+  <data name="label_model.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 48</value>
+  </data>
+  <data name="label_scale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>423, 25</value>
+  </data>
+  <data name="groupBox_info1.Text" xml:space="preserve">
+    <value>アップスケール情報</value>
+  </data>
+  <data name="label_rdl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 25</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 25</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 15</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>除去レベル：</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 48</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 15</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>使用GPU：</value>
+  </data>
+  <data name="label_gpu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 48</value>
+  </data>
+  <data name="label_blks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 48</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 48</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 15</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>ブロックサイズ：</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>詳細な出力：</value>
+  </data>
+  <data name="label_vbs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 25</value>
+  </data>
+  <data name="groupBox_info2.Text" xml:space="preserve">
+    <value>アップスケール情報 (高度)</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 24</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 42</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>"詳細な出力"オプションが有効ではないため、
+表示可能な情報は存在しません。</value>
+  </data>
+  <data name="label_fmt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>365, 25</value>
+  </data>
+  <data name="label_thread.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 25</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 25</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 15</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>出力形式：</value>
+  </data>
+  <data name="label_tta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>333, 48</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>307, 48</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>使用スレッド：</value>
+  </data>
+  <data name="label_webp.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 11.25pt</value>
+  </data>
+  <data name="label_webp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>500, 320</value>
+  </data>
+  <data name="label_webp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 40</value>
+  </data>
+  <data name="label_webp.Text" xml:space="preserve">
+    <value>Google Web Picture フォーマットはフォームでの画像表示に対応していません。
+このテキストをクリックすると規定のブラウザで画像を表示します。</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>アップスケールされた画像の詳細</value>
+  </data>
+</root>
