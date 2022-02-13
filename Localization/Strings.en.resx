@@ -117,12 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnimGIFCaption" xml:space="preserve">
+    <value>Animation GIF</value>
+  </data>
   <data name="AudioNot" xml:space="preserve">
     <value>Failed to extract the audio file.
 If you have enabled advanced settings, please check your settings.</value>
   </data>
+  <data name="ButtonReUpScaleGIF" xml:space="preserve">
+    <value>Reupscaling GIF</value>
+  </data>
   <data name="ButtonReUpscaleVideo" xml:space="preserve">
     <value>Reupscaling Video</value>
+  </data>
+  <data name="ButtonUpScaleGIF" xml:space="preserve">
+    <value>Upscaling GIF</value>
   </data>
   <data name="ButtonUpscaleVideo" xml:space="preserve">
     <value>Upscaling Video</value>
@@ -221,6 +230,9 @@ The path is not specified in the 'Video destination' field.</value>
   <data name="FBDImageTitle" xml:space="preserve">
     <value>Save Upscalled Images</value>
   </data>
+  <data name="FFmpegLocationNotFoundCaption" xml:space="preserve">
+    <value>The path to FFmpeg has not been specified.</value>
+  </data>
   <data name="FFUpdate" xml:space="preserve">
     <value>FFmpeg can be updated.
 Do you want to update it?</value>
@@ -234,8 +246,11 @@ Do you want to update it?</value>
   <data name="FilterImage" xml:space="preserve">
     <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All supported formats|*.bmp;*.dib;*.eps;*.webp;*.gif;*.ico;*.icns;*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;*.png;*.pict;*.svg;*.svgz;*.tif;*.tiff</value>
   </data>
+  <data name="FilterMPEG4" xml:space="preserve">
+    <value>H.264 MPEG-4 (*.mp4)|*.mp4</value>
+  </data>
   <data name="FilterVideo" xml:space="preserve">
-    <value>Video (*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm)|*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm</value>
+    <value>Audio Video Interleave (*.avi)|*.avi;|MPEG-4 (*.mp4)|*.mp4;|Animation GIF (*.gif)|*.gif;|QuickTime Video (*.mov)|*.mov;|Google WebM (*.webm)|*.webm;|Matroska Video (*.mkv)|*.mkv;|Windows Media Video (*.wmv)|*.wmv;|All Supported Files|*.avi;*.mp4;*.gif;*.mov;*.webm;*.mkv;*.wmv</value>
   </data>
   <data name="IMGS" xml:space="preserve">
     <value>Image(s)</value>
@@ -282,6 +297,9 @@ Do you wish to continue?</value>
   <data name="MSGWarning" xml:space="preserve">
     <value>Warning</value>
   </data>
+  <data name="NotNetworkConnectionCaption" xml:space="preserve">
+    <value>The computer is not connected to the Internet.</value>
+  </data>
   <data name="NotReadedString" xml:space="preserve">
     <value>Not Readed.</value>
   </data>
@@ -290,6 +308,9 @@ Do you wish to continue?</value>
   </data>
   <data name="OFDVideoTitle" xml:space="preserve">
     <value>Open Upscaling Video</value>
+  </data>
+  <data name="OpenFormatChangeDialogCaption" xml:space="preserve">
+    <value>Open the file to be reformatted.</value>
   </data>
   <data name="ProgressAbortConfirm" xml:space="preserve">
     <value>Processing is currently in progress.
@@ -301,6 +322,9 @@ Do you want to abort the process?</value>
   </data>
   <data name="ReadedString" xml:space="preserve">
     <value>Readed!</value>
+  </data>
+  <data name="SaveFormatChangeDialogCaption" xml:space="preserve">
+    <value>Save the reformatted file.</value>
   </data>
   <data name="SettingError" xml:space="preserve">
     <value>The operation cannot be continued because the settings are not correct.
@@ -337,6 +361,15 @@ Do you want to open the site?</value>
   </data>
   <data name="UPVRProgress" xml:space="preserve">
     <value>Reupscaling video frames, Please wait...</value>
+  </data>
+  <data name="VideoFormatChange_ErrorCaption" xml:space="preserve">
+    <value>Format conversion failed.</value>
+  </data>
+  <data name="VideoFormatChange_FmtErrorCaption" xml:space="preserve">
+    <value>The source and destination files cannot be in the same format.</value>
+  </data>
+  <data name="VideoFormatChange_SuccessCaption" xml:space="preserve">
+    <value>Format conversion has been completed.</value>
   </data>
   <data name="VRCNG" xml:space="preserve">
     <value>Video resolution has been changed.</value>

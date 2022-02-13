@@ -117,12 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnimGIFCaption" xml:space="preserve">
+    <value>アニメーション GIF</value>
+  </data>
   <data name="AudioNot" xml:space="preserve">
     <value>音声ファイルの抜き出しに失敗しました。
 高度な設定を有効にしている場合、設定の確認を行ってください。</value>
   </data>
+  <data name="ButtonReUpScaleGIF" xml:space="preserve">
+    <value>GIFの再アップスケーリング</value>
+  </data>
   <data name="ButtonReUpscaleVideo" xml:space="preserve">
     <value>動画の再アップスケーリング</value>
+  </data>
+  <data name="ButtonUpScaleGIF" xml:space="preserve">
+    <value>GIFのアップスケーリング</value>
   </data>
   <data name="ButtonUpscaleVideo" xml:space="preserve">
     <value>動画のアップスケーリング</value>
@@ -223,6 +232,9 @@
   <data name="FBDImageTitle" xml:space="preserve">
     <value>アップスケーリングされた画像を保存</value>
   </data>
+  <data name="FFmpegLocationNotFoundCaption" xml:space="preserve">
+    <value>FFmpegのパスが指定されていません。</value>
+  </data>
   <data name="FFUpdate" xml:space="preserve">
     <value>FFmpegのアップデートが可能です。
 アップデートしますか？</value>
@@ -236,8 +248,11 @@
   <data name="FilterImage" xml:space="preserve">
     <value>ビットマップ イメージ (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|GIF イメージ (*.gif)|*.gif;|アイコン (*.ico,*.icns)|*.ico;*.icns;|JPEG イメージ (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|PNG イメージ (*.png)|*.png;|QuickDraw ピクチャー (*.pict)|*.pict;|SVG イメージ (*.svg,*.svgz)|*.svg;*.svgz;|TIFF イメージ (*.tif,*.tiff)|*.tif;*.tiff;|サポートされているすべての形式|*.bmp;*.dib;*.eps;*.webp;*.gif;*.ico;*.icns;*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;*.png;*.pict;*.svg;*.svgz;*.tif;*.tiff</value>
   </data>
+  <data name="FilterMPEG4" xml:space="preserve">
+    <value>H.264 (*.mp4)|*.mp4</value>
+  </data>
   <data name="FilterVideo" xml:space="preserve">
-    <value>動画ファイル (*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm)|*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm</value>
+    <value>AVI (*.avi)|*.avi;|MPEG-4 (*.mp4)|*.mp4;|アニメーション GIF (*.gif)|*.gif;|QuickTime ビデオ (*.mov)|*.mov;|Google WebM (*.webm)|*.webm;|Matroska Video (*.mkv)|*.mkv;|Windows Media Video (*.wmv)|*.wmv;|サポートされているすべての形式|*.avi;*.mp4;*.gif;*.mov;*.webm;*.mkv;*.wmv</value>
   </data>
   <data name="FmtErrorCaption" xml:space="preserve">
     <value>サポートされていないファイル形式です。</value>
@@ -293,6 +308,9 @@
   <data name="MultipleImageCaption" xml:space="preserve">
     <value>複数の画像ファイル</value>
   </data>
+  <data name="NotNetworkConnectionCaption" xml:space="preserve">
+    <value>コンピューターがインターネットに接続されていません。</value>
+  </data>
   <data name="NotReadedStatusString" xml:space="preserve">
     <value>準備未完了- ファイルを開いてください…</value>
   </data>
@@ -305,6 +323,9 @@
   <data name="OFDVideoTitle" xml:space="preserve">
     <value>アップスケーリングする動画ファイルを開く</value>
   </data>
+  <data name="OpenFormatChangeDialogCaption" xml:space="preserve">
+    <value>形式変更するファイルを開く</value>
+  </data>
   <data name="ProgressAbortConfirm" xml:space="preserve">
     <value>現在、処理が進行中です。
 処理を中断した場合、現在処理中の内容は全て失われます。
@@ -315,6 +336,9 @@
   </data>
   <data name="ReadedString" xml:space="preserve">
     <value>準備完了！</value>
+  </data>
+  <data name="SaveFormatChangeDialogCaption" xml:space="preserve">
+    <value>形式変更したファイルを保存</value>
   </data>
   <data name="SettingError" xml:space="preserve">
     <value>設定が正しく行われていないため、操作を続行できません。
@@ -358,6 +382,15 @@
   </data>
   <data name="VideoCaption" xml:space="preserve">
     <value>動画ファイル</value>
+  </data>
+  <data name="VideoFormatChange_ErrorCaption" xml:space="preserve">
+    <value>形式変換に失敗しました。</value>
+  </data>
+  <data name="VideoFormatChange_FmtErrorCaption" xml:space="preserve">
+    <value>読み込み元ファイルと保存先ファイルを同じ形式にすることはできません。</value>
+  </data>
+  <data name="VideoFormatChange_SuccessCaption" xml:space="preserve">
+    <value>形式変換が完了しました。</value>
   </data>
   <data name="VRCNG" xml:space="preserve">
     <value>動画ファイルの解像度の変更が完了しました。</value>

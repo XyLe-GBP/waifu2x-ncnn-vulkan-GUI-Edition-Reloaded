@@ -117,12 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnimGIFCaption" xml:space="preserve">
+    <value>Animation GIF</value>
+  </data>
   <data name="AudioNot" xml:space="preserve">
     <value>音频文件的提取失败。
 如果你启用了高级设置，请检查你的设置。</value>
   </data>
+  <data name="ButtonReUpScaleGIF" xml:space="preserve">
+    <value>Reupscaling GIF</value>
+  </data>
   <data name="ButtonReUpscaleVideo" xml:space="preserve">
     <value>视频的重新缩放</value>
+  </data>
+  <data name="ButtonUpScaleGIF" xml:space="preserve">
+    <value>Upscaling GIF</value>
   </data>
   <data name="ButtonUpscaleVideo" xml:space="preserve">
     <value>视频的缩放比例</value>
@@ -223,6 +232,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="FBDImageTitle" xml:space="preserve">
     <value>保存放大的图像</value>
   </data>
+  <data name="FFmpegLocationNotFoundCaption" xml:space="preserve">
+    <value>没有指定FFmpeg的路径。</value>
+  </data>
   <data name="FFUpdate" xml:space="preserve">
     <value>你可以更新FFmpeg。
 你想更新吗？</value>
@@ -236,8 +248,11 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="FilterImage" xml:space="preserve">
     <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All supported formats|*.bmp;*.dib;*.eps;*.webp;*.gif;*.ico;*.icns;*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;*.png;*.pict;*.svg;*.svgz;*.tif;*.tiff</value>
   </data>
+  <data name="FilterMPEG4" xml:space="preserve">
+    <value>H.264 MPEG-4 (*.mp4)|*.mp4</value>
+  </data>
   <data name="FilterVideo" xml:space="preserve">
-    <value>视频文件 (*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm)|*.avi;*.mp4;*.mov;*.wmv;*.mkv;*.webm</value>
+    <value>Audio Video Interleave (*.avi)|*.avi;|MPEG-4 (*.mp4)|*.mp4;|Animation GIF (*.gif)|*.gif;|QuickTime Video (*.mov)|*.mov;|Google WebM (*.webm)|*.webm;|Matroska Video (*.mkv)|*.mkv;|Windows Media Video (*.wmv)|*.wmv;|All Supported Files|*.avi;*.mp4;*.gif;*.mov;*.webm;*.mkv;*.wmv</value>
   </data>
   <data name="FmtErrorCaption" xml:space="preserve">
     <value>这是一种不支持的文件格式。</value>
@@ -293,6 +308,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="MultipleImageCaption" xml:space="preserve">
     <value>多个图像文件</value>
   </data>
+  <data name="NotNetworkConnectionCaption" xml:space="preserve">
+    <value>你的电脑没有连接到互联网。</value>
+  </data>
   <data name="NotReadedStatusString" xml:space="preserve">
     <value>未准备好 - 打开任何文件。</value>
   </data>
@@ -305,6 +323,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="OFDVideoTitle" xml:space="preserve">
     <value>打开要升档的视频文件</value>
   </data>
+  <data name="OpenFormatChangeDialogCaption" xml:space="preserve">
+    <value>打开要重新格式化的文件</value>
+  </data>
   <data name="ProgressAbortConfirm" xml:space="preserve">
     <value>该进程目前正在进行中。
 如果你中断了这个过程，目前正在处理的一切都会丢失。
@@ -315,6 +336,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   </data>
   <data name="ReadedString" xml:space="preserve">
     <value>一切就绪!</value>
+  </data>
+  <data name="SaveFormatChangeDialogCaption" xml:space="preserve">
+    <value>保存重新格式化的文件</value>
   </data>
   <data name="SettingError" xml:space="preserve">
     <value>设置不正确，不能继续操作。
@@ -358,6 +382,15 @@ CRF级别 "的值必须至少是一个字符。</value>
   </data>
   <data name="VideoCaption" xml:space="preserve">
     <value>视频文件</value>
+  </data>
+  <data name="VideoFormatChange_ErrorCaption" xml:space="preserve">
+    <value>格式转换失败。</value>
+  </data>
+  <data name="VideoFormatChange_FmtErrorCaption" xml:space="preserve">
+    <value>源文件和目标文件的格式不可能相同。</value>
+  </data>
+  <data name="VideoFormatChange_SuccessCaption" xml:space="preserve">
+    <value>格式转换已经完成。</value>
   </data>
   <data name="VRCNG" xml:space="preserve">
     <value>你已经成功地改变了你的视频文件的分辨率。</value>
