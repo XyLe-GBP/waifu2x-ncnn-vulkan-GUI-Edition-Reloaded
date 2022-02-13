@@ -1,25 +1,32 @@
 ﻿using ImageMagick;
+using NVGE.Localization;
+using OpenCvSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Management;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace NVGE
 {
     class Common
     {
-        [DllImport("kernel32.dll",CharSet = CharSet.Auto)]
-        private static extern uint GetShortPathName([MarshalAs(UnmanagedType.LPTStr)]string lpszLongPath,[MarshalAs(UnmanagedType.LPTStr)]StringBuilder lpszShortPath,uint cchBuffer);
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        private static extern uint GetShortPathName([MarshalAs(UnmanagedType.LPTStr)] string lpszLongPath, [MarshalAs(UnmanagedType.LPTStr)] StringBuilder lpszShortPath, uint cchBuffer);
         #region Flags
+        public static string xmlpath = Directory.GetCurrentDirectory() + @"\app.config";
+
         /// <summary>
         /// ダウンロード機能用変数
         /// </summary>
@@ -28,21 +35,25 @@ namespace NVGE
         /// <summary>
         /// フラグ用変数
         /// </summary>
-        public static int ProgressFlag;
-        public static int UpscaleFlag;
-        public static int DlcancelFlag;
+        public static int ProgressFlag = 0;
+        public static int UpscaleFlag = 0;
+        public static int DlcancelFlag = 0;
         public static int DlFlag = 0;
+        /// <summary>
+        /// GIFアニメーションかどうかのフラグ
+        /// </summary>
+        public static bool GIFflag = false;
         /// <summary>
         /// ダウンロードが開始されたかのフラグ
         /// </summary>
-        public static int DlsFlag;
+        public static int DlsFlag = 0;
         /// <summary>
         /// 処理がキャンセルされたかどうかのフラグ
         /// </summary>
-        public static int AbortFlag;
-        public static int DeleteFlag;
-        public static int VRCFlag;
-        public static int ImgDetFlag;
+        public static int AbortFlag = 0;
+        public static int DeleteFlag = 0;
+        public static int VRCFlag = 0;
+        public static int ImgDetFlag = 0;
         /// <summary>
         /// 複数画像を変換するかどうかのフラグ
         /// </summary>
@@ -50,20 +61,24 @@ namespace NVGE
         /// <summary>
         /// プログレスバー下限
         /// </summary>
-        public static int ProgMin;
+        public static int ProgMin = 0;
         /// <summary>
         /// プログレスバー上限
         /// </summary>
-        public static int ProgMax;
+        public static int ProgMax = 0;
         /// <summary>
         /// ダウンロード用プログレスバー上限
         /// </summary>
-        public static int DLProgMax;
+        public static int DLProgMax = 0;
         /// <summary>
         /// ダウンロード用プログレスバー進行状況
         /// </summary>
-        public static int DLProgchanged;
-        
+        public static int DLProgchanged = 0;
+        /// <summary>
+        /// カスタムを選んだ際の形式
+        /// </summary>
+        public static string ManualImageFormat;
+        public static string ManualImageFormatFilter;
 
         public static string DLlog, DLInfo;
         public static string DeletePath, DeletePathFrames, DeletePathFrames2x, DeletePathAudio;
@@ -95,13 +110,13 @@ namespace NVGE
         /// </summary>
         public static Stopwatch stopwatch = null;
         public static TimeSpan timeSpan;
-#endregion
+        #endregion
 
         public static string CheckVideoAudioCodec(string VideoPath)
         {
             ProcessStartInfo pi = new();
             Process ps;
-            pi.FileName = System.Environment.GetEnvironmentVariable("ComSpec");
+            pi.FileName = Environment.GetEnvironmentVariable("ComSpec");
             pi.Arguments = "/c " + FFmpegPath + " -i " + VideoPath;
             pi.CreateNoWindow = true;
             pi.UseShellExecute = false;
@@ -215,6 +230,18 @@ namespace NVGE
             return dt.Year + "-" + dt.Month + "-" + dt.Day + "-" + dt.Hour + "-" + dt.Minute + "-" + dt.Second;
         }
 
+        public static string GetAssemblyDateTimeVersion()
+        {
+            var obj = new object();
+            var asm = obj.GetType().Assembly;
+            var ver = asm.GetName().Version;
+            var build = ver.Build;
+            var revision = ver.Revision;
+            var baseDate = new DateTime(2000, 1, 1);
+
+            return baseDate.AddDays(build).AddSeconds(revision * 2).ToString();
+        }
+
         /// <summary>
         /// 指定したディレクトリ内のファイルも含めてディレクトリを削除する
         /// </summary>
@@ -262,6 +289,19 @@ namespace NVGE
             return;
         }
 
+        /// <summary>
+        /// 大文字小文字を区別しないで置き換え
+        /// </summary>
+        /// <param name="inStr">置き換える対象の文字列</param>
+        /// <param name="oldStr">検索文字列</param>
+        /// <param name="newStr">置き換える文字列</param>
+        /// <returns></returns>
+        public static string ReplaceForRegex(string inStr, string oldStr, string newStr)
+        {
+            string dstStr = Regex.Replace(inStr, oldStr, newStr, RegexOptions.IgnoreCase);
+            return dstStr;
+        }
+
         public static int Gcd(int a, int b)
         {
             //a > b にする（スワップ）
@@ -298,6 +338,249 @@ namespace NVGE
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 動画のFPSを取得
+        /// </summary>
+        /// <param name="path">動画ファイルのパス</param>
+        public static void GetVideoFps(string path)
+        {
+            using var video = new VideoCapture(path);
+            switch (video.Fps.ToString())
+            {
+                case "30":
+                    Config.Entry["FPS"].Value = video.Fps.ToString().Replace("30", "30.00");
+                    Config.Save(xmlpath);
+                    break;
+                case "60":
+                    Config.Entry["FPS"].Value = video.Fps.ToString().Replace("60", "60.00");
+                    Config.Save(xmlpath);
+                    break;
+                default:
+                    if (video.Fps.ToString().Length > 5)
+                    {
+                        Config.Entry["FPS"].Value = video.Fps.ToString()[..5];
+                        Config.Save(xmlpath);
+                    }
+                    else
+                    {
+                        Config.Entry["FPS"].Value = video.Fps.ToString();
+                        Config.Save(xmlpath);
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 設定ファイルに全てを書き出す
+        /// </summary>
+        public static void InitConfig()
+        {
+            if (Config.Entry["FFmpegLocation"].Value == null)
+            {
+                Config.Entry["FFmpegLocation"].Value = "";
+            }
+            if (Config.Entry["Param"].Value == null)
+            {
+                Config.Entry["Param"].Value = "";
+            }
+            if (Config.Entry["VideoParam"].Value == null)
+            {
+                Config.Entry["VideoParam"].Value = "";
+            }
+            if (Config.Entry["AudioParam"].Value == null)
+            {
+                Config.Entry["AudioParam"].Value = "";
+            }
+            if (Config.Entry["MergeParam"].Value == null)
+            {
+                Config.Entry["MergeParam"].Value = "";
+            }
+            if (Config.Entry["VideoLocation"].Value == null)
+            {
+                Config.Entry["VideoLocation"].Value = "";
+            }
+            if (Config.Entry["AudioLocation"].Value == null)
+            {
+                Config.Entry["AudioLocation"].Value = "";
+            }
+            if (Config.Entry["Reduction"].Value == null)
+            {
+                Config.Entry["Reduction"].Value = "-1";
+            }
+            if (Config.Entry["Scale"].Value == null)
+            {
+                Config.Entry["Scale"].Value = "-1";
+            }
+            if (Config.Entry["GPU"].Value == null)
+            {
+                Config.Entry["GPU"].Value = "-1";
+            }
+            if (Config.Entry["Blocksize"].Value == null)
+            {
+                Config.Entry["Blocksize"].Value = "0";
+            }
+            if (Config.Entry["IAdvanced"].Value == null)
+            {
+                Config.Entry["IAdvanced"].Value = "false";
+            }
+            if (Config.Entry["Thread"].Value == null)
+            {
+                Config.Entry["Thread"].Value = "-1";
+            }
+            if (Config.Entry["Format"].Value == null)
+            {
+                Config.Entry["Format"].Value = "-1";
+            }
+            if (Config.Entry["Model"].Value == null)
+            {
+                Config.Entry["Model"].Value = "-1";
+            }
+            if (Config.Entry["Verbose"].Value == null)
+            {
+                Config.Entry["Verbose"].Value = "false";
+            }
+            if (Config.Entry["TTA"].Value == null)
+            {
+                Config.Entry["TTA"].Value = "false";
+            }
+            if (Config.Entry["Param"].Value == null)
+            {
+                Config.Entry["Param"].Value = "";
+            }
+            if (Config.Entry["FPS"].Value == null)
+            {
+                Config.Entry["FPS"].Value = "";
+            }
+            if (Config.Entry["FFmpegLocation"].Value == null)
+            {
+                Config.Entry["FFmpegLocation"].Value = "";
+            }
+            if (Config.Entry["VAdvanced"].Value == null)
+            {
+                Config.Entry["VAdvanced"].Value = "false";
+            }
+            if (Config.Entry["InternalAAC"].Value == null)
+            {
+                Config.Entry["InternalAAC"].Value = "false";
+            }
+            if (Config.Entry["Subtitle"].Value == null)
+            {
+                Config.Entry["Subtitle"].Value = "false";
+            }
+            if (Config.Entry["CopyingChapters"].Value == null)
+            {
+                Config.Entry["CopyingChapters"].Value = "false";
+            }
+            if (Config.Entry["OutputAudioOnly"].Value == null)
+            {
+                Config.Entry["OutputAudioOnly"].Value = "false";
+            }
+            if (Config.Entry["HideInformations"].Value == null)
+            {
+                Config.Entry["HideInformations"].Value = "false";
+            }
+            if (Config.Entry["Sequential"].Value == null)
+            {
+                Config.Entry["Sequential"].Value = "false";
+            }
+            if (Config.Entry["DataStream"].Value == null)
+            {
+                Config.Entry["DataStream"].Value = "false";
+            }
+            if (Config.Entry["Metadata"].Value == null)
+            {
+                Config.Entry["Metadata"].Value = "false";
+            }
+            if (Config.Entry["Overwrite"].Value == null)
+            {
+                Config.Entry["Overwrite"].Value = "false";
+            }
+            if (Config.Entry["NVENC"].Value == null)
+            {
+                Config.Entry["NVENC"].Value = "false";
+            }
+            if (Config.Entry["CRFLevel"].Value == null)
+            {
+                Config.Entry["CRFLevel"].Value = "";
+            }
+            if (Config.Entry["VideoCodec"].Value == null)
+            {
+                Config.Entry["VideoCodec"].Value = "false";
+            }
+            if (Config.Entry["VideoCodecIndex"].Value == null)
+            {
+                Config.Entry["VideoCodecIndex"].Value = "";
+            }
+            if (Config.Entry["AudioCodec"].Value == null)
+            {
+                Config.Entry["AudioCodec"].Value = "false";
+            }
+            if (Config.Entry["AudioCodecIndex"].Value == null)
+            {
+                Config.Entry["AudioCodecIndex"].Value = "";
+            }
+            if (Config.Entry["AudioBitrate"].Value == null)
+            {
+                Config.Entry["AudioBitrate"].Value = "false";
+            }
+            if (Config.Entry["AudioBitrateIndex"].Value == null)
+            {
+                Config.Entry["AudioBitrateIndex"].Value = "";
+            }
+            if (Config.Entry["AudioOutputCodec"].Value == null)
+            {
+                Config.Entry["AudioOutputCodec"].Value = "false";
+            }
+            if (Config.Entry["OutputCodecIndex"].Value == null)
+            {
+                Config.Entry["OutputCodecIndex"].Value = "-1";
+            }
+            if (Config.Entry["H264"].Value == null)
+            {
+                Config.Entry["H264"].Value = "false";
+            }
+            if (Config.Entry["H264Index"].Value == null)
+            {
+                Config.Entry["H264Index"].Value = "-1";
+            }
+            if (Config.Entry["OutputLocation"].Value == null)
+            {
+                Config.Entry["OutputLocation"].Value = "false";
+            }
+            if (Config.Entry["VideoLocation"].Value == null)
+            {
+                Config.Entry["VideoLocation"].Value = "";
+            }
+            if (Config.Entry["AudioLocation"].Value == null)
+            {
+                Config.Entry["AudioLocation"].Value = "";
+            }
+            if (Config.Entry["VideoGeneration"].Value == null)
+            {
+                Config.Entry["VideoGeneration"].Value = "false";
+            }
+            if (Config.Entry["GenerationIndex"].Value == null)
+            {
+                Config.Entry["GenerationIndex"].Value = "-1";
+            }
+            if (Config.Entry["VideoParam"].Value == null)
+            {
+                Config.Entry["VideoParam"].Value = "";
+            }
+            if (Config.Entry["AudioParam"].Value == null)
+            {
+                Config.Entry["AudioParam"].Value = "";
+            }
+            if (Config.Entry["MergeParam"].Value == null)
+            {
+                Config.Entry["MergeParam"].Value = "";
+            }
+            if (Config.Entry["FFmpegVersion"].Value == null)
+            {
+                Config.Entry["FFmpegVersion"].Value = "";
+            }
+            Config.Save(xmlpath);
+        }
     }
 
     class ImageConvert
@@ -415,6 +698,99 @@ namespace NVGE
                 return false;
             }
         }
+
+        public static bool IMAGEtoAnyIMAGE(string IMAGEpath, string IMAGEpath2)
+        {
+            try
+            {
+                if (!File.Exists(IMAGEpath))
+                {
+                    return false;
+                }
+                else
+                {
+                    FileInfo fi = new(IMAGEpath2);
+                    MagickFormat fmt = new();
+                    switch (fi.Extension.ToUpper())
+                    {
+                        case ".BMP":
+                            fmt = MagickFormat.Bmp3;
+                            break;
+                        case ".DIB":
+                            fmt = MagickFormat.Dib;
+                            break;
+                        case ".EPS":
+                            fmt = MagickFormat.Eps;
+                            break;
+                        case ".WEBP":
+                            fmt = MagickFormat.WebP;
+                            break;
+                        case ".GIF":
+                            fmt = MagickFormat.Gif;
+                            break;
+                        case ".ICO":
+                            fmt = MagickFormat.Ico;
+                            break;
+                        case ".ICNS":
+                            fmt = MagickFormat.Icon;
+                            break;
+                        case ".JFIF":
+                            fmt = MagickFormat.Jpg;
+                            break;
+                        case ".JPG":
+                            fmt = MagickFormat.Jpg;
+                            break;
+                        case ".JPE":
+                            fmt = MagickFormat.Jpe;
+                            break;
+                        case ".JPEG":
+                            fmt = MagickFormat.Jpeg;
+                            break;
+                        case ".PJPEG":
+                            fmt = MagickFormat.Pjpeg;
+                            break;
+                        case ".PJP":
+                            fmt = MagickFormat.Pjpeg;
+                            break;
+                        case ".PNG":
+                            fmt = MagickFormat.Png32;
+                            break;
+                        case ".PICT":
+                            fmt = MagickFormat.Pict;
+                            break;
+                        case ".SVG":
+                            fmt = MagickFormat.Svg;
+                            break;
+                        case ".SVGZ":
+                            fmt = MagickFormat.Svgz;
+                            break;
+                        case ".TIF":
+                            fmt = MagickFormat.Tif;
+                            break;
+                        case ".TIFF":
+                            fmt = MagickFormat.Tiff;
+                            break;
+                        default:
+                            break;
+                    }
+                    using var image = new MagickImage(IMAGEpath);
+                    image.Write(IMAGEpath2, fmt);
+                    if (File.Exists(IMAGEpath2))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 
     class SystemInfo
@@ -491,30 +867,151 @@ namespace NVGE
         }
     }
 
-    class Json
+    class Config
     {
-        public static void SerializeJson(Dictionary<string, string> dic)
+        /// <summary>
+        /// ルートエントリ
+        /// </summary>
+        public static ConfigEntry Entry = new() { Key = "ConfigRoot" };
+        public static void Load(string filename)
         {
-            using FileStream fileStream = File.Create("settings.json");
-            using StreamWriter writer = new(fileStream, Encoding.UTF8);
-            var JsonStr = JsonSerializer.Serialize(dic);
-            writer.Write(JsonStr);
+            if (!File.Exists(filename))
+                return;
+            var xmlSerializer = new XmlSerializer(typeof(ConfigEntry));
+            using var streamReader = new StreamReader(filename, Encoding.UTF8);
+            using var xmlReader = XmlReader.Create(streamReader, new XmlReaderSettings() { CheckCharacters = false });
+            Entry = (ConfigEntry)xmlSerializer.Deserialize(xmlReader); // （3）
         }
-
-        public static void DeserializeJson(string jsonpath)
+        public static void Save(string filename)
         {
-            using StreamReader sr = File.OpenText(jsonpath);
-            var JsonStr = JsonSerializer.Serialize(sr);
-            var json = JsonSerializer.Deserialize<Dictionary<string, string>>(JsonStr);
-            foreach (var item in json)
-            {
-
-            }
+            var serializer = new XmlSerializer(typeof(ConfigEntry));
+            using var streamWriter = new StreamWriter(filename, false, Encoding.UTF8);
+            serializer.Serialize(streamWriter, Entry);
         }
     }
 
+    /// <summary>
+    /// ConfigEntryクラス。設定の1レコード
+    /// </summary>
+    public class ConfigEntry
+    {
+        /// <summary>
+        /// 設定レコードののキー
+        /// </summary>
+        public string Key { get; set; }
+        /// <summary>
+        /// 設定レコードの値
+        /// </summary>
+        public string Value { get; set; }
+        /// <summary>
+        /// 子アイテム
+        /// </summary>
+        public List<ConfigEntry> Children { get; set; }
+        /// <summary>
+        /// キーを指定して子アイテムからConfigEntryを取得します。
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public ConfigEntry Get(string key)
+        {
+            var entry = Children?.FirstOrDefault(rec => rec.Key == key);
+            if (entry == null)
+            {
+                if (Children == null)
+                    Children = new List<ConfigEntry>();
+                entry = new ConfigEntry() { Key = key };
+                Children.Add(entry);
+            }
+            return entry;
+        }
+        /// <summary>
+        /// 子アイテムにConfigEntryを追加します。
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <param name="o">設定値</param>
+        public void Add(string key, string o)
+        {
+            ConfigEntry entry = Children?.FirstOrDefault(rec => rec.Key == key);
+            if (entry != null)
+                entry.Value = o;
+            else
+            {
+                if (Children == null)
+                    Children = new List<ConfigEntry>();
+                entry = new ConfigEntry() { Key = key, Value = o };
+                Children.Add(entry);
+            }
+        }
+        /// <summary>
+        /// 子アイテムからConfigEntryを取得します。存在しなければ新しいConfigEntryが作成されます。
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <returns></returns>
+        public ConfigEntry this[string key]
+        {
+            set => Add(key, null);
+            get => Get(key);
+        }
+        /// <summary>
+        /// 子アイテムからConfigEntryを取得します。存在しなければ新しいConfigEntryが作成されます。
+        /// </summary>
+        /// <param name="keys">キー、カンマで区切って階層指定します</param>
+        /// <returns></returns>
+        public ConfigEntry this[params string[] keys]
+        {
+            set
+            {
+                ConfigEntry entry = this;
+                for (int i = 0; i < keys.Length; i++)
+                {
+                    entry = entry[keys[i]];
+                }
+            }
+            get
+            {
+                ConfigEntry entry = this;
+                for (int i = 0; i < keys.Length; i++)
+                {
+                    entry = entry[keys[i]];
+                }
+                return entry;
+            }
+        }
+
+        /// <summary>
+        /// 指定したキーが子アイテムに存在するか調べます。再帰的調査はされません。
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <returns>キーが存在すればTrue</returns>
+        public bool Exists(string key) => Children?.Any(c => c.Key == key) ?? false;
+        /// <summary>
+        /// 指定したキーが子アイテムに存在するか調べます。階層をまたいだ指定をします。
+        /// </summary>
+        /// <param name="keys">キー、カンマで区切って階層指定します。</param>
+        /// <returns>キーが存在すればTrue</returns>
+        public bool Exists(params string[] keys)
+        {
+            ConfigEntry entry = this;
+            for (int i = 0; i < keys.Length; i++)
+            {
+                if (entry.Exists(keys[i]) == false)
+                    return false;
+                entry = entry[keys[i]];
+            }
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// ネットワーク系関数
+    /// </summary>
     class Network
     {
+        /// <summary>
+        /// 文字列をURIに変換
+        /// </summary>
+        /// <param name="uri">URI文字列</param>
+        /// <returns></returns>
         public static Uri GetUri(string uri)
         {
             return new Uri(uri);
@@ -527,75 +1024,7 @@ namespace NVGE
     }
 }
 
-namespace PrivateProfile
-{
-    /// <summary>
-    /// Ini ファイルの読み書きを扱うクラスです。
-    /// </summary>
-    public class IniFile
-    {
-        [DllImport("kernel32.dll")]
-        private static extern uint GetPrivateProfileString(string lpAppName, string lpKeyName, string lpDefault, StringBuilder lpReturnedString, uint nSize, string lpFileName);
-
-        [DllImport("kernel32.dll")]
-        private static extern uint GetPrivateProfileInt(string lpAppName, string lpKeyName, int nDefault, string lpFileName);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool WritePrivateProfileString(string lpAppName, string lpKeyName, string lpString, string lpFileName);
-
-        /// <summary>
-        /// Ini ファイルのファイルパスを取得、設定します。
-        /// </summary>
-        public string FilePath { get; set; }
-
-        /// <summary>
-        /// インスタンスを初期化します。
-        /// </summary>
-        /// <param name="filePath">Ini ファイルのファイルパス</param>
-        public IniFile(string filePath)
-        {
-            FilePath = filePath;
-        }
-        /// <summary>
-        /// Ini ファイルから文字列を取得します。
-        /// </summary>
-        /// <param name="section">セクション名</param>
-        /// <param name="key">項目名</param>
-        /// <param name="defaultValue">値が取得できない場合の初期値</param>
-        /// <returns></returns>
-        public string GetString(string section, string key, string defaultValue = "")
-        {
-            var sb = new StringBuilder(1024);
-            var r = GetPrivateProfileString(section, key, defaultValue, sb, (uint)sb.Capacity, FilePath);
-            return sb.ToString();
-        }
-        /// <summary>
-        /// Ini ファイルから整数を取得します。
-        /// </summary>
-        /// <param name="section">セクション名</param>
-        /// <param name="key">項目名</param>
-        /// <param name="defaultValue">値が取得できない場合の初期値</param>
-        /// <returns></returns>
-        public int GetInt(string section, string key, int defaultValue = 0)
-        {
-            return (int)GetPrivateProfileInt(section, key, defaultValue, FilePath);
-        }
-        /// <summary>
-        /// Ini ファイルに文字列を書き込みます。
-        /// </summary>
-        /// <param name="section">セクション名</param>
-        /// <param name="key">項目名</param>
-        /// <param name="value">書き込む値</param>
-        /// <returns></returns>
-        public bool WriteString(string section, string key, string value)
-        {
-            return WritePrivateProfileString(section, key, value, FilePath);
-        }
-    }
-}
-
-namespace BitmaPlus
+namespace BitmapUtils
 {
     /// <summary>
     /// Bitmap処理を高速化するためのクラス
@@ -605,7 +1034,7 @@ namespace BitmaPlus
         /// <summary>
         /// オリジナルのBitmapオブジェクト
         /// </summary>
-        private Bitmap _bmp = null;
+        private readonly Bitmap _bmp = null;
 
         /// <summary>
         /// Bitmapに直接アクセスするためのオブジェクト
