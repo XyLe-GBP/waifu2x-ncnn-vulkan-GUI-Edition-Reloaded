@@ -26,6 +26,7 @@ namespace NVGE
                 {
                     hasHandle = true;
                 }
+
                 if (hasHandle == false)
                 {
                     MessageBox.Show("Multiple launch of applications is not allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
