@@ -10,16 +10,16 @@
     <Authors>XyLe</Authors>
     <Product>waifu2x-ncnn-vulkan GUI Edition Reloaded</Product>
     <Copyright>Copyright (C) 2022 - XyLe. All Rights Reserved.</Copyright>
-    <AssemblyVersion>1.25.2220.127</AssemblyVersion>
-    <FileVersion>1.25.2220.127</FileVersion>
-    <Version>1.25.2220.127</Version>
+    <AssemblyVersion>1.26.2220.210</AssemblyVersion>
+    <FileVersion>1.26.2220.210</FileVersion>
+    <Version>1.26</Version>
     <Description>Super-Resolution Convolutional Neural Network（SRCNN）Utility.</Description>
     <PackageIcon>csharp-logo.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENCE.txt</PackageLicenseFile>
-    <ApplicationIcon>w2xr_multi.ico</ApplicationIcon>
+    <ApplicationIcon>Properties\w2xr_multi.ico</ApplicationIcon>
     <StartupObject>NVGE.Program</StartupObject>
     <AnalysisLevel>6.0</AnalysisLevel>
     <AssemblyName>waifu2x-nvge</AssemblyName>
@@ -30,7 +30,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="8.6.1" />
+    <Content Include="Properties\w2xr_multi.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="9.1.1" />
     <PackageReference Include="OpenCvSharp4" Version="4.5.5.20211231" />
     <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.5.5.20211231" />
     <PackageReference Include="System.Management" Version="6.0.0" />
@@ -41,41 +45,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Strings - コピー %282%29 - コピー.Designer.cs">
-      <DependentUpon>Strings - コピー (2).Designer.cs</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Strings - コピー %282%29.Designer.cs">
-      <DependentUpon>Strings.Designer.cs</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Strings - コピー %283%29.Designer.cs">
-      <DependentUpon>Strings.Designer.cs</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Strings - コピー - コピー %282%29.Designer.cs">
-      <DependentUpon>Strings - コピー.Designer.cs</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Strings - コピー - コピー - コピー.Designer.cs">
-      <DependentUpon>Strings - コピー - コピー.Designer.cs</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Strings - コピー - コピー.Designer.cs">
-      <DependentUpon>Strings - コピー.Designer.cs</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Strings - コピー.Designer.cs">
-      <DependentUpon>Strings.Designer.cs</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="Localization\Strings.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -102,7 +71,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Localization\Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
