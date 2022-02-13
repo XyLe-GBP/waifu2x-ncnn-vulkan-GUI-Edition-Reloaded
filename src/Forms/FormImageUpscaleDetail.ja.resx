@@ -194,7 +194,7 @@
     <value>80, 24</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 42</value>
+    <value>294, 42</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>"詳細な出力"オプションが有効ではないため、
@@ -234,11 +234,14 @@
     <value>500, 320</value>
   </data>
   <data name="label_webp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>466, 40</value>
+    <value>465, 40</value>
   </data>
   <data name="label_webp.Text" xml:space="preserve">
     <value>Google Web Picture フォーマットはフォームでの画像表示に対応していません。
 このテキストをクリックすると規定のブラウザで画像を表示します。</value>
+  </data>
+  <data name="label_NotSupported.Text" xml:space="preserve">
+    <value>この画像形式は対応していないため、ビューアーでのプレビューは利用できません。</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>アップスケールされた画像の詳細</value>

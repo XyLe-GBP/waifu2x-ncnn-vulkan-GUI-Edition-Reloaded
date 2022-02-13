@@ -44,10 +44,10 @@
             this.pictureBox_Main.Size = new System.Drawing.Size(47, 50);
             this.pictureBox_Main.TabIndex = 0;
             this.pictureBox_Main.TabStop = false;
-            this.pictureBox_Main.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Main_Paint);
-            this.pictureBox_Main.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Main_MouseDown);
-            this.pictureBox_Main.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Main_MouseMove);
-            this.pictureBox_Main.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Main_MouseUp);
+            this.pictureBox_Main.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBox_Main_Paint);
+            this.pictureBox_Main.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_Main_MouseDown);
+            this.pictureBox_Main.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox_Main_MouseMove);
+            this.pictureBox_Main.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_Main_MouseUp);
             // 
             // statusStrip1
             // 

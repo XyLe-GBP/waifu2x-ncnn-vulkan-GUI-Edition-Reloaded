@@ -1,4 +1,4 @@
-﻿using BitmaPlus;
+﻿using BitmapUtils;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -35,6 +35,7 @@ namespace NVGE
         private PointF _oldPoint;
         private RectangleF _originRect;
         #endregion
+
         struct StrB
         {
             public StringBuilder strZR1 = new("Zoom Ratio: x");
@@ -43,6 +44,7 @@ namespace NVGE
             public StringBuilder strPosX = new("posX: ");
             public StringBuilder strPosY = new("posY: ");
         }
+
         private bool _mdf = false;
         private float zoomRatio = 1.0f;
         private readonly string pp;
@@ -67,6 +69,8 @@ namespace NVGE
         private void FormShowPicture_Load(object sender, EventArgs e)
         {
             Text = "Viewer";
+            Config.Load(Common.xmlpath);
+
             bitmap = Image.FromFile(pp);
             canvas = new Bitmap(bitmap.Width, bitmap.Height);
             BitmapPlus bmpP = new(canvas);
@@ -100,7 +104,7 @@ namespace NVGE
             Refresh();
         }
 
-        private void pictureBox_Main_Paint(object sender, PaintEventArgs e)
+        private void PictureBox_Main_Paint(object sender, PaintEventArgs e)
         {
             if (zoomRatio > 1.0f || zoomRatio < 1.0f)
             {
@@ -205,7 +209,7 @@ namespace NVGE
             }
         }
 
-        private void pictureBox_Main_MouseDown(object sender, MouseEventArgs e)
+        private void PictureBox_Main_MouseDown(object sender, MouseEventArgs e)
         {
             _oldPoint.X = e.X;
             _oldPoint.Y = e.Y;
@@ -228,7 +232,7 @@ namespace NVGE
             }
         }
 
-        private void pictureBox_Main_MouseMove(object sender, MouseEventArgs e)
+        private void PictureBox_Main_MouseMove(object sender, MouseEventArgs e)
         {
             if (_mdf && e.Button == MouseButtons.Left)
             {
@@ -250,7 +254,7 @@ namespace NVGE
             }
         }
 
-        private void pictureBox_Main_MouseUp(object sender, MouseEventArgs e)
+        private void PictureBox_Main_MouseUp(object sender, MouseEventArgs e)
         {
             switch (e.Button)
             {

@@ -156,28 +156,40 @@
     <value>File (&amp;F)</value>
   </data>
   <data name="upscalingSettingsUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="upscalingSettingsUToolStripMenuItem.Text" xml:space="preserve">
-    <value>Image Upscaling Settings (&amp;U)</value>
+    <value>Image Upscaling (&amp;U)</value>
   </data>
   <data name="videoUpscalingSettingsVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="videoUpscalingSettingsVToolStripMenuItem.Text" xml:space="preserve">
-    <value>Video Upscaling Settings (&amp;V)</value>
+    <value>Video Upscaling (&amp;V)</value>
   </data>
   <data name="settingsCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 20</value>
+    <value>71, 20</value>
   </data>
   <data name="settingsCToolStripMenuItem.Text" xml:space="preserve">
-    <value>Settings (&amp;S)</value>
+    <value>Config (&amp;C)</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>202, 22</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Change Video Resolution</value>
+    <value>Change video resolution</value>
+  </data>
+  <data name="changeVideoFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="changeVideoFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>Change video format</value>
+  </data>
+  <data name="changeImageFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="changeImageFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>Change image format</value>
   </data>
   <data name="toolsTToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 20</value>
@@ -682,7 +694,7 @@
     <value>132, 17</value>
   </metadata>
   <data name="toolStripStatusLabel_Status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 17</value>
+    <value>174, 17</value>
   </data>
   <data name="toolStripStatusLabel_Status.Text" xml:space="preserve">
     <value>Not ready - please open the file.</value>
@@ -7033,6 +7045,18 @@
     <value>changeVideoResolutionToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;changeVideoResolutionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;changeVideoFormatToolStripMenuItem.Name" xml:space="preserve">
+    <value>changeVideoFormatToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;changeVideoFormatToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;changeImageFormatToolStripMenuItem.Name" xml:space="preserve">
+    <value>changeImageFormatToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;changeImageFormatToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;aboutAToolStripMenuItem.Name" xml:space="preserve">

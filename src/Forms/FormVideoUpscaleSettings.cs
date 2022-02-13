@@ -1,5 +1,4 @@
 ﻿using NVGE.Localization;
-using PrivateProfile;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -31,8 +30,8 @@ namespace NVGE
         private static string dds = " -dn";
         private static string ae = " pcm_s24le";
         private static string aes = " -c:a" + ae;
-        private static string pre = "";//" veryslow";
-        private static string preset = "";//" -preset" + pre;
+        private static string pre = "";
+        private static string preset = "";
         private static readonly string ql = " 1";
         private static string qv = " -q:v" + ql;
         private static string cmdparam_v1 = pathFF + hidebnr + " -i $InFile" + qv + overw + Videoloc;
@@ -46,665 +45,391 @@ namespace NVGE
 
         private void FormVideoUpscaleSettings_Load(object sender, EventArgs e)
         {
-            var ini = new IniFile(@".\settings.ini");
+            Config.Load(Common.xmlpath);
 
-            int eas = ini.GetInt("VIDEO_SETTINGS", "ADVANCED_INDEX", 65535), eiaac = ini.GetInt("VIDEO_SETTINGS", "IAAC_INDEX", 65535), dss = ini.GetInt("VIDEO_SETTINGS", "DSS_INDEX", 65535), cc = ini.GetInt("VIDEO_SETTINGS", "CC_INDEX", 65535), oao = ini.GetInt("VIDEO_SETTINGS", "OAO_INDEX", 65535), hi = ini.GetInt("VIDEO_SETTINGS", "HI_INDEX", 65535), eso = ini.GetInt("VIDEO_SETTINGS", "SO_INDEX", 65535), dds = ini.GetInt("VIDEO_SETTINGS", "DS_INDEX", 65535), mi = ini.GetInt("VIDEO_SETTINGS", "MI_INDEX", 65535), oof = ini.GetInt("VIDEO_SETTINGS", "OOF_INDEX", 65535), useNVENC = ini.GetInt("VIDEO_SETTINGS", "NVENC_INDEX", 65535), mvc = ini.GetInt("VIDEO_SETTINGS", "MVC_INDEX", 65535), mac = ini.GetInt("VIDEO_SETTINGS", "MAC_INDEX", 65535), ab = ini.GetInt("VIDEO_SETTINGS", "AB_INDEX", 65535), ae = ini.GetInt("VIDEO_SETTINGS", "AE_INDEX", 65535), pre = ini.GetInt("VIDEO_SETTINGS", "PRESET_INDEX", 65535), msol = ini.GetInt("VIDEO_SETTINGS", "MSOL_INDEX", 65535), cvot = ini.GetInt("VIDEO_SETTINGS", "CVOT_INDEX", 65535);
-            string vfps = ini.GetString("VIDEO_SETTINGS", "FPS_INDEX");
-            string pathFFmpeg = ini.GetString("VIDEO_SETTINGS", "FFMPEG_INDEX");
-            string crf = ini.GetString("VIDEO_SETTINGS", "CRF_INDEX");
-            string vca = ini.GetString("VIDEO_SETTINGS", "VC_INDEX");
-            string aca = ini.GetString("VIDEO_SETTINGS", "AC_INDEX");
-            string abitrate = ini.GetString("VIDEO_SETTINGS", "BIT_INDEX");
-            int enc = ini.GetInt("VIDEO_SETTINGS", "ENCODE_INDEX", 65535);
-            int h264 = ini.GetInt("VIDEO_SETTINGS", "H264_INDEX", 65535);
-            int vot = ini.GetInt("VIDEO_SETTINGS", "VOT_INDEX", 65535);
-            string vl = ini.GetString("VIDEO_SETTINGS", "VL_INDEX");
-            string al = ini.GetString("VIDEO_SETTINGS", "AL_INDEX");
-            string cmdparam1 = ini.GetString("VIDEO_SETTINGS", "CMDV_INDEX");
-            string cmdparam2 = ini.GetString("VIDEO_SETTINGS", "CMDA_INDEX");
-            string cmdparam3 = ini.GetString("VIDEO_SETTINGS", "CMDF_INDEX");
-                                            
-            if (vfps != "")
+            if (Config.Entry["FPS"].Value != "")
             {
-                textBox_FPS.Text = vfps;
-                fps = vfps;
+                textBox_FPS.Text = Config.Entry["FPS"].Value;
+                fps = Config.Entry["FPS"].Value;
             }
             else
             {
                 textBox_FPS.Text = "";
             }
-            if (pathFFmpeg != "")
+
+            if (Config.Entry["FFmpegLocation"].Value != "")
             {
-                textBox_FFmpeg.Text = pathFFmpeg;
-                pathFF = pathFFmpeg;
+                textBox_FFmpeg.Text = Config.Entry["FFmpegLocation"].Value;
+                pathFF = Config.Entry["FFmpegLocation"].Value;
             }
             else
             {
                 textBox_FFmpeg.Text = "";
             }
-            if (eas != 65535)
+
+            switch (bool.Parse(Config.Entry["VAdvanced"].Value))
             {
-                switch (eas)
-                {
-                    case 0:
-                        button_FC.Enabled = false;
-                        checkBox_EIA.Enabled = false;
-                        checkBox_EIA.Checked = false;
-                        checkBox_DSS.Enabled = false;
-                        checkBox_DSS.Checked = false;
-                        checkBox_CC.Enabled = false;
-                        checkBox_CC.Checked = false;
-                        checkBox_OAO.Enabled = false;
-                        checkBox_OAO.Checked = false;
-                        checkBox_HI.Enabled = false;
-                        checkBox_HI.Checked = false;
-                        checkBox_SO.Enabled = false;
-                        checkBox_SO.Checked = false;
-                        checkBox_DS.Enabled = false;
-                        checkBox_DS.Checked = false;
-                        checkBox_MI.Enabled = false;
-                        checkBox_MI.Checked = false;
-                        checkBox_OOF.Enabled = false;
-                        checkBox_OOF.Checked = false;
-                        checkBox_NVENC.Enabled = false;
-                        checkBox_NVENC.Checked = false;
-                        checkBox_MVC.Enabled = false;
-                        checkBox_MVC.Checked = false;
-                        checkBox_MAC.Enabled = false;
-                        checkBox_MAC.Checked = false;
-                        checkBox_AE.Enabled = false;
-                        checkBox_AE.Checked = false;
-                        checkBox_AB.Enabled = false;
-                        checkBox_AB.Checked = false;
-                        checkBox_preset.Enabled = false;
-                        checkBox_preset.Checked = false;
-                        checkBox_MSOL.Enabled = false;
-                        checkBox_MSOL.Checked = false;
-                        checkBox_VOT.Enabled = false;
-                        checkBox_VOT.Checked = false;
-                        label2.Enabled = false;
-                        label3.Enabled = false;
-                        label4.Enabled = false;
-                        label7.Enabled = false;
-                        label8.Enabled = false;
-                        label9.Enabled = false;
-                        label10.Enabled = false;
-                        label11.Enabled = false;
-                        label12.Enabled = false;
-                        label13.Enabled = false;
-                        label14.Enabled = false;
-                        label15.Enabled = false;
-                        label16.Enabled = false;
-                        textBox_CMDV.Enabled = false;
-                        textBox_CMDA.Enabled = false;
-                        textBox_CMDF.Enabled = false;
-                        break;
-                    case 1:
-                        button_FC.Enabled = true;
-                        checkBox_EIA.Enabled = true;
-                        checkBox_DSS.Enabled = true;
-                        checkBox_CC.Enabled = true;
-                        checkBox_OAO.Enabled = true;
-                        checkBox_HI.Enabled = true;
-                        checkBox_SO.Enabled = true;
-                        checkBox_DS.Enabled = true;
-                        checkBox_MI.Enabled = true;
-                        checkBox_OOF.Enabled = true;
-                        checkBox_NVENC.Enabled = true;
-                        checkBox_MVC.Enabled = true;
-                        checkBox_MAC.Enabled = true;
-                        checkBox_AE.Enabled = true;
-                        checkBox_AB.Enabled = true;
-                        checkBox_preset.Enabled = true;
-                        checkBox_MSOL.Enabled = true;
-                        checkBox_VOT.Enabled = true;
-                        label9.Enabled = true;
-                        label12.Enabled = true;
-                        label13.Enabled = true;
-                        textBox_CMDV.Enabled = true;
-                        textBox_CMDA.Enabled = true;
-                        textBox_CMDF.Enabled = true;
-                        if (eiaac != 65535)
-                        {
-                            switch (eiaac)
-                            {
-                                case 0:
-                                    checkBox_EIA.Checked = false;
-                                    intaac = "";
-                                    break;
-                                case 1:
-                                    checkBox_EIA.Checked = true;
-                                    break;
-                                default:
-                                    checkBox_EIA.Checked = false;
-                                    intaac = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                case false:
+                    button_FC.Enabled = false;
+                    checkBox_EIA.Enabled = false;
+                    checkBox_EIA.Checked = false;
+                    checkBox_DSS.Enabled = false;
+                    checkBox_DSS.Checked = false;
+                    checkBox_CC.Enabled = false;
+                    checkBox_CC.Checked = false;
+                    checkBox_OAO.Enabled = false;
+                    checkBox_OAO.Checked = false;
+                    checkBox_HI.Enabled = false;
+                    checkBox_HI.Checked = false;
+                    checkBox_SO.Enabled = false;
+                    checkBox_SO.Checked = false;
+                    checkBox_DS.Enabled = false;
+                    checkBox_DS.Checked = false;
+                    checkBox_MI.Enabled = false;
+                    checkBox_MI.Checked = false;
+                    checkBox_OOF.Enabled = false;
+                    checkBox_OOF.Checked = false;
+                    checkBox_NVENC.Enabled = false;
+                    checkBox_NVENC.Checked = false;
+                    checkBox_MVC.Enabled = false;
+                    checkBox_MVC.Checked = false;
+                    checkBox_MAC.Enabled = false;
+                    checkBox_MAC.Checked = false;
+                    checkBox_AE.Enabled = false;
+                    checkBox_AE.Checked = false;
+                    checkBox_AB.Enabled = false;
+                    checkBox_AB.Checked = false;
+                    checkBox_preset.Enabled = false;
+                    checkBox_preset.Checked = false;
+                    checkBox_MSOL.Enabled = false;
+                    checkBox_MSOL.Checked = false;
+                    checkBox_VOT.Enabled = false;
+                    checkBox_VOT.Checked = false;
+                    label2.Enabled = false;
+                    label3.Enabled = false;
+                    label4.Enabled = false;
+                    label7.Enabled = false;
+                    label8.Enabled = false;
+                    label9.Enabled = false;
+                    label10.Enabled = false;
+                    label11.Enabled = false;
+                    label12.Enabled = false;
+                    label13.Enabled = false;
+                    label14.Enabled = false;
+                    label15.Enabled = false;
+                    label16.Enabled = false;
+                    textBox_CMDV.Enabled = false;
+                    textBox_CMDA.Enabled = false;
+                    textBox_CMDF.Enabled = false;
+                    break;
+                case true:
+                    button_FC.Enabled = true;
+                    checkBox_EIA.Enabled = true;
+                    checkBox_DSS.Enabled = true;
+                    checkBox_CC.Enabled = true;
+                    checkBox_OAO.Enabled = true;
+                    checkBox_HI.Enabled = true;
+                    checkBox_SO.Enabled = true;
+                    checkBox_DS.Enabled = true;
+                    checkBox_MI.Enabled = true;
+                    checkBox_OOF.Enabled = true;
+                    checkBox_NVENC.Enabled = true;
+                    checkBox_MVC.Enabled = true;
+                    checkBox_MAC.Enabled = true;
+                    checkBox_AE.Enabled = true;
+                    checkBox_AB.Enabled = true;
+                    checkBox_preset.Enabled = true;
+                    checkBox_MSOL.Enabled = true;
+                    checkBox_VOT.Enabled = true;
+                    label9.Enabled = true;
+                    label12.Enabled = true;
+                    label13.Enabled = true;
+                    textBox_CMDV.Enabled = true;
+                    textBox_CMDA.Enabled = true;
+                    textBox_CMDF.Enabled = true;
+
+                    switch (bool.Parse(Config.Entry["InternalAAC"].Value))
+                    {
+                        case false:
                             checkBox_EIA.Checked = false;
                             intaac = "";
-                        }
-                        if (dss != 65535)
-                        {
-                            switch (dss)
-                            {
-                                case 0:
-                                    checkBox_DSS.Checked = false;
-                                    ds = "";
-                                    break;
-                                case 1:
-                                    checkBox_DSS.Checked = true;
-                                    break;
-                                default:
-                                    checkBox_DSS.Checked = false;
-                                    ds = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                            break;
+                        case true:
+                            checkBox_EIA.Checked = true;
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["Subtitle"].Value))
+                    {
+                        case false:
                             checkBox_DSS.Checked = false;
                             ds = "";
-                        }
-                        if (cc != 65535)
-                        {
-                            switch (cc)
-                            {
-                                case 0:
-                                    checkBox_CC.Checked = false;
-                                    copychapters = "";
-                                    break;
-                                case 1:
-                                    checkBox_CC.Checked = true;
-                                    break;
-                                default:
-                                    checkBox_CC.Checked = false;
-                                    copychapters = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                            break;
+                        case true:
+                            checkBox_DSS.Checked = true;
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["CopyingChapters"].Value))
+                    {
+                        case false:
                             checkBox_CC.Checked = false;
                             copychapters = "";
-                        }
-                        if (oao != 65535)
-                        {
-                            switch (oao)
-                            {
-                                case 0:
-                                    checkBox_OAO.Checked = false;
-                                    FormVideoUpscaleSettings.oao = "";
-                                    break;
-                                case 1:
-                                    checkBox_OAO.Checked = true;
-                                    break;
-                                default:
-                                    checkBox_OAO.Checked = false;
-                                    FormVideoUpscaleSettings.oao = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                            break;
+                        case true:
+                            checkBox_CC.Checked = true;
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["OutputAudioOnly"].Value))
+                    {
+                        case false:
                             checkBox_OAO.Checked = false;
                             FormVideoUpscaleSettings.oao = "";
-                        }
-                        if (hi != 65535)
-                        {
-                            switch (hi)
-                            {
-                                case 0:
-                                    checkBox_HI.Checked = false;
-                                    hidebnr = "";
-                                    break;
-                                case 1:
-                                    checkBox_HI.Checked = true;
-                                    break;
-                                default:
-                                    checkBox_HI.Checked = false;
-                                    hidebnr = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                            break;
+                        case true:
+                            checkBox_OAO.Checked = true;
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["HideInformations"].Value))
+                    {
+                        case false:
                             checkBox_HI.Checked = false;
                             hidebnr = "";
-                        }
-                        if (eso != 65535)
-                        {
-                            switch (eso)
-                            {
-                                case 0:
-                                    checkBox_SO.Checked = false;
-                                    break;
-                                case 1:
-                                    checkBox_SO.Checked = true;
-                                    break;
-                                default:
-                                    checkBox_SO.Checked = false;
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                            break;
+                        case true:
+                            checkBox_HI.Checked = true;
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["Sequential"].Value))
+                    {
+                        case false:
                             checkBox_SO.Checked = false;
-                        }
-                        if (dds != 65535)
-                        {
-                            switch (dds)
-                            {
-                                case 0:
-                                    checkBox_DS.Checked = false;
-                                    FormVideoUpscaleSettings.dds = "";
-                                    break;
-                                case 1:
-                                    checkBox_DS.Checked = true;
-                                    break;
-                                default:
-                                    checkBox_DS.Checked = false;
-                                    FormVideoUpscaleSettings.dds = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                            break;
+                        case true:
+                            checkBox_SO.Checked = true;
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["DataStream"].Value))
+                    {
+                        case false:
                             checkBox_DS.Checked = false;
                             FormVideoUpscaleSettings.dds = "";
-                        }
-                        if (mi != 65535)
-                        {
-                            switch (mi)
-                            {
-                                case 0:
-                                    checkBox_MI.Checked = false;
-                                    metadatainfo = "";
-                                    break;
-                                case 1:
-                                    checkBox_MI.Checked = true;
-                                    break;
-                                default:
-                                    checkBox_MI.Checked = false;
-                                    metadatainfo = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                            break;
+                        case true:
+                            checkBox_DS.Checked = true;
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["Metadata"].Value))
+                    {
+                        case false:
                             checkBox_MI.Checked = false;
                             metadatainfo = "";
-                        }
-                        if (oof != 65535)
-                        {
-                            switch (oof)
-                            {
-                                case 0:
-                                    checkBox_OOF.Checked = false;
-                                    overw = "";
-                                    break;
-                                case 1:
-                                    checkBox_OOF.Checked = true;
-                                    break;
-                                default:
-                                    checkBox_OOF.Checked = false;
-                                    overw = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                            break;
+                        case true:
+                            checkBox_MI.Checked = true;
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["Overwrite"].Value))
+                    {
+                        case false:
                             checkBox_OOF.Checked = false;
                             overw = "";
-                        }
-                        if (useNVENC != 65535)
-                        {
-                            switch (useNVENC)
-                            {
-                                case 0:
-                                    checkBox_NVENC.Checked = false;
-                                    label8.Enabled = false;
-                                    textBox_CRF.Enabled = false;
-                                    qpl = "";
-                                    break;
-                                case 1:
-                                    checkBox_NVENC.Checked = true;
-                                    label8.Enabled = true;
-                                    textBox_CRF.Enabled = true;
-                                    if (crf != "")
-                                    {
-                                        textBox_CRF.Text = crf;
-                                        qpl = " -qp " + crf;
-                                    }
-                                    else
-                                    {
-                                        textBox_CRF.Text = "";
-                                    }
-                                    break;
-                                default:
-                                    checkBox_NVENC.Checked = false;
-                                    label8.Enabled = false;
-                                    textBox_CRF.Enabled = false;
-                                    qpl = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                            break;
+                        case true:
+                            checkBox_OOF.Checked = true;
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["NVENC"].Value))
+                    {
+                        case false:
                             checkBox_NVENC.Checked = false;
                             label8.Enabled = false;
                             textBox_CRF.Enabled = false;
                             qpl = "";
-                        }
-                        if (mvc != 65535)
-                        {
-                            switch (mvc)
+                            break;
+                        case true:
+                            checkBox_NVENC.Checked = true;
+                            label8.Enabled = true;
+                            textBox_CRF.Enabled = true;
+                            if (Config.Entry["CRFLevel"].Value != "")
                             {
-                                case 0:
-                                    checkBox_MVC.Checked = false;
-                                    label2.Enabled = false;
-                                    textBox_VCodec.Enabled = false;
-                                    Videocodec = "";
-                                    break;
-                                case 1:
-                                    checkBox_MVC.Checked = true;
-                                    label2.Enabled = true;
-                                    textBox_VCodec.Enabled = true;
-                                    if (vca != "")
-                                    {
-                                        textBox_VCodec.Text = vca;
-                                        Videocodec = " -vcodec " + vca;
-                                    }
-                                    else
-                                    {
-                                        textBox_VCodec.Text = "";
-                                    }
-                                    break;
-                                default:
-                                    checkBox_MVC.Checked = false;
-                                    label2.Enabled = false;
-                                    textBox_VCodec.Enabled = false;
-                                    Videocodec = "";
-                                    break;
+                                textBox_CRF.Text = Config.Entry["CRFLevel"].Value;
+                                qpl = " -qp " + Config.Entry["CRFLevel"].Value;
                             }
-                        }
-                        else
-                        {
+                            else
+                            {
+                                textBox_CRF.Text = "";
+                            }
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["VideoCodec"].Value))
+                    {
+                        case false:
                             checkBox_MVC.Checked = false;
                             label2.Enabled = false;
                             textBox_VCodec.Enabled = false;
                             Videocodec = "";
-                        }
-                        if (mac != 65535)
-                        {
-                            switch (mac)
+                            break;
+                        case true:
+                            checkBox_MVC.Checked = true;
+                            label2.Enabled = true;
+                            textBox_VCodec.Enabled = true;
+                            if (Config.Entry["VideoCodecIndex"].Value != "")
                             {
-                                case 0:
-                                    checkBox_MAC.Checked = false;
-                                    label3.Enabled = false;
-                                    textBox_ACodec.Enabled = false;
-                                    Audiocodec = "";
-                                    break;
-                                case 1:
-                                    checkBox_MAC.Checked = true;
-                                    label3.Enabled = true;
-                                    textBox_ACodec.Enabled = true;
-                                    if (aca != "")
-                                    {
-                                        textBox_ACodec.Text = aca;
-                                        Audiocodec = " -acodec " + aca;
-                                    }
-                                    else
-                                    {
-                                        textBox_ACodec.Text = "";
-                                    }
-                                    break;
-                                default:
-                                    checkBox_MAC.Checked = false;
-                                    label3.Enabled = false;
-                                    textBox_ACodec.Enabled = false;
-                                    Audiocodec = "";
-                                    break;
+                                textBox_VCodec.Text = Config.Entry["VideoCodecIndex"].Value;
+                                Videocodec = " -vcodec " + Config.Entry["VideoCodecIndex"].Value;
                             }
-                        }
-                        else
-                        {
+                            else
+                            {
+                                textBox_VCodec.Text = "";
+                            }
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["AudioCodec"].Value))
+                    {
+                        case false:
                             checkBox_MAC.Checked = false;
                             label3.Enabled = false;
                             textBox_ACodec.Enabled = false;
                             Audiocodec = "";
-                        }
-                        if (ab != 65535)
-                        {
-                            switch (ab)
+                            break;
+                        case true:
+                            checkBox_MAC.Checked = true;
+                            label3.Enabled = true;
+                            textBox_ACodec.Enabled = true;
+                            if (Config.Entry["AudioCodecIndex"].Value != "")
                             {
-                                case 0:
-                                    checkBox_AB.Checked = false;
-                                    label4.Enabled = false;
-                                    label7.Enabled = false;
-                                    textBox_AB.Enabled = false;
-                                    Audiobitrate = "";
-                                    break;
-                                case 1:
-                                    checkBox_AB.Checked = true;
-                                    label4.Enabled = true;
-                                    label7.Enabled = true;
-                                    textBox_AB.Enabled = true;
-                                    if (abitrate != "")
-                                    {
-                                        textBox_AB.Text = abitrate;
-                                        Audiobitrate = " -b:a " + abitrate + "k";
-                                    }
-                                    else
-                                    {
-                                        textBox_AB.Text = "";
-                                    }
-                                    break;
-                                default:
-                                    checkBox_AB.Checked = false;
-                                    label4.Enabled = false;
-                                    label7.Enabled = false;
-                                    textBox_AB.Enabled = false;
-                                    Audiobitrate = "";
-                                    break;
+                                textBox_ACodec.Text = Config.Entry["AudioCodecIndex"].Value;
+                                Audiocodec = " -acodec " + Config.Entry["AudioCodecIndex"].Value;
                             }
-                        }
-                        else
-                        {
+                            else
+                            {
+                                textBox_ACodec.Text = "";
+                            }
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["AudioBitrate"].Value))
+                    {
+                        case false:
                             checkBox_AB.Checked = false;
                             label4.Enabled = false;
                             label7.Enabled = false;
                             textBox_AB.Enabled = false;
                             Audiobitrate = "";
-                        }
-                        if (ae != 65535)
-                        {
-                            switch (ae)
+                            break;
+                        case true:
+                            checkBox_AB.Checked = true;
+                            label4.Enabled = true;
+                            label7.Enabled = true;
+                            textBox_AB.Enabled = true;
+                            if (Config.Entry["AudioBitrateIndex"].Value != "")
                             {
-                                case 0:
-                                    checkBox_AE.Checked = false;
-                                    comboBox_AE.Enabled = false;
-                                    label14.Enabled = false;
-                                    aes = "";
-                                    break;
-                                case 1:
-                                    checkBox_AE.Checked = true;
-                                    comboBox_AE.Enabled = true;
-                                    label14.Enabled = true;
-                                    if (enc != 65535)
-                                    {
-                                        comboBox_AE.SelectedIndex = enc;
-                                        switch (enc)
-                                        {
-                                            case 0:
-                                                aes = " -c:a pcm_s16le";
-                                                break;
-                                            case 1:
-                                                aes = " -c:a pcm_s24le";
-                                                break;
-                                            case 2:
-                                                aes = " -c:a pcm_s32le";
-                                                break;
-                                            case 3:
-                                                aes = " -c:a aac";
-                                                break;
-                                            case 4:
-                                                aes = " -c:a libmp3lame";
-                                                break;
-                                            default:
-                                                aes = " -c:a pcm_s24le";
-                                                break;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        comboBox_AE.SelectedIndex = 1;
-                                        aes = " -c:a pcm_s24le";
-                                    }
-                                    break;
-                                default:
-                                    checkBox_AE.Checked = false;
-                                    comboBox_AE.Enabled = false;
-                                    label14.Enabled = false;
-                                    aes = "";
-                                    break;
+                                textBox_AB.Text = Config.Entry["AudioBitrateIndex"].Value;
+                                Audiobitrate = " -b:a " + Config.Entry["AudioBitrateIndex"].Value + "k";
                             }
-                        }
-                        else
-                        {
+                            else
+                            {
+                                textBox_AB.Text = "";
+                            }
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["AudioOutputCodec"].Value))
+                    {
+                        case false:
                             checkBox_AE.Checked = false;
                             comboBox_AE.Enabled = false;
                             label14.Enabled = false;
                             aes = "";
-                        }
-                        if (pre != 65535)
-                        {
-                            switch (pre)
+                            break;
+                        case true:
+                            checkBox_AE.Checked = true;
+                            comboBox_AE.Enabled = true;
+                            label14.Enabled = true;
+                            comboBox_AE.SelectedIndex = int.Parse(Config.Entry["OutputCodecIndex"].Value);
+                            aes = int.Parse(Config.Entry["OutputCodecIndex"].Value) switch
                             {
-                                case 0:
-                                    checkBox_preset.Checked = false;
-                                    label15.Enabled = false;
-                                    comboBox_preset.Enabled = false;
-                                    preset = "";
-                                    break;
-                                case 1:
-                                    checkBox_preset.Checked = true;
-                                    label15.Enabled = true;
-                                    comboBox_preset.Enabled = true;
-                                    switch (h264)
-                                    {
-                                        case 0:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset ultrafast";
-                                            break;
-                                        case 1:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset superfast";
-                                            break;
-                                        case 2:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset veryfast";
-                                            break;
-                                        case 3:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset faster";
-                                            break;
-                                        case 4:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset fast";
-                                            break;
-                                        case 5:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset medium";
-                                            break;
-                                        case 6:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset slow";
-                                            break;
-                                        case 7:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset slower";
-                                            break;
-                                        case 8:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset veryslow";
-                                            break;
-                                        default:
-                                            comboBox_preset.SelectedIndex = h264;
-                                            preset = " -preset veryslow";
-                                            break;
-                                    }
-                                    break;
-                                default:
-                                    checkBox_preset.Checked = false;
-                                    label15.Enabled = false;
-                                    comboBox_preset.Enabled = false;
-                                    preset = "";
-                                    break;
-                            }
-                        }
-                        else
-                        {
+                                0 => " -c:a pcm_s16le",
+                                1 => " -c:a pcm_s24le",
+                                2 => " -c:a pcm_s32le",
+                                3 => " -c:a aac",
+                                4 => " -c:a libmp3lame",
+                                _ => " -c:a pcm_s24le",
+                            };
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["H264"].Value))
+                    {
+                        case false:
                             checkBox_preset.Checked = false;
                             label15.Enabled = false;
                             comboBox_preset.Enabled = false;
                             preset = "";
-                        }
-                        if (msol != 65535)
-                        {
-                            switch (msol)
+                            break;
+                        case true:
+                            checkBox_preset.Checked = true;
+                            label15.Enabled = true;
+                            comboBox_preset.Enabled = true;
+                            switch (int.Parse(Config.Entry["H264Index"].Value))
                             {
                                 case 0:
-                                    checkBox_MSOL.Checked = false;
-                                    label10.Enabled = false;
-                                    label11.Enabled = false;
-                                    button_VL.Enabled = false;
-                                    button_AL.Enabled = false;
-                                    Videoloc = " $OutFile";
-                                    Audioloc = " $OutFile";
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset ultrafast";
                                     break;
                                 case 1:
-                                    checkBox_MSOL.Checked = true;
-                                    label10.Enabled = true;
-                                    label11.Enabled = true;
-                                    button_VL.Enabled = true;
-                                    button_AL.Enabled = true;
-                                    if (vl != "")
-                                    {
-                                        textBox_VL.Text = vl;
-                                        Videoloc = " " + vl;
-                                    }
-                                    else
-                                    {
-                                        textBox_VL.Text = "";
-                                        Videoloc = " $OutFile";
-                                    }
-                                    if (al != "")
-                                    {
-                                        textBox_AL.Text = al;
-                                        Audioloc = " " + al;
-                                    }
-                                    else
-                                    {
-                                        textBox_AL.Text = "";
-                                        Audioloc = " $OutFile";
-                                    }
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset superfast";
+                                    break;
+                                case 2:
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset veryfast";
+                                    break;
+                                case 3:
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset faster";
+                                    break;
+                                case 4:
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset fast";
+                                    break;
+                                case 5:
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset medium";
+                                    break;
+                                case 6:
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset slow";
+                                    break;
+                                case 7:
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset slower";
+                                    break;
+                                case 8:
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset veryslow";
                                     break;
                                 default:
-                                    checkBox_MSOL.Checked = false;
-                                    label10.Enabled = false;
-                                    label11.Enabled = false;
-                                    button_VL.Enabled = false;
-                                    button_AL.Enabled = false;
-                                    Videoloc = " $OutFile";
-                                    Audioloc = " $OutFile";
+                                    comboBox_preset.SelectedIndex = int.Parse(Config.Entry["H264Index"].Value);
+                                    preset = " -preset veryslow";
                                     break;
                             }
-                        }
-                        else
-                        {
+                            break;
+                    }
+
+                    switch (bool.Parse(Config.Entry["OutputLocation"].Value))
+                    {
+                        case false:
                             checkBox_MSOL.Checked = false;
                             label10.Enabled = false;
                             label11.Enabled = false;
@@ -712,158 +437,122 @@ namespace NVGE
                             button_AL.Enabled = false;
                             Videoloc = " $OutFile";
                             Audioloc = " $OutFile";
-                        }
-                        if (cvot != 65535)
-                        {
-                            switch (cvot)
+                            break;
+                        case true:
+                            checkBox_MSOL.Checked = true;
+                            label10.Enabled = true;
+                            label11.Enabled = true;
+                            button_VL.Enabled = true;
+                            button_AL.Enabled = true;
+                            if (Config.Entry["VideoLocation"].Value != "")
                             {
-                                case 0:
-                                    checkBox_VOT.Checked = false;
-                                    comboBox_VOT.Enabled = false;
-                                    label16.Enabled = false;
-                                    break;
-                                case 1:
-                                    {
-                                        checkBox_EIA.Checked = false;
-                                        checkBox_EIA.Enabled = false;
-                                        checkBox_DS.Checked = false;
-                                        checkBox_DS.Enabled = false;
-                                        checkBox_DSS.Checked = false;
-                                        checkBox_DSS.Enabled = false;
-                                        checkBox_CC.Enabled = false;
-                                        checkBox_CC.Checked = false;
-                                        checkBox_OAO.Enabled = false;
-                                        checkBox_OAO.Checked = false;
-                                        checkBox_HI.Enabled = false;
-                                        checkBox_HI.Checked = false;
-                                        checkBox_SO.Enabled = false;
-                                        checkBox_SO.Checked = false;
-                                        checkBox_MI.Enabled = false;
-                                        checkBox_MI.Checked = false;
-                                        checkBox_OOF.Enabled = false;
-                                        checkBox_OOF.Checked = false;
-                                        checkBox_NVENC.Enabled = false;
-                                        checkBox_NVENC.Checked = false;
-                                        label8.Enabled = false;
-                                        textBox_CRF.Text = null;
-                                        textBox_CRF.Enabled = false;
-                                        checkBox_AE.Enabled = false;
-                                        checkBox_AE.Checked = false;
-                                        label14.Enabled = false;
-                                        comboBox_AE.Enabled = false;
-                                        checkBox_preset.Enabled = false;
-                                        checkBox_preset.Checked = false;
-                                        label15.Enabled = false;
-                                        comboBox_preset.Enabled = false;
-                                        textBox_CMDA.Enabled = false;
-                                        textBox_CMDA.Text = null;
-                                        textBox_CMDF.Enabled = false;
-                                        textBox_CMDF.Text = null;
-                                        textBox_CMDV.Enabled = false;
-                                        textBox_CMDV.Text = null;
-
-                                        checkBox_VOT.Checked = true;
-                                        comboBox_VOT.Enabled = true;
-                                        label16.Enabled = true;
-                                        switch (vot)
-                                        {
-                                            case 0:
-                                                comboBox_VOT.SelectedIndex = vot;
-                                                break;
-                                            case 1:
-                                                comboBox_VOT.SelectedIndex = vot;
-                                                break;
-                                            default:
-                                                comboBox_VOT.SelectedIndex = 0;
-                                                break;
-                                        }
-                                        break;
-                                    }
-                                default:
-                                    break;
+                                textBox_VL.Text = Config.Entry["VideoLocation"].Value;
+                                Videoloc = " " + Config.Entry["VideoLocation"].Value;
                             }
-                        }
-                        if (cmdparam1 != "")
-                        {
-                            textBox_CMDV.Text = cmdparam1;
-                        }
-                        else
-                        {
-                            textBox_CMDV.Text = pathFF + hidebnr + " -i $InFile" + qv + overw + Videoloc;
-                        }
-                        if (cmdparam2 != "")
-                        {
-                            textBox_CMDA.Text = cmdparam2;
-                        }
-                        else
-                        {
-                            textBox_CMDA.Text = pathFF + hidebnr + " -i $InFile" + copychapters + metadatainfo + oao + ds + dds + aes + overw + Audioloc;
-                        }
-                        if (cmdparam3 != "")
-                        {
-                            textBox_CMDF.Text = cmdparam3;
-                        }
-                        else
-                        {
-                            textBox_CMDF.Text = pathFF + videofps + hidebnr + intaac + " -i $InImage -i $InAudio -r" + videofps.Replace(" -framerate", "") + qpl + Videocodec + preset + Audiocodec + Audiobitrate + overw + " $OutFile";
-                        }
+                            else
+                            {
+                                textBox_VL.Text = "";
+                                Videoloc = " $OutFile";
+                            }
+                            if (Config.Entry["AudioLocation"].Value != "")
+                            {
+                                textBox_AL.Text = Config.Entry["AudioLocation"].Value;
+                                Audioloc = " " + Config.Entry["AudioLocation"].Value;
+                            }
+                            else
+                            {
+                                textBox_AL.Text = "";
+                                Audioloc = " $OutFile";
+                            }
+                            break;
+                    }
 
-                        break;
-                }
-            }
-            else
-            {
-                button_FC.Enabled = false;
-                checkBox_EIA.Enabled = false;
-                checkBox_EIA.Checked = false;
-                checkBox_DSS.Enabled = false;
-                checkBox_DSS.Checked = false;
-                checkBox_CC.Enabled = false;
-                checkBox_CC.Checked = false;
-                checkBox_OAO.Enabled = false;
-                checkBox_OAO.Checked = false;
-                checkBox_HI.Enabled = false;
-                checkBox_HI.Checked = false;
-                checkBox_SO.Enabled = false;
-                checkBox_SO.Checked = false;
-                checkBox_DS.Enabled = false;
-                checkBox_DS.Checked = false;
-                checkBox_MI.Enabled = false;
-                checkBox_MI.Checked = false;
-                checkBox_OOF.Enabled = false;
-                checkBox_OOF.Checked = false;
-                checkBox_NVENC.Enabled = false;
-                checkBox_NVENC.Checked = false;
-                checkBox_MVC.Enabled = false;
-                checkBox_MVC.Checked = false;
-                checkBox_MAC.Enabled = false;
-                checkBox_MAC.Checked = false;
-                checkBox_AE.Enabled = false;
-                checkBox_AE.Checked = false;
-                checkBox_AB.Enabled = false;
-                checkBox_AB.Checked = false;
-                checkBox_preset.Enabled = false;
-                checkBox_preset.Checked = false;
-                checkBox_MSOL.Enabled = false;
-                checkBox_MSOL.Checked = false;
-                checkBox_VOT.Enabled = false;
-                checkBox_VOT.Checked = false;
-                label2.Enabled = false;
-                label3.Enabled = false;
-                label4.Enabled = false;
-                label7.Enabled = false;
-                label8.Enabled = false;
-                label9.Enabled = false;
-                label10.Enabled = false;
-                label11.Enabled = false;
-                label12.Enabled = false;
-                label13.Enabled = false;
-                label14.Enabled = false;
-                label15.Enabled = false;
-                label16.Enabled = false;
-                textBox_CMDV.Enabled = false;
-                textBox_CMDA.Enabled = false;
-                textBox_CMDF.Enabled = false;
+                    switch (bool.Parse(Config.Entry["VideoGeneration"].Value))
+                    {
+                        case false:
+                            checkBox_VOT.Checked = false;
+                            comboBox_VOT.Enabled = false;
+                            label16.Enabled = false;
+                            break;
+                        case true:
+                            {
+                                checkBox_EIA.Checked = false;
+                                checkBox_EIA.Enabled = false;
+                                checkBox_DS.Checked = false;
+                                checkBox_DS.Enabled = false;
+                                checkBox_DSS.Checked = false;
+                                checkBox_DSS.Enabled = false;
+                                checkBox_CC.Enabled = false;
+                                checkBox_CC.Checked = false;
+                                checkBox_OAO.Enabled = false;
+                                checkBox_OAO.Checked = false;
+                                checkBox_HI.Enabled = false;
+                                checkBox_HI.Checked = false;
+                                checkBox_SO.Enabled = false;
+                                checkBox_SO.Checked = false;
+                                checkBox_MI.Enabled = false;
+                                checkBox_MI.Checked = false;
+                                checkBox_OOF.Enabled = false;
+                                checkBox_OOF.Checked = false;
+                                checkBox_NVENC.Enabled = false;
+                                checkBox_NVENC.Checked = false;
+                                label8.Enabled = false;
+                                textBox_CRF.Text = null;
+                                textBox_CRF.Enabled = false;
+                                checkBox_AE.Enabled = false;
+                                checkBox_AE.Checked = false;
+                                label14.Enabled = false;
+                                comboBox_AE.Enabled = false;
+                                checkBox_preset.Enabled = false;
+                                checkBox_preset.Checked = false;
+                                label15.Enabled = false;
+                                comboBox_preset.Enabled = false;
+                                textBox_CMDA.Enabled = false;
+                                textBox_CMDA.Text = null;
+                                textBox_CMDF.Enabled = false;
+                                textBox_CMDF.Text = null;
+                                textBox_CMDV.Enabled = false;
+                                textBox_CMDV.Text = null;
+
+                                checkBox_VOT.Checked = true;
+                                comboBox_VOT.Enabled = true;
+                                label16.Enabled = true;
+                                comboBox_VOT.SelectedIndex = int.Parse(Config.Entry["GenerationIndex"].Value) switch
+                                {
+                                    0 => int.Parse(Config.Entry["GenerationIndex"].Value),
+                                    1 => int.Parse(Config.Entry["GenerationIndex"].Value),
+                                    _ => 0,
+                                };
+                                break;
+                            }
+                    }
+
+                    if (Config.Entry["VideoParam"].Value != "")
+                    {
+                        textBox_CMDV.Text = Config.Entry["VideoParam"].Value;
+                    }
+                    else
+                    {
+                        textBox_CMDV.Text = pathFF + hidebnr + " -i $InFile" + qv + overw + Videoloc;
+                    }
+                    if (Config.Entry["AudioParam"].Value != "")
+                    {
+                        textBox_CMDA.Text = Config.Entry["AudioParam"].Value;
+                    }
+                    else
+                    {
+                        textBox_CMDA.Text = pathFF + hidebnr + " -i $InFile" + copychapters + metadatainfo + oao + ds + dds + aes + overw + Audioloc;
+                    }
+                    if (Config.Entry["MergeParam"].Value != "")
+                    {
+                        textBox_CMDF.Text = Config.Entry["MergeParam"].Value;
+                    }
+                    else
+                    {
+                        textBox_CMDF.Text = pathFF + videofps + hidebnr + intaac + " -i $InImage -i $InAudio -r" + videofps.Replace(" -framerate", "") + qpl + Videocodec + preset + Audiocodec + Audiobitrate + overw + " $OutFile";
+                    }
+
+                    break;
             }
 
             return;
@@ -1200,69 +889,79 @@ namespace NVGE
             {
                 if (textBox_FPS.Text == "")
                 {
-                    MessageBox.Show("Textbox Error.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The FPS has not been specified correctly.", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     checkBox_Advanced.Checked = false;
                     return;
                 }
                 else if (textBox_FPS.TextLength <= 4)
                 {
-                    MessageBox.Show("Textbox Error.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The FPS has not been specified correctly.", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     checkBox_Advanced.Checked = false;
                     return;
                 }
                 if (textBox_FFmpeg.Text == "")
                 {
-                    MessageBox.Show("Textbox Error.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The location of FFmpeg is not specified.", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     checkBox_Advanced.Checked = false;
                     return;
                 }
-                button_FC.Enabled = true;
-                checkBox_EIA.Enabled = true;
-                checkBox_DSS.Enabled = true;
-                checkBox_CC.Enabled = true;
-                checkBox_OAO.Enabled = true;
-                checkBox_HI.Enabled = true;
-                checkBox_SO.Enabled = true;
-                checkBox_DS.Enabled = true;
-                checkBox_MI.Enabled = true;
-                checkBox_OOF.Enabled = true;
-                checkBox_NVENC.Enabled = true;
-                checkBox_MVC.Enabled = true;
-                checkBox_MAC.Enabled = true;
-                checkBox_AE.Enabled = true;
-                checkBox_AB.Enabled = true;
-                checkBox_preset.Enabled = true;
-                checkBox_MSOL.Enabled = true;
-                checkBox_VOT.Enabled = true;
-                label9.Enabled = true;
-                label12.Enabled = true;
-                label13.Enabled = true;
-                textBox_CMDV.Enabled = true;
-                textBox_CMDA.Enabled = true;
-                textBox_CMDF.Enabled = true;
-                hidebnr = "";
-                qv = "";
-                overw = "";
-                copychapters = "";
-                metadatainfo = "";
-                oao = "";
-                ds = "";
-                dds = "";
-                aes = "";
-                intaac = "";
-                qpl = "";
-                preset = "";
-                Videoloc = " $OutFile";
-                Audioloc = " $OutFile";
-                Videocodec = "";
-                Audiocodec = "";
-                Audiobitrate = "";
-                cmdparam_v1 = pathFF + hidebnr + " -i $InFile" + qv + overw + Videoloc;
-                cmdparam_v2 = pathFF + hidebnr + " -i $InFile" + copychapters + metadatainfo + oao + ds + dds + aes + overw + Audioloc;
-                cmdparam_v3 = pathFF + videofps + hidebnr + intaac + " -i $InImage -i $InAudio -r" + videofps.Replace(" -framerate", "") + qpl + Videocodec + preset + Audiocodec + Audiobitrate + overw + " $OutFile";
-                textBox_CMDV.Text = cmdparam_v1;
-                textBox_CMDA.Text = cmdparam_v2;
-                textBox_CMDF.Text = cmdparam_v3;
+
+                DialogResult dr = MessageBox.Show("Activating advanced setting items may interfere with upscaling.\nIt is recommended that only advanced users use them.\nDo you really want to enable it?", Strings.MSGWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    button_FC.Enabled = true;
+                    checkBox_EIA.Enabled = true;
+                    checkBox_DSS.Enabled = true;
+                    checkBox_CC.Enabled = true;
+                    checkBox_OAO.Enabled = true;
+                    checkBox_HI.Enabled = true;
+                    checkBox_SO.Enabled = true;
+                    checkBox_DS.Enabled = true;
+                    checkBox_MI.Enabled = true;
+                    checkBox_OOF.Enabled = true;
+                    checkBox_NVENC.Enabled = true;
+                    checkBox_MVC.Enabled = true;
+                    checkBox_MAC.Enabled = true;
+                    checkBox_AE.Enabled = true;
+                    checkBox_AB.Enabled = true;
+                    checkBox_preset.Enabled = true;
+                    checkBox_MSOL.Enabled = true;
+                    checkBox_VOT.Enabled = true;
+                    label9.Enabled = true;
+                    label12.Enabled = true;
+                    label13.Enabled = true;
+                    textBox_CMDV.Enabled = true;
+                    textBox_CMDA.Enabled = true;
+                    textBox_CMDF.Enabled = true;
+                    hidebnr = "";
+                    qv = "";
+                    overw = "";
+                    copychapters = "";
+                    metadatainfo = "";
+                    oao = "";
+                    ds = "";
+                    dds = "";
+                    aes = "";
+                    intaac = "";
+                    qpl = "";
+                    preset = "";
+                    Videoloc = " $OutFile";
+                    Audioloc = " $OutFile";
+                    Videocodec = "";
+                    Audiocodec = "";
+                    Audiobitrate = "";
+                    cmdparam_v1 = pathFF + hidebnr + " -i $InFile" + qv + overw + Videoloc;
+                    cmdparam_v2 = pathFF + hidebnr + " -i $InFile" + copychapters + metadatainfo + oao + ds + dds + aes + overw + Audioloc;
+                    cmdparam_v3 = pathFF + videofps + hidebnr + intaac + " -i $InImage -i $InAudio -r" + videofps.Replace(" -framerate", "") + qpl + Videocodec + preset + Audiocodec + Audiobitrate + overw + " $OutFile";
+                    textBox_CMDV.Text = cmdparam_v1;
+                    textBox_CMDA.Text = cmdparam_v2;
+                    textBox_CMDF.Text = cmdparam_v3;
+                }
+                else
+                {
+                    checkBox_Advanced.Checked = false;
+                    return;
+                }
             }
             else
             {
@@ -1428,7 +1127,7 @@ namespace NVGE
                 MessageBox.Show(Strings.ErrorFPSChar, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (textBox_FPS.Text.Contains(".") != true)
+            else if (textBox_FPS.Text.Contains('.') != true)
             {
                 MessageBox.Show(Strings.ErrorFPSDot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -1479,165 +1178,212 @@ namespace NVGE
                 }
             }
 
-            var ini = new IniFile(@".\settings.ini");
-            ini.WriteString("VIDEO_SETTINGS", "FPS_INDEX", textBox_FPS.Text);
-            ini.WriteString("VIDEO_SETTINGS", "FFMPEG_INDEX", textBox_FFmpeg.Text);
-            if (checkBox_Advanced.Checked == false)
+            Config.Entry["FPS"].Value = textBox_FPS.Text;
+            Config.Entry["FFmpegLocation"].Value = textBox_FFmpeg.Text;
+
+            switch (checkBox_Advanced.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "ADVANCED_INDEX", "0");
+                case false:
+                    Config.Entry["VAdvanced"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["VAdvanced"].Value = "true";
+                    break;
             }
-            else
+
+            switch (checkBox_EIA.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "ADVANCED_INDEX", "1");
+                case false:
+                    Config.Entry["InternalAAC"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["InternalAAC"].Value = "true";
+                    break;
             }
-            if (checkBox_EIA.Checked == false)
+
+            switch (checkBox_DSS.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "IAAC_INDEX", "0");
+                case false:
+                    Config.Entry["Subtitle"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["Subtitle"].Value = "true";
+                    break;
             }
-            else
+
+            switch (checkBox_CC.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "IAAC_INDEX", "1");
+                case false:
+                    Config.Entry["CopyingChapters"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["CopyingChapters"].Value = "true";
+                    break;
             }
-            if (checkBox_DSS.Checked == false)
+            
+            switch (checkBox_OAO.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "DSS_INDEX", "0");
+                case false:
+                    Config.Entry["OutputAudioOnly"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["OutputAudioOnly"].Value = "true";
+                    break;
             }
-            else
+
+            switch (checkBox_HI.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "DSS_INDEX", "1");
+                case false:
+                    Config.Entry["HideInformations"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["HideInformations"].Value = "true";
+                    break;
             }
-            if (checkBox_CC.Checked == false)
+
+            switch (checkBox_SO.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "CC_INDEX", "0");
+                case false:
+                    Config.Entry["Sequential"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["Sequential"].Value = "true";
+                    break;
             }
-            else
+
+            switch (checkBox_DS.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "CC_INDEX", "1");
+                case false:
+                    Config.Entry["DataStream"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["DataStream"].Value = "true";
+                    break;
             }
-            if (checkBox_OAO.Checked == false)
+
+            switch (checkBox_MI.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "OAO_INDEX", "0");
+                case false:
+                    Config.Entry["Metadata"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["Metadata"].Value = "true";
+                    break;
             }
-            else
+
+            switch (checkBox_OOF.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "OAO_INDEX", "1");
+                case false:
+                    Config.Entry["Overwrite"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["Overwrite"].Value = "true";
+                    break;
             }
-            if (checkBox_HI.Checked == false)
+
+            switch (checkBox_NVENC.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "HI_INDEX", "0");
+                case false:
+                    Config.Entry["NVENC"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["NVENC"].Value = "true";
+                    break;
             }
-            else
+
+            Config.Entry["CRFLevel"].Value = textBox_CRF.Text;
+            
+            switch (checkBox_MVC.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "HI_INDEX", "1");
+                case false:
+                    Config.Entry["VideoCodec"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["VideoCodec"].Value = "true";
+                    break;
             }
-            if (checkBox_SO.Checked == false)
+
+            Config.Entry["VideoCodecIndex"].Value = textBox_VCodec.Text;
+
+            switch (checkBox_MAC.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "SO_INDEX", "0");
+                case false:
+                    Config.Entry["AudioCodec"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["AudioCodec"].Value = "true";
+                    break;
             }
-            else
+
+            Config.Entry["AudioCodecIndex"].Value = textBox_ACodec.Text;
+            
+            switch (checkBox_AB.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "SO_INDEX", "1");
+                case false:
+                    Config.Entry["AudioBitrate"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["AudioBitrate"].Value = "true";
+                    break;
             }
-            if (checkBox_DS.Checked == false)
+
+            Config.Entry["AudioBitrateIndex"].Value = textBox_AB.Text;
+
+            switch (checkBox_AE.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "DS_INDEX", "0");
+                case false:
+                    Config.Entry["AudioOutputCodec"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["AudioOutputCodec"].Value = "true";
+                    break;
             }
-            else
+
+            Config.Entry["OutputCodecIndex"].Value = comboBox_AE.SelectedIndex.ToString();
+
+            switch (checkBox_preset.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "DS_INDEX", "1");
+                case false:
+                    Config.Entry["H264"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["H264"].Value = "true";
+                    break;
             }
-            if (checkBox_MI.Checked == false)
+
+            Config.Entry["H264Index"].Value = comboBox_preset.SelectedIndex.ToString();
+
+            switch (checkBox_MSOL.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "MI_INDEX", "0");
+                case false:
+                    Config.Entry["OutputLocation"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["OutputLocation"].Value = "true";
+                    break;
             }
-            else
+
+            Config.Entry["AudioLocation"].Value = textBox_AL.Text;
+            Config.Entry["VideoLocation"].Value = textBox_VL.Text;
+
+            switch (checkBox_VOT.Checked)
             {
-                ini.WriteString("VIDEO_SETTINGS", "MI_INDEX", "1");
+                case false:
+                    Config.Entry["VideoGeneration"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["VideoGeneration"].Value = "true";
+                    break;
             }
-            if (checkBox_OOF.Checked == false)
-            {
-                ini.WriteString("VIDEO_SETTINGS", "OOF_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("VIDEO_SETTINGS", "OOF_INDEX", "1");
-            }
-            if (checkBox_NVENC.Checked == false)
-            {
-                ini.WriteString("VIDEO_SETTINGS", "NVENC_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("VIDEO_SETTINGS", "NVENC_INDEX", "1");
-            }
-            ini.WriteString("VIDEO_SETTINGS", "CRF_INDEX", textBox_CRF.Text);
-            if (checkBox_MVC.Checked == false)
-            {
-                ini.WriteString("VIDEO_SETTINGS", "MVC_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("VIDEO_SETTINGS", "MVC_INDEX", "1");
-            }
-            ini.WriteString("VIDEO_SETTINGS", "VC_INDEX", textBox_VCodec.Text);
-            if (checkBox_MAC.Checked == false)
-            {
-                ini.WriteString("VIDEO_SETTINGS", "MAC_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("VIDEO_SETTINGS", "MAC_INDEX", "1");
-            }
-            ini.WriteString("VIDEO_SETTINGS", "AC_INDEX", textBox_ACodec.Text);
-            if (checkBox_AB.Checked == false)
-            {
-                ini.WriteString("VIDEO_SETTINGS", "AB_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("VIDEO_SETTINGS", "AB_INDEX", "1");
-            }
-            ini.WriteString("VIDEO_SETTINGS", "BIT_INDEX", textBox_AB.Text);
-            if (checkBox_AE.Checked == false)
-            {
-                ini.WriteString("VIDEO_SETTINGS", "AE_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("VIDEO_SETTINGS", "AE_INDEX", "1");
-            }
-            ini.WriteString("VIDEO_SETTINGS", "ENCODE_INDEX", comboBox_AE.SelectedIndex.ToString());
-            if (checkBox_preset.Checked == false)
-            {
-                ini.WriteString("VIDEO_SETTINGS", "PRESET_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("VIDEO_SETTINGS", "PRESET_INDEX", "1");
-            }
-            ini.WriteString("VIDEO_SETTINGS", "H264_INDEX", comboBox_preset.SelectedIndex.ToString());
-            if (checkBox_MSOL.Checked == false)
-            {
-                ini.WriteString("VIDEO_SETTINGS", "MSOL_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("VIDEO_SETTINGS", "MSOL_INDEX", "1");
-            }
-            ini.WriteString("VIDEO_SETTINGS", "VOT_INDEX", comboBox_VOT.SelectedIndex.ToString());
-            if (checkBox_VOT.Checked == false)
-            {
-                ini.WriteString("VIDEO_SETTINGS", "CVOT_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("VIDEO_SETTINGS", "CVOT_INDEX", "1");
-            }
-            ini.WriteString("VIDEO_SETTINGS", "VL_INDEX", textBox_VL.Text);
-            ini.WriteString("VIDEO_SETTINGS", "AL_INDEX", textBox_AL.Text);
-            ini.WriteString("VIDEO_SETTINGS", "CMDV_INDEX", cmdparam_v1);
-            ini.WriteString("VIDEO_SETTINGS", "CMDA_INDEX", cmdparam_v2);
-            ini.WriteString("VIDEO_SETTINGS", "CMDF_INDEX", cmdparam_v3);
+
+            Config.Entry["GenerationIndex"].Value = comboBox_VOT.SelectedIndex.ToString();
+
+            Config.Entry["VideoParam"].Value = cmdparam_v1;
+            Config.Entry["AudioParam"].Value = cmdparam_v2;
+            Config.Entry["MergeParam"].Value = cmdparam_v3;
+
+            Config.Save(Common.xmlpath);
+
             Close();
         }
 

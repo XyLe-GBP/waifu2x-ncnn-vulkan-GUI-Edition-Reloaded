@@ -64,6 +64,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label_webp = new System.Windows.Forms.Label();
+            this.label_NotSupported = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_SourceImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_UpscaledImage)).BeginInit();
             this.groupBox_info1.SuspendLayout();
@@ -169,7 +170,6 @@
             // 
             // groupBox_info1
             // 
-            resources.ApplyResources(this.groupBox_info1, "groupBox_info1");
             this.groupBox_info1.Controls.Add(this.label_rdl);
             this.groupBox_info1.Controls.Add(this.label15);
             this.groupBox_info1.Controls.Add(this.label6);
@@ -180,6 +180,7 @@
             this.groupBox_info1.Controls.Add(this.label_gpu);
             this.groupBox_info1.Controls.Add(this.label_blks);
             this.groupBox_info1.Controls.Add(this.label11);
+            resources.ApplyResources(this.groupBox_info1, "groupBox_info1");
             this.groupBox_info1.Name = "groupBox_info1";
             this.groupBox_info1.TabStop = false;
             // 
@@ -225,7 +226,6 @@
             // 
             // groupBox_info2
             // 
-            resources.ApplyResources(this.groupBox_info2, "groupBox_info2");
             this.groupBox_info2.Controls.Add(this.label16);
             this.groupBox_info2.Controls.Add(this.label_fmt);
             this.groupBox_info2.Controls.Add(this.label_vbs);
@@ -237,6 +237,7 @@
             this.groupBox_info2.Controls.Add(this.label7);
             this.groupBox_info2.Controls.Add(this.label13);
             this.groupBox_info2.Controls.Add(this.label12);
+            resources.ApplyResources(this.groupBox_info2, "groupBox_info2");
             this.groupBox_info2.Name = "groupBox_info2";
             this.groupBox_info2.TabStop = false;
             // 
@@ -279,13 +280,19 @@
             // 
             resources.ApplyResources(this.label_webp, "label_webp");
             this.label_webp.Name = "label_webp";
-            this.label_webp.Click += new System.EventHandler(this.label_webp_Click);
+            this.label_webp.Click += new System.EventHandler(this.Label_webp_Click);
+            // 
+            // label_NotSupported
+            // 
+            resources.ApplyResources(this.label_NotSupported, "label_NotSupported");
+            this.label_NotSupported.Name = "label_NotSupported";
             // 
             // FormImageUpscaleDetail
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ControlBox = false;
+            this.Controls.Add(this.label_NotSupported);
             this.Controls.Add(this.label_webp);
             this.Controls.Add(this.groupBox_info2);
             this.Controls.Add(this.groupBox_info1);
@@ -300,7 +307,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox_UpscaledImage);
             this.Controls.Add(this.pictureBox_SourceImage);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormImageUpscaleDetail";
             this.Load += new System.EventHandler(this.FormImageUpscaleDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_SourceImage)).EndInit();
@@ -351,5 +358,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label_webp;
+        private System.Windows.Forms.Label label_NotSupported;
     }
 }

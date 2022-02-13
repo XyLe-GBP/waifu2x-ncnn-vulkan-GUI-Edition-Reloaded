@@ -45,6 +45,8 @@ namespace NVGE
             this.videoUpscalingSettingsVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeVideoResolutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeVideoFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeImageFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
@@ -169,7 +171,9 @@ namespace NVGE
             // toolsTToolStripMenuItem
             // 
             this.toolsTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changeVideoResolutionToolStripMenuItem});
+            this.changeVideoResolutionToolStripMenuItem,
+            this.changeVideoFormatToolStripMenuItem,
+            this.changeImageFormatToolStripMenuItem});
             this.toolsTToolStripMenuItem.Name = "toolsTToolStripMenuItem";
             resources.ApplyResources(this.toolsTToolStripMenuItem, "toolsTToolStripMenuItem");
             // 
@@ -178,6 +182,18 @@ namespace NVGE
             this.changeVideoResolutionToolStripMenuItem.Name = "changeVideoResolutionToolStripMenuItem";
             resources.ApplyResources(this.changeVideoResolutionToolStripMenuItem, "changeVideoResolutionToolStripMenuItem");
             this.changeVideoResolutionToolStripMenuItem.Click += new System.EventHandler(this.ChangeVideoResolutionToolStripMenuItem_Click);
+            // 
+            // changeVideoFormatToolStripMenuItem
+            // 
+            this.changeVideoFormatToolStripMenuItem.Name = "changeVideoFormatToolStripMenuItem";
+            resources.ApplyResources(this.changeVideoFormatToolStripMenuItem, "changeVideoFormatToolStripMenuItem");
+            this.changeVideoFormatToolStripMenuItem.Click += new System.EventHandler(this.ChangeVideoFormatToolStripMenuItem_Click);
+            // 
+            // changeImageFormatToolStripMenuItem
+            // 
+            this.changeImageFormatToolStripMenuItem.Name = "changeImageFormatToolStripMenuItem";
+            resources.ApplyResources(this.changeImageFormatToolStripMenuItem, "changeImageFormatToolStripMenuItem");
+            this.changeImageFormatToolStripMenuItem.Click += new System.EventHandler(this.ChangeImageFormatToolStripMenuItem_Click);
             // 
             // aboutAToolStripMenuItem
             // 
@@ -274,9 +290,9 @@ namespace NVGE
             resources.ApplyResources(this.pictureBox_DD, "pictureBox_DD");
             this.pictureBox_DD.Name = "pictureBox_DD";
             this.pictureBox_DD.TabStop = false;
-            this.pictureBox_DD.Click += new System.EventHandler(this.pictureBox_DD_Click);
-            this.pictureBox_DD.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox_DD_DragDrop);
-            this.pictureBox_DD.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox_DD_DragEnter);
+            this.pictureBox_DD.Click += new System.EventHandler(this.PictureBox_DD_Click);
+            this.pictureBox_DD.DragDrop += new System.Windows.Forms.DragEventHandler(this.PictureBox_DD_DragDrop);
+            this.pictureBox_DD.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureBox_DD_DragEnter);
             // 
             // button_Merge
             // 
@@ -343,7 +359,7 @@ namespace NVGE
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "FormMain";
@@ -404,6 +420,8 @@ namespace NVGE
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox_DD;
         private System.Windows.Forms.Label label_default;
+        private System.Windows.Forms.ToolStripMenuItem changeVideoFormatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeImageFormatToolStripMenuItem;
     }
 }
 

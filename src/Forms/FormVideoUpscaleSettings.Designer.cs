@@ -29,6 +29,7 @@ namespace NVGE
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVideoUpscaleSettings));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox_Advanced = new System.Windows.Forms.CheckBox();
@@ -87,6 +88,7 @@ namespace NVGE
             this.button_OK = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,7 +96,6 @@ namespace NVGE
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.checkBox_Advanced);
             this.groupBox1.Controls.Add(this.button_FFmpeg_path);
             this.groupBox1.Controls.Add(this.label6);
@@ -102,6 +103,7 @@ namespace NVGE
             this.groupBox1.Controls.Add(this.textBox_FPS);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -109,6 +111,7 @@ namespace NVGE
             // 
             resources.ApplyResources(this.checkBox_Advanced, "checkBox_Advanced");
             this.checkBox_Advanced.Name = "checkBox_Advanced";
+            this.toolTip1.SetToolTip(this.checkBox_Advanced, resources.GetString("checkBox_Advanced.ToolTip"));
             this.checkBox_Advanced.UseVisualStyleBackColor = true;
             this.checkBox_Advanced.CheckedChanged += new System.EventHandler(this.CheckBox_Advanced_CheckedChanged);
             // 
@@ -129,12 +132,14 @@ namespace NVGE
             resources.ApplyResources(this.textBox_FFmpeg, "textBox_FFmpeg");
             this.textBox_FFmpeg.Name = "textBox_FFmpeg";
             this.textBox_FFmpeg.ReadOnly = true;
+            this.toolTip1.SetToolTip(this.textBox_FFmpeg, resources.GetString("textBox_FFmpeg.ToolTip"));
             this.textBox_FFmpeg.TextChanged += new System.EventHandler(this.TextBox_FFmpeg_TextChanged);
             // 
             // textBox_FPS
             // 
             resources.ApplyResources(this.textBox_FPS, "textBox_FPS");
             this.textBox_FPS.Name = "textBox_FPS";
+            this.toolTip1.SetToolTip(this.textBox_FPS, resources.GetString("textBox_FPS.ToolTip"));
             this.textBox_FPS.TextChanged += new System.EventHandler(this.TextBox_FPS_TextChanged);
             // 
             // label5
@@ -149,7 +154,6 @@ namespace NVGE
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.checkBox_VOT);
             this.groupBox2.Controls.Add(this.comboBox_VOT);
@@ -195,6 +199,7 @@ namespace NVGE
             this.groupBox2.Controls.Add(this.checkBox_OOF);
             this.groupBox2.Controls.Add(this.checkBox_HI);
             this.groupBox2.Controls.Add(this.checkBox_NVENC);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -207,18 +212,20 @@ namespace NVGE
             // 
             resources.ApplyResources(this.checkBox_VOT, "checkBox_VOT");
             this.checkBox_VOT.Name = "checkBox_VOT";
+            this.toolTip1.SetToolTip(this.checkBox_VOT, resources.GetString("checkBox_VOT.ToolTip"));
             this.checkBox_VOT.UseVisualStyleBackColor = true;
             this.checkBox_VOT.CheckedChanged += new System.EventHandler(this.CheckBox_VOT_CheckedChanged);
             // 
             // comboBox_VOT
             // 
-            resources.ApplyResources(this.comboBox_VOT, "comboBox_VOT");
             this.comboBox_VOT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox_VOT, "comboBox_VOT");
             this.comboBox_VOT.FormattingEnabled = true;
             this.comboBox_VOT.Items.AddRange(new object[] {
             resources.GetString("comboBox_VOT.Items"),
             resources.GetString("comboBox_VOT.Items1")});
             this.comboBox_VOT.Name = "comboBox_VOT";
+            this.toolTip1.SetToolTip(this.comboBox_VOT, resources.GetString("comboBox_VOT.ToolTip"));
             this.comboBox_VOT.SelectedIndexChanged += new System.EventHandler(this.ComboBox_VOT_SelectedIndexChanged);
             // 
             // label15
@@ -228,8 +235,8 @@ namespace NVGE
             // 
             // comboBox_preset
             // 
-            resources.ApplyResources(this.comboBox_preset, "comboBox_preset");
             this.comboBox_preset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox_preset, "comboBox_preset");
             this.comboBox_preset.FormattingEnabled = true;
             this.comboBox_preset.Items.AddRange(new object[] {
             resources.GetString("comboBox_preset.Items"),
@@ -242,6 +249,7 @@ namespace NVGE
             resources.GetString("comboBox_preset.Items7"),
             resources.GetString("comboBox_preset.Items8")});
             this.comboBox_preset.Name = "comboBox_preset";
+            this.toolTip1.SetToolTip(this.comboBox_preset, resources.GetString("comboBox_preset.ToolTip"));
             this.comboBox_preset.SelectedIndexChanged += new System.EventHandler(this.ComboBox_preset_SelectedIndexChanged);
             // 
             // checkBox_preset
@@ -253,8 +261,8 @@ namespace NVGE
             // 
             // comboBox_AE
             // 
-            resources.ApplyResources(this.comboBox_AE, "comboBox_AE");
             this.comboBox_AE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox_AE, "comboBox_AE");
             this.comboBox_AE.FormattingEnabled = true;
             this.comboBox_AE.Items.AddRange(new object[] {
             resources.GetString("comboBox_AE.Items"),
@@ -382,6 +390,7 @@ namespace NVGE
             // 
             resources.ApplyResources(this.textBox_ACodec, "textBox_ACodec");
             this.textBox_ACodec.Name = "textBox_ACodec";
+            this.toolTip1.SetToolTip(this.textBox_ACodec, resources.GetString("textBox_ACodec.ToolTip"));
             this.textBox_ACodec.TextChanged += new System.EventHandler(this.TextBox_ACodec_TextChanged);
             // 
             // textBox_CMDV
@@ -398,6 +407,7 @@ namespace NVGE
             // 
             resources.ApplyResources(this.textBox_VCodec, "textBox_VCodec");
             this.textBox_VCodec.Name = "textBox_VCodec";
+            this.toolTip1.SetToolTip(this.textBox_VCodec, resources.GetString("textBox_VCodec.ToolTip"));
             this.textBox_VCodec.TextChanged += new System.EventHandler(this.TextBox_VCodec_TextChanged);
             // 
             // label9
@@ -428,6 +438,7 @@ namespace NVGE
             // 
             resources.ApplyResources(this.checkBox_OAO, "checkBox_OAO");
             this.checkBox_OAO.Name = "checkBox_OAO";
+            this.toolTip1.SetToolTip(this.checkBox_OAO, resources.GetString("checkBox_OAO.ToolTip"));
             this.checkBox_OAO.UseVisualStyleBackColor = true;
             this.checkBox_OAO.CheckedChanged += new System.EventHandler(this.CheckBox_OAO_CheckedChanged);
             // 
@@ -447,6 +458,7 @@ namespace NVGE
             // 
             resources.ApplyResources(this.checkBox_DSS, "checkBox_DSS");
             this.checkBox_DSS.Name = "checkBox_DSS";
+            this.toolTip1.SetToolTip(this.checkBox_DSS, resources.GetString("checkBox_DSS.ToolTip"));
             this.checkBox_DSS.UseVisualStyleBackColor = true;
             this.checkBox_DSS.CheckedChanged += new System.EventHandler(this.CheckBox_DSS_CheckedChanged);
             // 
@@ -454,6 +466,7 @@ namespace NVGE
             // 
             resources.ApplyResources(this.checkBox_SO, "checkBox_SO");
             this.checkBox_SO.Name = "checkBox_SO";
+            this.toolTip1.SetToolTip(this.checkBox_SO, resources.GetString("checkBox_SO.ToolTip"));
             this.checkBox_SO.UseVisualStyleBackColor = true;
             this.checkBox_SO.CheckedChanged += new System.EventHandler(this.CheckBox_SO_CheckedChanged);
             // 
@@ -472,6 +485,7 @@ namespace NVGE
             // 
             resources.ApplyResources(this.checkBox_EIA, "checkBox_EIA");
             this.checkBox_EIA.Name = "checkBox_EIA";
+            this.toolTip1.SetToolTip(this.checkBox_EIA, resources.GetString("checkBox_EIA.ToolTip"));
             this.checkBox_EIA.UseVisualStyleBackColor = true;
             this.checkBox_EIA.CheckedChanged += new System.EventHandler(this.CheckBox_EIA_CheckedChanged);
             // 
@@ -486,6 +500,7 @@ namespace NVGE
             // 
             resources.ApplyResources(this.checkBox_HI, "checkBox_HI");
             this.checkBox_HI.Name = "checkBox_HI";
+            this.toolTip1.SetToolTip(this.checkBox_HI, resources.GetString("checkBox_HI.ToolTip"));
             this.checkBox_HI.UseVisualStyleBackColor = true;
             this.checkBox_HI.CheckedChanged += new System.EventHandler(this.CheckBox_HI_CheckedChanged);
             // 
@@ -512,8 +527,8 @@ namespace NVGE
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Image = global::NVGE.Properties.Resources.ffmpeg;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
@@ -527,7 +542,7 @@ namespace NVGE
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormVideoUpscaleSettings";
             this.Load += new System.EventHandler(this.FormVideoUpscaleSettings_Load);
             this.groupBox1.ResumeLayout(false);
@@ -599,5 +614,6 @@ namespace NVGE
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox checkBox_VOT;
         private System.Windows.Forms.ComboBox comboBox_VOT;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

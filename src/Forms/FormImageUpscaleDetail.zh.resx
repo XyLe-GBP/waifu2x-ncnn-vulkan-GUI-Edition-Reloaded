@@ -219,6 +219,12 @@
     <value>谷歌网络图片格式不支持在表格中显示图片。
 点击该文本将在提供的浏览器中显示图像。</value>
   </data>
+  <data name="label_NotSupported.Location" type="System.Drawing.Point, System.Drawing">
+    <value>514, 320</value>
+  </data>
+  <data name="label_NotSupported.Text" xml:space="preserve">
+    <value>这种图像格式不被支持，所以无法在查看器中进行预览。</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>升级后的图像细节</value>
   </data>

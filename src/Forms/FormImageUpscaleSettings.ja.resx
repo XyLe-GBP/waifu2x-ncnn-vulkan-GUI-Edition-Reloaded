@@ -118,13 +118,21 @@
   <data name="comboBox_Uplevel.Items1" xml:space="preserve">
     <value>2倍</value>
   </data>
+  <data name="comboBox_Uplevel.Items2" xml:space="preserve">
+    <value>4倍</value>
+  </data>
+  <data name="comboBox_Uplevel.Items3" xml:space="preserve">
+    <value>6倍</value>
+  </data>
   <data name="comboBox_Uplevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 50</value>
   </data>
   <data name="comboBox_Uplevel.ToolTip" xml:space="preserve">
     <value>画像アップスケールのレベルを指定します。
 '2倍'を指定すると、元画像の2倍のピクセルで出力を行います。
-'1倍'を指定すると、元画像と同じピクセルで出力を行います。</value>
+'1倍'を指定すると、元画像と同じピクセルで出力を行います。
+'2倍'以上を指定する場合、画像のアップスケーリング時にのみ適用されます。
+動画のアップスケーリング時は強制的に'2倍'になり、適用されません。</value>
   </data>
   <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 19</value>
@@ -186,6 +194,9 @@
   <data name="label9.Text" xml:space="preserve">
     <value>コマンドライン引数：</value>
   </data>
+  <data name="comboBox_Format.Items4" xml:space="preserve">
+    <value>カスタム (ユーザー指定)</value>
+  </data>
   <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 69</value>
   </data>
@@ -195,7 +206,8 @@
   <data name="comboBox_Format.ToolTip" xml:space="preserve">
     <value>変換後の画像出力形式を指定します。
 通常は'.png'で出力されますが、形式を変更したい場合は
-この項目を変更してください。</value>
+この項目を変更してください。
+'カスタム'を選択すると、アップスケーリング開始時に形式選択画面が表示されます。</value>
   </data>
   <data name="comboBox_Thread.ToolTip" xml:space="preserve">
     <value>変換時のスレッド使用数を指定します。

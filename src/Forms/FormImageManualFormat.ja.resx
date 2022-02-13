@@ -57,59 +57,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 15</value>
   </data>
-  <data name="textBox_Blocksize.ToolTip" xml:space="preserve">
-    <value>Specifies the block size to be allocated to the GPU.
-If '0' is specified, the block size is automatically allocated.
-The larger the value, the faster the conversion will be, but the more memory the GPU will use.
-This item depends on the GPU performance. If the value is too large, the conversion will fail.</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>出力形式：</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox1.Items" xml:space="preserve">
+    <value>ビットマップ (*.bmp)</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox1.Items2" xml:space="preserve">
+    <value>Google WebP (*.webp)</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox1.Items3" xml:space="preserve">
+    <value>GIF イメージ (*.gif)</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox1.Items4" xml:space="preserve">
+    <value>アイコン (*.ico) (256x256 ピクセルまで)</value>
   </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox1.Items5" xml:space="preserve">
+    <value>JPEG イメージ (*.jpg)</value>
   </data>
-  <data name="groupBox2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox1.Items6" xml:space="preserve">
+    <value>PNG イメージ (*.png)</value>
   </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox1.Items7" xml:space="preserve">
+    <value>QuickDraw ピクチャー (*.pict)</value>
   </data>
-  <data name="checkBox_TTA.ToolTip" xml:space="preserve">
-    <value>Enables the TTA mode.
-Enabling this will improve the image index, but will take a huge amount of time for image conversion.</value>
+  <data name="comboBox1.Items8" xml:space="preserve">
+    <value>SVG イメージ (*.svg)</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox1.Items9" xml:space="preserve">
+    <value>TIFF イメージ (*.tif)</value>
   </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 6</value>
   </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
+  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 35</value>
   </data>
-  <data name="button_OK.ToolTip" xml:space="preserve">
-    <value />
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>364, 66</value>
   </data>
-  <data name="button_Cancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="$this.Text" xml:space="preserve">
+    <value>出力形式を選択</value>
   </data>
 </root>

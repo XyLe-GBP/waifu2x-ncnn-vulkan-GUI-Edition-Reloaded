@@ -64,11 +64,24 @@
   <data name="checkBox_Advanced.Text" xml:space="preserve">
     <value>激活高级设置</value>
   </data>
+  <data name="checkBox_Advanced.ToolTip" xml:space="preserve">
+    <value>激活高级配置项目。</value>
+  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>176, 25</value>
   </data>
+  <data name="textBox_FFmpeg.ToolTip" xml:space="preserve">
+    <value>指定FFmpeg.exe的位置。
+通常情况下，在你下载FFmpeg的时候会自动填写
+但如果你想使用不同的FFmpeg，请改变它。</value>
+  </data>
   <data name="textBox_FPS.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 22</value>
+  </data>
+  <data name="textBox_FPS.ToolTip" xml:space="preserve">
+    <value>这是该视频的FPS。
+通常情况下，当视频加载时这个值会自动填入
+但如果不是这样，或者你想自己指定请改变这个值。</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 15</value>

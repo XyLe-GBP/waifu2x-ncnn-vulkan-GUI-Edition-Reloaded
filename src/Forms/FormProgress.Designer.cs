@@ -93,9 +93,9 @@ namespace NVGE
             // 
             this.backgroundWorker_Convert.WorkerReportsProgress = true;
             this.backgroundWorker_Convert.WorkerSupportsCancellation = true;
-            this.backgroundWorker_Convert.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Convert_DoWork);
-            this.backgroundWorker_Convert.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Convert_ProgressChanged);
-            this.backgroundWorker_Convert.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_Convert_RunWorkerCompleted);
+            this.backgroundWorker_Convert.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_Convert_DoWork);
+            this.backgroundWorker_Convert.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker_Convert_ProgressChanged);
+            this.backgroundWorker_Convert.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker_Convert_RunWorkerCompleted);
             // 
             // FormProgress
             // 
@@ -106,7 +106,7 @@ namespace NVGE
             this.Controls.Add(this.label_Pos);
             this.Controls.Add(this.label_ProgressText);
             this.Controls.Add(this.progressBar1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormProgress";
             this.Load += new System.EventHandler(this.FormProgress_Load);
             this.ResumeLayout(false);

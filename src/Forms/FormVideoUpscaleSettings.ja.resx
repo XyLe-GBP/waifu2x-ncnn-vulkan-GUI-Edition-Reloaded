@@ -64,11 +64,24 @@
   <data name="checkBox_Advanced.Text" xml:space="preserve">
     <value>高度な設定を有効にする</value>
   </data>
+  <data name="checkBox_Advanced.ToolTip" xml:space="preserve">
+    <value>高度な設定項目を有効にします。</value>
+  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>186, 25</value>
   </data>
+  <data name="textBox_FFmpeg.ToolTip" xml:space="preserve">
+    <value>FFmpeg.exeの場所を指定します。
+通常はFFmpegをダウンロードした際に自動で入力されますが
+別のFFmpegを使用したい場合は変更してください。</value>
+  </data>
   <data name="textBox_FPS.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 22</value>
+  </data>
+  <data name="textBox_FPS.ToolTip" xml:space="preserve">
+    <value>動画のFPSを指定します。
+通常は動画を読み込む際に自動で入力されますが、入力がされない場合や
+自分で指定したい場合はこの値を変更してください。</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 15</value>
@@ -245,7 +258,7 @@
     <value>285, 23</value>
   </data>
   <data name="checkBox_CC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 19</value>
+    <value>122, 19</value>
   </data>
   <data name="checkBox_CC.Text" xml:space="preserve">
     <value>チャプターコピーを行う</value>
@@ -281,7 +294,7 @@
     <value>152, 23</value>
   </data>
   <data name="checkBox_DSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 19</value>
+    <value>126, 19</value>
   </data>
   <data name="checkBox_DSS.Text" xml:space="preserve">
     <value>サブタイトルの無効化</value>

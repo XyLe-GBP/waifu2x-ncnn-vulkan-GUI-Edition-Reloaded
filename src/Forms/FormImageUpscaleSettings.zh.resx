@@ -104,7 +104,9 @@
   <data name="comboBox_Uplevel.ToolTip" xml:space="preserve">
     <value>指定升频级别。
 'x2'意味着输出将是原始图像像素的两倍。
-'x1'意味着输出将具有与原始图像相同的像素。</value>
+'x1'意味着输出将具有与原始图像相同的像素。
+如果你指定'x2'或更高，它将只在放大图像时应用。 
+当对视频进行升格时将被强制为'x2'，并且不会被应用。</value>
   </data>
   <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 19</value>
@@ -166,6 +168,9 @@
   <data name="label9.Text" xml:space="preserve">
     <value>命令行参数：</value>
   </data>
+  <data name="comboBox_Format.Items4" xml:space="preserve">
+    <value>自定义（用户指定的）</value>
+  </data>
   <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 69</value>
   </data>
@@ -175,7 +180,8 @@
   <data name="comboBox_Format.ToolTip" xml:space="preserve">
     <value>指定升级后的图像的输出格式。
 通常情况下'.png'是可以的，但如果你想使用不同的格式
-你可以改变这个领域。</value>
+你可以改变这个领域。
+如果你选择 "自定义"，在开始升频时将出现一个格式选择屏幕。</value>
   </data>
   <data name="comboBox_Thread.ToolTip" xml:space="preserve">
     <value>指定转换过程中使用的线程数。

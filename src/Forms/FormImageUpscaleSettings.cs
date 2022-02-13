@@ -1,5 +1,4 @@
 ﻿using NVGE.Localization;
-using PrivateProfile;
 using System;
 using System.Windows.Forms;
 
@@ -16,327 +15,235 @@ namespace NVGE
 
         private void FormImageUpscaleSettings_Load(object sender, EventArgs e)
         {
-            var ini = new IniFile(@".\settings.ini");
-            int rdi = ini.GetInt("IMAGE_SETTINGS", "REDUCTION_INDEX", 65535), upi = ini.GetInt("IMAGE_SETTINGS", "UPSCALE_INDEX", 65535), gpui = ini.GetInt("IMAGE_SETTINGS", "GPU_INDEX", 65535), advi = ini.GetInt("IMAGE_SETTINGS", "ADVANCED_INDEX", 65535), tri = ini.GetInt("IMAGE_SETTINGS", "THREAD_INDEX", 65535), fi = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535), mi = ini.GetInt("IMAGE_SETTINGS", "MODEL_INDEX", 65535), vboi = ini.GetInt("IMAGE_SETTINGS", "VBO_INDEX", 65535), ti = ini.GetInt("IMAGE_SETTINGS", "TTA_INDEX", 65535);
-            string bsi = ini.GetString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", ""), pi = ini.GetString("IMAGE_SETTINGS", "PARAMS", "");
+            Config.Load(Common.xmlpath);
 
-            if (rdi != 65535)
+            switch (int.Parse(Config.Entry["Reduction"].Value))
             {
-                switch (rdi)
-                {
-                    case 0:
-                        rdlevel = " -n -1";
-                        comboBox_Rdlevel.SelectedIndex = rdi;
-                        break;
-                    case 1:
-                        rdlevel = " -n 0";
-                        comboBox_Rdlevel.SelectedIndex = rdi;
-                        break;
-                    case 2:
-                        rdlevel = " -n 1";
-                        comboBox_Rdlevel.SelectedIndex = rdi;
-                        break;
-                    case 3:
-                        rdlevel = " -n 2";
-                        comboBox_Rdlevel.SelectedIndex = rdi;
-                        break;
-                    case 4:
-                        rdlevel = " -n 3";
-                        comboBox_Rdlevel.SelectedIndex = rdi;
-                        break;
-                    default:
-                        rdlevel = " -n 2";
-                        comboBox_Rdlevel.SelectedIndex = 3;
-                        break;
-                }
-            }
-            else
-            {
-                rdlevel = " -n 3";
-                comboBox_Rdlevel.SelectedIndex = 3;
+                case 0:
+                    rdlevel = " -n -1";
+                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                    break;
+                case 1:
+                    rdlevel = " -n 0";
+                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                    break;
+                case 2:
+                    rdlevel = " -n 1";
+                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                    break;
+                case 3:
+                    rdlevel = " -n 2";
+                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                    break;
+                case 4:
+                    rdlevel = " -n 3";
+                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                    break;
+                default:
+                    rdlevel = " -n 3";
+                    comboBox_Rdlevel.SelectedIndex = 3;
+                    break;
             }
 
-            if (upi != 65535)
+            switch (int.Parse(Config.Entry["Scale"].Value))
             {
-                switch (upi)
-                {
-                    case 0:
-                        uplevel = " -s 1";
-                        comboBox_Uplevel.SelectedIndex = upi;
-                        break;
-                    case 1:
-                        uplevel = " -s 2";
-                        comboBox_Uplevel.SelectedIndex = upi;
-                        break;
-                    default:
-                        uplevel = " -s 2";
-                        comboBox_Uplevel.SelectedIndex = 1;
-                        break;
-                }
-            }
-            else
-            {
-                uplevel = " -s 2";
-                comboBox_Uplevel.SelectedIndex = 1;
-            }
-
-            if (gpui != 65535)
-            {
-                switch (gpui)
-                {
-                    case 0:
-                        usegpu = " -g default";
-                        comboBox_GPU.SelectedIndex = gpui;
-                        break;
-                    case 1:
-                        usegpu = " -g -1";
-                        comboBox_GPU.SelectedIndex = gpui;
-                        break;
-                    case 2:
-                        usegpu = " -g 0";
-                        comboBox_GPU.SelectedIndex = gpui;
-                        break;
-                    case 3:
-                        usegpu = " -g 1";
-                        comboBox_GPU.SelectedIndex = gpui;
-                        break;
-                    case 4:
-                        usegpu = " -g 2";
-                        comboBox_GPU.SelectedIndex = gpui;
-                        break;
-                    default:
-                        usegpu = " -g default";
-                        comboBox_GPU.SelectedIndex = 0;
-                        break;
-                }
-            }
-            else
-            {
-                usegpu = " -g default";
-                comboBox_GPU.SelectedIndex = 0;
+                case 0:
+                    uplevel = " -s 1";
+                    comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                    break;
+                case 1:
+                    uplevel = " -s 2";
+                    comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                    break;
+                case 2:
+                    uplevel = " -s 2";
+                    comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                    break;
+                case 3:
+                    uplevel = " -s 2";
+                    comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                    break;
+                default:
+                    uplevel = " -s 2";
+                    comboBox_Uplevel.SelectedIndex = 1;
+                    break;
             }
 
-            if (bsi != "")
+            switch (int.Parse(Config.Entry["GPU"].Value))
             {
-                textBox_Blocksize.Text = bsi;
+                case 0:
+                    usegpu = " -g default";
+                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                    break;
+                case 1:
+                    usegpu = " -g -1";
+                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                    break;
+                case 2:
+                    usegpu = " -g 0";
+                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                    break;
+                case 3:
+                    usegpu = " -g 1";
+                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                    break;
+                case 4:
+                    usegpu = " -g 2";
+                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                    break;
+                default:
+                    usegpu = " -g default";
+                    comboBox_GPU.SelectedIndex = 0;
+                    break;
+            }
+
+            if (int.Parse(Config.Entry["Blocksize"].Value) != 0)
+            {
+                textBox_Blocksize.Text = Config.Entry["Blocksize"].Value;
             }
             else
             {
                 textBox_Blocksize.Text = "0";
             }
 
-            if (advi != 65535)
+            switch (bool.Parse(Config.Entry["IAdvanced"].Value))
             {
-                switch (advi)
-                {
-                    case 0:
-                        checkBox_Advanced.Checked = false;
-                        comboBox_Thread.Enabled = false;
-                        comboBox_Format.Enabled = false;
-                        comboBox_Model.Enabled = false;
-                        checkBox_Verbose.Enabled = false;
-                        checkBox_TTA.Enabled = false;
-                        textBox_CMD.Enabled = false;
-                        textBox_CMD.Text = "";
-                        break;
-                    case 1:
-                        checkBox_Advanced.Checked = true;
-                        comboBox_Thread.Enabled = true;
-                        comboBox_Format.Enabled = true;
-                        comboBox_Model.Enabled = true;
-                        checkBox_Verbose.Enabled = true;
-                        checkBox_TTA.Enabled = true;
-                        textBox_CMD.Enabled = true;
-                        break;
-                    default:
-                        checkBox_Advanced.Checked = false;
-                        comboBox_Thread.Enabled = false;
-                        comboBox_Format.Enabled = false;
-                        comboBox_Model.Enabled = false;
-                        checkBox_Verbose.Enabled = false;
-                        checkBox_TTA.Enabled = false;
-                        textBox_CMD.Enabled = false;
-                        textBox_CMD.Text = "";
-                        break;
-                }
-            }
-            else
-            {
-                checkBox_Advanced.Checked = false;
-                comboBox_Thread.Enabled = false;
-                comboBox_Format.Enabled = false;
-                comboBox_Model.Enabled = false;
-                checkBox_Verbose.Enabled = false;
-                checkBox_TTA.Enabled = false;
-                textBox_CMD.Enabled = false;
-                textBox_CMD.Text = "";
+                case false:
+                    checkBox_Advanced.Checked = false;
+                    comboBox_Thread.Enabled = false;
+                    comboBox_Format.Enabled = false;
+                    comboBox_Model.Enabled = false;
+                    checkBox_Verbose.Enabled = false;
+                    checkBox_TTA.Enabled = false;
+                    textBox_CMD.Enabled = false;
+                    textBox_CMD.ResetText();
+                    break;
+                case true:
+                    checkBox_Advanced.Checked = true;
+                    comboBox_Thread.Enabled = true;
+                    comboBox_Format.Enabled = true;
+                    comboBox_Model.Enabled = true;
+                    checkBox_Verbose.Enabled = true;
+                    checkBox_TTA.Enabled = true;
+                    textBox_CMD.Enabled = true;
+                    break;
             }
 
-            if (tri != 65535)
+            switch (int.Parse(Config.Entry["Thread"].Value))
             {
-                switch (tri)
-                {
-                    case 0:
-                        thread = " -j 1:2:2";
-                        comboBox_Thread.SelectedIndex = tri;
-                        break;
-                    case 1:
-                        thread = " -j 1:2";
-                        comboBox_Thread.SelectedIndex = tri;
-                        break;
-                    case 2:
-                        thread = " -j 2";
-                        comboBox_Thread.SelectedIndex = tri;
-                        break;
-                    case 3:
-                        thread = " -j 2:2";
-                        comboBox_Thread.SelectedIndex = tri;
-                        break;
-                    case 4:
-                        thread = " -j 2:2:2";
-                        comboBox_Thread.SelectedIndex = tri;
-                        break;
-                    default:
-                        thread = " -j 1:2:2";
-                        comboBox_Thread.SelectedIndex = 0;
-                        break;
-                }
-            }
-            else
-            {
-                thread = " -j 1:2:2";
-                comboBox_Thread.SelectedIndex = 0;
+                case 0:
+                    thread = " -j 1:2:2";
+                    comboBox_Thread.SelectedIndex = int.Parse(Config.Entry["Thread"].Value);
+                    break;
+                case 1:
+                    thread = " -j 1:2";
+                    comboBox_Thread.SelectedIndex = int.Parse(Config.Entry["Thread"].Value);
+                    break;
+                case 2:
+                    thread = " -j 2";
+                    comboBox_Thread.SelectedIndex = int.Parse(Config.Entry["Thread"].Value);
+                    break;
+                case 3:
+                    thread = " -j 2:2";
+                    comboBox_Thread.SelectedIndex = int.Parse(Config.Entry["Thread"].Value);
+                    break;
+                case 4:
+                    thread = " -j 2:2:2";
+                    comboBox_Thread.SelectedIndex = int.Parse(Config.Entry["Thread"].Value);
+                    break;
+                default:
+                    thread = " -j 1:2:2";
+                    comboBox_Thread.SelectedIndex = 0;
+                    break;
             }
 
-            if (fi != 65535)
+            switch (int.Parse(Config.Entry["Format"].Value))
             {
-                switch (fi)
-                {
-                    case 0:
-                        format = " -f jpg";
-                        comboBox_Format.SelectedIndex = fi;
-                        break;
-                    case 1:
-                        format = " -f png";
-                        comboBox_Format.SelectedIndex = fi;
-                        break;
-                    case 2:
-                        format = " -f webp";
-                        comboBox_Format.SelectedIndex = fi;
-                        break;
-                    case 3:
-                        format = " -f png";
-                        comboBox_Format.SelectedIndex = fi;
-                        break;
-                    default:
-                        format = " -f png";
-                        comboBox_Format.SelectedIndex = 1;
-                        break;
-                }
-            }
-            else
-            {
-                format = " -f png";
-                comboBox_Format.SelectedIndex = 1;
-            }
-            
-            if (mi != 65535)
-            {
-                switch (mi)
-                {
-                    case 0:
-                        model = " -m models-cunet";
-                        comboBox_Model.SelectedIndex = mi;
-                        break;
-                    case 1:
-                        model = " -m models-upconv_7_anime_style_art_rgb";
-                        comboBox_Model.SelectedIndex = mi;
-                        break;
-                    case 2:
-                        model = " -m models-upconv_7_photo";
-                        comboBox_Model.SelectedIndex = mi;
-                        break;
-                    default:
-                        model = " -m models-cunet";
-                        comboBox_Model.SelectedIndex = 0;
-                        break;
-                }
-            }
-            else
-            {
-                model = " -m models-cunet";
-                comboBox_Model.SelectedIndex = 0;
+                case 0:
+                    format = " -f jpg";
+                    comboBox_Format.SelectedIndex = int.Parse(Config.Entry["Format"].Value);
+                    break;
+                case 1:
+                    format = " -f png";
+                    comboBox_Format.SelectedIndex = int.Parse(Config.Entry["Format"].Value);
+                    break;
+                case 2:
+                    format = " -f webp";
+                    comboBox_Format.SelectedIndex = int.Parse(Config.Entry["Format"].Value);
+                    break;
+                case 3:
+                    format = " -f png";
+                    comboBox_Format.SelectedIndex = int.Parse(Config.Entry["Format"].Value);
+                    break;
+                case 4:
+                    format = " -f png";
+                    comboBox_Format.SelectedIndex = int.Parse(Config.Entry["Format"].Value);
+                    break;
+                default:
+                    format = " -f png";
+                    comboBox_Format.SelectedIndex = 1;
+                    break;
             }
 
-            if (vboi != 65535)
+            switch (int.Parse(Config.Entry["Model"].Value))
             {
-                switch (vboi)
-                {
-                    case 0:
-                        vboutput = "";
-                        checkBox_Verbose.Checked = false;
-                        break;
-                    case 1:
-                        vboutput = " -v";
-                        checkBox_Verbose.Checked = true;
-                        break;
-                    default:
-                        vboutput = "";
-                        checkBox_Verbose.Checked = false;
-                        break;
-                }
-            }
-            else
-            {
-                vboutput = "";
-                checkBox_Verbose.Checked = false;
+                case 0:
+                    model = " -m models-cunet";
+                    comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                    break;
+                case 1:
+                    model = " -m models-upconv_7_anime_style_art_rgb";
+                    comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                    break;
+                case 2:
+                    model = " -m models-upconv_7_photo";
+                    comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                    break;
+                default:
+                    model = " -m models-cunet";
+                    comboBox_Model.SelectedIndex = 0;
+                    break;
             }
 
-            if (ti != 65535)
+            switch (bool.Parse(Config.Entry["Verbose"].Value))
             {
-                switch (ti)
-                {
-                    case 0:
-                        tta = "";
-                        checkBox_TTA.Checked = false;
-                        break;
-                    case 1:
-                        tta = " -x";
-                        checkBox_TTA.Checked = false;
-                        break;
-                    default:
-                        tta = "";
-                        checkBox_TTA.Checked = false;
-                        break;
-                }
-            }
-            else
-            {
-                tta = "";
-                checkBox_TTA.Checked = false;
+                case false:
+                    vboutput = "";
+                    checkBox_Verbose.Checked = false;
+                    break;
+                case true:
+                    vboutput = " -v";
+                    checkBox_Verbose.Checked = true;
+                    break;
             }
 
-            if (pi != "")
+            switch (bool.Parse(Config.Entry["TTA"].Value))
             {
-                if (advi != 65535)
+                case false:
+                    tta = "";
+                    checkBox_TTA.Checked = false;
+                    break;
+                case true:
+                    tta = " -x";
+                    checkBox_TTA.Checked = true;
+                    break;
+            }
+
+            if (Config.Entry["Param"].Value.Length != 0)
+            {
+                switch (bool.Parse(Config.Entry["IAdvanced"].Value))
                 {
-                    switch (advi)
-                    {
-                        case 0:
-                            textBox_CMD.Text = "";
-                            break;
-                        case 1:
-                            textBox_CMD.Text = pi;
-                            break;
-                        default:
-                            textBox_CMD.Text = "";
-                            break;
-                    }
+                    case false:
+                        textBox_CMD.ResetText();
+                        break;
+                    case true:
+                        textBox_CMD.Text = Config.Entry["Param"].Value;
+                        break;
                 }
             }
             else
             {
-                textBox_CMD.Text = "";
+                textBox_CMD.ResetText();
             }
 
             return;
@@ -781,72 +688,74 @@ namespace NVGE
                 return;
             }
 
-            /*Settings.Image cfg = new();
+            Config.Entry["Reduction"].Value = comboBox_Rdlevel.SelectedIndex.ToString();
+            Config.Entry["Scale"].Value = comboBox_Uplevel.SelectedIndex.ToString();
+            Config.Entry["GPU"].Value = comboBox_GPU.SelectedIndex.ToString();
 
-            cfg.Reduction = comboBox_Rdlevel.SelectedIndex;
-            cfg.Scale = comboBox_Uplevel.SelectedIndex;
-            cfg.GPU = comboBox_GPU.SelectedIndex;*/
-
-            var ini = new IniFile(@".\settings.ini");
-            ini.WriteString("IMAGE_SETTINGS", "REDUCTION_INDEX", comboBox_Rdlevel.SelectedIndex.ToString());
-            ini.WriteString("IMAGE_SETTINGS", "UPSCALE_INDEX", comboBox_Uplevel.SelectedIndex.ToString());
-            ini.WriteString("IMAGE_SETTINGS", "GPU_INDEX", comboBox_GPU.SelectedIndex.ToString());
             switch (textBox_Blocksize.Text)
             {
                 case "0":
-                    ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", "0");
+                    Config.Entry["Blocksize"].Value = "0";
                     break;
                 case "00":
-                    ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text.Replace("00", "0"));
+                    Config.Entry["Blocksize"].Value = textBox_Blocksize.Text.Replace("00", "0");
                     break;
                 case "000":
-                    ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text.Replace("000", "0"));
+                    Config.Entry["Blocksize"].Value = textBox_Blocksize.Text.Replace("000", "0");
                     break;
                 case "0000":
-                    ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text.Replace("0000", "0"));
+                    Config.Entry["Blocksize"].Value = textBox_Blocksize.Text.Replace("0000", "0");
                     break;
                 default:
                     if (textBox_Blocksize.Text.StartsWith("0"))
                     {
-                        ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text.Replace("0", ""));
+                        Config.Entry["Blocksize"].Value = "0";
                     }
                     else
                     {
-                        ini.WriteString("IMAGE_SETTINGS", "BLOCKSIZE_INDEX", textBox_Blocksize.Text);
+                        Config.Entry["Blocksize"].Value = textBox_Blocksize.Text;
                     }
                     break;
             }
-            
-            if (checkBox_Advanced.Checked == false)
+
+            switch (checkBox_Advanced.Checked)
             {
-                ini.WriteString("IMAGE_SETTINGS", "ADVANCED_INDEX", "0");
+                case false:
+                    Config.Entry["IAdvanced"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["IAdvanced"].Value = "true";
+                    break;
             }
-            else
+
+            Config.Entry["Thread"].Value = comboBox_Thread.SelectedIndex.ToString();
+            Config.Entry["Format"].Value = comboBox_Format.SelectedIndex.ToString();
+            Config.Entry["Model"].Value = comboBox_Model.SelectedIndex.ToString();
+
+            switch (checkBox_Verbose.Checked)
             {
-                ini.WriteString("IMAGE_SETTINGS", "ADVANCED_INDEX", "1");
-            }
-            ini.WriteString("IMAGE_SETTINGS", "THREAD_INDEX", comboBox_Thread.SelectedIndex.ToString());
-            ini.WriteString("IMAGE_SETTINGS", "FORMAT_INDEX", comboBox_Format.SelectedIndex.ToString());
-            ini.WriteString("IMAGE_SETTINGS", "MODEL_INDEX", comboBox_Model.SelectedIndex.ToString());
-            if (checkBox_Verbose.Checked == false)
-            {
-                ini.WriteString("IMAGE_SETTINGS", "VBO_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("IMAGE_SETTINGS", "VBO_INDEX", "1");
-            }
-            
-            if (checkBox_TTA.Checked == false)
-            {
-                ini.WriteString("IMAGE_SETTINGS", "TTA_INDEX", "0");
-            }
-            else
-            {
-                ini.WriteString("IMAGE_SETTINGS", "TTA_INDEX", "1");
+                case false:
+                    Config.Entry["Verbose"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["Verbose"].Value = "true";
+                    break;
             }
             
-            ini.WriteString("IMAGE_SETTINGS", "PARAMS", cmdparam);
+            switch (checkBox_TTA.Checked)
+            {
+                case false:
+                    Config.Entry["TTA"].Value = "false";
+                    break;
+                case true:
+                    Config.Entry["TTA"].Value = "true";
+                    break;
+            }
+
+            Config.Entry["Param"].Value = cmdparam;
+
+            Config.Save(Common.xmlpath);
+
             Close();
         }
 

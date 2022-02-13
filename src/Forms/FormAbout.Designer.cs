@@ -72,11 +72,11 @@ namespace NVGE
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(145, 9);
+            this.label1.Location = new System.Drawing.Point(90, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(292, 20);
+            this.label1.Size = new System.Drawing.Size(409, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "waifu2x-ncnn-vulkan GUI Edition Reloaded";
+            this.label1.Text = "waifu2x ncnn Vulkan  - GUI Edition Reloaded (waifu2x-nVGE)";
             // 
             // label2
             // 
@@ -132,7 +132,7 @@ namespace NVGE
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(267, 356);
+            this.label3.Location = new System.Drawing.Point(292, 356);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 15);
             this.label3.TabIndex = 7;
@@ -141,11 +141,11 @@ namespace NVGE
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(279, 383);
+            this.label4.Location = new System.Drawing.Point(304, 383);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(181, 15);
             this.label4.TabIndex = 8;
-            this.label4.Text = " Copyright © 2021, OpenCV team";
+            this.label4.Text = " Copyright © 2022, OpenCV team";
             // 
             // pictureBox3
             // 
@@ -202,7 +202,7 @@ namespace NVGE
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(265, 15);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Copyright © 1999-2021, ImageMagick Studio LLC";
+            this.label8.Text = "Copyright © 1999-2022, ImageMagick Studio LLC";
             // 
             // label9
             // 
@@ -240,7 +240,7 @@ namespace NVGE
             this.linkLabel3.TabIndex = 19;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "Magick.NET.";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked);
             // 
             // linkLabel4
             // 
@@ -251,18 +251,18 @@ namespace NVGE
             this.linkLabel4.TabIndex = 20;
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "FFmpeg.";
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel4_LinkClicked);
             // 
             // linkLabel5
             // 
             this.linkLabel5.AutoSize = true;
-            this.linkLabel5.Location = new System.Drawing.Point(400, 356);
+            this.linkLabel5.Location = new System.Drawing.Point(425, 356);
             this.linkLabel5.Name = "linkLabel5";
             this.linkLabel5.Size = new System.Drawing.Size(83, 15);
             this.linkLabel5.TabIndex = 21;
             this.linkLabel5.TabStop = true;
             this.linkLabel5.Text = "OpenCVSharp.";
-            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel5_LinkClicked);
             // 
             // linkLabel6
             // 
@@ -273,7 +273,7 @@ namespace NVGE
             this.linkLabel6.TabIndex = 22;
             this.linkLabel6.TabStop = true;
             this.linkLabel6.Text = "waifu2x-ncnn-vulkan GUI Edition Reloaded";
-            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked);
+            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel6_LinkClicked);
             // 
             // FormAbout
             // 
@@ -303,7 +303,7 @@ namespace NVGE
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_OK);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormAbout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About waifu2x-ncnn-vulkan GUI Edition Reloaded";

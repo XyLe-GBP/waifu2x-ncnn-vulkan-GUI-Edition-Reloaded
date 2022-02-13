@@ -57,738 +57,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label_sec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 15</value>
-  </data>
-  <data name="label_thread.Location" type="System.Drawing.Point, System.Drawing">
-    <value>245, 25</value>
-  </data>
-  <data name="button_next.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label_gpu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 48</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>419, 80</value>
-  </data>
-  <data name="label_webp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;label_scale.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 48</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 580</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label_vbs.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;label_tta.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label_blks.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_sec.Name" xml:space="preserve">
-    <value>label_sec</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="label_model.Text" xml:space="preserve">
-    <value>Model Text</value>
-  </data>
-  <data name="button_next.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="&gt;&gt;label_sec.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 12pt</value>
-  </data>
-  <data name="label_gpu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 15</value>
-  </data>
-  <data name="&gt;&gt;label_model.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="label_rdl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 25</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Original image</value>
-  </data>
-  <data name="&gt;&gt;label_fmt.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 20</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Time required for processing:</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>320, 25</value>
-  </data>
-  <data name="label_webp.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;label_vbs.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;groupBox_info1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox_info2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="label_sec.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;label_thread.Name" xml:space="preserve">
-    <value>label_thread</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label_rdl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 15</value>
-  </data>
-  <data name="&gt;&gt;button_prev.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Previous image</value>
-  </data>
-  <data name="button_ok.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Upscaled Image</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_next.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="groupBox_info1.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="label_sec.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 25</value>
-  </data>
-  <data name="label_scale.Text" xml:space="preserve">
-    <value>Scale Text</value>
-  </data>
-  <data name="&gt;&gt;button_next.Name" xml:space="preserve">
-    <value>button_next</value>
-  </data>
-  <data name="label_thread.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 42</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Used Threads:</value>
-  </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 25</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label_sec.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_fmt.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label_rdl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 15</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBox_info2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>508, 619</value>
-  </data>
-  <data name="button_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>883, 706</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Format:</value>
-  </data>
-  <data name="label_tta.Text" xml:space="preserve">
-    <value>TTA</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 11pt</value>
-  </data>
-  <data name="&gt;&gt;groupBox_info2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="pictureBox_UpscaledImage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;button_cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_prev.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button_cancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label_tta.Name" xml:space="preserve">
-    <value>label_tta</value>
-  </data>
-  <data name="label_sec.Text" xml:space="preserve">
-    <value>Processing Sec</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 25</value>
-  </data>
-  <data name="label_vbs.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="label_tta.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;label_webp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_cancel.Name" xml:space="preserve">
-    <value>button_cancel</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="label_model.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 11pt</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 48</value>
-  </data>
   <data name="pictureBox_SourceImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>24, 98</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 15</value>
-  </data>
-  <data name="label_fmt.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="label_webp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>514, 320</value>
-  </data>
-  <data name="button_cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;label_webp.Name" xml:space="preserve">
-    <value>label_webp</value>
-  </data>
-  <data name="label_rdl.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="button_prev.Text" xml:space="preserve">
-    <value>&lt;</value>
-  </data>
-  <data name="label_blks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>313, 48</value>
-  </data>
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;label_vbs.Name" xml:space="preserve">
-    <value>label_vbs</value>
-  </data>
-  <data name="label_gpu.Text" xml:space="preserve">
-    <value>GPU</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_fmt.Name" xml:space="preserve">
-    <value>label_fmt</value>
-  </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_SourceImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;label_scale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label_vbs.Text" xml:space="preserve">
-    <value>Verbose Status</value>
-  </data>
-  <data name="label_tta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 15</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="label_scale.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="button_prev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 583</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_rdl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_SourceImage.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="label_model.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="label_tta.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 48</value>
-  </data>
-  <data name="&gt;&gt;label_blks.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="label_model.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 15</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 15</value>
-  </data>
-  <data name="label_gpu.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="groupBox_info1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 81</value>
-  </data>
-  <data name="groupBox_info1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 619</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label16.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;label_sec.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_prev.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label_model.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label_gpu.Name" xml:space="preserve">
-    <value>label_gpu</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_vbs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 25</value>
-  </data>
-  <data name="button_prev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="button_next.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="pictureBox_UpscaledImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>508, 98</value>
-  </data>
-  <data name="&gt;&gt;groupBox_info2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="label_fmt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 15</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 25</value>
   </data>
   <data name="pictureBox_SourceImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 479</value>
   </data>
-  <data name="&gt;&gt;label_vbs.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label_gpu.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_SourceImage.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Next image</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 11pt</value>
-  </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>320, 48</value>
-  </data>
-  <data name="&gt;&gt;groupBox_info1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 15</value>
-  </data>
-  <data name="label_scale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 48</value>
-  </data>
-  <data name="&gt;&gt;label_vbs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_UpscaledImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="label_sec.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;button_next.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label_rdl.Name" xml:space="preserve">
-    <value>label_rdl</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label_fmt.Text" xml:space="preserve">
-    <value>fmt</value>
-  </data>
-  <data name="&gt;&gt;label_gpu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_rdl.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 15</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Used GPU:</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>984, 741</value>
-  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pictureBox_SourceImage.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
   </data>
-  <data name="label_rdl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 15</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox_SourceImage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="label_tta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>345, 48</value>
+  <data name="&gt;&gt;pictureBox_SourceImage.Name" xml:space="preserve">
+    <value>pictureBox_SourceImage</value>
   </data>
-  <data name="&gt;&gt;button_cancel.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;pictureBox_SourceImage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pictureBox_SourceImage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;pictureBox_SourceImage.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
-  <data name="label_scale.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_UpscaledImage.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="button_next.Location" type="System.Drawing.Point, System.Drawing">
-    <value>928, 583</value>
-  </data>
-  <data name="label_vbs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 15</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 15</value>
-  </data>
-  <data name="label_webp.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;button_ok.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label_gpu.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label_model.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 48</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;groupBox_info2.Name" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="&gt;&gt;label_scale.Name" xml:space="preserve">
-    <value>label_scale</value>
-  </data>
-  <data name="&gt;&gt;label_model.Name" xml:space="preserve">
-    <value>label_model</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Detail of the upscaled image</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_model.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="label_scale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 15</value>
-  </data>
-  <data name="&gt;&gt;button_next.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 15</value>
-  </data>
-  <data name="label_thread.Text" xml:space="preserve">
-    <value>thread</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Reduction Level:</value>
-  </data>
-  <data name="label_blks.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;label_tta.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 15</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormImageUpscaleDetail</value>
+  <data name="pictureBox_UpscaledImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>508, 98</value>
   </data>
   <data name="pictureBox_UpscaledImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 479</value>
   </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
+  <data name="pictureBox_UpscaledImage.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
   </data>
-  <data name="label_thread.AutoSize" type="System.Boolean, mscorlib">
+  <data name="pictureBox_UpscaledImage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_UpscaledImage.Name" xml:space="preserve">
+    <value>pictureBox_UpscaledImage</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_UpscaledImage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_UpscaledImage.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_UpscaledImage.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>676, 580</value>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 11pt</value>
   </data>
-  <data name="groupBox_info2.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>282, 9</value>
   </data>
-  <data name="&gt;&gt;label_thread.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>419, 80</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 20</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Verbose:</value>
-  </data>
-  <data name="label_webp.Text" xml:space="preserve">
-    <value>Google Web Picture format does not support displaying images in forms.
-Clicking on this text will display the image in the specified browser.</value>
-  </data>
-  <data name="button_cancel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Upscaling is now complete.
@@ -796,242 +129,942 @@ If you are satisfied with this image, click the 'OK' button.
 If you want to start over, click the 'Cancel' button.
 (The images in the form can be enlarged by clicking on them.)</value>
   </data>
-  <data name="&gt;&gt;button_prev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
   </data>
-  <data name="label_thread.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox_info1.Text" xml:space="preserve">
-    <value>Upscaling Informations</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
-  <data name="&gt;&gt;pictureBox_SourceImage.Name" xml:space="preserve">
-    <value>pictureBox_SourceImage</value>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 11pt</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 580</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 20</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Original image</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
   </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 11pt</value>
   </data>
-  <data name="&gt;&gt;button_ok.ZOrder" xml:space="preserve">
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>676, 580</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 20</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;label_thread.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Upscaled Image</value>
   </data>
-  <data name="&gt;&gt;groupBox_info1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="button_prev.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_prev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 583</value>
+  </data>
+  <data name="button_prev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="button_prev.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="button_prev.Text" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="&gt;&gt;button_prev.Name" xml:space="preserve">
+    <value>button_prev</value>
+  </data>
+  <data name="&gt;&gt;button_prev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_prev.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_prev.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="button_next.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_next.Location" type="System.Drawing.Point, System.Drawing">
+    <value>928, 583</value>
+  </data>
+  <data name="button_next.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="button_next.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="button_next.Text" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="&gt;&gt;button_next.Name" xml:space="preserve">
+    <value>button_next</value>
+  </data>
+  <data name="&gt;&gt;button_next.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_next.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_next.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="button_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>802, 706</value>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>60, 591</value>
   </data>
-  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 15</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Previous image</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>855, 591</value>
   </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 15</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Next image</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="button_ok.Location" type="System.Drawing.Point, System.Drawing">
+    <value>802, 706</value>
+  </data>
   <data name="button_ok.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;label_webp.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Model:</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label_rdl.Text" xml:space="preserve">
-    <value>Rdl</value>
-  </data>
-  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 25</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>TTA:</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 48</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label_tta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label_webp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 34</value>
-  </data>
-  <data name="button_next.Text" xml:space="preserve">
-    <value>&gt;</value>
-  </data>
-  <data name="&gt;&gt;label_blks.Name" xml:space="preserve">
-    <value>label_blks</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 15</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_UpscaledImage.Name" xml:space="preserve">
-    <value>pictureBox_UpscaledImage</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pictureBox_SourceImage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 591</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;label_blks.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;button_ok.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox_info1.Name" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="label_gpu.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>groupBox_info1</value>
-  </data>
-  <data name="groupBox_info2.Text" xml:space="preserve">
-    <value>Upscaling Informations (Advanced)</value>
-  </data>
-  <data name="&gt;&gt;label_thread.Parent" xml:space="preserve">
-    <value>groupBox_info2</value>
-  </data>
-  <data name="label_blks.Text" xml:space="preserve">
-    <value>Blocksize</value>
-  </data>
-  <data name="&gt;&gt;button_prev.Name" xml:space="preserve">
-    <value>button_prev</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label_webp.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label_fmt.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_webp.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label_fmt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>362, 25</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Blocksize:</value>
-  </data>
-  <data name="groupBox_info2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 81</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label_webp.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label_scale.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_UpscaledImage.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Scale:</value>
-  </data>
-  <data name="label_blks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 15</value>
-  </data>
-  <data name="button_prev.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 9</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="pictureBox_UpscaledImage.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label_fmt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="button_ok.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="button_ok.Text" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="&gt;&gt;button_ok.Name" xml:space="preserve">
+    <value>button_ok</value>
+  </data>
+  <data name="&gt;&gt;button_ok.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_ok.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_ok.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="button_cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>883, 706</value>
+  </data>
+  <data name="button_cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button_cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="button_cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;button_cancel.Name" xml:space="preserve">
+    <value>button_cancel</value>
+  </data>
+  <data name="&gt;&gt;button_cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_cancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_cancel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 15</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Time required for processing:</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 48</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 15</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 48</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 15</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Scale:</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label_sec.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_sec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 25</value>
+  </data>
+  <data name="label_sec.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 15</value>
+  </data>
+  <data name="label_sec.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="label_sec.Text" xml:space="preserve">
+    <value>Processing Sec</value>
+  </data>
+  <data name="&gt;&gt;label_sec.Name" xml:space="preserve">
+    <value>label_sec</value>
+  </data>
+  <data name="&gt;&gt;label_sec.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_sec.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label_sec.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label_model.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_model.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 48</value>
+  </data>
+  <data name="label_model.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 15</value>
+  </data>
+  <data name="label_model.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="label_model.Text" xml:space="preserve">
+    <value>Model Text</value>
+  </data>
+  <data name="&gt;&gt;label_model.Name" xml:space="preserve">
+    <value>label_model</value>
+  </data>
+  <data name="&gt;&gt;label_model.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_model.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label_model.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label_scale.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_scale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>38, 48</value>
+  </data>
+  <data name="label_scale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 15</value>
+  </data>
+  <data name="label_scale.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="label_scale.Text" xml:space="preserve">
+    <value>Scale Text</value>
+  </data>
+  <data name="&gt;&gt;label_scale.Name" xml:space="preserve">
+    <value>label_scale</value>
+  </data>
+  <data name="&gt;&gt;label_scale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_scale.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label_scale.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label_rdl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_rdl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 25</value>
+  </data>
+  <data name="label_rdl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 15</value>
+  </data>
+  <data name="label_rdl.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label_rdl.Text" xml:space="preserve">
+    <value>Rdl</value>
+  </data>
+  <data name="&gt;&gt;label_rdl.Name" xml:space="preserve">
+    <value>label_rdl</value>
+  </data>
+  <data name="&gt;&gt;label_rdl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_rdl.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label_rdl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>258, 25</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 15</value>
+  </data>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Reduction Level:</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 48</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 15</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Used GPU:</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label_gpu.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_gpu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 48</value>
+  </data>
+  <data name="label_gpu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 15</value>
+  </data>
+  <data name="label_gpu.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label_gpu.Text" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="&gt;&gt;label_gpu.Name" xml:space="preserve">
+    <value>label_gpu</value>
+  </data>
+  <data name="&gt;&gt;label_gpu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_gpu.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label_gpu.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="label_blks.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label_blks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>313, 48</value>
+  </data>
+  <data name="label_blks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
+  </data>
+  <data name="label_blks.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="label_blks.Text" xml:space="preserve">
+    <value>Blocksize</value>
+  </data>
+  <data name="&gt;&gt;label_blks.Name" xml:space="preserve">
+    <value>label_blks</value>
+  </data>
+  <data name="&gt;&gt;label_blks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_blks.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label_blks.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>258, 48</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 15</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Blocksize:</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="groupBox_info1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 619</value>
+  </data>
+  <data name="groupBox_info1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 81</value>
+  </data>
+  <data name="groupBox_info1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="groupBox_info1.Text" xml:space="preserve">
+    <value>Upscaling Informations</value>
+  </data>
+  <data name="&gt;&gt;groupBox_info1.Name" xml:space="preserve">
+    <value>groupBox_info1</value>
+  </data>
+  <data name="&gt;&gt;groupBox_info1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox_info1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox_info1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 15</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Verbose:</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label_vbs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_vbs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 25</value>
+  </data>
+  <data name="label_vbs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 15</value>
+  </data>
+  <data name="label_vbs.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label_vbs.Text" xml:space="preserve">
+    <value>Verbose Status</value>
+  </data>
+  <data name="&gt;&gt;label_vbs.Name" xml:space="preserve">
+    <value>label_vbs</value>
+  </data>
+  <data name="&gt;&gt;label_vbs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_vbs.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label_vbs.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 12pt</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 25</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>367, 42</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>There is no information that can be displayed
 because the "Verbose output" option is not enabled.</value>
   </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
   </data>
-  <data name="&gt;&gt;button_ok.Name" xml:space="preserve">
-    <value>button_ok</value>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label_fmt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_fmt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>362, 25</value>
+  </data>
+  <data name="label_fmt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 15</value>
+  </data>
+  <data name="label_fmt.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="label_fmt.Text" xml:space="preserve">
+    <value>fmt</value>
+  </data>
+  <data name="&gt;&gt;label_fmt.Name" xml:space="preserve">
+    <value>label_fmt</value>
+  </data>
+  <data name="&gt;&gt;label_fmt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_fmt.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label_fmt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label_thread.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_thread.Location" type="System.Drawing.Point, System.Drawing">
+    <value>245, 25</value>
+  </data>
+  <data name="label_thread.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="label_thread.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="label_thread.Text" xml:space="preserve">
+    <value>thread</value>
+  </data>
+  <data name="&gt;&gt;label_thread.Name" xml:space="preserve">
+    <value>label_thread</value>
+  </data>
+  <data name="&gt;&gt;label_thread.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_thread.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label_thread.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 25</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 15</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Format:</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label_tta.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_tta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>345, 48</value>
+  </data>
+  <data name="label_tta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 15</value>
+  </data>
+  <data name="label_tta.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="label_tta.Text" xml:space="preserve">
+    <value>TTA</value>
+  </data>
+  <data name="&gt;&gt;label_tta.Name" xml:space="preserve">
+    <value>label_tta</value>
+  </data>
+  <data name="&gt;&gt;label_tta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_tta.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label_tta.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 48</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 15</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>TTA:</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 25</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 15</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Used Threads:</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="groupBox_info2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>508, 619</value>
+  </data>
+  <data name="groupBox_info2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 81</value>
+  </data>
+  <data name="groupBox_info2.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="groupBox_info2.Text" xml:space="preserve">
+    <value>Upscaling Informations (Advanced)</value>
+  </data>
+  <data name="&gt;&gt;groupBox_info2.Name" xml:space="preserve">
+    <value>groupBox_info2</value>
+  </data>
+  <data name="&gt;&gt;groupBox_info2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox_info2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox_info2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label_webp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_webp.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="label_webp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>514, 320</value>
+  </data>
+  <data name="label_webp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 34</value>
+  </data>
+  <data name="label_webp.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label_webp.Text" xml:space="preserve">
+    <value>Google Web Picture format does not support displaying images in forms.
+Clicking on this text will display the image in the specified browser.</value>
+  </data>
+  <data name="label_webp.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="label_webp.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label_webp.Name" xml:space="preserve">
+    <value>label_webp</value>
+  </data>
+  <data name="&gt;&gt;label_webp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_webp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label_webp.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label_NotSupported.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 11.25pt</value>
+  </data>
+  <data name="label_NotSupported.Location" type="System.Drawing.Point, System.Drawing">
+    <value>514, 315</value>
+  </data>
+  <data name="label_NotSupported.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 44</value>
+  </data>
+  <data name="label_NotSupported.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="label_NotSupported.Text" xml:space="preserve">
+    <value>This image format is not supported, so previewing in the viewer is not available.</value>
+  </data>
+  <data name="label_NotSupported.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="label_NotSupported.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label_NotSupported.Name" xml:space="preserve">
+    <value>label_NotSupported</value>
+  </data>
+  <data name="&gt;&gt;label_NotSupported.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_NotSupported.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label_NotSupported.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>984, 741</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Detail of the upscaled image</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormImageUpscaleDetail</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

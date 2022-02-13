@@ -106,14 +106,8 @@
   <data name="settingsCToolStripMenuItem.Text" xml:space="preserve">
     <value>设置 (&amp;S)</value>
   </data>
-  <data name="upscalingSettingsUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
   <data name="upscalingSettingsUToolStripMenuItem.Text" xml:space="preserve">
     <value>图像升格设置 (&amp;U)</value>
-  </data>
-  <data name="videoUpscalingSettingsVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
   </data>
   <data name="videoUpscalingSettingsVToolStripMenuItem.Text" xml:space="preserve">
     <value>视频升频设置 (&amp;V)</value>
@@ -129,6 +123,18 @@
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
     <value>改变视频分辨率</value>
+  </data>
+  <data name="changeVideoFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="changeVideoFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>改变视频格式</value>
+  </data>
+  <data name="changeImageFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="changeImageFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>改变图像格式</value>
   </data>
   <data name="aboutAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 20</value>

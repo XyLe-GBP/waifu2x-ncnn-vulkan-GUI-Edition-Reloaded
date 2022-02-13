@@ -1,10 +1,10 @@
 ﻿using NVGE.Localization;
-using PrivateProfile;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace NVGE
@@ -12,6 +12,8 @@ namespace NVGE
     public partial class FormProgress : Form
     {
         private readonly int Flag;
+        private readonly string waifu2xPath = Directory.GetCurrentDirectory() + @"\res\waifu2x-ncnn-vulkan.exe";
+        private readonly string upscaledPath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
 
         /// <summary>
         /// Forms for various processes such as downloading, file processing, etc.
@@ -37,30 +39,18 @@ namespace NVGE
             switch (Flag)
             {
                 case 0:
-                    foreach (var filename in Common.ImageFileName) // Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*")
+                    foreach (var filename in Common.ImageFileName)
                     {
-                        var ini = new IniFile(@".\settings.ini");
-                        int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535);
-                        string ft;
-                        switch (fmt)
+                        Config.Load(Common.xmlpath);
+                        int fmt = int.Parse(Config.Entry["Format"].Value);
+                        string ft = fmt switch
                         {
-                            case 0:
-                                ft = ".jpg";
-                                break;
-                            case 1:
-                                ft = ".png";
-                                break;
-                            case 2:
-                                ft = ".webp";
-                                break;
-                            case 3:
-                                ft = ".ico";
-                                break;
-                            default:
-                                ft = ".png";
-                                break;
-                        }
-
+                            0 => ".jpg",
+                            1 => ".png",
+                            2 => ".webp",
+                            3 => ".ico",
+                            _ => ".png",
+                        };
                         string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[0], ".png") + "\"";//FileInfo fi = new(file);
 
                         Process ps = new();
@@ -68,7 +58,7 @@ namespace NVGE
 
                         if (ft == ".ico")
                         {
-                            pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
+                            pi.FileName = waifu2xPath;
                             pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
                             pi.WindowStyle = ProcessWindowStyle.Hidden;
                             pi.UseShellExecute = true;
@@ -76,7 +66,7 @@ namespace NVGE
                         }
                         else
                         {
-                            pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
+                            pi.FileName = waifu2xPath;
                             pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("waifu2x-ncnn-vulkan ", "");
                             pi.WindowStyle = ProcessWindowStyle.Hidden;
                             pi.UseShellExecute = true;
@@ -97,12 +87,12 @@ namespace NVGE
                             }
                             else if (ps.HasExited == true)
                             {
-                                worker.ReportProgress(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*").Length);
+                                worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
                                 break;
                             }
                             else
                             {
-                                worker.ReportProgress(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*").Length);
+                                worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
                                 continue;
                             }
                         }
@@ -110,39 +100,27 @@ namespace NVGE
                     break;
                 case 1:
                     {
-                        var ini = new IniFile(@".\settings.ini");
-                        int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535), i = 0;
-                        string ft;
-                        switch (fmt)
+                        Config.Load(Common.xmlpath);
+                        int fmt = int.Parse(Config.Entry["Format"].Value), i = 0;
+                        string ft = fmt switch
                         {
-                            case 0:
-                                ft = ".jpg";
-                                break;
-                            case 1:
-                                ft = ".png";
-                                break;
-                            case 2:
-                                ft = ".webp";
-                                break;
-                            case 3:
-                                ft = ".ico";
-                                break;
-                            default:
-                                ft = ".png";
-                                break;
-                        }
-
-                        foreach (var filename in Common.ImageFileName) // Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*")
+                            0 => ".jpg",
+                            1 => ".png",
+                            2 => ".webp",
+                            3 => ".ico",
+                            _ => ".png",
+                        };
+                        foreach (var filename in Common.ImageFileName)
                         {
                             
-                            string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[i], ".png") + "\"";//FileInfo fi = new(file);
+                            string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[i], ".png") + "\"";
 
                             ProcessStartInfo pi = new();
                             Process ps = new();
 
                             if (ft == ".ico")
                             {
-                                pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
+                                pi.FileName = waifu2xPath;
                                 pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
                                 pi.WindowStyle = ProcessWindowStyle.Hidden;
                                 pi.UseShellExecute = true;
@@ -150,7 +128,7 @@ namespace NVGE
                             }
                             else
                             {
-                                pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
+                                pi.FileName = waifu2xPath;
                                 pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(Common.ImageFileExt[i], ft) + "\"").Replace("waifu2x-ncnn-vulkan ", "");
                                 pi.WindowStyle = ProcessWindowStyle.Hidden;
                                 pi.UseShellExecute = true;
@@ -407,10 +385,9 @@ namespace NVGE
 
         private void BackgroundWorker_Video_DoWork(object sender, DoWorkEventArgs e)
         {
-            BackgroundWorker worker = (BackgroundWorker)sender;
             ProcessStartInfo pi = new();
             Process ps;
-            pi.FileName = ".\\res\\waifu2x-ncnn-vulkan.exe";
+            pi.FileName = waifu2xPath;
             pi.Arguments = Common.ImageParam.Replace("$InFile", Common.DeletePathFrames).Replace("$OutFile", Common.DeletePathFrames2x).Replace("waifu2x-ncnn-vulkan ", "");
             pi.WindowStyle = ProcessWindowStyle.Hidden;
             pi.UseShellExecute = true;
@@ -486,9 +463,9 @@ namespace NVGE
 
         private void BackgroundWorker_Delete_DoWork(object sender, DoWorkEventArgs e)
         {
-            var ini = new IniFile(@".\settings.ini");
-            string vl = ini.GetString("VIDEO_SETTINGS", "VL_INDEX");
-            string al = ini.GetString("VIDEO_SETTINGS", "AL_INDEX");
+            Config.Load(Common.xmlpath);
+            string vl = Config.Entry["VideoLocation"].Value;
+            string al = Config.Entry["AudioLocation"].Value;
             string delvlpath, delvlpath2x, delalpath;
 
             if(vl != "") {
@@ -509,7 +486,6 @@ namespace NVGE
                 delalpath = Directory.GetCurrentDirectory() + @"\_temp-project\audio\";
             }
 
-            BackgroundWorker worker = (BackgroundWorker)sender;
             switch (Common.DeleteFlag)
             {
                 case 0:
@@ -528,26 +504,18 @@ namespace NVGE
 
         private void BackgroundWorker_Split_DoWork(object sender, DoWorkEventArgs e)
         {
-            var ini = new IniFile(@".\settings.ini");
-            int enc = ini.GetInt("VIDEO_SETTINGS", "ENCODE_INDEX", 65535);
-            string ffp = ini.GetString("VIDEO_SETTINGS", "FFMPEG_INDEX");
-            string vl = ini.GetString("VIDEO_SETTINGS", "VL_INDEX");
-            string al = ini.GetString("VIDEO_SETTINGS", "AL_INDEX");
-            string vlpath, alpath, acodec;
-
-            switch (enc)
+            Config.Load(Common.xmlpath);
+            int enc = int.Parse(Config.Entry["OutputCodecIndex"].Value);
+            string ffp = Config.Entry["FFmpegLocation"].Value;
+            string vl = Config.Entry["VideoLocation"].Value;
+            string al = Config.Entry["AudioLocation"].Value;
+            string vlpath, alpath;
+            string acodec = enc switch
             {
-                case 3:
-                    acodec = "audio.m4a";
-                    break;
-                case 4:
-                    acodec = "audio.mp3";
-                    break;
-                default:
-                    acodec = "audio.wav";
-                    break;
-            }
-
+                3 => "audio.m4a",
+                4 => "audio.mp3",
+                _ => "audio.wav",
+            };
             if (vl != "")
             {
                 vlpath = vl + @"\image-frames\image-%09d.png";
@@ -612,34 +580,20 @@ namespace NVGE
             }
         }
 
-        private void backgroundWorker_Convert_DoWork(object sender, DoWorkEventArgs e)
+        private void BackgroundWorker_Convert_DoWork(object sender, DoWorkEventArgs e)
         {
-            var ini = new IniFile(@".\settings.ini");
-            int fmt = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX", 65535);
-            string ext;
-
+            Config.Load(Common.xmlpath);
+            int fmt = int.Parse(Config.Entry["Format"].Value);
             List<string> lst = new();
             List<string> lst2 = new();
-
-            switch (fmt)
+            string ext = fmt switch
             {
-                case 0:
-                    ext = ".jpg";
-                    break;
-                case 1:
-                    ext = ".png";
-                    break;
-                case 2:
-                    ext = ".webp";
-                    break;
-                case 3:
-                    ext = ".ico";
-                    break;
-                default:
-                    ext = ".png";
-                    break;
-            }
-
+                0 => ".jpg",
+                1 => ".png",
+                2 => ".webp",
+                3 => ".ico",
+                _ => ".png",
+            };
             if (Common.ConvMultiFlag == 0)
             {
                 FileInfo file = new(Common.GetShortPath(Common.ImageFile[0]));
@@ -649,12 +603,15 @@ namespace NVGE
                 Common.ImageFileName = lst.ToArray();
                 Common.ImageFileExt = lst2.ToArray();
 
+                string dest1 = Regex.Replace(file.Name, file.Extension, ".w2xnvg", RegexOptions.IgnoreCase);
+                string dest2 = Regex.Replace(file.Name, file.Extension, ".png", RegexOptions.IgnoreCase);
+
                 switch (file.Extension.ToUpper())
                 {
                     case ".GIF":
-                        if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                        if (ImageConvert.IMAGEtoPNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                         {
-                            File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                            File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                             break;
                         }
                         else
@@ -667,9 +624,9 @@ namespace NVGE
                     default:
                         if (fmt == 1 || fmt == 3 || ext == ".png")
                         {
-                            if (ImageConvert.IMAGEtoPNG32(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                            if (ImageConvert.IMAGEtoPNG32(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                             {
-                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                 break;
                             }
                             else
@@ -682,9 +639,9 @@ namespace NVGE
                         }
                         else
                         {
-                            if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                            if (ImageConvert.IMAGEtoPNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                             {
-                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                 break;
                             }
                             else
@@ -706,12 +663,15 @@ namespace NVGE
                     lst.Add(file.Name);
                     lst2.Add(file.Extension);
 
+                    string dest1 = Regex.Replace(file.Name, file.Extension, ".w2xnvg", RegexOptions.IgnoreCase);
+                    string dest2 = Regex.Replace(file.Name, file.Extension, ".png", RegexOptions.IgnoreCase);
+
                     switch (file.Extension.ToUpper())
                     {
                         case ".GIF":
-                            if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                            if (ImageConvert.IMAGEtoPNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                             {
-                                File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                 break;
                             }
                             else
@@ -724,9 +684,9 @@ namespace NVGE
                         default:
                             if (fmt == 1 || fmt == 3 || ext == ".png")
                             {
-                                if (ImageConvert.IMAGEtoPNG32(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                                if (ImageConvert.IMAGEtoPNG32(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                                 {
-                                    File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                    File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                     break;
                                 }
                                 else
@@ -739,9 +699,9 @@ namespace NVGE
                             }
                             else
                             {
-                                if (ImageConvert.IMAGEtoPNG(file.Directory + "\\" + file.Name, file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg")) != false)
+                                if (ImageConvert.IMAGEtoPNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                                 {
-                                    File.Move(file.Directory + "\\" + file.Name.Replace(file.Extension, ".w2xnvg"), Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + file.Name.Replace(file.Extension, ".png"));
+                                    File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                     break;
                                 }
                                 else
@@ -760,14 +720,14 @@ namespace NVGE
             }
         }
 
-        private void backgroundWorker_Convert_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void BackgroundWorker_Convert_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
+            // Unused
         }
 
-        private void backgroundWorker_Convert_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void BackgroundWorker_Convert_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            // Unused
         }
     }
 }

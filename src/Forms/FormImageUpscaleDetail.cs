@@ -1,4 +1,4 @@
-﻿using PrivateProfile;
+﻿using NVGE.Localization;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -17,78 +17,43 @@ namespace NVGE
 
         private void FormImageUpscaleDetail_Load(object sender, EventArgs e)
         {
-            var ini = new IniFile(@".\settings.ini");
-            int reduction = ini.GetInt("IMAGE_SETTINGS", "REDUCTION_INDEX"), model = ini.GetInt("IMAGE_SETTINGS", "MODEL_INDEX"), gpu = ini.GetInt("IMAGE_SETTINGS", "GPU_INDEX"), scale = ini.GetInt("IMAGE_SETTINGS", "UPSCALE_INDEX"), blksize = ini.GetInt("IMAGE_SETTINGS", "BLOCKSIZE_INDEX"), thread = ini.GetInt("IMAGE_SETTINGS", "THREAD_INDEX"), format = ini.GetInt("IMAGE_SETTINGS", "FORMAT_INDEX"), vbo = ini.GetInt("IMAGE_SETTINGS", "VBO_INDEX"), tta = ini.GetInt("IMAGE_SETTINGS", "TTA_INDEX");
+            Config.Load(Common.xmlpath);
+            int reduction = int.Parse(Config.Entry["Reduction"].Value), model = int.Parse(Config.Entry["Model"].Value), gpu = int.Parse(Config.Entry["GPU"].Value), scale = int.Parse(Config.Entry["Scale"].Value), blksize = int.Parse(Config.Entry["Blocksize"].Value), thread = int.Parse(Config.Entry["Thread"].Value), format = int.Parse(Config.Entry["Format"].Value);
+            bool vbo = bool.Parse(Config.Entry["Verbose"].Value), tta = bool.Parse(Config.Entry["TTA"].Value);
 
             label_sec.Text = Common.timeSpan.TotalSeconds.ToString() + "s";
 
-            switch (reduction)
+            label_rdl.Text = reduction switch
             {
-                case 0:
-                    label_rdl.Text = "No Reduction";
-                    break;
-                case 1:
-                    label_rdl.Text = "Level 0";
-                    break;
-                case 2:
-                    label_rdl.Text = "Level 1";
-                    break;
-                case 3:
-                    label_rdl.Text = "Level 2";
-                    break;
-                case 4:
-                    label_rdl.Text = "Level 3";
-                    break;
-                default:
-                    label_rdl.Text = "Unknown";
-                    break;
-            }
-
-            switch (scale)
+                0 => "No Reduction",
+                1 => "Level 0",
+                2 => "Level 1",
+                3 => "Level 2",
+                4 => "Level 3",
+                _ => "Unknown",
+            };
+            label_scale.Text = scale switch
             {
-                case 0:
-                    label_scale.Text = "x1";
-                    break;
-                case 1:
-                    label_scale.Text = "x2";
-                    break;
-                default:
-                    label_scale.Text = "Unknown";
-                    break;
-            }
-
-            switch (gpu)
+                0 => "x1",
+                1 => "x2",
+                2 => "x4",
+                3 => "x6",
+                _ => "Unknown",
+            };
+            label_gpu.Text = gpu switch
             {
-                case 0:
-                    label_gpu.Text = "Autodetect";
-                    break;
-                case 1:
-                    label_gpu.Text = "iGPU (CPU)";
-                    break;
-                case 2:
-                    label_gpu.Text = "dGPU (GPU 0)";
-                    break;
-                case 3:
-                    label_gpu.Text = "dGPU (GPU 1)";
-                    break;
-                case 4:
-                    label_gpu.Text = "dGPU (GPU 2)";
-                    break;
-                default:
-                    label_gpu.Text = "Unknown";
-                    break;
-            }
-
-            switch (blksize)
+                0 => "Autodetect",
+                1 => "iGPU (CPU)",
+                2 => "dGPU (GPU 0)",
+                3 => "dGPU (GPU 1)",
+                4 => "dGPU (GPU 2)",
+                _ => "Unknown",
+            };
+            label_blks.Text = blksize switch
             {
-                case 0:
-                    label_blks.Text = "Autodetect";
-                    break;
-                default:
-                    label_blks.Text = blksize.ToString() + "Blocks";
-                    break;
-            }
-
+                0 => "Autodetect",
+                _ => blksize.ToString() + "Blocks",
+            };
             switch (format)
             {
                 case 0:
@@ -104,6 +69,9 @@ namespace NVGE
                 case 3:
                     ext = ".ico";
                     break;
+                case 4:
+                    ext = Common.ManualImageFormat;
+                    break;
                 default:
                     ext = ".png";
                     break;
@@ -111,7 +79,7 @@ namespace NVGE
 
             switch (vbo)
             {
-                case 0:
+                case false:
                     label_vbs.Visible = false;
                     label_tta.Visible = false;
                     label_thread.Visible = false;
@@ -123,26 +91,17 @@ namespace NVGE
                     label13.Visible = false;
                     label14.Visible = false;
                     break;
-                case 1:
+                case true:
                     label16.Visible = false;
                     label_vbs.Text = "Enabled";
 
-                    switch (model)
+                    label_model.Text = model switch
                     {
-                        case 0:
-                            label_model.Text = "CUnet (models-cunet)";
-                            break;
-                        case 1:
-                            label_model.Text = "RGB (models-upconv_7_anime_style_art_rgb)";
-                            break;
-                        case 2:
-                            label_model.Text = "Photo (models-upconv_7_photo)";
-                            break;
-                        default:
-                            label_model.Text = "Unknown";
-                            break;
-                    }
-
+                        0 => "CUnet (models-cunet)",
+                        1 => "RGB (models-upconv_7_anime_style_art_rgb)",
+                        2 => "Photo (models-upconv_7_photo)",
+                        _ => "Unknown",
+                    };
                     switch (format)
                     {
                         case 0:
@@ -161,44 +120,32 @@ namespace NVGE
                             ext = ".ico";
                             label_fmt.Text = "ICO";
                             break;
+                        case 4:
+                            ext = Common.ManualImageFormat;
+                            label_fmt.Text = ext + " (Custom)";
+                            break;
                         default:
                             ext = ".png";
                             label_fmt.Text= "Unknown";
                             break;
                     }
 
-                    switch (thread)
+                    label_thread.Text = thread switch
                     {
-                        case 0:
-                            label_thread.Text = "1:2:2";
-                            break;
-                        case 1:
-                            label_thread.Text = "1:2";
-                            break;
-                        case 2:
-                            label_thread.Text = "2";
-                            break;
-                        case 3:
-                            label_thread.Text = "2:2";
-                            break;
-                        case 4:
-                            label_thread.Text = "2:2:2";
-                            break;
-                        default:
-                            label_thread.Text = "Unknown";
-                            break;
-                    }
-
+                        0 => "1:2:2",
+                        1 => "1:2",
+                        2 => "2",
+                        3 => "2:2",
+                        4 => "2:2:2",
+                        _ => "Unknown",
+                    };
                     switch (tta)
                     {
-                        case 0:
+                        case false:
                             label_tta.Text = "Disabled";
                             break;
-                        case 1:
+                        case true:
                             label_tta.Text = "Enabled";
-                            break;
-                        default:
-                            label_tta.Text = "Unknown";
                             break;
                     }
                     break;
@@ -206,32 +153,98 @@ namespace NVGE
 
             if (Common.ImageFile.Length <= 1)
             {
-                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + Common.ImageFileName[0].Replace(Common.ImageFileExt[0], ".png");
-                pictureBox_UpscaledImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + Common.ImageFileName[0].Replace(Common.ImageFileExt[0], ext);
-                PictureboxRefleshed();
+                string dest1 = Common.ReplaceForRegex(Common.ImageFileName[0], Common.ImageFileExt[0], ".png");
+                string dest2 = Common.ReplaceForRegex(Common.ImageFileName[0], Common.ImageFileExt[0], ext);
+
+                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1;
+
+                switch (format)
+                {
+                    case 2:
+                        {
+                            label_NotSupported.Visible = false;
+                            label_webp.Visible = true;
+
+                            PictureboxRefleshed();
+                        }
+                        break;
+                    case 4:
+                        {
+                            if (ext.ToUpper() != ".JPG" && ext.ToUpper() != ".PNG" && ext.ToUpper() != ".BMP" && ext.ToUpper() != ".WEBP")
+                            {
+                                label_NotSupported.Visible = true;
+                                label_webp.Visible = false;
+                            }
+                            else if (ext.ToUpper() == ".WEBP")
+                            {
+                                label_NotSupported.Visible = false;
+                                label_webp.Visible = true;
+                            }
+                            else
+                            {
+                                label_NotSupported.Visible = false;
+                                label_webp.Visible = false;
+                                pictureBox_UpscaledImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + ext;
+                            }
+
+                            PictureboxRefleshed();
+                        }
+                        break;
+                    default:
+                        {
+                            label_NotSupported.Visible = false;
+                            pictureBox_UpscaledImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dest2;
+
+                            PictureboxRefleshed();
+                        }
+                        break;
+                }
             }
             else
             {
-                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + Common.ImageFileName[0].Replace(Common.ImageFileExt[0], ".png");
-                pictureBox_UpscaledImage.ImageLocation = pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + Common.ImageFileName[0].Replace(Common.ImageFileExt[0], ext);
+                string dest1 = Common.ReplaceForRegex(Common.ImageFileName[0], Common.ImageFileExt[0], ".png");
+                string dest2 = Common.ReplaceForRegex(Common.ImageFileName[0], Common.ImageFileExt[0], ext);
+
+                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1;
+
+                if (ext.ToUpper() != ".JPG" && ext.ToUpper() != ".PNG" && ext.ToUpper() != ".BMP" && ext.ToUpper() != ".WEBP")
+                {
+                    label_NotSupported.Visible = true;
+                    label_webp.Visible = false;
+                }
+                else if (ext.ToUpper() == ".WEBP")
+                {
+                    label_NotSupported.Visible = false;
+                    label_webp.Visible = true;
+                }
+                else
+                {
+                    label_NotSupported.Visible = false;
+                    label_webp.Visible = false;
+                    pictureBox_UpscaledImage.ImageLocation = pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dest2;
+                }
+
                 pos = 0;
                 button_next.Enabled = true;
                 button_prev.Enabled = false;
+
                 PictureboxRefleshed();
             }
         }
 
         private void PictureBox_SourceImage_Click(object sender, EventArgs e)
         {
+            string dest1 = Common.ReplaceForRegex(Common.ImageFileName[0], Common.ImageFileExt[0], ".png");
+            string dest2 = Common.ReplaceForRegex(Common.ImageFileName[pos], Common.ImageFileExt[pos], ".png");
             if (Common.ImageFile.Length <= 1)
             {
-                FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + Common.ImageFileName[0].Replace(Common.ImageFileExt[0], ".png"));
+                FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1);
                 formShowPicture.ShowDialog();
                 formShowPicture.Dispose();
             }
             else
             {
-                FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + Common.ImageFileName[pos].Replace(Common.ImageFileExt[pos], ".png"));
+                FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                 formShowPicture.ShowDialog();
                 formShowPicture.Dispose();
             }
@@ -239,17 +252,68 @@ namespace NVGE
 
         private void PictureBox_UpscaledImage_Click(object sender, EventArgs e)
         {
-            if (Common.ImageFile.Length <= 1)
+            Config.Load(Common.xmlpath);
+            int format = int.Parse(Config.Entry["Format"].Value);
+
+            string dest1 = Common.ReplaceForRegex(Common.ImageFileName[0], Common.ImageFileExt[0], ext);
+            string dest2 = Common.ReplaceForRegex(Common.ImageFileName[pos], Common.ImageFileExt[pos], ext);
+
+            switch (format)
             {
-                FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + Common.ImageFileName[0].Replace(Common.ImageFileExt[0], ext));
-                formShowPicture.ShowDialog();
-                formShowPicture.Dispose();
-            }
-            else
-            {
-                FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + Common.ImageFileName[pos].Replace(Common.ImageFileExt[pos], ext));
-                formShowPicture.ShowDialog();
-                formShowPicture.Dispose();
+                case 2:
+                    {
+                        break;
+                    }
+                case 4:
+                    {
+                        if (ext.ToUpper() != ".JPG" && ext.ToUpper() != ".PNG" && ext.ToUpper() != ".BMP" && ext.ToUpper() != ".WEBP")
+                        {
+                            MessageBox.Show("Since the converted image format '" + ext + "' is not supported, previewing in the viewer is not available.", Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else if (ext.ToUpper() == ".WEBP")
+                        {
+                            if (Common.ImageFile.Length <= 1)
+                            {
+                                Common.OpenURI(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + "\"" + ext + "\"");
+                            }
+                            else
+                            {
+                                Common.OpenURI(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + "\"" + dest2 + "\"");
+                            }
+                        }
+                        else
+                        {
+                            if (Common.ImageFile.Length <= 1)
+                            {
+                                FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + ext);
+                                formShowPicture.ShowDialog();
+                                formShowPicture.Dispose();
+                            }
+                            else
+                            {
+                                FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dest2);
+                                formShowPicture.ShowDialog();
+                                formShowPicture.Dispose();
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    {
+                        if (Common.ImageFile.Length <= 1)
+                        {
+                            FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dest1);
+                            formShowPicture.ShowDialog();
+                            formShowPicture.Dispose();
+                        }
+                        else
+                        {
+                            FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dest2);
+                            formShowPicture.ShowDialog();
+                            formShowPicture.Dispose();
+                        }
+                    }
+                    break;
             }
         }
 
@@ -321,21 +385,109 @@ namespace NVGE
 
         private void PictureboxRefleshed()
         {
-            pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + Common.ImageFileName[pos].Replace(Common.ImageFileExt[pos], ".png");
-            pictureBox_UpscaledImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + Common.ImageFileName[pos].Replace(Common.ImageFileExt[pos], ext);
-            pictureBox_SourceImage.Refresh();
-            pictureBox_UpscaledImage.Refresh();
+            Config.Load(Common.xmlpath);
+            int format = int.Parse(Config.Entry["Format"].Value);
+
+            string dest1 = Common.ReplaceForRegex(Common.ImageFileName[pos], Common.ImageFileExt[pos], ".png");
+            string dest2 = Common.ReplaceForRegex(Common.ImageFileName[pos], Common.ImageFileExt[pos], ext);
+
+            switch (format)
+            {
+                case 2:
+                    {
+                        label_NotSupported.Visible = false;
+                        label_webp.Visible = true;
+                    }
+                    break;
+                case 4:
+                    {
+                        if (Common.ImageFile.Length <= 1)
+                        {
+                            if (ext.ToUpper() != ".JPG" && ext.ToUpper() != ".PNG" && ext.ToUpper() != ".BMP" && ext.ToUpper() != ".WEBP")
+                            {
+                                label_NotSupported.Visible = true;
+                                label_webp.Visible = false;
+                                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1;
+                                pictureBox_UpscaledImage.Image = null;
+                                pictureBox_SourceImage.Refresh();
+                                pictureBox_UpscaledImage.Refresh();
+                            }
+                            else if (ext.ToUpper() == ".WEBP")
+                            {
+                                label_NotSupported.Visible = false;
+                                label_webp.Visible = true;
+                                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1;
+                                pictureBox_UpscaledImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + ext;
+                                pictureBox_SourceImage.Refresh();
+                                pictureBox_UpscaledImage.Refresh();
+                            }
+                            else
+                            {
+                                label_NotSupported.Visible = false;
+                                label_webp.Visible = false;
+                                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1;
+                                pictureBox_UpscaledImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + ext;
+                                pictureBox_SourceImage.Refresh();
+                                pictureBox_UpscaledImage.Refresh();
+                            }
+                        }
+                        else
+                        {
+                            if (ext.ToUpper() != ".JPG" && ext.ToUpper() != ".PNG" && ext.ToUpper() != ".BMP" && ext.ToUpper() != ".WEBP")
+                            {
+                                label_NotSupported.Visible = true;
+                                label_webp.Visible = false;
+                                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1;
+                                pictureBox_UpscaledImage.Image = null;
+                                pictureBox_SourceImage.Refresh();
+                                pictureBox_UpscaledImage.Refresh();
+                            }
+                            else if (ext.ToUpper() == ".WEBP")
+                            {
+                                label_NotSupported.Visible = false;
+                                label_webp.Visible = true;
+                                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1;
+                                pictureBox_UpscaledImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dest2;
+                                pictureBox_SourceImage.Refresh();
+                                pictureBox_UpscaledImage.Refresh();
+                            }
+                            else
+                            {
+                                label_NotSupported.Visible = false;
+                                label_webp.Visible = false;
+                                pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1;
+                                pictureBox_UpscaledImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dest2;
+                                pictureBox_SourceImage.Refresh();
+                                pictureBox_UpscaledImage.Refresh();
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    {
+                        label_NotSupported.Visible = false;
+                        pictureBox_UpscaledImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dest2;
+                        pictureBox_SourceImage.ImageLocation = Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest1;
+                        
+                        pictureBox_SourceImage.Refresh();
+                        pictureBox_UpscaledImage.Refresh();
+                    }
+                    break;
+            }
         }
 
-        private void label_webp_Click(object sender, EventArgs e)
+        private void Label_webp_Click(object sender, EventArgs e)
         {
+            string dest1 = Common.ReplaceForRegex(Common.ImageFileName[0], Common.ImageFileExt[0], ext);
+            string dest2 = Common.ReplaceForRegex(Common.ImageFileName[pos], Common.ImageFileExt[pos], ext);
+
             if (Common.ImageFile.Length <= 1)
             {
-                Common.OpenURI(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + "\"" + Common.ImageFileName[0].Replace(Common.ImageFileExt[0], ext) + "\"");
+                Common.OpenURI(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + "\"" + dest1 + "\"");
             }
             else
             {
-                Common.OpenURI(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + "\"" + Common.ImageFileName[pos].Replace(Common.ImageFileExt[pos], ext) + "\"");
+                Common.OpenURI(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + "\"" + dest2 + "\"");
             }
         }
     }

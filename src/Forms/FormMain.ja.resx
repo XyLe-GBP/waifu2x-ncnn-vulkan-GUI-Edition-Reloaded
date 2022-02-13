@@ -122,10 +122,22 @@
     <value>ツール (&amp;T)</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
     <value>動画解像度の変更</value>
+  </data>
+  <data name="changeVideoFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="changeVideoFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>動画形式の変更</value>
+  </data>
+  <data name="changeImageFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="changeImageFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像形式の変更</value>
   </data>
   <data name="aboutAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 20</value>

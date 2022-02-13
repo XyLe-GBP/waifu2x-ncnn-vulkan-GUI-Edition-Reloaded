@@ -1,5 +1,4 @@
 ﻿using NVGE.Localization;
-using PrivateProfile;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -17,8 +16,8 @@ namespace NVGE
 
         private void FormAbout_Load(object sender, EventArgs e)
         {
-            var ini = new IniFile(@".\settings.ini");
-            label_FFVersion.Text = ini.GetString("FFMPEG", "LATEST_VERSION", "Unknown");
+            Config.Load(Common.xmlpath);
+            label_FFVersion.Text = Config.Entry["FFmpegVersion"].Value;
             if (NetworkInterface.GetIsNetworkAvailable())
             {
                 pictureBox1.ImageLocation = "https://avatars.githubusercontent.com/u/59692068?v=4";
@@ -34,11 +33,11 @@ namespace NVGE
             try
             {
                 base.OnPaint(e);
-                Bitmap canvas = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                Bitmap canvas = new(pictureBox1.Width, pictureBox1.Height);
                 Graphics g = Graphics.FromImage(canvas);
-                GraphicsPath gp = new GraphicsPath();
+                GraphicsPath gp = new();
                 gp.AddEllipse(g.VisibleClipBounds);
-                Region rgn = new Region(gp);
+                Region rgn = new(gp);
                 pictureBox1.Region = rgn;
                 return;
             }
@@ -60,22 +59,22 @@ namespace NVGE
             Common.OpenURI("https://xyle-official.com");
         }
 
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Common.OpenURI("https://github.com/dlemstra/Magick.NET");
         }
 
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Common.OpenURI("https://ffmpeg.org/");
         }
 
-        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Common.OpenURI("https://github.com/shimat/opencvsharp");
         }
 
-        private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Common.OpenURI("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-gui-edition-reloaded");
         }

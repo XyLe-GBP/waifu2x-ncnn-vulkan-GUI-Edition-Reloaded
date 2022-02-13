@@ -64,7 +64,6 @@ namespace NVGE
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.textBox_Blocksize);
             this.groupBox1.Controls.Add(this.comboBox_Rdlevel);
@@ -75,15 +74,14 @@ namespace NVGE
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.toolTip1.SetToolTip(this.label8, resources.GetString("label8.ToolTip"));
             // 
             // textBox_Blocksize
             // 
@@ -95,7 +93,6 @@ namespace NVGE
             // 
             // comboBox_Rdlevel
             // 
-            resources.ApplyResources(this.comboBox_Rdlevel, "comboBox_Rdlevel");
             this.comboBox_Rdlevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Rdlevel.FormattingEnabled = true;
             this.comboBox_Rdlevel.Items.AddRange(new object[] {
@@ -104,13 +101,13 @@ namespace NVGE
             resources.GetString("comboBox_Rdlevel.Items2"),
             resources.GetString("comboBox_Rdlevel.Items3"),
             resources.GetString("comboBox_Rdlevel.Items4")});
+            resources.ApplyResources(this.comboBox_Rdlevel, "comboBox_Rdlevel");
             this.comboBox_Rdlevel.Name = "comboBox_Rdlevel";
             this.toolTip1.SetToolTip(this.comboBox_Rdlevel, resources.GetString("comboBox_Rdlevel.ToolTip"));
             this.comboBox_Rdlevel.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Rdlevel_SelectedIndexChanged);
             // 
             // comboBox_GPU
             // 
-            resources.ApplyResources(this.comboBox_GPU, "comboBox_GPU");
             this.comboBox_GPU.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_GPU.FormattingEnabled = true;
             this.comboBox_GPU.Items.AddRange(new object[] {
@@ -119,18 +116,21 @@ namespace NVGE
             resources.GetString("comboBox_GPU.Items2"),
             resources.GetString("comboBox_GPU.Items3"),
             resources.GetString("comboBox_GPU.Items4")});
+            resources.ApplyResources(this.comboBox_GPU, "comboBox_GPU");
             this.comboBox_GPU.Name = "comboBox_GPU";
             this.toolTip1.SetToolTip(this.comboBox_GPU, resources.GetString("comboBox_GPU.ToolTip"));
             this.comboBox_GPU.SelectedIndexChanged += new System.EventHandler(this.ComboBox_GPU_SelectedIndexChanged);
             // 
             // comboBox_Uplevel
             // 
-            resources.ApplyResources(this.comboBox_Uplevel, "comboBox_Uplevel");
             this.comboBox_Uplevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Uplevel.FormattingEnabled = true;
             this.comboBox_Uplevel.Items.AddRange(new object[] {
             resources.GetString("comboBox_Uplevel.Items"),
-            resources.GetString("comboBox_Uplevel.Items1")});
+            resources.GetString("comboBox_Uplevel.Items1"),
+            resources.GetString("comboBox_Uplevel.Items2"),
+            resources.GetString("comboBox_Uplevel.Items3")});
+            resources.ApplyResources(this.comboBox_Uplevel, "comboBox_Uplevel");
             this.comboBox_Uplevel.Name = "comboBox_Uplevel";
             this.toolTip1.SetToolTip(this.comboBox_Uplevel, resources.GetString("comboBox_Uplevel.ToolTip"));
             this.comboBox_Uplevel.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Uplevel_SelectedIndexChanged);
@@ -147,29 +147,24 @@ namespace NVGE
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.toolTip1.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.toolTip1.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.textBox_CMD);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.comboBox_Format);
@@ -180,9 +175,9 @@ namespace NVGE
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
-            this.toolTip1.SetToolTip(this.groupBox2, resources.GetString("groupBox2.ToolTip"));
             // 
             // textBox_CMD
             // 
@@ -195,26 +190,26 @@ namespace NVGE
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            this.toolTip1.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
             // 
             // comboBox_Format
             // 
-            resources.ApplyResources(this.comboBox_Format, "comboBox_Format");
             this.comboBox_Format.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox_Format, "comboBox_Format");
             this.comboBox_Format.FormattingEnabled = true;
             this.comboBox_Format.Items.AddRange(new object[] {
             resources.GetString("comboBox_Format.Items"),
             resources.GetString("comboBox_Format.Items1"),
             resources.GetString("comboBox_Format.Items2"),
-            resources.GetString("comboBox_Format.Items3")});
+            resources.GetString("comboBox_Format.Items3"),
+            resources.GetString("comboBox_Format.Items4")});
             this.comboBox_Format.Name = "comboBox_Format";
             this.toolTip1.SetToolTip(this.comboBox_Format, resources.GetString("comboBox_Format.ToolTip"));
             this.comboBox_Format.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Format_SelectedIndexChanged);
             // 
             // comboBox_Thread
             // 
-            resources.ApplyResources(this.comboBox_Thread, "comboBox_Thread");
             this.comboBox_Thread.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox_Thread, "comboBox_Thread");
             this.comboBox_Thread.FormattingEnabled = true;
             this.comboBox_Thread.Items.AddRange(new object[] {
             resources.GetString("comboBox_Thread.Items"),
@@ -228,8 +223,8 @@ namespace NVGE
             // 
             // comboBox_Model
             // 
-            resources.ApplyResources(this.comboBox_Model, "comboBox_Model");
             this.comboBox_Model.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox_Model, "comboBox_Model");
             this.comboBox_Model.FormattingEnabled = true;
             this.comboBox_Model.Items.AddRange(new object[] {
             resources.GetString("comboBox_Model.Items"),
@@ -259,25 +254,21 @@ namespace NVGE
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.toolTip1.SetToolTip(this.label7, resources.GetString("label7.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.toolTip1.SetToolTip(this.label6, resources.GetString("label6.ToolTip"));
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.toolTip1.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
             // 
             // button_OK
             // 
             resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.Name = "button_OK";
-            this.toolTip1.SetToolTip(this.button_OK, resources.GetString("button_OK.ToolTip"));
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.Button_OK_Click);
             // 
@@ -285,31 +276,28 @@ namespace NVGE
             // 
             resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.Name = "button_Cancel";
-            this.toolTip1.SetToolTip(this.button_Cancel, resources.GetString("button_Cancel.ToolTip"));
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Image = global::NVGE.Properties.Resources.waifu2x_api;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, resources.GetString("pictureBox1.ToolTip"));
             // 
             // FormImageUpscaleSettings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ControlBox = false;
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormImageUpscaleSettings";
-            this.toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.Load += new System.EventHandler(this.FormImageUpscaleSettings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -317,7 +305,6 @@ namespace NVGE
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
