@@ -122,7 +122,10 @@
     <value>4倍</value>
   </data>
   <data name="comboBox_Uplevel.Items3" xml:space="preserve">
-    <value>6倍</value>
+    <value>8倍</value>
+  </data>
+  <data name="comboBox_Uplevel.Items4" xml:space="preserve">
+    <value>16倍</value>
   </data>
   <data name="comboBox_Uplevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 50</value>
@@ -181,6 +184,42 @@
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>高度な設定</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 99</value>
+  </data>
+  <data name="textBox_height.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 96</value>
+  </data>
+  <data name="textBox_height.ToolTip" xml:space="preserve">
+    <value>出力画像のピクセルを設定します。
+縦:横で画像のピクセル数を指定します。
+アップスケールした画像を指定ピクセルまで縮小して出力したい場合などに便利です。
+なお、画像の縦横比率は維持されます。</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 99</value>
+  </data>
+  <data name="textBox_width.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 96</value>
+  </data>
+  <data name="textBox_width.ToolTip" xml:space="preserve">
+    <value>出力画像のピクセルを設定します。
+縦:横で画像のピクセル数を指定します。
+アップスケールした画像を指定ピクセルまで縮小して出力したい場合などに便利です。
+なお、画像の縦横比率は維持されます。</value>
+  </data>
+  <data name="checkBox_pixel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>349, 103</value>
+  </data>
+  <data name="checkBox_pixel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 19</value>
+  </data>
+  <data name="checkBox_pixel.Text" xml:space="preserve">
+    <value>ピクセル指定を有効にする</value>
+  </data>
+  <data name="checkBox_pixel.ToolTip" xml:space="preserve">
+    <value>出力画像のピクセル指定項目を有効にします。</value>
   </data>
   <data name="textBox_CMD.ToolTip" xml:space="preserve">
     <value>コマンドライン引数を手動で指定します。</value>
@@ -274,6 +313,15 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>スレッド使用数：</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 100</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 15</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>出力ピクセル：</value>
   </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>キャンセル</value>

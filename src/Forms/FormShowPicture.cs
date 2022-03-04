@@ -12,7 +12,7 @@ namespace NVGE
         #region winAPI override
         private double fixedRate = 0d;
         const int WM_SIZING = 0x214;
-        const int WM_NCLBUTTONDOWN = 0xA1;
+        //const int WM_NCLBUTTONDOWN = 0xA1;
         const int WMSZ_LEFT = 1;
         const int WMSZ_RIGHT = 2;
         const int WMSZ_TOP = 3;
@@ -36,8 +36,9 @@ namespace NVGE
         private RectangleF _originRect;
         #endregion
 
-        struct StrB
+        internal struct StrB
         {
+            public StrB() { }
             public StringBuilder strZR1 = new("Zoom Ratio: x");
             public StringBuilder strZR2 = new("Zoom Ratio: -");
             public StringBuilder strZR3 = new("Zoom Ratio: Default");

@@ -443,6 +443,18 @@ namespace NVGE
             {
                 Config.Entry["TTA"].Value = "false";
             }
+            if (Config.Entry["Pixel"].Value == null)
+            {
+                Config.Entry["Pixel"].Value = "false";
+            }
+            if (Config.Entry["Pixel_width"].Value == null)
+            {
+                Config.Entry["Pixel_width"].Value = "-1";
+            }
+            if (Config.Entry["Pixel_height"].Value == null)
+            {
+                Config.Entry["Pixel_height"].Value = "-1";
+            }
             if (Config.Entry["Param"].Value == null)
             {
                 Config.Entry["Param"].Value = "";
@@ -581,6 +593,7 @@ namespace NVGE
             }
             Config.Save(xmlpath);
         }
+
     }
 
     class ImageConvert
@@ -681,6 +694,11 @@ namespace NVGE
                 else
                 {
                     using var image = new MagickImage(IMAGEpath);
+                    if (image.Width > 256 || image.Height > 256)
+                    {
+                        image.Resize(256, 256);
+                    }
+
                     image.Write(ICONpath, MagickFormat.Ico);
                     if (File.Exists(ICONpath))
                     {
@@ -694,8 +712,131 @@ namespace NVGE
             }
             catch (Exception ex)
             {
-                MessageBox.Show("The allowed pixels (256x256) of the icon file have been exceeded.\n\n" + ex.Message, "An error occured.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occured.\n\n" + ex.Message, "An error occured.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// 画像をリサイズする
+        /// </summary>
+        /// <param name="IMAGEpath">画像のパス</param>
+        /// <param name="width">横ピクセル</param>
+        /// <param name="height">縦ピクセル</param>
+        /// <param name="fmt">出力形式</param>
+        /// <returns></returns>
+        public static bool IMAGEResize(string IMAGEpath, int width, int height, MagickFormat fmt = MagickFormat.Png32)
+        {
+            try
+            {
+                if (!File.Exists(IMAGEpath))
+                {
+                    return false;
+                }
+                else
+                {
+                    using var image = new MagickImage(IMAGEpath);
+
+                    image.Resize(width, height);
+                    image.Write(IMAGEpath, fmt);
+                    if (File.Exists(IMAGEpath))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured.\n\n" + ex.Message, "An error occured.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public static MagickFormat GetFormat(string IMAGEpath)
+        {
+            try
+            {
+                if (!File.Exists(IMAGEpath))
+                {
+                    return MagickFormat.Unknown;
+                }
+                else
+                {
+                    FileInfo fi = new(IMAGEpath);
+                    MagickFormat fmt = new();
+                    switch (fi.Extension.ToUpper())
+                    {
+                        case ".BMP":
+                            fmt = MagickFormat.Bmp3;
+                            break;
+                        case ".DIB":
+                            fmt = MagickFormat.Dib;
+                            break;
+                        case ".EPS":
+                            fmt = MagickFormat.Eps;
+                            break;
+                        case ".WEBP":
+                            fmt = MagickFormat.WebP;
+                            break;
+                        case ".GIF":
+                            fmt = MagickFormat.Gif;
+                            break;
+                        case ".ICO":
+                            fmt = MagickFormat.Ico;
+                            break;
+                        case ".ICNS":
+                            fmt = MagickFormat.Icon;
+                            break;
+                        case ".JFIF":
+                            fmt = MagickFormat.Jpg;
+                            break;
+                        case ".JPG":
+                            fmt = MagickFormat.Jpg;
+                            break;
+                        case ".JPE":
+                            fmt = MagickFormat.Jpe;
+                            break;
+                        case ".JPEG":
+                            fmt = MagickFormat.Jpeg;
+                            break;
+                        case ".PJPEG":
+                            fmt = MagickFormat.Pjpeg;
+                            break;
+                        case ".PJP":
+                            fmt = MagickFormat.Pjpeg;
+                            break;
+                        case ".PNG":
+                            fmt = MagickFormat.Png32;
+                            break;
+                        case ".PICT":
+                            fmt = MagickFormat.Pict;
+                            break;
+                        case ".SVG":
+                            fmt = MagickFormat.Svg;
+                            break;
+                        case ".SVGZ":
+                            fmt = MagickFormat.Svgz;
+                            break;
+                        case ".TIF":
+                            fmt = MagickFormat.Tif;
+                            break;
+                        case ".TIFF":
+                            fmt = MagickFormat.Tiff;
+                            break;
+                        default:
+                            break;
+                    }
+                    return fmt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return MagickFormat.Unknown;
             }
         }
 

@@ -414,7 +414,7 @@ namespace NVGE
                                 }
                             }
                             break;
-                        case 3: // x6
+                        case 3: // x8
                             {
                                 using FormProgress Form2 = new(0);
                                 Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
@@ -423,6 +423,63 @@ namespace NVGE
 
                                 Common.stopwatch = new Stopwatch();
                                 Common.stopwatch.Start();
+
+                                Form2.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    break;
+                                }
+
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                {
+                                    File.Delete(file);
+                                }
+                                File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                Form2.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    break;
+                                }
+
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                {
+                                    File.Delete(file);
+                                }
+                                File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                Form2.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    break;
+                                }
+                            }
+                            break;
+                        case 4: // x16
+                            {
+                                using FormProgress Form2 = new(0);
+                                Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                Common.ProgMin = 0;
+                                Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                Common.stopwatch = new Stopwatch();
+                                Common.stopwatch.Start();
+
+                                Form2.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    break;
+                                }
+
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                {
+                                    File.Delete(file);
+                                }
+                                File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
 
                                 Form2.ShowDialog();
 
@@ -572,9 +629,25 @@ namespace NVGE
                                 switch (fmt)
                                 {
                                     case 4:
+                                        switch (bool.Parse(Config.Entry["Pixel"].Value))
+                                        {
+                                            case true:
+                                                ImageConvert.IMAGEResize(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + Common.ManualImageFormat, int.Parse(Config.Entry["Pixel_width"].Value), int.Parse(Config.Entry["Pixel_height"].Value), ImageConvert.GetFormat(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + Common.ManualImageFormat));
+                                                break;
+                                            case false:
+                                                break;
+                                        }
                                         File.Move(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + Common.ManualImageFormat, sfd.FileName);
                                         break;
                                     default:
+                                        switch (bool.Parse(Config.Entry["Pixel"].Value))
+                                        {
+                                            case true:
+                                                ImageConvert.IMAGEResize(Common.SFDSavePath, int.Parse(Config.Entry["Pixel_width"].Value), int.Parse(Config.Entry["Pixel_height"].Value), ImageConvert.GetFormat(Common.SFDSavePath));
+                                                break;
+                                            case false:
+                                                break;
+                                        }
                                         File.Move(Common.SFDSavePath, sfd.FileName);
                                         break;
                                 }
@@ -584,9 +657,25 @@ namespace NVGE
                                 switch (fmt)
                                 {
                                     case 4:
+                                        switch (bool.Parse(Config.Entry["Pixel"].Value))
+                                        {
+                                            case true:
+                                                ImageConvert.IMAGEResize(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + Common.ManualImageFormat, int.Parse(Config.Entry["Pixel_width"].Value), int.Parse(Config.Entry["Pixel_height"].Value), ImageConvert.GetFormat(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + Common.ManualImageFormat));
+                                                break;
+                                            case false:
+                                                break;
+                                        }
                                         File.Move(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\final" + Common.ManualImageFormat, sfd.FileName);
                                         break;
                                     default:
+                                        switch (bool.Parse(Config.Entry["Pixel"].Value))
+                                        {
+                                            case true:
+                                                ImageConvert.IMAGEResize(Common.SFDSavePath, int.Parse(Config.Entry["Pixel_width"].Value), int.Parse(Config.Entry["Pixel_height"].Value), ImageConvert.GetFormat(Common.SFDSavePath));
+                                                break;
+                                            case false:
+                                                break;
+                                        }
                                         File.Move(Common.SFDSavePath, sfd.FileName);
                                         break;
                                 }
@@ -714,7 +803,7 @@ namespace NVGE
                                 }
                             }
                             break;
-                        case 3: // x6
+                        case 3: // x8
                             {
                                 using FormProgress Form2 = new(1);
                                 Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
@@ -723,6 +812,75 @@ namespace NVGE
 
                                 Common.stopwatch = new Stopwatch();
                                 Common.stopwatch.Start();
+
+                                Form2.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    break;
+                                }
+
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                {
+                                    File.Delete(file);
+                                }
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                {
+                                    FileInfo fi = new(file);
+                                    File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                }
+
+                                Form2.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    break;
+                                }
+
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                {
+                                    File.Delete(file);
+                                }
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                {
+                                    FileInfo fi = new(file);
+                                    File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                }
+
+                                Form2.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    break;
+                                }
+                            }
+                            break;
+                        case 4: // x16
+                            {
+                                using FormProgress Form2 = new(1);
+                                Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                Common.ProgMin = 0;
+                                Common.ProgMax = Common.ImageFile.Length;
+
+                                Common.stopwatch = new Stopwatch();
+                                Common.stopwatch.Start();
+
+                                Form2.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    break;
+                                }
+
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                {
+                                    File.Delete(file);
+                                }
+                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                {
+                                    FileInfo fi = new(file);
+                                    File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                }
 
                                 Form2.ShowDialog();
 
@@ -883,6 +1041,14 @@ namespace NVGE
                                     foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*"))
                                     {
                                         FileInfo fi = new(file);
+                                        switch (bool.Parse(Config.Entry["Pixel"].Value))
+                                        {
+                                            case true:
+                                                ImageConvert.IMAGEResize(file, int.Parse(Config.Entry["Pixel_width"].Value), int.Parse(Config.Entry["Pixel_height"].Value), ImageConvert.GetFormat(file));
+                                                break;
+                                            case false:
+                                                break;
+                                        }
                                         File.Move(file, Common.FBDSavePath + @"\" + fi.Name);
                                         if (!File.Exists(Common.FBDSavePath + @"\" + fi.Name))
                                         {
@@ -928,6 +1094,14 @@ namespace NVGE
                                 foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*"))
                                 {
                                     FileInfo fi = new(file);
+                                    switch (bool.Parse(Config.Entry["Pixel"].Value))
+                                    {
+                                        case true:
+                                            ImageConvert.IMAGEResize(file, int.Parse(Config.Entry["Pixel_width"].Value), int.Parse(Config.Entry["Pixel_height"].Value), ImageConvert.GetFormat(file));
+                                            break;
+                                        case false:
+                                            break;
+                                    }
                                     File.Move(file, Common.FBDSavePath + @"\" + fi.Name);
                                     if (!File.Exists(Common.FBDSavePath + @"\" + fi.Name))
                                     {
@@ -2393,7 +2567,7 @@ namespace NVGE
                                 if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                                 {
                                     Config.Entry["FFmpegLocation"].Value = Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe";
-                                    Config.Entry["FFmpegVersion"].Value = hv;
+                                    Config.Entry["FFmpegVersion"].Value = "essentials_build " + hv;
                                     Config.Save(Common.xmlpath);
                                     MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
@@ -2454,7 +2628,7 @@ namespace NVGE
                                 if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                                 {
                                     Config.Entry["FFmpegLocation"].Value = Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe";
-                                    Config.Entry["FFmpegVersion"].Value = hv;
+                                    Config.Entry["FFmpegVersion"].Value = "essentials_build " + hv;
                                     Config.Save(Common.xmlpath);
                                     MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
@@ -2512,7 +2686,7 @@ namespace NVGE
                                             if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                                             {
                                                 Config.Entry["FFmpegLocation"].Value = Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe";
-                                                Config.Entry["FFmpegVersion"].Value = hv;
+                                                Config.Entry["FFmpegVersion"].Value = "essentials_build " + hv;
                                                 Config.Save(Common.xmlpath);
                                                 MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                             }
@@ -2559,7 +2733,7 @@ namespace NVGE
                                                 if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                                                 {
                                                     Config.Entry["FFmpegLocation"].Value = Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe";
-                                                    Config.Entry["FFmpegVersion"].Value = hv;
+                                                    Config.Entry["FFmpegVersion"].Value = "essentials_build " + hv;
                                                     Config.Save(Common.xmlpath);
                                                     MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                 }
