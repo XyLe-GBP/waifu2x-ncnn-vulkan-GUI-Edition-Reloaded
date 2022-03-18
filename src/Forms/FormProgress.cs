@@ -11,8 +11,9 @@ namespace NVGE
 {
     public partial class FormProgress : Form
     {
-        private readonly int Flag;
-        private readonly string waifu2xPath = Directory.GetCurrentDirectory() + @"\res\waifu2x-ncnn-vulkan.exe";
+        private readonly int Flag, UseEngine;
+        private readonly string waifu2xPath = Directory.GetCurrentDirectory() + @"\res\waifu2x\waifu2x-ncnn-vulkan.exe";
+        private readonly string realesrganPath = Directory.GetCurrentDirectory() + @"\res\realesrgan\realesrgan-ncnn-vulkan.exe";
         private readonly string upscaledPath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
 
         /// <summary>
@@ -27,10 +28,16 @@ namespace NVGE
         /// <para>6: Download or update FFmpeg</para>
         /// <para>7: Convert image(s)</para>
         /// </param>
-        public FormProgress(int flag)
+        /// <param name= "useengine">
+        /// <para>Specifies the engine used for conversion. By default, '0' (waifu2x-ncnn-vulkan) is used.</para>
+        /// <para>0: waifu2x-ncnn-vulkan</para>
+        /// <para>1: realesrgan-ncnn-vulkan</para>
+        /// </param>
+        public FormProgress(int flag, int useengine = 0)
         {
             InitializeComponent();
             Flag = flag;
+            UseEngine = useengine;
         }
 
         private void BackgroundWorker_Progress_DoWork(object sender, DoWorkEventArgs e)
@@ -38,132 +45,281 @@ namespace NVGE
             BackgroundWorker worker = (BackgroundWorker)sender;
             switch (Flag)
             {
-                case 0:
-                    foreach (var filename in Common.ImageFileName)
+                case 0: // single image
+                    switch (UseEngine)
                     {
-                        Config.Load(Common.xmlpath);
-                        int fmt = int.Parse(Config.Entry["Format"].Value);
-                        string ft = fmt switch
-                        {
-                            0 => ".jpg",
-                            1 => ".png",
-                            2 => ".webp",
-                            3 => ".ico",
-                            _ => ".png",
-                        };
-                        string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[0], ".png") + "\"";//FileInfo fi = new(file);
-
-                        Process ps = new();
-                        ProcessStartInfo pi = new();
-
-                        if (ft == ".ico")
-                        {
-                            pi.FileName = waifu2xPath;
-                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
-                            pi.WindowStyle = ProcessWindowStyle.Hidden;
-                            pi.UseShellExecute = true;
-                            ps = Process.Start(pi);
-                        }
-                        else
-                        {
-                            pi.FileName = waifu2xPath;
-                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("waifu2x-ncnn-vulkan ", "");
-                            pi.WindowStyle = ProcessWindowStyle.Hidden;
-                            pi.UseShellExecute = true;
-                            ps = Process.Start(pi);
-                        }
-
-                        while (!ps.HasExited)
-                        {
-                            if (backgroundWorker_Progress.CancellationPending)
+                        case 0: // waifu2x
                             {
-                                if (!ps.HasExited)
+                                foreach (var filename in Common.ImageFileName)
                                 {
-                                    ps.Kill();
-                                }
-                                ps.Close();
-                                e.Cancel = true;
-                                return;
-                            }
-                            else if (ps.HasExited == true)
-                            {
-                                worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
-                                break;
-                            }
-                            else
-                            {
-                                worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
-                                continue;
-                            }
-                        }
-                    }
-                    break;
-                case 1:
-                    {
-                        Config.Load(Common.xmlpath);
-                        int fmt = int.Parse(Config.Entry["Format"].Value), i = 0;
-                        string ft = fmt switch
-                        {
-                            0 => ".jpg",
-                            1 => ".png",
-                            2 => ".webp",
-                            3 => ".ico",
-                            _ => ".png",
-                        };
-                        foreach (var filename in Common.ImageFileName)
-                        {
-                            
-                            string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[i], ".png") + "\"";
-
-                            ProcessStartInfo pi = new();
-                            Process ps = new();
-
-                            if (ft == ".ico")
-                            {
-                                pi.FileName = waifu2xPath;
-                                pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
-                                pi.WindowStyle = ProcessWindowStyle.Hidden;
-                                pi.UseShellExecute = true;
-                                ps = Process.Start(pi);
-                            }
-                            else
-                            {
-                                pi.FileName = waifu2xPath;
-                                pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(Common.ImageFileExt[i], ft) + "\"").Replace("waifu2x-ncnn-vulkan ", "");
-                                pi.WindowStyle = ProcessWindowStyle.Hidden;
-                                pi.UseShellExecute = true;
-                                ps = Process.Start(pi);
-                            }
-
-                            i++;
-
-                            while (!ps.HasExited)
-                            {
-                                if (backgroundWorker_Progress.CancellationPending)
-                                {
-                                    if (!ps.HasExited)
+                                    Config.Load(Common.xmlpath);
+                                    int fmt = int.Parse(Config.Entry["Format"].Value);
+                                    string ft = fmt switch
                                     {
-                                        ps.Kill();
+                                        0 => ".jpg",
+                                        1 => ".png",
+                                        2 => ".webp",
+                                        3 => ".ico",
+                                        _ => ".png",
+                                    };
+                                    string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[0], ".png") + "\"";//FileInfo fi = new(file);
+
+                                    Process ps = new();
+                                    ProcessStartInfo pi = new();
+
+                                    if (ft == ".ico")
+                                    {
+                                        pi.FileName = waifu2xPath;
+                                        pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                                        pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                        pi.UseShellExecute = true;
+                                        ps = Process.Start(pi);
                                     }
-                                    ps.Close();
-                                    e.Cancel = true;
-                                    return;
-                                }
-                                else if (ps.HasExited == true)
-                                {
-                                    worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
-                                    break;
-                                }
-                                else
-                                {
-                                    worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
-                                    continue;
+                                    else
+                                    {
+                                        pi.FileName = waifu2xPath;
+                                        pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                                        pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                        pi.UseShellExecute = true;
+                                        ps = Process.Start(pi);
+                                    }
+
+                                    while (!ps.HasExited)
+                                    {
+                                        if (backgroundWorker_Progress.CancellationPending)
+                                        {
+                                            if (!ps.HasExited)
+                                            {
+                                                ps.Kill();
+                                            }
+                                            ps.Close();
+                                            e.Cancel = true;
+                                            return;
+                                        }
+                                        else if (ps.HasExited == true)
+                                        {
+                                            worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
+                                            continue;
+                                        }
+                                    }
                                 }
                             }
-                        }
+                            break;
+                        case 1: // realesrgan
+                            {
+                                foreach (var filename in Common.ImageFileName)
+                                {
+                                    Config.Load(Common.xmlpath);
+                                    int fmt = int.Parse(Config.Entry["Format"].Value);
+                                    string ft = fmt switch
+                                    {
+                                        0 => ".jpg",
+                                        1 => ".png",
+                                        2 => ".webp",
+                                        3 => ".ico",
+                                        _ => ".png",
+                                    };
+                                    string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[0], ".png") + "\"";//FileInfo fi = new(file);
+
+                                    Process ps = new();
+                                    ProcessStartInfo pi = new();
+
+                                    if (ft == ".ico")
+                                    {
+                                        pi.FileName = realesrganPath;
+                                        pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath.Replace(".ico", ".png") + "\"").Replace("realesrgan-ncnn-vulkan ", "");
+                                        pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                        pi.UseShellExecute = true;
+                                        ps = Process.Start(pi);
+                                    }
+                                    else
+                                    {
+                                        pi.FileName = realesrganPath;
+                                        pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("realesrgan-ncnn-vulkan ", "");
+                                        pi.CreateNoWindow = true;
+                                        pi.UseShellExecute = false;
+                                        pi.RedirectStandardOutput = true;
+                                        ps = Process.Start(pi);
+
+                                        Common.Log = ps.StandardOutput;
+                                    }
+
+                                    while (!ps.HasExited)
+                                    {
+                                        if (backgroundWorker_Progress.CancellationPending)
+                                        {
+                                            if (!ps.HasExited)
+                                            {
+                                                ps.Kill();
+                                            }
+                                            ps.Close();
+                                            e.Cancel = true;
+                                            return;
+                                        }
+                                        else if (ps.HasExited == true)
+                                        {
+                                            worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
+                                            continue;
+                                        }
+                                    }
+                                }
+                            }
+                            break;
+                        default:
+                            break;
                     }
                     break;
-                case 2:
+                case 1: // multi image
+                    {
+                        switch (UseEngine)
+                        {
+                            case 0: // waifu2x
+                                {
+                                    Config.Load(Common.xmlpath);
+                                    int fmt = int.Parse(Config.Entry["Format"].Value), i = 0;
+                                    string ft = fmt switch
+                                    {
+                                        0 => ".jpg",
+                                        1 => ".png",
+                                        2 => ".webp",
+                                        3 => ".ico",
+                                        _ => ".png",
+                                    };
+                                    foreach (var filename in Common.ImageFileName)
+                                    {
+
+                                        string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[i], ".png") + "\"";
+
+                                        ProcessStartInfo pi = new();
+                                        Process ps = new();
+
+                                        if (ft == ".ico")
+                                        {
+                                            pi.FileName = waifu2xPath;
+                                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(".ico", ".png") + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                                            pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                            pi.UseShellExecute = true;
+                                            ps = Process.Start(pi);
+                                        }
+                                        else
+                                        {
+                                            pi.FileName = waifu2xPath;
+                                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(Common.ImageFileExt[i], ft) + "\"").Replace("waifu2x-ncnn-vulkan ", "");
+                                            pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                            pi.UseShellExecute = true;
+                                            ps = Process.Start(pi);
+                                        }
+
+                                        i++;
+
+                                        while (!ps.HasExited)
+                                        {
+                                            if (backgroundWorker_Progress.CancellationPending)
+                                            {
+                                                if (!ps.HasExited)
+                                                {
+                                                    ps.Kill();
+                                                }
+                                                ps.Close();
+                                                e.Cancel = true;
+                                                return;
+                                            }
+                                            else if (ps.HasExited == true)
+                                            {
+                                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
+                                                continue;
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
+                            case 1: // realesrgan
+                                {
+                                    Config.Load(Common.xmlpath);
+                                    int fmt = int.Parse(Config.Entry["Format"].Value), i = 0;
+                                    string ft = fmt switch
+                                    {
+                                        0 => ".jpg",
+                                        1 => ".png",
+                                        2 => ".webp",
+                                        3 => ".ico",
+                                        _ => ".png",
+                                    };
+                                    foreach (var filename in Common.ImageFileName)
+                                    {
+
+                                        string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[i], ".png") + "\"";
+
+                                        ProcessStartInfo pi = new();
+                                        Process ps = new();
+
+                                        if (ft == ".ico")
+                                        {
+                                            pi.FileName = realesrganPath;
+                                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(".ico", ".png") + "\"").Replace("realesrgan-ncnn-vulkan ", "");
+                                            pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                            pi.UseShellExecute = true;
+                                            ps = Process.Start(pi);
+                                        }
+                                        else
+                                        {
+                                            pi.FileName = realesrganPath;
+                                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(Common.ImageFileExt[i], ft) + "\"").Replace("realesrgan-ncnn-vulkan ", "");
+                                            pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                            pi.UseShellExecute = true;
+                                            ps = Process.Start(pi);
+                                        }
+
+                                        i++;
+
+                                        while (!ps.HasExited)
+                                        {
+                                            if (backgroundWorker_Progress.CancellationPending)
+                                            {
+                                                if (!ps.HasExited)
+                                                {
+                                                    ps.Kill();
+                                                }
+                                                ps.Close();
+                                                e.Cancel = true;
+                                                return;
+                                            }
+                                            else if (ps.HasExited == true)
+                                            {
+                                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
+                                                continue;
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                        
+                    }
+                    break;
+                case 2: // single video
                     backgroundWorker_Video.RunWorkerAsync();
                     while (backgroundWorker_Video.IsBusy)
                     {
@@ -175,7 +331,7 @@ namespace NVGE
                         worker.ReportProgress(Directory.GetFiles(Common.DeletePathFrames2x, "*.*").Length);
                     }
                     break;
-                case 3:
+                case 3: // multi video
                     backgroundWorker_Video.RunWorkerAsync();
                     while (backgroundWorker_Video.IsBusy)
                     {
@@ -187,7 +343,7 @@ namespace NVGE
                         worker.ReportProgress(Directory.GetFiles(Common.DeletePathFrames2x, "*.*").Length);
                     }
                     break;
-                case 4:
+                case 4: // delete
                     backgroundWorker_Delete.RunWorkerAsync();
                     while (backgroundWorker_Delete.IsBusy)
                     {
@@ -385,34 +541,76 @@ namespace NVGE
 
         private void BackgroundWorker_Video_DoWork(object sender, DoWorkEventArgs e)
         {
-            ProcessStartInfo pi = new();
-            Process ps;
-            pi.FileName = waifu2xPath;
-            pi.Arguments = Common.ImageParam.Replace("$InFile", Common.DeletePathFrames).Replace("$OutFile", Common.DeletePathFrames2x).Replace("waifu2x-ncnn-vulkan ", "");
-            pi.WindowStyle = ProcessWindowStyle.Hidden;
-            pi.UseShellExecute = true;
-            ps = Process.Start(pi);
-
-            while (!ps.HasExited)
+            switch (UseEngine)
             {
-                if (backgroundWorker_Video.CancellationPending)
-                {
-                    if (!ps.HasExited)
+                case 0: // waifu2x
                     {
-                        ps.Kill();
+                        ProcessStartInfo pi = new();
+                        Process ps;
+                        pi.FileName = waifu2xPath;
+                        pi.Arguments = Common.ImageParam.Replace("$InFile", Common.DeletePathFrames).Replace("$OutFile", Common.DeletePathFrames2x).Replace("waifu2x-ncnn-vulkan ", "");
+                        pi.WindowStyle = ProcessWindowStyle.Hidden;
+                        pi.UseShellExecute = true;
+                        ps = Process.Start(pi);
+
+                        while (!ps.HasExited)
+                        {
+                            if (backgroundWorker_Video.CancellationPending)
+                            {
+                                if (!ps.HasExited)
+                                {
+                                    ps.Kill();
+                                }
+                                ps.Close();
+                                e.Cancel = true;
+                                return;
+                            }
+                            else if (ps.HasExited == true)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
                     }
-                    ps.Close();
-                    e.Cancel = true;
-                    return;
-                }
-                else if (ps.HasExited == true)
-                {
-                    return;
-                }
-                else
-                {
-                    continue;
-                }
+                    break;
+                case 1: // realesrgan
+                    {
+                        ProcessStartInfo pi = new();
+                        Process ps;
+                        pi.FileName = realesrganPath;
+                        pi.Arguments = Common.ImageParam.Replace("$InFile", Common.DeletePathFrames).Replace("$OutFile", Common.DeletePathFrames2x).Replace("realesrgan-ncnn-vulkan ", "");
+                        pi.WindowStyle = ProcessWindowStyle.Hidden;
+                        pi.UseShellExecute = true;
+                        ps = Process.Start(pi);
+
+                        while (!ps.HasExited)
+                        {
+                            if (backgroundWorker_Video.CancellationPending)
+                            {
+                                if (!ps.HasExited)
+                                {
+                                    ps.Kill();
+                                }
+                                ps.Close();
+                                e.Cancel = true;
+                                return;
+                            }
+                            else if (ps.HasExited == true)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 

@@ -31,7 +31,6 @@ namespace NVGE
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageUpscaleSettings));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox_Blocksize = new System.Windows.Forms.TextBox();
             this.comboBox_Rdlevel = new System.Windows.Forms.ComboBox();
@@ -42,7 +41,6 @@ namespace NVGE
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox_height = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -61,29 +59,18 @@ namespace NVGE
             this.label12 = new System.Windows.Forms.Label();
             this.button_OK = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.comboBox_engine = new System.Windows.Forms.ComboBox();
+            this.checkBox_updetail = new System.Windows.Forms.CheckBox();
+            this.checkBox_destfolder = new System.Windows.Forms.CheckBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox_Blocksize);
-            this.groupBox1.Controls.Add(this.comboBox_Rdlevel);
-            this.groupBox1.Controls.Add(this.comboBox_GPU);
-            this.groupBox1.Controls.Add(this.comboBox_Uplevel);
-            this.groupBox1.Controls.Add(this.checkBox_Advanced);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // label8
             // 
@@ -95,6 +82,7 @@ namespace NVGE
             // 
             resources.ApplyResources(this.textBox_Blocksize, "textBox_Blocksize");
             this.textBox_Blocksize.Name = "textBox_Blocksize";
+            this.textBox_Blocksize.ShortcutsEnabled = false;
             this.toolTip1.SetToolTip(this.textBox_Blocksize, resources.GetString("textBox_Blocksize.ToolTip"));
             this.textBox_Blocksize.TextChanged += new System.EventHandler(this.TextBox_Blocksize_TextChanged);
             this.textBox_Blocksize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Blocksize_KeyPress);
@@ -175,29 +163,6 @@ namespace NVGE
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
-            // 
-            // groupBox2
-            // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.textBox_height);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox_width);
-            this.groupBox2.Controls.Add(this.checkBox_pixel);
-            this.groupBox2.Controls.Add(this.textBox_CMD);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.comboBox_Format);
-            this.groupBox2.Controls.Add(this.comboBox_Thread);
-            this.groupBox2.Controls.Add(this.comboBox_Model);
-            this.groupBox2.Controls.Add(this.checkBox_TTA);
-            this.groupBox2.Controls.Add(this.checkBox_Verbose);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
-            this.toolTip1.SetToolTip(this.groupBox2, resources.GetString("groupBox2.ToolTip"));
             // 
             // label11
             // 
@@ -345,41 +310,117 @@ namespace NVGE
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
-            // pictureBox1
+            // comboBox_engine
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Image = global::NVGE.Properties.Resources.waifu2x_api;
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, resources.GetString("pictureBox1.ToolTip"));
+            resources.ApplyResources(this.comboBox_engine, "comboBox_engine");
+            this.comboBox_engine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_engine.FormattingEnabled = true;
+            this.comboBox_engine.Items.AddRange(new object[] {
+            resources.GetString("comboBox_engine.Items"),
+            resources.GetString("comboBox_engine.Items1")});
+            this.comboBox_engine.Name = "comboBox_engine";
+            this.toolTip1.SetToolTip(this.comboBox_engine, resources.GetString("comboBox_engine.ToolTip"));
+            this.comboBox_engine.SelectedIndexChanged += new System.EventHandler(this.ComboBox_engine_SelectedIndexChanged);
+            // 
+            // checkBox_updetail
+            // 
+            resources.ApplyResources(this.checkBox_updetail, "checkBox_updetail");
+            this.checkBox_updetail.Checked = true;
+            this.checkBox_updetail.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_updetail.Name = "checkBox_updetail";
+            this.toolTip1.SetToolTip(this.checkBox_updetail, resources.GetString("checkBox_updetail.ToolTip"));
+            this.checkBox_updetail.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_destfolder
+            // 
+            resources.ApplyResources(this.checkBox_destfolder, "checkBox_destfolder");
+            this.checkBox_destfolder.Checked = true;
+            this.checkBox_destfolder.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_destfolder.Name = "checkBox_destfolder";
+            this.toolTip1.SetToolTip(this.checkBox_destfolder, resources.GetString("checkBox_destfolder.ToolTip"));
+            this.checkBox_destfolder.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.toolTip1.SetToolTip(this.tabControl1, resources.GetString("tabControl1.ToolTip"));
+            // 
+            // tabPage1
+            // 
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Controls.Add(this.checkBox_destfolder);
+            this.tabPage1.Controls.Add(this.checkBox_updetail);
+            this.tabPage1.Controls.Add(this.comboBox_engine);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.comboBox_Uplevel);
+            this.tabPage1.Controls.Add(this.textBox_Blocksize);
+            this.tabPage1.Controls.Add(this.comboBox_Rdlevel);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.comboBox_GPU);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.label13);
+            this.tabPage1.Name = "tabPage1";
+            this.toolTip1.SetToolTip(this.tabPage1, resources.GetString("tabPage1.ToolTip"));
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            this.toolTip1.SetToolTip(this.label13, resources.GetString("label13.ToolTip"));
+            // 
+            // tabPage2
+            // 
+            resources.ApplyResources(this.tabPage2, "tabPage2");
+            this.tabPage2.Controls.Add(this.textBox_CMD);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.checkBox_Advanced);
+            this.tabPage2.Controls.Add(this.comboBox_Thread);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.comboBox_Model);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.textBox_height);
+            this.tabPage2.Controls.Add(this.comboBox_Format);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.checkBox_pixel);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.textBox_width);
+            this.tabPage2.Controls.Add(this.checkBox_Verbose);
+            this.tabPage2.Controls.Add(this.checkBox_TTA);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Name = "tabPage2";
+            this.toolTip1.SetToolTip(this.tabPage2, resources.GetString("tabPage2.ToolTip"));
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // FormImageUpscaleSettings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ControlBox = false;
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_OK);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormImageUpscaleSettings";
             this.toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.Load += new System.EventHandler(this.FormImageUpscaleSettings_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -402,7 +443,6 @@ namespace NVGE
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button_OK;
         private System.Windows.Forms.Button button_Cancel;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox_height;
@@ -410,5 +450,12 @@ namespace NVGE
         private System.Windows.Forms.TextBox textBox_width;
         private System.Windows.Forms.CheckBox checkBox_pixel;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ComboBox comboBox_engine;
+        private System.Windows.Forms.CheckBox checkBox_destfolder;
+        private System.Windows.Forms.CheckBox checkBox_updetail;
     }
 }

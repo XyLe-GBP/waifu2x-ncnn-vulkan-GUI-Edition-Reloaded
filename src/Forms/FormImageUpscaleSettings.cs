@@ -15,89 +15,260 @@ namespace NVGE
 
         private void FormImageUpscaleSettings_Load(object sender, EventArgs e)
         {
+            string[] GPUInfo = new string[3];
+            SystemInfo.GetVideoControllerInformation(GPUInfo);
+
             Config.Load(Common.xmlpath);
 
-            switch (int.Parse(Config.Entry["Reduction"].Value))
+            switch (int.Parse(Config.Entry["ConversionType"].Value))
             {
-                case 0:
-                    rdlevel = " -n -1";
-                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
-                    break;
-                case 1:
-                    rdlevel = " -n 0";
-                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
-                    break;
-                case 2:
-                    rdlevel = " -n 1";
-                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
-                    break;
-                case 3:
-                    rdlevel = " -n 2";
-                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
-                    break;
-                case 4:
-                    rdlevel = " -n 3";
-                    comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
-                    break;
-                default:
-                    rdlevel = " -n 3";
-                    comboBox_Rdlevel.SelectedIndex = 3;
-                    break;
-            }
+                case 0: // waifu2x
+                    comboBox_Rdlevel.Enabled = true;
+                    label1.Enabled = true;
+                    comboBox_engine.SelectedIndex = 0;
 
-            switch (int.Parse(Config.Entry["Scale"].Value))
-            {
-                case 0:
-                    uplevel = " -s 1";
-                    comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
-                    break;
-                case 1:
-                    uplevel = " -s 2";
-                    comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
-                    break;
-                case 2:
-                    uplevel = " -s 2";
-                    comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
-                    break;
-                case 3:
-                    uplevel = " -s 2";
-                    comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
-                    break;
-                case 4:
-                    uplevel = " -s 2";
-                    comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
-                    break;
-                default:
-                    uplevel = " -s 2";
-                    comboBox_Uplevel.SelectedIndex = 1;
-                    break;
-            }
+                    comboBox_Uplevel.Items.Clear();
+                    comboBox_Uplevel.Items.Add("1" + Strings.UplevelCaption);
+                    comboBox_Uplevel.Items.Add("2" + Strings.UplevelCaption);
+                    comboBox_Uplevel.Items.Add("4" + Strings.UplevelCaption);
+                    comboBox_Uplevel.Items.Add("8" + Strings.UplevelCaption);
+                    comboBox_Uplevel.Items.Add("16" + Strings.UplevelCaption);
 
-            switch (int.Parse(Config.Entry["GPU"].Value))
-            {
-                case 0:
-                    usegpu = " -g default";
-                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                    switch (int.Parse(Config.Entry["Reduction"].Value))
+                    {
+                        case 0:
+                            rdlevel = " -n -1";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        case 1:
+                            rdlevel = " -n 0";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        case 2:
+                            rdlevel = " -n 1";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        case 3:
+                            rdlevel = " -n 2";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        case 4:
+                            rdlevel = " -n 3";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        default:
+                            rdlevel = " -n 2";
+                            comboBox_Rdlevel.SelectedIndex = 3;
+                            break;
+                    }
+
+                    switch (int.Parse(Config.Entry["Scale"].Value))
+                    {
+                        case 0:
+                            uplevel = " -s 1";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 1:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 2:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 3:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 4:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        default:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = 1;
+                            break;
+                    }
+
+                    switch (int.Parse(Config.Entry["GPU"].Value))
+                    {
+                        case 0:
+                            usegpu = " -g default";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 1:
+                            usegpu = " -g -1";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 2:
+                            usegpu = " -g 0";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 3:
+                            usegpu = " -g 1";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 4:
+                            usegpu = " -g 2";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        default:
+                            usegpu = " -g default";
+                            comboBox_GPU.SelectedIndex = 0;
+                            break;
+                    }
+
                     break;
-                case 1:
-                    usegpu = " -g -1";
-                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
-                    break;
-                case 2:
-                    usegpu = " -g 0";
-                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
-                    break;
-                case 3:
-                    usegpu = " -g 1";
-                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
-                    break;
-                case 4:
-                    usegpu = " -g 2";
-                    comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                case 1: // esrgan
+                    rdlevel = "";
+                    comboBox_Rdlevel.Enabled = false;
+                    label1.Enabled = false;
+                    comboBox_engine.SelectedIndex = 1;
+
+                    comboBox_Uplevel.Items.Clear();
+                    comboBox_Uplevel.Items.Add("4" + Strings.UplevelCaption);
+                    comboBox_Uplevel.Items.Add("8" + Strings.UplevelCaption);
+                    comboBox_Uplevel.Items.Add("12" + Strings.UplevelCaption);
+                    comboBox_Uplevel.Items.Add("16" + Strings.UplevelCaption);
+                    comboBox_Uplevel.Items.Add("32" + Strings.UplevelCaption);
+
+                    switch (int.Parse(Config.Entry["Scale"].Value))
+                    {
+                        case 0:
+                            uplevel = " -s 4";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 1:
+                            uplevel = " -s 4";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 2:
+                            uplevel = " -s 4";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 3:
+                            uplevel = " -s 4";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        default:
+                            uplevel = " -s 4";
+                            comboBox_Uplevel.SelectedIndex = 0;
+                            break;
+                    }
+
+                    switch (int.Parse(Config.Entry["GPU"].Value))
+                    {
+                        case 0:
+                            usegpu = " -g auto";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 1:
+                            usegpu = " -g 0";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 2:
+                            usegpu = " -g 1";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 3:
+                            usegpu = " -g 2";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        default:
+                            usegpu = " -g auto";
+                            comboBox_GPU.SelectedIndex = 0;
+                            break;
+                    }
+
                     break;
                 default:
-                    usegpu = " -g default";
-                    comboBox_GPU.SelectedIndex = 0;
+                    comboBox_Rdlevel.Enabled = true;
+                    label1.Enabled = true;
+                    comboBox_engine.SelectedIndex = 0;
+
+                    switch (int.Parse(Config.Entry["Reduction"].Value))
+                    {
+                        case 0:
+                            rdlevel = " -n -1";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        case 1:
+                            rdlevel = " -n 0";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        case 2:
+                            rdlevel = " -n 1";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        case 3:
+                            rdlevel = " -n 2";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        case 4:
+                            rdlevel = " -n 3";
+                            comboBox_Rdlevel.SelectedIndex = int.Parse(Config.Entry["Reduction"].Value);
+                            break;
+                        default:
+                            rdlevel = " -n 2";
+                            comboBox_Rdlevel.SelectedIndex = 3;
+                            break;
+                    }
+
+                    switch (int.Parse(Config.Entry["Scale"].Value))
+                    {
+                        case 0:
+                            uplevel = " -s 1";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 1:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 2:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 3:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        case 4:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = int.Parse(Config.Entry["Scale"].Value);
+                            break;
+                        default:
+                            uplevel = " -s 2";
+                            comboBox_Uplevel.SelectedIndex = 1;
+                            break;
+                    }
+
+                    switch (int.Parse(Config.Entry["GPU"].Value))
+                    {
+                        case 0:
+                            usegpu = " -g default";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 1:
+                            usegpu = " -g -1";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 2:
+                            usegpu = " -g 0";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 3:
+                            usegpu = " -g 1";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        case 4:
+                            usegpu = " -g 2";
+                            comboBox_GPU.SelectedIndex = int.Parse(Config.Entry["GPU"].Value);
+                            break;
+                        default:
+                            usegpu = " -g default";
+                            comboBox_GPU.SelectedIndex = 0;
+                            break;
+                    }
                     break;
             }
 
@@ -108,6 +279,26 @@ namespace NVGE
             else
             {
                 textBox_Blocksize.Text = "0";
+            }
+
+            switch (bool.Parse(Config.Entry["UpScaleDetail"].Value))
+            {
+                case true:
+                    checkBox_updetail.Checked = true;
+                    break;
+                case false:
+                    checkBox_updetail.Checked = false;
+                    break;
+            }
+
+            switch (bool.Parse(Config.Entry["DestFolder"].Value))
+            {
+                case true:
+                    checkBox_destfolder.Checked = true;
+                    break;
+                case false:
+                    checkBox_destfolder.Checked = false;
+                    break;
             }
 
             switch (bool.Parse(Config.Entry["IAdvanced"].Value))
@@ -191,23 +382,96 @@ namespace NVGE
                     break;
             }
 
-            switch (int.Parse(Config.Entry["Model"].Value))
+            ToolTip tt = new();
+
+            switch (int.Parse(Config.Entry["ConversionType"].Value))
             {
-                case 0:
-                    model = " -m models-cunet";
-                    comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                case 0: // waifu2x
+                    
+                    toolTip1.SetToolTip(comboBox_Model, Strings.waifu2xModelToolTipCaption);
+
+                    comboBox_Model.Items.Clear();
+                    comboBox_Model.Items.Add("CUnet (models-cunet)");
+                    comboBox_Model.Items.Add("RGB (models-upconv_7_anime_style_art_rgb)");
+                    comboBox_Model.Items.Add("Photo (models-upconv_7_photo)");
+
+                    switch (int.Parse(Config.Entry["Model"].Value))
+                    {
+                        case 0:
+                            model = " -m models-cunet";
+                            comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                            break;
+                        case 1:
+                            model = " -m models-upconv_7_anime_style_art_rgb";
+                            comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                            break;
+                        case 2:
+                            model = " -m models-upconv_7_photo";
+                            comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                            break;
+                        default:
+                            model = " -m models-cunet";
+                            comboBox_Model.SelectedIndex = 0;
+                            break;
+                    }
                     break;
-                case 1:
-                    model = " -m models-upconv_7_anime_style_art_rgb";
-                    comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
-                    break;
-                case 2:
-                    model = " -m models-upconv_7_photo";
-                    comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                case 1: // esrgan
+
+                    toolTip1.SetToolTip(comboBox_Model, Strings.realesrganModelToolTipCaption);
+
+                    comboBox_Model.Items.Clear();
+                    comboBox_Model.Items.Add("Real-ESRGAN (realesrgan-x4plus)");
+                    comboBox_Model.Items.Add("Real-ESRGAN Photo (realesrnet-x4plus)");
+                    comboBox_Model.Items.Add("Real-ESRGAN Anime (realesrgan-x4plus-anime)");
+
+                    switch (int.Parse(Config.Entry["Model"].Value))
+                    {
+                        case 0:
+                            model = " -n realesrgan-x4plus";
+                            comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                            break;
+                        case 1:
+                            model = " -n realesrnet-x4plus";
+                            comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                            break;
+                        case 2:
+                            model = " -m realesrgan-x4plus-anime";
+                            comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                            break;
+                        default:
+                            model = " -m realesrgan-x4plus";
+                            comboBox_Model.SelectedIndex = 0;
+                            break;
+                    }
                     break;
                 default:
-                    model = " -m models-cunet";
-                    comboBox_Model.SelectedIndex = 0;
+
+                    tt.SetToolTip(comboBox_Model, Strings.waifu2xModelToolTipCaption);
+
+                    comboBox_Model.Items.Clear();
+                    comboBox_Model.Items.Add("CUnet (models-cunet)");
+                    comboBox_Model.Items.Add("RGB (models-upconv_7_anime_style_art_rgb)");
+                    comboBox_Model.Items.Add("Photo (models-upconv_7_photo)");
+
+                    switch (int.Parse(Config.Entry["Model"].Value))
+                    {
+                        case 0:
+                            model = " -m models-cunet";
+                            comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                            break;
+                        case 1:
+                            model = " -m models-upconv_7_anime_style_art_rgb";
+                            comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                            break;
+                        case 2:
+                            model = " -m models-upconv_7_photo";
+                            comboBox_Model.SelectedIndex = int.Parse(Config.Entry["Model"].Value);
+                            break;
+                        default:
+                            model = " -m models-cunet";
+                            comboBox_Model.SelectedIndex = 0;
+                            break;
+                    }
                     break;
             }
 
@@ -250,18 +514,14 @@ namespace NVGE
                     label11.Enabled = true;
                     textBox_width.Enabled = true;
                     textBox_height.Enabled = true;
-                    switch (int.Parse(Config.Entry["Pixel_width"].Value))
+                    textBox_width.Text = int.Parse(Config.Entry["Pixel_width"].Value) switch
                     {
-                        default:
-                            textBox_width.Text = Config.Entry["Pixel_width"].Value.ToString();
-                            break;
-                    }
-                    switch (int.Parse(Config.Entry["Pixel_height"].Value))
+                        _ => Config.Entry["Pixel_width"].Value.ToString(),
+                    };
+                    textBox_height.Text = int.Parse(Config.Entry["Pixel_height"].Value) switch
                     {
-                        default:
-                            textBox_height.Text = Config.Entry["Pixel_height"].Value.ToString();
-                            break;
-                    }
+                        _ => Config.Entry["Pixel_height"].Value.ToString(),
+                    };
                     break;
             }
 
@@ -377,40 +637,118 @@ namespace NVGE
         {
             if (checkBox_Advanced.Checked != false)
             {
-                switch (comboBox_Uplevel.SelectedIndex)
+                switch (comboBox_engine.SelectedIndex)
                 {
                     case 0:
-                        uplevel = " -s 1";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
+                        {
+                            switch (comboBox_Uplevel.SelectedIndex)
+                            {
+                                case 0:
+                                    uplevel = " -s 1";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 1:
+                                    uplevel = " -s 2";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                default:
+                                    uplevel = " -s 2";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                            }
+                        }
                         break;
                     case 1:
-                        uplevel = " -s 2";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
+                        {
+                            switch (comboBox_Uplevel.SelectedIndex)
+                            {
+                                default:
+                                    uplevel = " -s 4";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                            }
+                        }
                         break;
                     default:
-                        uplevel = " -s 2";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
+                        {
+                            switch (comboBox_Uplevel.SelectedIndex)
+                            {
+                                case 0:
+                                    uplevel = " -s 1";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 1:
+                                    uplevel = " -s 2";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                default:
+                                    uplevel = " -s 2";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                            }
+                        }
                         break;
                 }
             }
             else
             {
-                switch (comboBox_Uplevel.SelectedIndex)
+                switch (comboBox_engine.SelectedIndex)
                 {
                     case 0:
-                        uplevel = " -s 1";
-                        cmdparam = RefleshParams();
+                        {
+                            switch (comboBox_Uplevel.SelectedIndex)
+                            {
+                                case 0:
+                                    uplevel = " -s 1";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 1:
+                                    uplevel = " -s 2";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                default:
+                                    uplevel = " -s 2";
+                                    cmdparam = RefleshParams();
+                                    break;
+                            }
+                        }
                         break;
                     case 1:
-                        uplevel = " -s 2";
-                        cmdparam = RefleshParams();
+                        {
+                            switch (comboBox_Uplevel.SelectedIndex)
+                            {
+                                default:
+                                    uplevel = " -s 4";
+                                    cmdparam = RefleshParams();
+                                    break;
+                            }
+                        }
                         break;
                     default:
-                        uplevel = " -s 2";
-                        cmdparam = RefleshParams();
+                        {
+                            switch (comboBox_Uplevel.SelectedIndex)
+                            {
+                                case 0:
+                                    uplevel = " -s 1";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 1:
+                                    uplevel = " -s 2";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                default:
+                                    uplevel = " -s 2";
+                                    cmdparam = RefleshParams();
+                                    break;
+                            }
+                        }
                         break;
                 }
             }
@@ -420,67 +758,208 @@ namespace NVGE
         {
             if (checkBox_Advanced.Checked != false)
             {
-                switch (comboBox_GPU.SelectedIndex)
+                switch (comboBox_engine.SelectedIndex)
                 {
                     case 0:
-                        usegpu = " -g default";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
+                        {
+                            switch (comboBox_GPU.SelectedIndex)
+                            {
+                                case 0:
+                                    usegpu = " -g default";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 1:
+                                    usegpu = " -g -1";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 2:
+                                    usegpu = " -g 0";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 3:
+                                    usegpu = " -g 1";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 4:
+                                    usegpu = " -g 2";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                default:
+                                    usegpu = " -g default";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                            }
+                        }
                         break;
                     case 1:
-                        usegpu = " -g -1";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                    case 2:
-                        usegpu = " -g 0";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                    case 3:
-                        usegpu = " -g 1";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                    case 4:
-                        usegpu = " -g 2";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
+                        {
+                            switch (comboBox_GPU.SelectedIndex)
+                            {
+                                case 0:
+                                    usegpu = " -g auto";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 1:
+                                    usegpu = " -g 0";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 2:
+                                    usegpu = " -g 1";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 3:
+                                    usegpu = " -g 2";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                default:
+                                    usegpu = " -g auto";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                            }
+                        }
                         break;
                     default:
-                        usegpu = " -g default";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
+                        {
+                            switch (comboBox_GPU.SelectedIndex)
+                            {
+                                case 0:
+                                    usegpu = " -g default";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 1:
+                                    usegpu = " -g -1";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 2:
+                                    usegpu = " -g 0";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 3:
+                                    usegpu = " -g 1";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 4:
+                                    usegpu = " -g 2";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                default:
+                                    usegpu = " -g default";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                            }
+                        }
                         break;
                 }
             }
             else
             {
-                switch (comboBox_GPU.SelectedIndex)
+                switch (comboBox_engine.SelectedIndex)
                 {
                     case 0:
-                        usegpu = " -g default";
-                        cmdparam = RefleshParams();
+                        {
+                            switch (comboBox_GPU.SelectedIndex)
+                            {
+                                case 0:
+                                    usegpu = " -g default";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 1:
+                                    usegpu = " -g -1";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 2:
+                                    usegpu = " -g 0";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 3:
+                                    usegpu = " -g 1";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 4:
+                                    usegpu = " -g 2";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                default:
+                                    usegpu = " -g default";
+                                    cmdparam = RefleshParams();
+                                    break;
+                            }
+                        }
                         break;
                     case 1:
-                        usegpu = " -g -1";
-                        cmdparam = RefleshParams();
-                        break;
-                    case 2:
-                        usegpu = " -g 0";
-                        cmdparam = RefleshParams();
-                        break;
-                    case 3:
-                        usegpu = " -g 1";
-                        cmdparam = RefleshParams();
-                        break;
-                    case 4:
-                        usegpu = " -g 2";
-                        cmdparam = RefleshParams();
+                        {
+                            switch (comboBox_GPU.SelectedIndex)
+                            {
+                                case 0:
+                                    usegpu = " -g auto";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 1:
+                                    usegpu = " -g 0";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 2:
+                                    usegpu = " -g 1";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 3:
+                                    usegpu = " -g 2";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                default:
+                                    usegpu = " -g auto";
+                                    cmdparam = RefleshParams();
+                                    break;
+                            }
+                        }
                         break;
                     default:
-                        usegpu = " -g default";
-                        cmdparam = RefleshParams();
+                        {
+                            switch (comboBox_GPU.SelectedIndex)
+                            {
+                                case 0:
+                                    usegpu = " -g default";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 1:
+                                    usegpu = " -g -1";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 2:
+                                    usegpu = " -g 0";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 3:
+                                    usegpu = " -g 1";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                case 4:
+                                    usegpu = " -g 2";
+                                    cmdparam = RefleshParams();
+                                    break;
+                                default:
+                                    usegpu = " -g default";
+                                    cmdparam = RefleshParams();
+                                    break;
+                            }
+                        }
                         break;
                 }
             }
@@ -634,6 +1113,131 @@ namespace NVGE
             }
         }
 
+        private void RadioButton_waifu2x_CheckedChanged(object sender, EventArgs e)
+        {
+            rdlevel = " -n 2";
+            comboBox_Rdlevel.Enabled = true;
+            comboBox_Rdlevel.SelectedIndex = 3;
+            label1.Enabled = true;
+            comboBox_Uplevel.Items.Clear();
+            comboBox_Uplevel.Items.Add("1" + Strings.UplevelCaption);
+            comboBox_Uplevel.Items.Add("2" + Strings.UplevelCaption);
+            comboBox_Uplevel.Items.Add("4" + Strings.UplevelCaption);
+            comboBox_Uplevel.Items.Add("8" + Strings.UplevelCaption);
+            comboBox_Uplevel.Items.Add("16" + Strings.UplevelCaption);
+            comboBox_Uplevel.SelectedIndex = 1;
+
+            comboBox_Model.Items.Clear();
+            comboBox_Model.Items.Add("CUnet (models-cunet)");
+            comboBox_Model.Items.Add("RGB (models-upconv_7_anime_style_art_rgb)");
+            comboBox_Model.Items.Add("Photo (models-upconv_7_photo)");
+            comboBox_Model.SelectedIndex = 0;
+            toolTip1.SetToolTip(comboBox_Model, Strings.waifu2xModelToolTipCaption);
+            model = " -m models-cunet";
+            cmdparam = RefleshParams();
+        }
+
+        private void RadioButton_realesrgan_CheckedChanged(object sender, EventArgs e)
+        {
+            rdlevel = "";
+            comboBox_Rdlevel.Enabled = false;
+            label1.Enabled = false;
+            comboBox_Uplevel.Items.Clear();
+            comboBox_Uplevel.Items.Add("4" + Strings.UplevelCaption);
+            comboBox_Uplevel.Items.Add("8" + Strings.UplevelCaption);
+            comboBox_Uplevel.Items.Add("12" + Strings.UplevelCaption);
+            comboBox_Uplevel.Items.Add("16" + Strings.UplevelCaption);
+            comboBox_Uplevel.Items.Add("32" + Strings.UplevelCaption);
+            comboBox_Uplevel.SelectedIndex = 0;
+
+            comboBox_Model.Items.Clear();
+            comboBox_Model.Items.Add("Real-ESRGAN (realesrgan-x4plus)");
+            comboBox_Model.Items.Add("Real-ESRGAN Photo (realesrnet-x4plus)");
+            comboBox_Model.Items.Add("Real-ESRGAN Anime (realesrgan-x4plus-anime)");
+            comboBox_Model.SelectedIndex = 0;
+            toolTip1.SetToolTip(comboBox_Model, Strings.realesrganModelToolTipCaption);
+            model = " -n realesrgan-x4plus";
+            cmdparam = RefleshParams();
+        }
+
+        private void ComboBox_engine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox_engine.SelectedIndex)
+            {
+                case 0:
+                    {
+                        rdlevel = " -n 2";
+                        comboBox_Rdlevel.Enabled = true;
+                        comboBox_Rdlevel.SelectedIndex = 3;
+                        label1.Enabled = true;
+                        comboBox_Uplevel.Items.Clear();
+                        comboBox_Uplevel.Items.Add("1" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("2" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("4" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("8" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("16" + Strings.UplevelCaption);
+                        comboBox_Uplevel.SelectedIndex = 1;
+
+                        comboBox_Model.Items.Clear();
+                        comboBox_Model.Items.Add("CUnet (models-cunet)");
+                        comboBox_Model.Items.Add("RGB (models-upconv_7_anime_style_art_rgb)");
+                        comboBox_Model.Items.Add("Photo (models-upconv_7_photo)");
+                        comboBox_Model.SelectedIndex = 0;
+                        toolTip1.SetToolTip(comboBox_Model, Strings.waifu2xModelToolTipCaption);
+                        model = " -m models-cunet";
+                        cmdparam = RefleshParams();
+                    }
+                    break;
+                case 1:
+                    {
+                        rdlevel = "";
+                        comboBox_Rdlevel.Enabled = false;
+                        label1.Enabled = false;
+                        comboBox_Uplevel.Items.Clear();
+                        comboBox_Uplevel.Items.Add("4" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("8" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("12" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("16" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("32" + Strings.UplevelCaption);
+                        comboBox_Uplevel.SelectedIndex = 0;
+
+                        comboBox_Model.Items.Clear();
+                        comboBox_Model.Items.Add("Real-ESRGAN (realesrgan-x4plus)");
+                        comboBox_Model.Items.Add("Real-ESRGAN Photo (realesrnet-x4plus)");
+                        comboBox_Model.Items.Add("Real-ESRGAN Anime (realesrgan-x4plus-anime)");
+                        comboBox_Model.SelectedIndex = 0;
+                        toolTip1.SetToolTip(comboBox_Model, Strings.realesrganModelToolTipCaption);
+                        model = " -n realesrgan-x4plus";
+                        cmdparam = RefleshParams();
+                    }
+                    break;
+                default:
+                    {
+                        rdlevel = " -n 2";
+                        comboBox_Rdlevel.Enabled = true;
+                        comboBox_Rdlevel.SelectedIndex = 3;
+                        label1.Enabled = true;
+                        comboBox_Uplevel.Items.Clear();
+                        comboBox_Uplevel.Items.Add("1" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("2" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("4" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("8" + Strings.UplevelCaption);
+                        comboBox_Uplevel.Items.Add("16" + Strings.UplevelCaption);
+                        comboBox_Uplevel.SelectedIndex = 1;
+
+                        comboBox_Model.Items.Clear();
+                        comboBox_Model.Items.Add("CUnet (models-cunet)");
+                        comboBox_Model.Items.Add("RGB (models-upconv_7_anime_style_art_rgb)");
+                        comboBox_Model.Items.Add("Photo (models-upconv_7_photo)");
+                        comboBox_Model.SelectedIndex = 0;
+                        toolTip1.SetToolTip(comboBox_Model, Strings.waifu2xModelToolTipCaption);
+                        model = " -m models-cunet";
+                        cmdparam = RefleshParams();
+                    }
+                    break;
+            }
+        }
+
         private void ComboBox_Format_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox_Format.SelectedIndex)
@@ -663,41 +1267,130 @@ namespace NVGE
 
         private void ComboBox_Model_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBox_Model.SelectedIndex)
+            switch (comboBox_engine.SelectedIndex)
             {
                 case 0:
-                    model = " -m models-cunet";
-                    cmdparam = RefleshParams();
-                    textBox_CMD.Text = cmdparam;
+                    {
+                        switch (comboBox_Model.SelectedIndex)
+                        {
+                            case 0:
+                                model = " -m models-cunet";
+                                cmdparam = RefleshParams();
+                                textBox_CMD.Text = cmdparam;
+                                break;
+                            case 1:
+                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                {
+                                    model = " -m models-upconv_7_anime_style_art_rgb";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            case 2:
+                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                {
+                                    model = " -m models-upconv_7_photo";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            default:
+                                model = " -m models-cunet";
+                                cmdparam = RefleshParams();
+                                textBox_CMD.Text = cmdparam;
+                                break;
+                        }
+                    }
                     break;
                 case 1:
-                    if (comboBox_Uplevel.SelectedIndex == 1)
                     {
-                        model = " -m models-upconv_7_anime_style_art_rgb";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
+                        switch (comboBox_Model.SelectedIndex)
+                        {
+                            case 0:
+                                model = " -n realesrgan-x4plus";
+                                cmdparam = RefleshParams();
+                                textBox_CMD.Text = cmdparam;
+                                break;
+                            case 1:
+                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                {
+                                    model = " -n realesrnet-x4plus";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            case 2:
+                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                {
+                                    model = " -n realesrgan-x4plus-anime";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            default:
+                                model = " -n realesrgan-x4plus";
+                                cmdparam = RefleshParams();
+                                textBox_CMD.Text = cmdparam;
+                                break;
+                        }
                     }
-                    else
-                    {
-                        break;
-                    }
-                case 2:
-                    if (comboBox_Uplevel.SelectedIndex == 1)
-                    {
-                        model = " -m models-upconv_7_photo";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    break;
                 default:
-                    model = " -m models-cunet";
-                    cmdparam = RefleshParams();
-                    textBox_CMD.Text = cmdparam;
+                    {
+                        switch (comboBox_Model.SelectedIndex)
+                        {
+                            case 0:
+                                model = " -m models-cunet";
+                                cmdparam = RefleshParams();
+                                textBox_CMD.Text = cmdparam;
+                                break;
+                            case 1:
+                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                {
+                                    model = " -m models-upconv_7_anime_style_art_rgb";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            case 2:
+                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                {
+                                    model = " -m models-upconv_7_photo";
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            default:
+                                model = " -m models-cunet";
+                                cmdparam = RefleshParams();
+                                textBox_CMD.Text = cmdparam;
+                                break;
+                        }
+                    }
                     break;
             }
         }
@@ -795,6 +1488,7 @@ namespace NVGE
                 }
             }
 
+            Config.Entry["ConversionType"].Value = comboBox_engine.SelectedIndex.ToString();
             Config.Entry["Reduction"].Value = comboBox_Rdlevel.SelectedIndex.ToString();
             Config.Entry["Scale"].Value = comboBox_Uplevel.SelectedIndex.ToString();
             Config.Entry["GPU"].Value = comboBox_GPU.SelectedIndex.ToString();
@@ -822,6 +1516,26 @@ namespace NVGE
                     {
                         Config.Entry["Blocksize"].Value = textBox_Blocksize.Text;
                     }
+                    break;
+            }
+
+            switch (checkBox_updetail.Checked)
+            {
+                case true:
+                    Config.Entry["UpScaleDetail"].Value = "true";
+                    break;
+                case false:
+                    Config.Entry["UpScaleDetail"].Value = "false";
+                    break;
+            }
+
+            switch (checkBox_destfolder.Checked)
+            {
+                case true:
+                    Config.Entry["DestFolder"].Value = "true";
+                    break;
+                case false:
+                    Config.Entry["DestFolder"].Value = "false";
                     break;
             }
 
@@ -869,20 +1583,14 @@ namespace NVGE
                     break;
             }
 
-            switch (textBox_width.Text)
+            Config.Entry["Pixel_width"].Value = textBox_width.Text switch
             {
-                default:
-                    Config.Entry["Pixel_width"].Value = textBox_width.Text;
-                    break;
-            }
-
-            switch (textBox_height.Text)
+                _ => textBox_width.Text,
+            };
+            Config.Entry["Pixel_height"].Value = textBox_height.Text switch
             {
-                default:
-                    Config.Entry["Pixel_height"].Value = textBox_height.Text;
-                    break;
-            }
-
+                _ => textBox_height.Text,
+            };
             Config.Entry["Param"].Value = cmdparam;
 
             Config.Save(Common.xmlpath);
@@ -895,9 +1603,23 @@ namespace NVGE
             Close();
         }
 
-        private static string RefleshParams()
+        private string RefleshParams()
         {
-            return "waifu2x-ncnn-vulkan -i $InFile -o $OutFile" + rdlevel + uplevel + blocksize + usegpu + thread + format + model + vboutput + tta;
+            switch (comboBox_engine.SelectedIndex)
+            {
+                case 0:
+                    {
+                        return "waifu2x-ncnn-vulkan -i $InFile -o $OutFile" + rdlevel + uplevel + blocksize + usegpu + thread + format + model + vboutput + tta;
+                    }
+                case 1:
+                    {
+                        return "realesrgan-ncnn-vulkan -i $InFile -o $OutFile" + uplevel + blocksize + usegpu + thread + format + model + vboutput + tta;
+                    }
+                default:
+                    {
+                        return "waifu2x-ncnn-vulkan -i $InFile -o $OutFile" + rdlevel + uplevel + blocksize + usegpu + thread + format + model + vboutput + tta;
+                    }
+            }
         }
     }
 }

@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnimGIFCaption" xml:space="preserve">
     <value>Animation GIF</value>
@@ -338,6 +338,12 @@ Do you want to abort the process?</value>
   <data name="ReadedString" xml:space="preserve">
     <value>Ready!</value>
   </data>
+  <data name="realesrganModelToolTipCaption" xml:space="preserve">
+    <value>Specify the model to be used when upscaling.
+Real-ESRGAN: This is selected by default.
+Real-ESRGAN Anime: This model is suitable for upscaling illustrations.
+Real-ESRGAN Photo: This model is suitable for upscaling photos.</value>
+  </data>
   <data name="SaveFormatChangeDialogCaption" xml:space="preserve">
     <value>Save the reformatted file.</value>
   </data>
@@ -367,6 +373,9 @@ Do you want to open the site?</value>
   </data>
   <data name="UPIMGSProgress" xml:space="preserve">
     <value>Upscaling Images, Please wait...</value>
+  </data>
+  <data name="UplevelCaption" xml:space="preserve">
+    <value>x</value>
   </data>
   <data name="Uptodate" xml:space="preserve">
     <value>You are using the latest version.</value>
@@ -417,5 +426,11 @@ Please check your settings.</value>
   <data name="VUP" xml:space="preserve">
     <value>Upscaling is now complete.
 If you want to do more upscaling, click 'Reupscaling Video'.</value>
+  </data>
+  <data name="waifu2xModelToolTipCaption" xml:space="preserve">
+    <value>Specify the model to be used when upscaling.
+CUnet: This is selected by default.
+RGB: This model is suitable for upscaling illustrations.
+Photo: This model is suitable for upscaling photos.</value>
   </data>
 </root>

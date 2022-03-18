@@ -58,14 +58,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 94</value>
+  </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 15</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>块的</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
+  <data name="textBox_Blocksize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 91</value>
   </data>
   <data name="textBox_Blocksize.ToolTip" xml:space="preserve">
     <value>指定要分配给GPU的块大小。
@@ -89,6 +92,9 @@
   <data name="comboBox_Rdlevel.Items4" xml:space="preserve">
     <value>3级</value>
   </data>
+  <data name="comboBox_Rdlevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 41</value>
+  </data>
   <data name="comboBox_Rdlevel.ToolTip" xml:space="preserve">
     <value>指定图像中的降噪水平。
 如果你选择 "没有移除"，噪音将不会被删除。
@@ -97,12 +103,21 @@
   <data name="comboBox_GPU.Items" xml:space="preserve">
     <value>自动</value>
   </data>
+  <data name="comboBox_GPU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 66</value>
+  </data>
   <data name="comboBox_GPU.ToolTip" xml:space="preserve">
     <value>指定转换要使用的GPU。
 如果指定 "自动"，在转换过程中将自动使用GPU。
 如果指定了 'iGPU'，转换将使用CPU的内部图形来完成。
 (对于没有内置图形的CPU不能指定iGPU）
 如果你有一个多GPU环境，你也可以指定 "dGPU "。</value>
+  </data>
+  <data name="comboBox_Uplevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>244, 41</value>
+  </data>
+  <data name="comboBox_Uplevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 23</value>
   </data>
   <data name="comboBox_Uplevel.ToolTip" xml:space="preserve">
     <value>指定升频级别。
@@ -121,7 +136,7 @@
     <value>激活 "高级设置 "项目。</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 110</value>
+    <value>9, 94</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 15</value>
@@ -129,11 +144,8 @@
   <data name="label4.Text" xml:space="preserve">
     <value>GPU块大小：</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 81</value>
+    <value>9, 69</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 15</value>
@@ -141,11 +153,8 @@
   <data name="label3.Text" xml:space="preserve">
     <value>使用的GPU：</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 53</value>
+    <value>20, 44</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 15</value>
@@ -153,11 +162,8 @@
   <data name="label2.Text" xml:space="preserve">
     <value>缩放级别：</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 25</value>
+    <value>171, 44</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 15</value>
@@ -165,29 +171,11 @@
   <data name="label1.Text" xml:space="preserve">
     <value>降噪水平：</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>一般设置</value>
-  </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>高级设置</value>
-  </data>
-  <data name="groupBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 99</value>
-  </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value />
+    <value>195, 135</value>
   </data>
   <data name="textBox_height.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 96</value>
+    <value>150, 132</value>
   </data>
   <data name="textBox_height.ToolTip" xml:space="preserve">
     <value>设置输出图像的像素。
@@ -196,13 +184,10 @@
 请注意，图像的长宽比被保持。</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 99</value>
-  </data>
-  <data name="label10.ToolTip" xml:space="preserve">
-    <value />
+    <value>138, 135</value>
   </data>
   <data name="textBox_width.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 96</value>
+    <value>93, 132</value>
   </data>
   <data name="textBox_width.ToolTip" xml:space="preserve">
     <value>设置输出图像的像素。
@@ -211,7 +196,7 @@
 请注意，图像的长宽比被保持。</value>
   </data>
   <data name="checkBox_pixel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>305, 103</value>
+    <value>305, 115</value>
   </data>
   <data name="checkBox_pixel.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 19</value>
@@ -231,14 +216,11 @@
   <data name="label9.Text" xml:space="preserve">
     <value>命令行参数：</value>
   </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="comboBox_Format.Items4" xml:space="preserve">
     <value>自定义（用户指定的）</value>
   </data>
   <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 69</value>
+    <value>93, 106</value>
   </data>
   <data name="comboBox_Format.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 23</value>
@@ -248,6 +230,9 @@
 通常情况下'.png'是可以的，但如果你想使用不同的格式
 你可以改变这个领域。
 如果你选择 "自定义"，在开始升频时将出现一个格式选择屏幕。</value>
+  </data>
+  <data name="comboBox_Thread.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 80</value>
   </data>
   <data name="comboBox_Thread.ToolTip" xml:space="preserve">
     <value>指定转换过程中使用的线程数。
@@ -262,7 +247,7 @@ RGB：这种模式适用于对插图进行升格。
 Photo：该模型适合用于放大照片。</value>
   </data>
   <data name="checkBox_TTA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>305, 87</value>
+    <value>305, 99</value>
   </data>
   <data name="checkBox_TTA.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 19</value>
@@ -276,7 +261,7 @@ Photo：该模型适合用于放大照片。</value>
 但图像转换需要大量的时间。</value>
   </data>
   <data name="checkBox_Verbose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>305, 71</value>
+    <value>305, 82</value>
   </data>
   <data name="checkBox_Verbose.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 19</value>
@@ -295,11 +280,8 @@ Photo：该模型适合用于放大照片。</value>
   <data name="label7.Text" xml:space="preserve">
     <value>升级时使用的waifu2x模型：</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 72</value>
+    <value>6, 109</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 15</value>
@@ -307,11 +289,8 @@ Photo：该模型适合用于放大照片。</value>
   <data name="label6.Text" xml:space="preserve">
     <value>图像输出格式：</value>
   </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 45</value>
+    <value>6, 83</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 15</value>
@@ -319,11 +298,8 @@ Photo：该模型适合用于放大照片。</value>
   <data name="label5.Text" xml:space="preserve">
     <value>使用的线程数：</value>
   </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 100</value>
+    <value>6, 136</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 15</value>
@@ -331,28 +307,62 @@ Photo：该模型适合用于放大照片。</value>
   <data name="label12.Text" xml:space="preserve">
     <value>输出图像像素：</value>
   </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_OK.Text" xml:space="preserve">
     <value>认可</value>
-  </data>
-  <data name="button_OK.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="button_Cancel.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox_engine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 15</value>
   </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox_engine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>382, 23</value>
+  </data>
+  <data name="comboBox_engine.ToolTip" xml:space="preserve">
+    <value>指定转换引擎。
+waifu2x-ncnn-vulkan：正常方法；图像质量不如realesrgan，但转换速度更快。
+realesrgan-ncnn-vulkan：最新的方法。 它能以相当高的质量进行转换，但转换速度较慢。</value>
+  </data>
+  <data name="checkBox_updetail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 120</value>
+  </data>
+  <data name="checkBox_updetail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 19</value>
+  </data>
+  <data name="checkBox_updetail.Text" xml:space="preserve">
+    <value>当升频完成时，显示图像比较对话。</value>
+  </data>
+  <data name="checkBox_updetail.ToolTip" xml:space="preserve">
+    <value>当升频完成时，显示图像比较对话。
+通常是启用的，但可以禁用，例如，如果你想加快转换过程。</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="checkBox_destfolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 145</value>
+  </data>
+  <data name="checkBox_destfolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 19</value>
+  </data>
+  <data name="checkBox_destfolder.Text" xml:space="preserve">
+    <value>完成后打开目标文件夹。</value>
+  </data>
+  <data name="checkBox_destfolder.ToolTip" xml:space="preserve">
+    <value>显示每次完成后存储升格图像的文件夹。
+通常情况下启用。</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 15</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>使用的转换方法：</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>先进的</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>图像升格设置</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

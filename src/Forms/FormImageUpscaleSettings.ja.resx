@@ -59,7 +59,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 110</value>
+    <value>162, 96</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 15</value>
@@ -68,7 +68,7 @@
     <value>ブロック</value>
   </data>
   <data name="textBox_Blocksize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 107</value>
+    <value>117, 93</value>
   </data>
   <data name="textBox_Blocksize.ToolTip" xml:space="preserve">
     <value>GPUに割り当てるブロックサイズを指定します。
@@ -92,7 +92,7 @@
     <value>レベル3</value>
   </data>
   <data name="comboBox_Rdlevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 22</value>
+    <value>117, 41</value>
   </data>
   <data name="comboBox_Rdlevel.ToolTip" xml:space="preserve">
     <value>画像のノイズ除去レベルを指定します。
@@ -103,7 +103,7 @@
     <value>自動</value>
   </data>
   <data name="comboBox_GPU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 78</value>
+    <value>117, 67</value>
   </data>
   <data name="comboBox_GPU.ToolTip" xml:space="preserve">
     <value>変換時に使用するGPUを指定します。
@@ -128,7 +128,7 @@
     <value>16倍</value>
   </data>
   <data name="comboBox_Uplevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 50</value>
+    <value>311, 41</value>
   </data>
   <data name="comboBox_Uplevel.ToolTip" xml:space="preserve">
     <value>画像アップスケールのレベルを指定します。
@@ -147,7 +147,7 @@
     <value>'高度な設定'項目を有効にします。</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 110</value>
+    <value>16, 96</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 15</value>
@@ -156,7 +156,7 @@
     <value>GPUブロックサイズ：</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 81</value>
+    <value>36, 70</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 15</value>
@@ -165,7 +165,7 @@
     <value>使用するGPU：</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 53</value>
+    <value>205, 44</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 15</value>
@@ -179,17 +179,11 @@
   <data name="label1.Text" xml:space="preserve">
     <value>ノイズ除去のレベル：</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>一般設定</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>高度な設定</value>
-  </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 99</value>
+    <value>197, 136</value>
   </data>
   <data name="textBox_height.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 96</value>
+    <value>152, 133</value>
   </data>
   <data name="textBox_height.ToolTip" xml:space="preserve">
     <value>出力画像のピクセルを設定します。
@@ -198,10 +192,10 @@
 なお、画像の縦横比率は維持されます。</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 99</value>
+    <value>140, 136</value>
   </data>
   <data name="textBox_width.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 96</value>
+    <value>95, 133</value>
   </data>
   <data name="textBox_width.ToolTip" xml:space="preserve">
     <value>出力画像のピクセルを設定します。
@@ -210,7 +204,7 @@
 なお、画像の縦横比率は維持されます。</value>
   </data>
   <data name="checkBox_pixel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 103</value>
+    <value>346, 135</value>
   </data>
   <data name="checkBox_pixel.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 19</value>
@@ -221,11 +215,14 @@
   <data name="checkBox_pixel.ToolTip" xml:space="preserve">
     <value>出力画像のピクセル指定項目を有効にします。</value>
   </data>
+  <data name="textBox_CMD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 208</value>
+  </data>
   <data name="textBox_CMD.ToolTip" xml:space="preserve">
     <value>コマンドライン引数を手動で指定します。</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 138</value>
+    <value>7, 190</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 15</value>
@@ -237,16 +234,19 @@
     <value>カスタム (ユーザー指定)</value>
   </data>
   <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 69</value>
+    <value>95, 81</value>
   </data>
   <data name="comboBox_Format.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 23</value>
+    <value>235, 23</value>
   </data>
   <data name="comboBox_Format.ToolTip" xml:space="preserve">
     <value>変換後の画像出力形式を指定します。
 通常は'.png'で出力されますが、形式を変更したい場合は
 この項目を変更してください。
 'カスタム'を選択すると、アップスケーリング開始時に形式選択画面が表示されます。</value>
+  </data>
+  <data name="comboBox_Thread.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 107</value>
   </data>
   <data name="comboBox_Thread.ToolTip" xml:space="preserve">
     <value>変換時のスレッド使用数を指定します。
@@ -261,7 +261,7 @@ RGB: イラスト等をアップスケールする際に適したモデルです
 Photo: 写真等をアップスケールする際に適したモデルです。</value>
   </data>
   <data name="checkBox_TTA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 87</value>
+    <value>346, 83</value>
   </data>
   <data name="checkBox_TTA.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 19</value>
@@ -275,7 +275,7 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
 変換に多くの時間を要します。</value>
   </data>
   <data name="checkBox_Verbose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 71</value>
+    <value>346, 109</value>
   </data>
   <data name="checkBox_Verbose.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 19</value>
@@ -287,9 +287,6 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
     <value>詳細な出力を有効にします。
 この項目は開発者向けの為、通常は有効にする必要はありません。</value>
   </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 26</value>
-  </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 15</value>
   </data>
@@ -297,7 +294,7 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
     <value>アップスケーリング時に使用するモデル：</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 72</value>
+    <value>7, 84</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 15</value>
@@ -306,7 +303,7 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
     <value>出力画像形式：</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 45</value>
+    <value>9, 110</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 15</value>
@@ -315,7 +312,7 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
     <value>スレッド使用数：</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 100</value>
+    <value>18, 137</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 15</value>
@@ -325,6 +322,61 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
   </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>キャンセル</value>
+  </data>
+  <data name="comboBox_engine.Items" xml:space="preserve">
+    <value>waifu2x-ncnn-vulkan (通常, 高速)</value>
+  </data>
+  <data name="comboBox_engine.Items1" xml:space="preserve">
+    <value>Real-ESRGAN (超高画質, 低速変換)</value>
+  </data>
+  <data name="comboBox_engine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 15</value>
+  </data>
+  <data name="comboBox_engine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 23</value>
+  </data>
+  <data name="comboBox_engine.ToolTip" xml:space="preserve">
+    <value>変換エンジンを指定します。
+waifu2x-ncnn-vulkan: 通常の方式です。realesrganより画質が劣りますが、その分高速に変換できます。
+realesrgan-ncnn-vulkan: 最新の方式です。かなり高画質で変換できますが、その分変換は低速です。
+</value>
+  </data>
+  <data name="checkBox_updetail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 131</value>
+  </data>
+  <data name="checkBox_updetail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 19</value>
+  </data>
+  <data name="checkBox_updetail.Text" xml:space="preserve">
+    <value>アップスケーリング完了時に画像比較ダイアログを表示する</value>
+  </data>
+  <data name="checkBox_updetail.ToolTip" xml:space="preserve">
+    <value>アップスケーリング完了時に画像比較ダイアログを表示します。
+通常は有効になっていますが、変換作業を高速化させたい場合などは、無効にすることができます。</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>基本</value>
+  </data>
+  <data name="checkBox_destfolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 156</value>
+  </data>
+  <data name="checkBox_destfolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 19</value>
+  </data>
+  <data name="checkBox_destfolder.Text" xml:space="preserve">
+    <value>完了後に保存先のフォルダを開く</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 18</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 15</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>使用する変換方式：</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>高度</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>画像アップスケール設定</value>

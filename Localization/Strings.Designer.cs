@@ -666,6 +666,18 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   Specify the model to be used when upscaling.
+        ///Real-ESRGAN: This is selected by default.
+        ///Real-ESRGAN Anime: This model is suitable for upscaling illustrations.
+        ///Real-ESRGAN Photo: This model is suitable for upscaling photos. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string realesrganModelToolTipCaption {
+            get {
+                return ResourceManager.GetString("realesrganModelToolTipCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Save the reformatted file. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SaveFormatChangeDialogCaption {
@@ -746,6 +758,15 @@ namespace NVGE.Localization {
         public static string UPIMGSProgress {
             get {
                 return ResourceManager.GetString("UPIMGSProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   x に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UplevelCaption {
+            get {
+                return ResourceManager.GetString("UplevelCaption", resourceCulture);
             }
         }
         
@@ -892,6 +913,18 @@ namespace NVGE.Localization {
         public static string VUP {
             get {
                 return ResourceManager.GetString("VUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Specify the model to be used when upscaling.
+        ///CUnet: This is selected by default.
+        ///RGB: This model is suitable for upscaling illustrations.
+        ///Photo: This model is suitable for upscaling photos. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string waifu2xModelToolTipCaption {
+            get {
+                return ResourceManager.GetString("waifu2xModelToolTipCaption", resourceCulture);
             }
         }
     }

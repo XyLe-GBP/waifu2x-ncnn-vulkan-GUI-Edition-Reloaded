@@ -110,6 +110,11 @@ namespace NVGE
         /// </summary>
         public static Stopwatch stopwatch = null;
         public static TimeSpan timeSpan;
+
+        /// <summary>
+        /// ログ
+        /// </summary>
+        public static StreamReader Log = null;
         #endregion
 
         public static string CheckVideoAudioCodec(string VideoPath)
@@ -370,6 +375,20 @@ namespace NVGE
             }
         }
 
+        public static string LogSplit(StreamReader streamReader)
+        {
+            string read = streamReader.ReadToEnd();
+            int pos = read.IndexOf("SCEI");
+            if (pos != -1)
+            {
+                return read[..pos];
+            }
+            else
+            {
+                return null!;
+            }
+        }
+
         /// <summary>
         /// 設定ファイルに全てを書き出す
         /// </summary>
@@ -403,6 +422,10 @@ namespace NVGE
             {
                 Config.Entry["AudioLocation"].Value = "";
             }
+            if (Config.Entry["ConversionType"].Value == null)
+            {
+                Config.Entry["ConversionType"].Value = "-1";
+            }
             if (Config.Entry["Reduction"].Value == null)
             {
                 Config.Entry["Reduction"].Value = "-1";
@@ -418,6 +441,14 @@ namespace NVGE
             if (Config.Entry["Blocksize"].Value == null)
             {
                 Config.Entry["Blocksize"].Value = "0";
+            }
+            if (Config.Entry["UpScaleDetail"].Value == null)
+            {
+                Config.Entry["UpScaleDetail"].Value = "true";
+            }
+            if (Config.Entry["DestFolder"].Value == null)
+            {
+                Config.Entry["DestFolder"].Value = "true";
             }
             if (Config.Entry["IAdvanced"].Value == null)
             {
@@ -753,6 +784,25 @@ namespace NVGE
             {
                 MessageBox.Show("An error occured.\n\n" + ex.Message, "An error occured.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        public static void GetImageSize(string IMAGEpath, int[] buffers)
+        {
+            if (buffers.Length != 2)
+            {
+                return;
+            }
+            else if (!File.Exists(IMAGEpath))
+            {
+                return;
+            }
+            else
+            {
+                using var image = new MagickImage(IMAGEpath);
+                buffers[0] = image.Width;
+                buffers[1] = image.Height;
+                return;
             }
         }
 

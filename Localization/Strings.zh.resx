@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnimGIFCaption" xml:space="preserve">
     <value>Animation GIF</value>
@@ -337,6 +337,12 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="ReadedString" xml:space="preserve">
     <value>一切就绪!</value>
   </data>
+  <data name="realesrganModelToolTipCaption" xml:space="preserve">
+    <value>指定升格时要使用的模型。
+Real-ESRGAN：默认选择该选项。
+Real-ESRGAN Anime：这个模型适合于放大插图。
+Real-ESRGAN Photo：该模型适用于放大照片等。</value>
+  </data>
   <data name="SaveFormatChangeDialogCaption" xml:space="preserve">
     <value>保存重新格式化的文件</value>
   </data>
@@ -368,6 +374,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="UPIMGSProgress" xml:space="preserve">
     <value>多个图像文件正在被升格。
 请稍等...</value>
+  </data>
+  <data name="UplevelCaption" xml:space="preserve">
+    <value>x</value>
   </data>
   <data name="Uptodate" xml:space="preserve">
     <value>你正在使用最新版本的应用程序。</value>
@@ -420,5 +429,11 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="VUP" xml:space="preserve">
     <value>现在，视频帧的升格已经完成。
 如果你想进一步扩大规模，点击 "重新扩大视频规模 "按钮。</value>
+  </data>
+  <data name="waifu2xModelToolTipCaption" xml:space="preserve">
+    <value>指定升格时要使用的模型。
+CUnet：默认选择该选项。
+RGB：这种模式适用于对插图进行升格处理等。
+Photo：该模型适用于放大照片等。</value>
   </data>
 </root>

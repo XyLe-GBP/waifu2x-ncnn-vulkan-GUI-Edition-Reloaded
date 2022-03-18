@@ -331,6 +331,8 @@ namespace NVGE
             Config.Load(Common.xmlpath);
 
             int fmt = int.Parse(Config.Entry["Format"].Value);
+            int engine = int.Parse(Config.Entry["ConversionType"].Value);
+
             string ft;
             if (Common.ImageFile.Length != 0)
             {
@@ -381,151 +383,532 @@ namespace NVGE
                     string dst = Common.ReplaceForRegex(Common.ImageFileName[0], Common.ImageFileExt[0], ext);
 
                     int scl = int.Parse(Config.Entry["Scale"].Value);
-                    switch (scl)
+                    switch (engine)
                     {
-                        case 2: // x4
+                        case 0: // waifu2x
                             {
-                                using FormProgress Form2 = new(0);
-                                Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
-                                Common.ProgMin = 0;
-                                Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
-
-                                Common.stopwatch = new Stopwatch();
-                                Common.stopwatch.Start();
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
+                                switch (scl)
                                 {
-                                    break;
-                                }
+                                    case 2: // x4
+                                        {
+                                            using FormProgress Form2 = new(0);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
 
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
 
-                                Form2.ShowDialog();
+                                            Form2.ShowDialog();
 
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 3: // x8
+                                        {
+                                            using FormProgress Form2 = new(0);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 4: // x16
+                                        {
+                                            using FormProgress Form2 = new(0);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default: // nml
+                                        {
+                                            using FormProgress Form2 = new(0);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+                                        }
+                                        break;
                                 }
                             }
                             break;
-                        case 3: // x8
+                        case 1: // realesrgan
                             {
-                                using FormProgress Form2 = new(0);
-                                Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
-                                Common.ProgMin = 0;
-                                Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
-
-                                Common.stopwatch = new Stopwatch();
-                                Common.stopwatch.Start();
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
+                                switch (scl)
                                 {
-                                    break;
-                                }
+                                    case 1: // x8
+                                        {
+                                            using FormProgress Form2 = new(0, 1);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
 
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
 
-                                Form2.ShowDialog();
+                                            Form2.ShowDialog();
 
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
-                                }
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
 
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
 
-                                Form2.ShowDialog();
+                                            Form2.ShowDialog();
 
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 2: // x12
+                                        {
+                                            using FormProgress Form2 = new(0, 1);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 3: // x16
+                                        {
+                                            using FormProgress Form2 = new(0, 1);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 4: // x32
+                                        {
+                                            using FormProgress Form2 = new(0, 1);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            using FormProgress Form2 = new(0, 1);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+                                        }
+                                        break;
                                 }
                             }
                             break;
-                        case 4: // x16
+                        default:
                             {
-                                using FormProgress Form2 = new(0);
-                                Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
-                                Common.ProgMin = 0;
-                                Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
-
-                                Common.stopwatch = new Stopwatch();
-                                Common.stopwatch.Start();
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
+                                switch (scl)
                                 {
-                                    break;
+                                    case 2: // x4
+                                        {
+                                            using FormProgress Form2 = new(0);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 3: // x8
+                                        {
+                                            using FormProgress Form2 = new(0);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 4: // x16
+                                        {
+                                            using FormProgress Form2 = new(0);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default: // nml
+                                        {
+                                            using FormProgress Form2 = new(0);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+                                        }
+                                        break;
                                 }
-
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
-                                }
-
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
-                                }
-
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
-                                }
-                            }
-                            break;
-                        default: // nml
-                            {
-                                using FormProgress Form2 = new(0);
-                                Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
-                                Common.ProgMin = 0;
-                                Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
-
-                                Common.stopwatch = new Stopwatch();
-                                Common.stopwatch.Start();
-
-                                Form2.ShowDialog();
                             }
                             break;
                     }
@@ -603,9 +986,17 @@ namespace NVGE
                     Common.stopwatch.Stop();
                     Common.timeSpan = Common.stopwatch.Elapsed;
 
-                    FormImageUpscaleDetail formImageUpscaleDetail = new();
-                    formImageUpscaleDetail.ShowDialog();
-                    formImageUpscaleDetail.Dispose();
+                    switch (bool.Parse(Config.Entry["UpScaleDetail"].Value))
+                    {
+                        case true:
+                            FormImageUpscaleDetail formImageUpscaleDetail = new();
+                            formImageUpscaleDetail.ShowDialog();
+                            formImageUpscaleDetail.Dispose();
+                            break;
+                        case false:
+                            Common.ImgDetFlag = 0;
+                            break;
+                    }
 
                     Common.stopwatch.Reset();
 
@@ -695,7 +1086,14 @@ namespace NVGE
                                 pictureBox_DD.Image = null;
                                 File.Delete(Directory.GetCurrentDirectory() + @"\tmp.png");
                                 MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Process.Start("EXPLORER.EXE", @"/select,""" + sfd.FileName + @"""");
+                                switch (bool.Parse(Config.Entry["DestFolder"].Value))
+                                {
+                                    case true:
+                                        Process.Start("EXPLORER.EXE", @"/select,""" + sfd.FileName + @"""");
+                                        break;
+                                    case false:
+                                        break;
+                                }
                             }
                             else
                             {
@@ -766,175 +1164,620 @@ namespace NVGE
                     Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
 
                     int scl = int.Parse(Config.Entry["Scale"].Value);
-                    switch (scl)
+                    switch (engine)
                     {
-                        case 2: // x4
+                        case 0: // waifu2x
                             {
-                                using FormProgress Form2 = new(1);
-                                Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
-                                Common.ProgMin = 0;
-                                Common.ProgMax = Common.ImageFile.Length;
-
-                                Common.stopwatch = new Stopwatch();
-                                Common.stopwatch.Start();
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
+                                switch (scl)
                                 {
-                                    break;
-                                }
+                                    case 2: // x4
+                                        {
+                                            using FormProgress Form2 = new(1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
 
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
-                                {
-                                    FileInfo fi = new(file);
-                                    File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
-                                }
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
 
-                                Form2.ShowDialog();
+                                            Form2.ShowDialog();
 
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 3: // x8
+                                        {
+                                            using FormProgress Form2 = new(1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 4: // x16
+                                        {
+                                            using FormProgress Form2 = new(1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default: // nml
+                                        {
+                                            using FormProgress Form2 = new(1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+                                        }
+                                        break;
                                 }
                             }
                             break;
-                        case 3: // x8
+                        case 1: // realesrgan
                             {
-                                using FormProgress Form2 = new(1);
-                                Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
-                                Common.ProgMin = 0;
-                                Common.ProgMax = Common.ImageFile.Length;
-
-                                Common.stopwatch = new Stopwatch();
-                                Common.stopwatch.Start();
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
+                                switch (scl)
                                 {
-                                    break;
-                                }
+                                    case 1: // x8
+                                        {
+                                            using FormProgress Form2 = new(1, 1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
 
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
-                                {
-                                    FileInfo fi = new(file);
-                                    File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
-                                }
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
 
-                                Form2.ShowDialog();
+                                            Form2.ShowDialog();
 
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
-                                }
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
 
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
-                                {
-                                    FileInfo fi = new(file);
-                                    File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
-                                }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
 
-                                Form2.ShowDialog();
+                                            Form2.ShowDialog();
 
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 2: // x12
+                                        {
+                                            using FormProgress Form2 = new(1, 1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 3: // x16
+                                        {
+                                            using FormProgress Form2 = new(1, 1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 4: // x32
+                                        {
+                                            using FormProgress Form2 = new(1, 1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default: // nml
+                                        {
+                                            using FormProgress Form2 = new(1, 1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+                                        }
+                                        break;
                                 }
                             }
                             break;
-                        case 4: // x16
+                        default:
                             {
-                                using FormProgress Form2 = new(1);
-                                Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
-                                Common.ProgMin = 0;
-                                Common.ProgMax = Common.ImageFile.Length;
-
-                                Common.stopwatch = new Stopwatch();
-                                Common.stopwatch.Start();
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
+                                switch (scl)
                                 {
-                                    break;
+                                    case 2: // x4
+                                        {
+                                            using FormProgress Form2 = new(1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 3: // x8
+                                        {
+                                            using FormProgress Form2 = new(1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 4: // x16
+                                        {
+                                            using FormProgress Form2 = new(1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default: // nml
+                                        {
+                                            using FormProgress Form2 = new(1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+                                        }
+                                        break;
                                 }
-
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
-                                {
-                                    FileInfo fi = new(file);
-                                    File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
-                                }
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
-                                }
-
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
-                                {
-                                    FileInfo fi = new(file);
-                                    File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
-                                }
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
-                                }
-
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
-                                {
-                                    File.Delete(file);
-                                }
-                                foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
-                                {
-                                    FileInfo fi = new(file);
-                                    File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
-                                }
-
-                                Form2.ShowDialog();
-
-                                if (Common.AbortFlag != 0)
-                                {
-                                    break;
-                                }
-                            }
-                            break;
-                        default: // nml
-                            {
-                                using FormProgress Form2 = new(1);
-                                Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
-                                Common.ProgMin = 0;
-                                Common.ProgMax = Common.ImageFile.Length;
-
-                                Common.stopwatch = new Stopwatch();
-                                Common.stopwatch.Start();
-
-                                Form2.ShowDialog();
                             }
                             break;
                     }
@@ -1011,9 +1854,17 @@ namespace NVGE
                     Common.stopwatch.Stop();
                     Common.timeSpan = Common.stopwatch.Elapsed;
 
-                    FormImageUpscaleDetail formImageUpscaleDetail = new();
-                    formImageUpscaleDetail.ShowDialog();
-                    formImageUpscaleDetail.Dispose();
+                    switch (bool.Parse(Config.Entry["UpScaleDetail"].Value))
+                    {
+                        case true:
+                            FormImageUpscaleDetail formImageUpscaleDetail = new();
+                            formImageUpscaleDetail.ShowDialog();
+                            formImageUpscaleDetail.Dispose();
+                            break;
+                        case false:
+                            Common.ImgDetFlag = 0;
+                            break;
+                    }
 
                     Common.stopwatch.Reset();
 
@@ -1074,7 +1925,14 @@ namespace NVGE
                                     closeFileCToolStripMenuItem.Enabled = false;
                                     label1.Text = Strings.DragDropCaption;
                                     MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Process.Start("EXPLORER.EXE", Common.FBDSavePath);
+                                    switch (bool.Parse(Config.Entry["DestFolder"].Value))
+                                    {
+                                        case true:
+                                            Process.Start("EXPLORER.EXE", Common.FBDSavePath);
+                                            break;
+                                        case false:
+                                            break;
+                                    }
                                 }
                                 else
                                 {
@@ -1141,7 +1999,14 @@ namespace NVGE
                                 closeFileCToolStripMenuItem.Enabled = false;
                                 label1.Text = Strings.DragDropCaption;
                                 MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Process.Start("EXPLORER.EXE", Common.FBDSavePath);
+                                switch (bool.Parse(Config.Entry["DestFolder"].Value))
+                                {
+                                    case true:
+                                        Process.Start("EXPLORER.EXE", Common.FBDSavePath);
+                                        break;
+                                    case false:
+                                        break;
+                                }
                             }
                         }
                         else
@@ -1197,6 +2062,7 @@ namespace NVGE
 
             Config.Load(Common.xmlpath);
 
+            int engine = int.Parse(Config.Entry["ConversionType"].Value);
             string ffp = Config.Entry["FFmpegLocation"].Value;
             int enc = int.Parse(Config.Entry["OutputCodecIndex"].Value);
             string vl = Config.Entry["VideoLocation"].Value;
@@ -1211,148 +2077,455 @@ namespace NVGE
             if (Common.UpscaleFlag == 0)
             {
                 using FormProgress Form1 = new(5);
-                using FormProgress Form2 = new(2);
-                if (vl != "")
+
+                switch (engine)
                 {
-                    if (!Directory.Exists(vl + @"\image-frames\"))
-                    {
-                        Directory.CreateDirectory(vl + @"\image-frames\");
-                        Directory.CreateDirectory(vl + @"\image-frames2x\");
-                    }
-                    delvlpath = vl + @"\image-frames\";
+                    case 0:
+                        {
+                            using FormProgress Form2 = new(2);
+                            if (vl != "")
+                            {
+                                if (!Directory.Exists(vl + @"\image-frames\"))
+                                {
+                                    Directory.CreateDirectory(vl + @"\image-frames\");
+                                    Directory.CreateDirectory(vl + @"\image-frames2x\");
+                                }
+                                delvlpath = vl + @"\image-frames\";
+                            }
+                            else
+                            {
+                                delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                            }
+                            if (al != "")
+                            {
+                                if (!Directory.Exists(al + @"\audio\"))
+                                {
+                                    Directory.CreateDirectory(al + @"\audio\");
+                                }
+                                alpath = al + @"\audio\" + acodec;
+                            }
+                            else
+                            {
+                                alpath = Directory.GetCurrentDirectory() + @"\_temp-project\audio\" + acodec;
+                            }
+
+                            if (Common.GIFflag == true)
+                            {
+                                Process ps = new();
+                                ProcessStartInfo pi = new()
+                                {
+                                    FileName = ffp,
+                                    Arguments = "-i \"" + Common.VideoPath + "\" -movflags faststart -pix_fmt yuv420p -vf \"scale = trunc(iw / 2) * 2:trunc(ih / 2) * 2\" " + Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4",
+                                    WindowStyle = ProcessWindowStyle.Hidden,
+                                    UseShellExecute = true
+                                };
+                                ps = Process.Start(pi);
+                                ps.WaitForExit();
+
+                                Common.VideoPath = Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4";
+                            }
+
+                            using var video = new VideoCapture(Common.VideoPath);
+
+                            Common.DeletePath = delvlpath;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = video.FrameCount;
+
+                            Form1.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                return;
+                            }
+
+                            if (!File.Exists(alpath) && Common.GIFflag != true)
+                            {
+                                MessageBox.Show(Strings.AudioNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            Common.ProgressFlag = 2;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
+
+                            Form2.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                return;
+                            }
+
+                            Common.UpscaleFlag = 1;
+
+                            if (Common.GIFflag == true)
+                            {
+                                button_Video.Text = Strings.ButtonReUpScaleGIF;
+                            }
+                            else
+                            {
+                                button_Video.Text = Strings.ButtonReUpscaleVideo;
+                            }
+
+                            button_Merge.Enabled = true;
+                            MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
+                    case 1:
+                        {
+                            using FormProgress Form2 = new(2,1);
+                            if (vl != "")
+                            {
+                                if (!Directory.Exists(vl + @"\image-frames\"))
+                                {
+                                    Directory.CreateDirectory(vl + @"\image-frames\");
+                                    Directory.CreateDirectory(vl + @"\image-frames2x\");
+                                }
+                                delvlpath = vl + @"\image-frames\";
+                            }
+                            else
+                            {
+                                delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                            }
+                            if (al != "")
+                            {
+                                if (!Directory.Exists(al + @"\audio\"))
+                                {
+                                    Directory.CreateDirectory(al + @"\audio\");
+                                }
+                                alpath = al + @"\audio\" + acodec;
+                            }
+                            else
+                            {
+                                alpath = Directory.GetCurrentDirectory() + @"\_temp-project\audio\" + acodec;
+                            }
+
+                            if (Common.GIFflag == true)
+                            {
+                                Process ps = new();
+                                ProcessStartInfo pi = new()
+                                {
+                                    FileName = ffp,
+                                    Arguments = "-i \"" + Common.VideoPath + "\" -movflags faststart -pix_fmt yuv420p -vf \"scale = trunc(iw / 2) * 2:trunc(ih / 2) * 2\" " + Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4",
+                                    WindowStyle = ProcessWindowStyle.Hidden,
+                                    UseShellExecute = true
+                                };
+                                ps = Process.Start(pi);
+                                ps.WaitForExit();
+
+                                Common.VideoPath = Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4";
+                            }
+
+                            using var video = new VideoCapture(Common.VideoPath);
+
+                            Common.DeletePath = delvlpath;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = video.FrameCount;
+
+                            Form1.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                return;
+                            }
+
+                            if (!File.Exists(alpath) && Common.GIFflag != true)
+                            {
+                                MessageBox.Show(Strings.AudioNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            Common.ProgressFlag = 2;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
+
+                            Form2.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                return;
+                            }
+
+                            Common.UpscaleFlag = 1;
+
+                            if (Common.GIFflag == true)
+                            {
+                                button_Video.Text = Strings.ButtonReUpScaleGIF;
+                            }
+                            else
+                            {
+                                button_Video.Text = Strings.ButtonReUpscaleVideo;
+                            }
+
+                            button_Merge.Enabled = true;
+                            MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
+                    default:
+                        {
+                            using FormProgress Form2 = new(2);
+                            if (vl != "")
+                            {
+                                if (!Directory.Exists(vl + @"\image-frames\"))
+                                {
+                                    Directory.CreateDirectory(vl + @"\image-frames\");
+                                    Directory.CreateDirectory(vl + @"\image-frames2x\");
+                                }
+                                delvlpath = vl + @"\image-frames\";
+                            }
+                            else
+                            {
+                                delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                            }
+                            if (al != "")
+                            {
+                                if (!Directory.Exists(al + @"\audio\"))
+                                {
+                                    Directory.CreateDirectory(al + @"\audio\");
+                                }
+                                alpath = al + @"\audio\" + acodec;
+                            }
+                            else
+                            {
+                                alpath = Directory.GetCurrentDirectory() + @"\_temp-project\audio\" + acodec;
+                            }
+
+                            if (Common.GIFflag == true)
+                            {
+                                Process ps = new();
+                                ProcessStartInfo pi = new()
+                                {
+                                    FileName = ffp,
+                                    Arguments = "-i \"" + Common.VideoPath + "\" -movflags faststart -pix_fmt yuv420p -vf \"scale = trunc(iw / 2) * 2:trunc(ih / 2) * 2\" " + Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4",
+                                    WindowStyle = ProcessWindowStyle.Hidden,
+                                    UseShellExecute = true
+                                };
+                                ps = Process.Start(pi);
+                                ps.WaitForExit();
+
+                                Common.VideoPath = Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4";
+                            }
+
+                            using var video = new VideoCapture(Common.VideoPath);
+
+                            Common.DeletePath = delvlpath;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = video.FrameCount;
+
+                            Form1.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                return;
+                            }
+
+                            if (!File.Exists(alpath) && Common.GIFflag != true)
+                            {
+                                MessageBox.Show(Strings.AudioNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            Common.ProgressFlag = 2;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
+
+                            Form2.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                return;
+                            }
+
+                            Common.UpscaleFlag = 1;
+
+                            if (Common.GIFflag == true)
+                            {
+                                button_Video.Text = Strings.ButtonReUpScaleGIF;
+                            }
+                            else
+                            {
+                                button_Video.Text = Strings.ButtonReUpscaleVideo;
+                            }
+
+                            button_Merge.Enabled = true;
+                            MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
                 }
-                else
-                {
-                    delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
-                }
-                if (al != "")
-                {
-                    if (!Directory.Exists(al + @"\audio\"))
-                    {
-                        Directory.CreateDirectory(al + @"\audio\");
-                    }
-                    alpath = al + @"\audio\" + acodec;
-                }
-                else
-                {
-                    alpath = Directory.GetCurrentDirectory() + @"\_temp-project\audio\" + acodec;
-                }
-
-                if (Common.GIFflag == true)
-                {
-                    Process ps = new();
-                    ProcessStartInfo pi = new()
-                    {
-                        FileName = ffp,
-                        Arguments = "-i \"" + Common.VideoPath + "\" -movflags faststart -pix_fmt yuv420p -vf \"scale = trunc(iw / 2) * 2:trunc(ih / 2) * 2\" " + Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4",
-                        WindowStyle = ProcessWindowStyle.Hidden,
-                        UseShellExecute = true
-                    };
-                    ps = Process.Start(pi);
-                    ps.WaitForExit();
-
-                    Common.VideoPath = Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4";
-                }
-
-                using var video = new VideoCapture(Common.VideoPath);
-
-                Common.DeletePath = delvlpath;
-                Common.ProgMin = 0;
-                Common.ProgMax = video.FrameCount;
-
-                Form1.ShowDialog();
-
-                if (Common.AbortFlag != 0)
-                {
-                    Common.DeleteDirectoryFiles(Common.DeletePathFrames);
-                    Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
-                    Common.DeleteDirectoryFiles(Common.DeletePathAudio);
-                    return;
-                }
-
-                if (!File.Exists(alpath) && Common.GIFflag != true)
-                {
-                    MessageBox.Show(Strings.AudioNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                Common.ProgressFlag = 2;
-                Common.ProgMin = 0;
-                Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
-
-                Form2.ShowDialog();
-
-                if (Common.AbortFlag != 0)
-                {
-                    Common.DeleteDirectoryFiles(Common.DeletePathFrames);
-                    Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
-                    Common.DeleteDirectoryFiles(Common.DeletePathAudio);
-                    return;
-                }
-
-                Common.UpscaleFlag = 1;
-
-                if (Common.GIFflag == true)
-                {
-                    button_Video.Text = Strings.ButtonReUpScaleGIF;
-                }
-                else
-                {
-                    button_Video.Text = Strings.ButtonReUpscaleVideo;
-                }
-                
-                button_Merge.Enabled = true;
-                MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 using FormProgress Form1 = new(4);
-                using FormProgress Form2 = new(3);
-                if (vl != "")
+                switch (engine)
                 {
-                    if (!Directory.Exists(vl + @"\image-frames\"))
-                    {
-                        Directory.CreateDirectory(vl + @"\image-frames\");
-                        Directory.CreateDirectory(vl + @"\image-frames2x\");
-                    }
-                    delvlpath = vl + @"\image-frames\";
-                    delvlpath2x = vl + @"\image-frames2x\";
+                    case 0:
+                        {
+                            using FormProgress Form2 = new(3);
+                            if (vl != "")
+                            {
+                                if (!Directory.Exists(vl + @"\image-frames\"))
+                                {
+                                    Directory.CreateDirectory(vl + @"\image-frames\");
+                                    Directory.CreateDirectory(vl + @"\image-frames2x\");
+                                }
+                                delvlpath = vl + @"\image-frames\";
+                                delvlpath2x = vl + @"\image-frames2x\";
+                            }
+                            else
+                            {
+                                delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                                delvlpath2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
+                            }
+
+                            Common.DeleteFlag = 0;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(Common.DeletePath, "*.*").Length;
+
+                            Form1.ShowDialog();
+
+                            foreach (var file in Directory.GetFiles(delvlpath2x, "*.*"))
+                            {
+                                FileInfo fi = new(file);
+                                File.Move(file, delvlpath + "\\" + fi.Name);
+                            }
+
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
+
+                            Form2.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.UpscaleFlag = 0;
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                button_Video.Text = Strings.ButtonUpscaleVideo;
+                                return;
+                            }
+
+                            Common.UpscaleFlag = 1;
+                            MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
+                    case 1:
+                        {
+                            using FormProgress Form2 = new(3,1);
+                            if (vl != "")
+                            {
+                                if (!Directory.Exists(vl + @"\image-frames\"))
+                                {
+                                    Directory.CreateDirectory(vl + @"\image-frames\");
+                                    Directory.CreateDirectory(vl + @"\image-frames2x\");
+                                }
+                                delvlpath = vl + @"\image-frames\";
+                                delvlpath2x = vl + @"\image-frames2x\";
+                            }
+                            else
+                            {
+                                delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                                delvlpath2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
+                            }
+
+                            Common.DeleteFlag = 0;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(Common.DeletePath, "*.*").Length;
+
+                            Form1.ShowDialog();
+
+                            foreach (var file in Directory.GetFiles(delvlpath2x, "*.*"))
+                            {
+                                FileInfo fi = new(file);
+                                File.Move(file, delvlpath + "\\" + fi.Name);
+                            }
+
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
+
+                            Form2.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.UpscaleFlag = 0;
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                button_Video.Text = Strings.ButtonUpscaleVideo;
+                                return;
+                            }
+
+                            Common.UpscaleFlag = 1;
+                            MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
+                    default:
+                        {
+                            using FormProgress Form2 = new(3);
+                            if (vl != "")
+                            {
+                                if (!Directory.Exists(vl + @"\image-frames\"))
+                                {
+                                    Directory.CreateDirectory(vl + @"\image-frames\");
+                                    Directory.CreateDirectory(vl + @"\image-frames2x\");
+                                }
+                                delvlpath = vl + @"\image-frames\";
+                                delvlpath2x = vl + @"\image-frames2x\";
+                            }
+                            else
+                            {
+                                delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                                delvlpath2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
+                            }
+
+                            Common.DeleteFlag = 0;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(Common.DeletePath, "*.*").Length;
+
+                            Form1.ShowDialog();
+
+                            foreach (var file in Directory.GetFiles(delvlpath2x, "*.*"))
+                            {
+                                FileInfo fi = new(file);
+                                File.Move(file, delvlpath + "\\" + fi.Name);
+                            }
+
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
+
+                            Form2.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.UpscaleFlag = 0;
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                button_Video.Text = Strings.ButtonUpscaleVideo;
+                                return;
+                            }
+
+                            Common.UpscaleFlag = 1;
+                            MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
                 }
-                else
-                {
-                    delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
-                    delvlpath2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
-                }
-
-                Common.DeleteFlag = 0;
-                Common.ProgMin = 0;
-                Common.ProgMax = Directory.GetFiles(Common.DeletePath, "*.*").Length;
-
-                Form1.ShowDialog();
-
-                foreach (var file in Directory.GetFiles(delvlpath2x, "*.*"))
-                {
-                    FileInfo fi = new(file);
-                    File.Move(file, delvlpath + "\\" + fi.Name);
-                }
-
-                Common.ProgMin = 0;
-                Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
-
-                Form2.ShowDialog();
-
-                if (Common.AbortFlag != 0)
-                {
-                    Common.UpscaleFlag = 0;
-                    Common.DeleteDirectoryFiles(Common.DeletePathFrames);
-                    Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
-                    Common.DeleteDirectoryFiles(Common.DeletePathAudio);
-                    button_Video.Text = Strings.ButtonUpscaleVideo;
-                    return;
-                }
-
-                Common.UpscaleFlag = 1;
-                MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -1443,7 +2616,7 @@ namespace NVGE
             else // GIFじゃない場合
             {
                 bool cvot = bool.Parse(Config.Entry["VideoGeneration"].Value);
-                int vot = int.Parse(Config.Entry["VideoGeneration"]["Index"].Value);
+                int vot = int.Parse(Config.Entry["GenerationIndex"].Value);
 
                 if (cvot != false) // 生成方法を指定しているかどうか
                 {
