@@ -32,12 +32,17 @@ namespace NVGE
                     MessageBox.Show("Multiple launch of applications is not allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\waifu2x\waifu2x-ncnn-vulkan.exe"))
+                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\engines\waifu2x\waifu2x-ncnn-vulkan.exe"))
                 {
                     MessageBox.Show("The required file 'waifu2x-ncnn-vulkan.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\realesrgan\realesrgan-ncnn-vulkan.exe"))
+                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\engines\realcugan\realcugan-ncnn-vulkan.exe"))
+                {
+                    MessageBox.Show("The required file 'realcugan-ncnn-vulkan.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\engines\realesrgan\realesrgan-ncnn-vulkan.exe"))
                 {
                     MessageBox.Show("The required file 'realesrgan-ncnn-vulkan.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
