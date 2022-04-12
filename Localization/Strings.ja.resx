@@ -120,6 +120,9 @@
   <data name="AnimGIFCaption" xml:space="preserve">
     <value>アニメーション GIF</value>
   </data>
+  <data name="AppUpdateConfirmCaption" xml:space="preserve">
+    <value>アップデートをダウンロードしますか？</value>
+  </data>
   <data name="AudioNot" xml:space="preserve">
     <value>音声ファイルの抜き出しに失敗しました。
 高度な設定を有効にしている場合、設定の確認を行ってください。</value>
@@ -146,6 +149,11 @@
   </data>
   <data name="ConvertScalled" xml:space="preserve">
     <value>ファイル 変換済み</value>
+  </data>
+  <data name="cuganModelToolTipCaption" xml:space="preserve">
+    <value>アップスケール時に使用するモデルを指定します。
+SE: デフォルトではこちらが選択されています。
+Nose: アップスケール倍率は'2倍'のみ指定できます。ノイズ除去オプションは使用できません。</value>
   </data>
   <data name="CurrentString" xml:space="preserve">
     <value>現在のバージョン：</value>
@@ -288,6 +296,9 @@
   <data name="MERGEScalled" xml:space="preserve">
     <value>フレーム</value>
   </data>
+  <data name="ModelNotSupportedOptionCaption" xml:space="preserve">
+    <value>このモデルではこのオプションは使用できません。</value>
+  </data>
   <data name="MSGAlready" xml:space="preserve">
     <value>指定されたフォルダ内には既にファイルが存在します。
 このまま続行した場合、指定されたフォルダ内の元のファイルは全て失われます。
@@ -317,6 +328,9 @@
   <data name="NotReadedString" xml:space="preserve">
     <value>ファイルを開いてください…</value>
   </data>
+  <data name="NotReductionIndex" xml:space="preserve">
+    <value>除去しない</value>
+  </data>
   <data name="OFDImageTitle" xml:space="preserve">
     <value>アップスケーリングする画像ファイルを開く</value>
   </data>
@@ -325,6 +339,9 @@
   </data>
   <data name="OpenFormatChangeDialogCaption" xml:space="preserve">
     <value>形式変更するファイルを開く</value>
+  </data>
+  <data name="PixelValueNotSetCaption" xml:space="preserve">
+    <value>ピクセル値が正しく入力されていません。</value>
   </data>
   <data name="ProgressAbortConfirm" xml:space="preserve">
     <value>現在、処理が進行中です。
@@ -362,6 +379,9 @@ Real-ESRGAN Photo: 写真等をアップスケールする際に適したモデ�
   <data name="UnExpectedError" xml:space="preserve">
     <value>予期せぬエラーが発生しました。
 {0}</value>
+  </data>
+  <data name="UpdateCompletedCaption" xml:space="preserve">
+    <value>アップデートが完了しました。</value>
   </data>
   <data name="UpdateConfirm" xml:space="preserve">
     <value>アップデートが実行できます。

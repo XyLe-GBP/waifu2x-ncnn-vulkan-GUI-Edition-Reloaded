@@ -120,6 +120,9 @@
   <data name="AnimGIFCaption" xml:space="preserve">
     <value>Animation GIF</value>
   </data>
+  <data name="AppUpdateConfirmCaption" xml:space="preserve">
+    <value>你想下载更新吗？</value>
+  </data>
   <data name="AudioNot" xml:space="preserve">
     <value>音频文件的提取失败。
 如果你启用了高级设置，请检查你的设置。</value>
@@ -146,6 +149,11 @@
   </data>
   <data name="ConvertScalled" xml:space="preserve">
     <value>文件已转换</value>
+  </data>
+  <data name="cuganModelToolTipCaption" xml:space="preserve">
+    <value>指定升格时要使用的模型。
+SE：默认情况下选择该选项。
+Nose：只能指定 "2x "为升压系数。 去噪选项不可用。</value>
   </data>
   <data name="CurrentString" xml:space="preserve">
     <value>当前版本：</value>
@@ -288,6 +296,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="MERGEScalled" xml:space="preserve">
     <value>框架</value>
   </data>
+  <data name="ModelNotSupportedOptionCaption" xml:space="preserve">
+    <value>此型号不提供此选项。</value>
+  </data>
   <data name="MSGAlready" xml:space="preserve">
     <value>在指定的文件夹中已经有了文件。
 如果你继续，指定文件夹中的所有原始文件都会丢失。
@@ -317,6 +328,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="NotReadedString" xml:space="preserve">
     <value>打开任何文件。</value>
   </data>
+  <data name="NotReductionIndex" xml:space="preserve">
+    <value>No Reduction</value>
+  </data>
   <data name="OFDImageTitle" xml:space="preserve">
     <value>打开要升格的图像文件</value>
   </data>
@@ -325,6 +339,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   </data>
   <data name="OpenFormatChangeDialogCaption" xml:space="preserve">
     <value>打开要重新格式化的文件</value>
+  </data>
+  <data name="PixelValueNotSetCaption" xml:space="preserve">
+    <value>像素值没有正确输入。</value>
   </data>
   <data name="ProgressAbortConfirm" xml:space="preserve">
     <value>该进程目前正在进行中。
@@ -362,6 +379,9 @@ Real-ESRGAN Photo：该模型适用于放大照片等。</value>
   <data name="UnExpectedError" xml:space="preserve">
     <value>发生了一个意外的错误。
 {0}</value>
+  </data>
+  <data name="UpdateCompletedCaption" xml:space="preserve">
+    <value>更新完成。</value>
   </data>
   <data name="UpdateConfirm" xml:space="preserve">
     <value>可以进行更新。

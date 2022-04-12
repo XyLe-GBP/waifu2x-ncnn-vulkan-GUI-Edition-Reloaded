@@ -120,6 +120,9 @@
   <data name="AnimGIFCaption" xml:space="preserve">
     <value>Animation GIF</value>
   </data>
+  <data name="AppUpdateConfirmCaption" xml:space="preserve">
+    <value>Do you want to download updates?</value>
+  </data>
   <data name="AudioNot" xml:space="preserve">
     <value>Failed to extract the audio file.
 If you have enabled advanced settings, please check your settings.</value>
@@ -147,6 +150,11 @@ Please wait a moment...</value>
   </data>
   <data name="ConvertScalled" xml:space="preserve">
     <value>files converted</value>
+  </data>
+  <data name="cuganModelToolTipCaption" xml:space="preserve">
+    <value>Specifies the model to be used when upscaling.
+SE: This is selected by default.
+Nose: Only '2x' can be specified for the upscaling factor. The denoising option is not available.</value>
   </data>
   <data name="CurrentString" xml:space="preserve">
     <value>Current version:</value>
@@ -280,6 +288,9 @@ Please wait...</value>
   <data name="MERGEScalled" xml:space="preserve">
     <value>frames</value>
   </data>
+  <data name="ModelNotSupportedOptionCaption" xml:space="preserve">
+    <value>This option is not available for this model.</value>
+  </data>
   <data name="MSGAlready" xml:space="preserve">
     <value>The file already exists in the specified folder.
 If the process is executed as is, all files in the specified folder will be lost.
@@ -303,6 +314,9 @@ Do you wish to continue?</value>
   <data name="NotReadedString" xml:space="preserve">
     <value>Not Readed.</value>
   </data>
+  <data name="NotReductionIndex" xml:space="preserve">
+    <value>No Reduction</value>
+  </data>
   <data name="OFDImageTitle" xml:space="preserve">
     <value>Open Upscaling Image(s)</value>
   </data>
@@ -311,6 +325,9 @@ Do you wish to continue?</value>
   </data>
   <data name="OpenFormatChangeDialogCaption" xml:space="preserve">
     <value>Open the file to be reformatted.</value>
+  </data>
+  <data name="PixelValueNotSetCaption" xml:space="preserve">
+    <value>Pixel values are not entered correctly.</value>
   </data>
   <data name="ProgressAbortConfirm" xml:space="preserve">
     <value>Processing is currently in progress.
@@ -348,6 +365,9 @@ Please configure the settings from the 'Settings' item.</value>
   <data name="UnExpectedError" xml:space="preserve">
     <value>An unexpected error has occurred.
 {0}</value>
+  </data>
+  <data name="UpdateCompletedCaption" xml:space="preserve">
+    <value>The update has been completed.</value>
   </data>
   <data name="UpdateConfirm" xml:space="preserve">
     <value>Update is available.

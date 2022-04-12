@@ -70,6 +70,15 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   Do you want to download updates? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AppUpdateConfirmCaption {
+            get {
+                return ResourceManager.GetString("AppUpdateConfirmCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Failed to extract the audio file.
         ///If you have enabled advanced settings, please check your settings. に類似しているローカライズされた文字列を検索します。
         /// </summary>
@@ -142,6 +151,17 @@ namespace NVGE.Localization {
         public static string ConvertScalled {
             get {
                 return ResourceManager.GetString("ConvertScalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Specifies the model to be used when upscaling.
+        ///SE: This is selected by default.
+        ///Nose: Only &apos;2x&apos; can be specified for the upscaling factor. The denoising option is not available. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string cuganModelToolTipCaption {
+            get {
+                return ResourceManager.GetString("cuganModelToolTipCaption", resourceCulture);
             }
         }
         
@@ -527,6 +547,15 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   This option is not available for this model. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ModelNotSupportedOptionCaption {
+            get {
+                return ResourceManager.GetString("ModelNotSupportedOptionCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   The file already exists in the specified folder.
         ///If the process is executed as is, all files in the specified folder will be lost.
         ///Do you wish to continue? に類似しているローカライズされた文字列を検索します。
@@ -610,6 +639,15 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   No Reduction に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NotReductionIndex {
+            get {
+                return ResourceManager.GetString("NotReductionIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Open Upscaling Image(s) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string OFDImageTitle {
@@ -633,6 +671,15 @@ namespace NVGE.Localization {
         public static string OpenFormatChangeDialogCaption {
             get {
                 return ResourceManager.GetString("OpenFormatChangeDialogCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Pixel values are not entered correctly. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PixelValueNotSetCaption {
+            get {
+                return ResourceManager.GetString("PixelValueNotSetCaption", resourceCulture);
             }
         }
         
@@ -730,6 +777,15 @@ namespace NVGE.Localization {
         public static string UnExpectedError {
             get {
                 return ResourceManager.GetString("UnExpectedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The update has been completed. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UpdateCompletedCaption {
+            get {
+                return ResourceManager.GetString("UpdateCompletedCaption", resourceCulture);
             }
         }
         
