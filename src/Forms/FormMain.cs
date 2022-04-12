@@ -34,7 +34,7 @@ namespace NVGE
         private void FormMain_Load(object sender, EventArgs e)
         {
             FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
-            Text = "waifu2x-nvge ( build: " + ver.FileVersion.ToString() + "-Beta )";
+            Text = "waifu2x-nvger ( build: " + ver.FileVersion.ToString() + "-Beta )";
 
             label1.Text = Strings.DragDropCaption;
 
@@ -50,8 +50,6 @@ namespace NVGE
             label_Processor.Text = CPUInfo[0] + " [ " + CPUInfo[1] + " Core / " + CPUInfo[2] + " Threads ]";
             label_Graphic.Text = GPUInfo[0] + " - " + GPUInfo[1] + " [ " + GPUInfo[2] + " RAM ]";
             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-
-            CheckForUpdatesForInit();
 
             if (!File.Exists(Common.xmlpath))
             {
@@ -96,6 +94,21 @@ namespace NVGE
             }
             
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+
+            if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
+            {
+                File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
+                string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+                File.Delete(updpath + @"\updater.exe");
+                File.Delete(updpath + @"\waifu2x-nvger.zip");
+                Common.DeleteDirectory(updpath + @"\updater-temp");
+
+                MessageBox.Show(Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                CheckForUpdatesForInit();
+            }
 
             Task.Run(() => CheckForFFmpeg());
         }
@@ -537,11 +550,11 @@ namespace NVGE
                                 }
                             }
                             break;
-                        case 1: // realesrgan
+                        case 1: // cugan
                             {
                                 switch (scl)
                                 {
-                                    case 1: // x8
+                                    case 4: // x8
                                         {
                                             using FormProgress Form2 = new(0, 1);
                                             Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
@@ -572,9 +585,161 @@ namespace NVGE
                                             }
                                         }
                                         break;
-                                    case 2: // x12
+                                    case 5: // x16
                                         {
                                             using FormProgress Form2 = new(0, 1);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 6: // x32
+                                        {
+                                            using FormProgress Form2 = new(0, 1);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default: // nml
+                                        {
+                                            using FormProgress Form2 = new(0, 1);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+                                        }
+                                        break;
+                                }
+                            }
+                            break;
+                        case 2: // realesrgan
+                            {
+                                switch (scl)
+                                {
+                                    case 1: // x8
+                                        {
+                                            using FormProgress Form2 = new(0, 2);
+                                            Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            File.Move(Common.SFDSavePath, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dst);
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 2: // x12
+                                        {
+                                            using FormProgress Form2 = new(0, 2);
                                             Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
@@ -618,7 +783,7 @@ namespace NVGE
                                         break;
                                     case 3: // x16
                                         {
-                                            using FormProgress Form2 = new(0, 1);
+                                            using FormProgress Form2 = new(0, 2);
                                             Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
@@ -675,7 +840,7 @@ namespace NVGE
                                         break;
                                     case 4: // x32
                                         {
-                                            using FormProgress Form2 = new(0, 1);
+                                            using FormProgress Form2 = new(0, 2);
                                             Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
@@ -745,7 +910,7 @@ namespace NVGE
                                         break;
                                     default:
                                         {
-                                            using FormProgress Form2 = new(0, 1);
+                                            using FormProgress Form2 = new(0, 2);
                                             Common.SFDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x\" + dst;
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*").Length;
@@ -1342,13 +1507,189 @@ namespace NVGE
                                 }
                             }
                             break;
-                        case 1: // realesrgan
+                        case 1: // realcugan
+                            {
+                                switch (scl)
+                                {
+                                    case 4: // x8
+                                        {
+                                            using FormProgress Form2 = new(1,1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 5: // x16
+                                        {
+                                            using FormProgress Form2 = new(1, 1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 6: // x32
+                                        {
+                                            using FormProgress Form2 = new(1, 1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*.*"))
+                                            {
+                                                File.Delete(file);
+                                            }
+                                            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*.*"))
+                                            {
+                                                FileInfo fi = new(file);
+                                                File.Move(file, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + fi.Name);
+                                            }
+
+                                            Form2.ShowDialog();
+
+                                            if (Common.AbortFlag != 0)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default: // nml
+                                        {
+                                            using FormProgress Form2 = new(1, 1);
+                                            Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+                                            Common.ProgMin = 0;
+                                            Common.ProgMax = Common.ImageFile.Length;
+
+                                            Common.stopwatch = new Stopwatch();
+                                            Common.stopwatch.Start();
+
+                                            Form2.ShowDialog();
+                                        }
+                                        break;
+                                }
+                            }
+                            break;
+                        case 2: // realesrgan
                             {
                                 switch (scl)
                                 {
                                     case 1: // x8
                                         {
-                                            using FormProgress Form2 = new(1, 1);
+                                            using FormProgress Form2 = new(1, 2);
                                             Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Common.ImageFile.Length;
@@ -1383,7 +1724,7 @@ namespace NVGE
                                         break;
                                     case 2: // x12
                                         {
-                                            using FormProgress Form2 = new(1, 1);
+                                            using FormProgress Form2 = new(1, 2);
                                             Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Common.ImageFile.Length;
@@ -1435,7 +1776,7 @@ namespace NVGE
                                         break;
                                     case 3: // x16
                                         {
-                                            using FormProgress Form2 = new(1, 1);
+                                            using FormProgress Form2 = new(1, 2);
                                             Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Common.ImageFile.Length;
@@ -1504,7 +1845,7 @@ namespace NVGE
                                         break;
                                     case 4: // x32
                                         {
-                                            using FormProgress Form2 = new(1, 1);
+                                            using FormProgress Form2 = new(1, 2);
                                             Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Common.ImageFile.Length;
@@ -1590,7 +1931,7 @@ namespace NVGE
                                         break;
                                     default: // nml
                                         {
-                                            using FormProgress Form2 = new(1, 1);
+                                            using FormProgress Form2 = new(1, 2);
                                             Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Common.ImageFile.Length;
@@ -2080,7 +2421,7 @@ namespace NVGE
 
                 switch (engine)
                 {
-                    case 0:
+                    case 0: // waifu2x
                         {
                             using FormProgress Form2 = new(2);
                             if (vl != "")
@@ -2176,9 +2517,105 @@ namespace NVGE
                             MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         break;
-                    case 1:
+                    case 1: // cugan
                         {
                             using FormProgress Form2 = new(2,1);
+                            if (vl != "")
+                            {
+                                if (!Directory.Exists(vl + @"\image-frames\"))
+                                {
+                                    Directory.CreateDirectory(vl + @"\image-frames\");
+                                    Directory.CreateDirectory(vl + @"\image-frames2x\");
+                                }
+                                delvlpath = vl + @"\image-frames\";
+                            }
+                            else
+                            {
+                                delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                            }
+                            if (al != "")
+                            {
+                                if (!Directory.Exists(al + @"\audio\"))
+                                {
+                                    Directory.CreateDirectory(al + @"\audio\");
+                                }
+                                alpath = al + @"\audio\" + acodec;
+                            }
+                            else
+                            {
+                                alpath = Directory.GetCurrentDirectory() + @"\_temp-project\audio\" + acodec;
+                            }
+
+                            if (Common.GIFflag == true)
+                            {
+                                Process ps = new();
+                                ProcessStartInfo pi = new()
+                                {
+                                    FileName = ffp,
+                                    Arguments = "-i \"" + Common.VideoPath + "\" -movflags faststart -pix_fmt yuv420p -vf \"scale = trunc(iw / 2) * 2:trunc(ih / 2) * 2\" " + Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4",
+                                    WindowStyle = ProcessWindowStyle.Hidden,
+                                    UseShellExecute = true
+                                };
+                                ps = Process.Start(pi);
+                                ps.WaitForExit();
+
+                                Common.VideoPath = Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4";
+                            }
+
+                            using var video = new VideoCapture(Common.VideoPath);
+
+                            Common.DeletePath = delvlpath;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = video.FrameCount;
+
+                            Form1.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                return;
+                            }
+
+                            if (!File.Exists(alpath) && Common.GIFflag != true)
+                            {
+                                MessageBox.Show(Strings.AudioNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            Common.ProgressFlag = 2;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
+
+                            Form2.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                return;
+                            }
+
+                            Common.UpscaleFlag = 1;
+
+                            if (Common.GIFflag == true)
+                            {
+                                button_Video.Text = Strings.ButtonReUpScaleGIF;
+                            }
+                            else
+                            {
+                                button_Video.Text = Strings.ButtonReUpscaleVideo;
+                            }
+
+                            button_Merge.Enabled = true;
+                            MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
+                    case 2: // esrgan
+                        {
+                            using FormProgress Form2 = new(2, 2);
                             if (vl != "")
                             {
                                 if (!Directory.Exists(vl + @"\image-frames\"))
@@ -2375,7 +2812,7 @@ namespace NVGE
                 using FormProgress Form1 = new(4);
                 switch (engine)
                 {
-                    case 0:
+                    case 0: //waifu2x
                         {
                             using FormProgress Form2 = new(3);
                             if (vl != "")
@@ -2425,9 +2862,59 @@ namespace NVGE
                             MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         break;
-                    case 1:
+                    case 1: // cugan
                         {
                             using FormProgress Form2 = new(3,1);
+                            if (vl != "")
+                            {
+                                if (!Directory.Exists(vl + @"\image-frames\"))
+                                {
+                                    Directory.CreateDirectory(vl + @"\image-frames\");
+                                    Directory.CreateDirectory(vl + @"\image-frames2x\");
+                                }
+                                delvlpath = vl + @"\image-frames\";
+                                delvlpath2x = vl + @"\image-frames2x\";
+                            }
+                            else
+                            {
+                                delvlpath = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                                delvlpath2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
+                            }
+
+                            Common.DeleteFlag = 0;
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(Common.DeletePath, "*.*").Length;
+
+                            Form1.ShowDialog();
+
+                            foreach (var file in Directory.GetFiles(delvlpath2x, "*.*"))
+                            {
+                                FileInfo fi = new(file);
+                                File.Move(file, delvlpath + "\\" + fi.Name);
+                            }
+
+                            Common.ProgMin = 0;
+                            Common.ProgMax = Directory.GetFiles(delvlpath, "*.*").Length;
+
+                            Form2.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.UpscaleFlag = 0;
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames);
+                                Common.DeleteDirectoryFiles(Common.DeletePathFrames2x);
+                                Common.DeleteDirectoryFiles(Common.DeletePathAudio);
+                                button_Video.Text = Strings.ButtonUpscaleVideo;
+                                return;
+                            }
+
+                            Common.UpscaleFlag = 1;
+                            MessageBox.Show(Strings.VUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
+                    case 2: // esrgan
+                        {
+                            using FormProgress Form2 = new(3, 2);
                             if (vl != "")
                             {
                                 if (!Directory.Exists(vl + @"\image-frames\"))
@@ -3617,16 +4104,68 @@ namespace NVGE
                     switch (ver.FileVersion.ToString().CompareTo(hv[8..].Replace("\n", "")))
                     {
                         case -1:
-                            DialogResult dr = MessageBox.Show(this, Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.UpdateConfirm, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            DialogResult dr = MessageBox.Show(this, Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.AppUpdateConfirmCaption, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (dr == DialogResult.Yes)
                             {
-                                Common.OpenURI("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases");
-                                return;
+                                using FormUpdateApplicationType fuat = new();
+                                fuat.ShowDialog();
+                                using FormProgress form = new(8);
+                                form.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    Common.DlcancelFlag = 0;
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return;
+                                }
+
+                                string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+                                File.Move(Directory.GetCurrentDirectory() + @"\res\updater.exe", updpath + @"\updater.exe");
+                                string wtext;
+                                switch (Common.ApplicationPortable)
+                                {
+                                    case false:
+                                        {
+                                            wtext = Directory.GetCurrentDirectory() + "\r\nrelease";
+                                        }
+                                        break;
+                                    case true:
+                                        {
+                                            wtext = Directory.GetCurrentDirectory() + "\r\nportable";
+                                        }
+                                        break;
+                                }
+                                File.WriteAllText(updpath + @"\updater.txt", wtext);
+                                File.Move(updpath + @"\updater.txt", updpath + @"\updater.dat");
+                                if (File.Exists(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip"))
+                                {
+                                    File.Move(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip", updpath + @"\waifu2x-nvger.zip");
+                                }
+
+                                ProcessStartInfo pi = new()
+                                {
+                                    FileName = updpath + @"\updater.exe",
+                                    Arguments = null,
+                                    UseShellExecute = true,
+                                    WindowStyle = ProcessWindowStyle.Normal,
+                                };
+                                Process.Start(pi);
+                                Close();
                             }
                             else
                             {
-                                return;
+                                DialogResult dr2 = MessageBox.Show(this, Strings.UpdateConfirm, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                if (dr2 == DialogResult.Yes)
+                                {
+                                    Common.OpenURI("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases");
+                                    return;
+                                }
+                                else
+                                {
+                                    return;
+                                }
                             }
+                            return;
                         case 0:
                             MessageBox.Show(this, Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.Uptodate, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
@@ -3662,22 +4201,76 @@ namespace NVGE
                     using Stream hcs = await Task.Run(() => Network.GetWebStreamAsync(appUpdatechecker, Network.GetUri("https://raw.githubusercontent.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/master/VERSIONINFO")));
                     using StreamReader hsr = new(hcs);
                     hv = await Task.Run(() => hsr.ReadToEndAsync());
+                    Common.GitHubLatestVersion = hv[8..].Replace("\n", "");
 
                     FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
 
                     switch (ver.FileVersion.ToString().CompareTo(hv[8..].Replace("\n", "")))
                     {
                         case -1:
-                            DialogResult dr = MessageBox.Show(this, Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.UpdateConfirm, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            DialogResult dr = MessageBox.Show(this, Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.AppUpdateConfirmCaption, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (dr == DialogResult.Yes)
                             {
-                                Common.OpenURI("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases");
-                                return;
+                                using FormUpdateApplicationType fuat = new();
+                                fuat.ShowDialog();
+                                Common.ProgMin = 0;
+                                using FormProgress form = new(8);
+                                form.ShowDialog();
+
+                                if (Common.AbortFlag != 0)
+                                {
+                                    Common.DlcancelFlag = 0;
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return;
+                                }
+
+                                string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+                                File.Move(Directory.GetCurrentDirectory() + @"\res\updater.exe", updpath + @"\updater.exe");
+                                string wtext;
+                                switch (Common.ApplicationPortable)
+                                {
+                                    case false:
+                                        {
+                                            wtext = Directory.GetCurrentDirectory() + "\r\nrelease";
+                                        }
+                                        break;
+                                    case true:
+                                        {
+                                            wtext = Directory.GetCurrentDirectory() + "\r\nportable";
+                                        }
+                                        break;
+                                }
+                                File.WriteAllText(updpath + @"\updater.txt", wtext);
+                                File.Move(updpath + @"\updater.txt", updpath + @"\updater.dat");
+                                if (File.Exists(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip"))
+                                {
+                                    File.Move(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip", updpath + @"\waifu2x-nvger.zip");
+                                }
+
+                                ProcessStartInfo pi = new()
+                                {
+                                    FileName = updpath + @"\updater.exe",
+                                    Arguments = null,
+                                    UseShellExecute = true,
+                                    WindowStyle = ProcessWindowStyle.Normal,
+                                };
+                                Process.Start(pi);
+                                Close();
                             }
                             else
                             {
-                                return;
+                                DialogResult dr2 = MessageBox.Show(this, Strings.UpdateConfirm, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                if (dr2 == DialogResult.Yes)
+                                {
+                                    Common.OpenURI("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases");
+                                    return;
+                                }
+                                else
+                                {
+                                    return;
+                                }
                             }
+                            return;
                         case 0: // Latest
                             break;
                         case 1:

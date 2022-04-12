@@ -19,7 +19,7 @@ namespace NVGE
         private void FormImageUpscaleDetail_Load(object sender, EventArgs e)
         {
             Config.Load(Common.xmlpath);
-            int reduction = int.Parse(Config.Entry["Reduction"].Value), useengine = int.Parse(Config.Entry["GenerationIndex"].Value), model = int.Parse(Config.Entry["Model"].Value), gpu = int.Parse(Config.Entry["GPU"].Value), scale = int.Parse(Config.Entry["Scale"].Value), blksize = int.Parse(Config.Entry["Blocksize"].Value), thread = int.Parse(Config.Entry["Thread"].Value), format = int.Parse(Config.Entry["Format"].Value);
+            int reduction = int.Parse(Config.Entry["Reduction"].Value), useengine = int.Parse(Config.Entry["ConversionType"].Value), model = int.Parse(Config.Entry["Model"].Value), gpu = int.Parse(Config.Entry["GPU"].Value), scale = int.Parse(Config.Entry["Scale"].Value), blksize = int.Parse(Config.Entry["Blocksize"].Value), thread = int.Parse(Config.Entry["Thread"].Value), format = int.Parse(Config.Entry["Format"].Value);
             bool vbo = bool.Parse(Config.Entry["Verbose"].Value), tta = bool.Parse(Config.Entry["TTA"].Value);
 
             label_sec.Text = Common.timeSpan.TotalSeconds.ToString() + "s";
@@ -41,7 +41,8 @@ namespace NVGE
                         0 => "x1",
                         1 => "x2",
                         2 => "x4",
-                        3 => "x6",
+                        3 => "x8",
+                        4 => "x16",
                         _ => "Unknown",
                     };
                     label_gpu.Text = gpu switch
@@ -55,6 +56,36 @@ namespace NVGE
                     };
                     break;
                 case 1:
+                    label_rdl.Text = reduction switch
+                    {
+                        0 => "No Reduction",
+                        1 => "Level 0",
+                        2 => "Level 1",
+                        3 => "Level 2",
+                        4 => "Level 3",
+                        _ => "Unknown",
+                    };
+                    label_scale.Text = scale switch
+                    {
+                        0 => "x1",
+                        1 => "x2",
+                        2 => "x3",
+                        3 => "x4",
+                        4 => "x8",
+                        5 => "x16",
+                        _ => "Unknown",
+                    };
+                    label_gpu.Text = gpu switch
+                    {
+                        0 => "Autodetect",
+                        1 => "iGPU (CPU)",
+                        2 => "dGPU (GPU 0)",
+                        3 => "dGPU (GPU 1)",
+                        4 => "dGPU (GPU 2)",
+                        _ => "Unknown",
+                    };
+                    break;
+                case 2:
                     label_rdl.Text = reduction switch
                     {
                         _ => "Null",
@@ -91,7 +122,8 @@ namespace NVGE
                         0 => "x1",
                         1 => "x2",
                         2 => "x4",
-                        3 => "x6",
+                        3 => "x8",
+                        4 => "x16",
                         _ => "Unknown",
                     };
                     label_gpu.Text = gpu switch
@@ -163,6 +195,12 @@ namespace NVGE
                             _ => "Unknown",
                         },
                         1 => model switch
+                        {
+                            0 => "SE (models-se)",
+                            1 => "Nose (models-nose)",
+                            _ => "Unknown",
+                        },
+                        2 => model switch
                         {
                             0 => "Real-ESRGAN (realesrgan-x4plus)",
                             1 => "Real-ESRGAN Photo (realesrnet-x4plus)",

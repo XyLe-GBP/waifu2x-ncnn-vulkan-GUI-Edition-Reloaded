@@ -324,25 +324,30 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
     <value>キャンセル</value>
   </data>
   <data name="comboBox_engine.Items" xml:space="preserve">
-    <value>waifu2x-ncnn-vulkan (通常, 高速)</value>
+    <value>waifu2x (高画質, 高速変換, デフォルト設定)</value>
   </data>
   <data name="comboBox_engine.Items1" xml:space="preserve">
+    <value>Real-CUGAN (超高画質, 高速変換, 調整可能)</value>
+  </data>
+  <data name="comboBox_engine.Items2" xml:space="preserve">
     <value>Real-ESRGAN (超高画質, 低速変換)</value>
   </data>
   <data name="comboBox_engine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 15</value>
+    <value>139, 15</value>
   </data>
   <data name="comboBox_engine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>377, 23</value>
+    <value>355, 23</value>
   </data>
   <data name="comboBox_engine.ToolTip" xml:space="preserve">
     <value>変換エンジンを指定します。
-waifu2x-ncnn-vulkan: 通常の方式です。realesrganより画質が劣りますが、その分高速に変換できます。
-realesrgan-ncnn-vulkan: 最新の方式です。かなり高画質で変換できますが、その分変換は低速です。
+waifu2x: Real-CUGANやReal-ESRGANより画質が劣りますが、その分高速に変換できます。
+Real-CUGAN: かなり高画質で変換できますが、waifu2xより変換に時間がかかります。
+Real-ESRGAN: かなり高画質で変換できますが、waifu2xより変換に時間がかかります。
+
 </value>
   </data>
   <data name="checkBox_updetail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 131</value>
+    <value>16, 177</value>
   </data>
   <data name="checkBox_updetail.Size" type="System.Drawing.Size, System.Drawing">
     <value>293, 19</value>
@@ -354,11 +359,8 @@ realesrgan-ncnn-vulkan: 最新の方式です。かなり高画質で変換で�
     <value>アップスケーリング完了時に画像比較ダイアログを表示します。
 通常は有効になっていますが、変換作業を高速化させたい場合などは、無効にすることができます。</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>基本</value>
-  </data>
   <data name="checkBox_destfolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 156</value>
+    <value>16, 202</value>
   </data>
   <data name="checkBox_destfolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 19</value>
@@ -366,14 +368,41 @@ realesrgan-ncnn-vulkan: 最新の方式です。かなり高画質で変換で�
   <data name="checkBox_destfolder.Text" xml:space="preserve">
     <value>完了後に保存先のフォルダを開く</value>
   </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>基本</value>
+  </data>
+  <data name="comboBox_syncgap.Items" xml:space="preserve">
+    <value>無同期</value>
+  </data>
+  <data name="comboBox_syncgap.Items1" xml:space="preserve">
+    <value>正確な同期</value>
+  </data>
+  <data name="comboBox_syncgap.Items2" xml:space="preserve">
+    <value>曖昧な同期</value>
+  </data>
+  <data name="comboBox_syncgap.Items3" xml:space="preserve">
+    <value>非常に曖昧な同期</value>
+  </data>
+  <data name="comboBox_syncgap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 119</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 122</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 15</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>同期モード：</value>
+  </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 18</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 15</value>
+    <value>132, 15</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>使用する変換方式：</value>
+    <value>変換に使用するエンジン：</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>高度</value>

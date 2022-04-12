@@ -136,7 +136,7 @@
     <value>激活 "高级设置 "项目。</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 94</value>
+    <value>9, 93</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 15</value>
@@ -314,18 +314,19 @@ Photo：该模型适合用于放大照片。</value>
     <value>取消</value>
   </data>
   <data name="comboBox_engine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 15</value>
+    <value>125, 15</value>
   </data>
   <data name="comboBox_engine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>382, 23</value>
+    <value>369, 23</value>
   </data>
   <data name="comboBox_engine.ToolTip" xml:space="preserve">
     <value>指定转换引擎。
-waifu2x-ncnn-vulkan：正常方法；图像质量不如realesrgan，但转换速度更快。
-realesrgan-ncnn-vulkan：最新的方法。 它能以相当高的质量进行转换，但转换速度较慢。</value>
+waifu2x: 比Real-CUGAN和Real-ESRGAN的质量低，但转换速度快。
+Real-CUGAN：转换的质量要高得多，但比waifu2x花的时间长。
+Real-ESRGAN：转换的质量要高得多，但比waifu2x花费的时间长。</value>
   </data>
   <data name="checkBox_updetail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 120</value>
+    <value>13, 181</value>
   </data>
   <data name="checkBox_updetail.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 19</value>
@@ -337,11 +338,8 @@ realesrgan-ncnn-vulkan：最新的方法。 它能以相当高的质量进行转
     <value>当升频完成时，显示图像比较对话。
 通常是启用的，但可以禁用，例如，如果你想加快转换过程。</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>一般</value>
-  </data>
   <data name="checkBox_destfolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 145</value>
+    <value>13, 206</value>
   </data>
   <data name="checkBox_destfolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 19</value>
@@ -353,11 +351,26 @@ realesrgan-ncnn-vulkan：最新的方法。 它能以相当高的质量进行转
     <value>显示每次完成后存储升格图像的文件夹。
 通常情况下启用。</value>
   </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="comboBox_syncgap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 117</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 120</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 15</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>同步模式：</value>
+  </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 15</value>
+    <value>115, 15</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>使用的转换方法：</value>
+    <value>用于转换的发动机：</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>先进的</value>

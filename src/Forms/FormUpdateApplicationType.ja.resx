@@ -57,86 +57,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 15</value>
   </data>
-  <data name="textBox_Blocksize.ToolTip" xml:space="preserve">
-    <value>Specifies the block size to be allocated to the GPU.
-If '0' is specified, the block size is automatically allocated.
-The larger the value, the faster the conversion will be, but the more memory the GPU will use.
-This item depends on the GPU performance. If the value is too large, the conversion will fail.</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>ダウンロードするアプリケーション方式：</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox_method.Items" xml:space="preserve">
+    <value>portable (小容量, ランタイムのインストール必須)</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox_method.Items1" xml:space="preserve">
+    <value>release (大容量, ランタイムのインストール不要)</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>キャンセル</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBox_height.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label10.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBox_width.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_pixel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_TTA.ToolTip" xml:space="preserve">
-    <value>Enables the TTA mode.
-Enabling this will improve the image index, but will take a huge amount of time for image conversion.</value>
-  </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="button_OK.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="button_Cancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabControl1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPage1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_syncgap.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label14.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label13.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPage2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="$this.Text" xml:space="preserve">
+    <value>アプリケーション方式を選択</value>
   </data>
 </root>

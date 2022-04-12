@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NVGE
@@ -12,9 +14,19 @@ namespace NVGE
     public partial class FormProgress : Form
     {
         private readonly int Flag, UseEngine;
-        private readonly string waifu2xPath = Directory.GetCurrentDirectory() + @"\res\waifu2x\waifu2x-ncnn-vulkan.exe";
-        private readonly string realesrganPath = Directory.GetCurrentDirectory() + @"\res\realesrgan\realesrgan-ncnn-vulkan.exe";
+        private readonly string waifu2xPath = Directory.GetCurrentDirectory() + @"\res\engines\waifu2x\waifu2x-ncnn-vulkan.exe";
+        private readonly string realcuganPath = Directory.GetCurrentDirectory() + @"\res\engines\realcugan\realcugan-ncnn-vulkan.exe";
+        private readonly string realesrganPath = Directory.GetCurrentDirectory() + @"\res\engines\realesrgan\realesrgan-ncnn-vulkan.exe";
         private readonly string upscaledPath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
+
+        #region NetworkCommon
+        private static readonly HttpClientHandler handler = new()
+        {
+            UseProxy = false,
+            UseCookies = false
+        };
+        private static readonly HttpClient appUpdatechecker = new(handler);
+        #endregion
 
         /// <summary>
         /// Forms for various processes such as downloading, file processing, etc.
@@ -27,11 +39,13 @@ namespace NVGE
         /// <para>5: Split images from video</para>
         /// <para>6: Download or update FFmpeg</para>
         /// <para>7: Convert image(s)</para>
+        /// <para>8: Update Application</para>
         /// </param>
         /// <param name= "useengine">
         /// <para>Specifies the engine used for conversion. By default, '0' (waifu2x-ncnn-vulkan) is used.</para>
         /// <para>0: waifu2x-ncnn-vulkan</para>
-        /// <para>1: realesrgan-ncnn-vulkan</para>
+        /// <para>1: realcugan-ncnn-vulkan</para>
+        /// <para>2: realesrgan-ncnn-vulkan</para>
         /// </param>
         public FormProgress(int flag, int useengine = 0)
         {
@@ -110,7 +124,69 @@ namespace NVGE
                                 }
                             }
                             break;
-                        case 1: // realesrgan
+                        case 1: // realcugan
+                            {
+                                foreach (var filename in Common.ImageFileName)
+                                {
+                                    Config.Load(Common.xmlpath);
+                                    int fmt = int.Parse(Config.Entry["Format"].Value);
+                                    string ft = fmt switch
+                                    {
+                                        0 => ".jpg",
+                                        1 => ".png",
+                                        2 => ".webp",
+                                        3 => ".ico",
+                                        _ => ".png",
+                                    };
+                                    string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[0], ".png") + "\"";//FileInfo fi = new(file);
+
+                                    Process ps = new();
+                                    ProcessStartInfo pi = new();
+
+                                    if (ft == ".ico")
+                                    {
+                                        pi.FileName = realcuganPath;
+                                        pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath.Replace(".ico", ".png") + "\"").Replace("realcugan-ncnn-vulkan ", "");
+                                        pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                        pi.UseShellExecute = true;
+                                        ps = Process.Start(pi);
+                                    }
+                                    else
+                                    {
+                                        pi.FileName = realcuganPath;
+                                        pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("realcugan-ncnn-vulkan ", "");
+                                        pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                        pi.UseShellExecute = true;
+                                        ps = Process.Start(pi);
+                                    }
+
+                                    while (!ps.HasExited)
+                                    {
+                                        if (backgroundWorker_Progress.CancellationPending)
+                                        {
+                                            if (!ps.HasExited)
+                                            {
+                                                ps.Kill();
+                                            }
+                                            ps.Close();
+                                            e.Cancel = true;
+                                            return;
+                                        }
+                                        else if (ps.HasExited == true)
+                                        {
+                                            worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
+                                            continue;
+                                        }
+                                    }
+                                }
+                            }
+                            break;
+                        case 2: // realesrgan
                             {
                                 foreach (var filename in Common.ImageFileName)
                                 {
@@ -248,7 +324,72 @@ namespace NVGE
                                     }
                                 }
                                 break;
-                            case 1: // realesrgan
+                            case 1: // realcugan
+                                {
+                                    Config.Load(Common.xmlpath);
+                                    int fmt = int.Parse(Config.Entry["Format"].Value), i = 0;
+                                    string ft = fmt switch
+                                    {
+                                        0 => ".jpg",
+                                        1 => ".png",
+                                        2 => ".webp",
+                                        3 => ".ico",
+                                        _ => ".png",
+                                    };
+                                    foreach (var filename in Common.ImageFileName)
+                                    {
+
+                                        string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[i], ".png") + "\"";
+
+                                        ProcessStartInfo pi = new();
+                                        Process ps = new();
+
+                                        if (ft == ".ico")
+                                        {
+                                            pi.FileName = realcuganPath;
+                                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(".ico", ".png") + "\"").Replace("realcugan-ncnn-vulkan ", "");
+                                            pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                            pi.UseShellExecute = true;
+                                            ps = Process.Start(pi);
+                                        }
+                                        else
+                                        {
+                                            pi.FileName = realcuganPath;
+                                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(Common.ImageFileExt[i], ft) + "\"").Replace("realcugan-ncnn-vulkan ", "");
+                                            pi.WindowStyle = ProcessWindowStyle.Hidden;
+                                            pi.UseShellExecute = true;
+                                            ps = Process.Start(pi);
+                                        }
+
+                                        i++;
+
+                                        while (!ps.HasExited)
+                                        {
+                                            if (backgroundWorker_Progress.CancellationPending)
+                                            {
+                                                if (!ps.HasExited)
+                                                {
+                                                    ps.Kill();
+                                                }
+                                                ps.Close();
+                                                e.Cancel = true;
+                                                return;
+                                            }
+                                            else if (ps.HasExited == true)
+                                            {
+                                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
+                                                continue;
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
+                            case 2: // realesrgan
                                 {
                                     Config.Load(Common.xmlpath);
                                     int fmt = int.Parse(Config.Entry["Format"].Value), i = 0;
@@ -355,7 +496,7 @@ namespace NVGE
                         worker.ReportProgress(Directory.GetFiles(Common.DeletePath, "*.*").Length);
                     }
                     break;
-                case 5:
+                case 5: // Split images from video
                     backgroundWorker_Split.RunWorkerAsync();
                     while (backgroundWorker_Split.IsBusy)
                     {
@@ -367,36 +508,38 @@ namespace NVGE
                         worker.ReportProgress(Directory.GetFiles(Common.DeletePathFrames, "*.*").Length);
                     }
                     break;
-                case 6:
-                    Uri uri = new("https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip");
-
-                    if (Common.downloadClient == null)
+                case 6: // Download or update FFmpeg
                     {
+                        Uri uri = new("https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip");
+
+                        if (Common.downloadClient == null)
+                        {
 #pragma warning disable SYSLIB0014 // 型またはメンバーが旧型式です
-                        Common.downloadClient = new System.Net.WebClient();
+                            Common.downloadClient = new System.Net.WebClient();
 #pragma warning restore SYSLIB0014 // 型またはメンバーが旧型式です
-                        Common.downloadClient.DownloadProgressChanged += new System.Net.DownloadProgressChangedEventHandler(DownloadClient_DownloadProgressChanged);
-                        Common.downloadClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadClient_DownloadFileCompleted);
-                    }
+                            Common.downloadClient.DownloadProgressChanged += new System.Net.DownloadProgressChangedEventHandler(DownloadClient_DownloadProgressChanged);
+                            Common.downloadClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadClient_DownloadFileCompleted);
+                        }
 
-                    Common.DlsFlag = 1;
-                    Common.downloadClient.DownloadFileAsync(uri, Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
-                    while (Common.downloadClient.IsBusy)
-                    {
-                        if (backgroundWorker_Progress.CancellationPending)
+                        Common.DlsFlag = 1;
+                        Common.downloadClient.DownloadFileAsync(uri, Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                        while (Common.downloadClient.IsBusy)
                         {
-                            e.Cancel = true;
-                            Common.DlcancelFlag = 1;
-                            return;
+                            if (backgroundWorker_Progress.CancellationPending)
+                            {
+                                e.Cancel = true;
+                                Common.DlcancelFlag = 1;
+                                return;
+                            }
+                            else
+                            {
+                                worker.ReportProgress(Directory.GetFiles(Common.DeletePathFrames, "*.*").Length); // Dummy RP
+                            }
                         }
-                        else
-                        {
-                            worker.ReportProgress(Directory.GetFiles(Common.DeletePathFrames, "*.*").Length); // Dummy RP
-                        }
+                        Common.downloadClient.Dispose();
+                        break;
                     }
-                    Common.downloadClient.Dispose();
-                    break;
-                case 7:
+                case 7: // Convert Image(s)
                     backgroundWorker_Convert.RunWorkerAsync();
                     while (backgroundWorker_Convert.IsBusy)
                     {
@@ -408,6 +551,65 @@ namespace NVGE
                         worker.ReportProgress(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources", "*").Length);
                     }
                     break;
+                case 8: // Update Application
+                    {
+                        Uri uri;
+
+                        switch (Common.ApplicationPortable)
+                        {
+                            case false:
+                                {
+                                    uri = new("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases/download/v" + Common.GitHubLatestVersion + "/waifu2x-nvger-release.zip");
+                                }
+                                break;
+                            case true:
+                                {
+                                    uri = new("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases/download/v" + Common.GitHubLatestVersion + "/waifu2x-nvger-portable.zip");
+                                }
+                                break;
+                        }
+
+                        if (Common.downloadClient == null)
+                        {
+#pragma warning disable SYSLIB0014 // 型またはメンバーが旧型式です
+                            Common.downloadClient = new System.Net.WebClient();
+#pragma warning restore SYSLIB0014 // 型またはメンバーが旧型式です
+                            Common.downloadClient.DownloadProgressChanged += new System.Net.DownloadProgressChangedEventHandler(DownloadClient_DownloadProgressChanged);
+                            Common.downloadClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadClient_DownloadFileCompleted);
+                        }
+
+                        Common.DlsFlag = 1;
+
+                        switch (Common.ApplicationPortable)
+                        {
+                            case false: // release
+                                {
+                                    Common.downloadClient.DownloadFileAsync(uri, Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip");
+                                }
+                                break;
+                            case true: // portable
+                                {
+                                    Common.downloadClient.DownloadFileAsync(uri, Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip");
+                                }
+                                break;
+                        }
+
+                        while (Common.downloadClient.IsBusy)
+                        {
+                            if (backgroundWorker_Progress.CancellationPending)
+                            {
+                                e.Cancel = true;
+                                Common.DlcancelFlag = 1;
+                                return;
+                            }
+                            else
+                            {
+                                worker.ReportProgress(Directory.GetFiles(Common.DeletePathFrames, "*.*").Length); // Dummy RP
+                            }
+                        }
+                        Common.downloadClient.Dispose();
+                        break;
+                    }
                 default:
                     break;
             }
@@ -448,6 +650,10 @@ namespace NVGE
                 case 7:
                     progressBar1.Value = e.ProgressPercentage;
                     label_Pos.Text = e.ProgressPercentage.ToString() + " / " + Common.ProgMax + " " + Strings.ConvertScalled;
+                    break;
+                case 8:
+                    progressBar1.Value = Common.DLProgchanged;
+                    label_Pos.Text = Common.DLInfo;
                     break;
                 default:
                     break;
@@ -533,6 +739,12 @@ namespace NVGE
                     button_Abort.Visible = false;
                     backgroundWorker_Progress.RunWorkerAsync();
                     break;
+                case 8: // update
+                    progressBar1.Maximum = 100;
+                    label_ProgressText.Text = Strings.DLProgress;
+                    label_Pos.Text = Strings.Initalize;
+                    backgroundWorker_Progress.RunWorkerAsync();
+                    break;
                 default:
                     Close();
                     break;
@@ -576,7 +788,40 @@ namespace NVGE
                         }
                     }
                     break;
-                case 1: // realesrgan
+                case 1: // realcugan
+                    {
+                        ProcessStartInfo pi = new();
+                        Process ps;
+                        pi.FileName = realcuganPath;
+                        pi.Arguments = Common.ImageParam.Replace("$InFile", Common.DeletePathFrames).Replace("$OutFile", Common.DeletePathFrames2x).Replace("realcugan-ncnn-vulkan ", "");
+                        pi.WindowStyle = ProcessWindowStyle.Hidden;
+                        pi.UseShellExecute = true;
+                        ps = Process.Start(pi);
+
+                        while (!ps.HasExited)
+                        {
+                            if (backgroundWorker_Video.CancellationPending)
+                            {
+                                if (!ps.HasExited)
+                                {
+                                    ps.Kill();
+                                }
+                                ps.Close();
+                                e.Cancel = true;
+                                return;
+                            }
+                            else if (ps.HasExited == true)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                    break;
+                case 2: // realesrgan
                     {
                         ProcessStartInfo pi = new();
                         Process ps;

@@ -111,6 +111,9 @@ namespace NVGE
         public static Stopwatch stopwatch = null;
         public static TimeSpan timeSpan;
 
+        public static bool ApplicationPortable = false;
+        public static string GitHubLatestVersion;
+
         /// <summary>
         /// ログ
         /// </summary>
@@ -441,6 +444,10 @@ namespace NVGE
             if (Config.Entry["Blocksize"].Value == null)
             {
                 Config.Entry["Blocksize"].Value = "0";
+            }
+            if (Config.Entry["SyncGap"].Value == null)
+            {
+                Config.Entry["SyncGap"].Value = "-1";
             }
             if (Config.Entry["UpScaleDetail"].Value == null)
             {
@@ -1206,6 +1213,11 @@ namespace NVGE
         public static Uri GetUri(string uri)
         {
             return new Uri(uri);
+        }
+
+        public static Stream GetWebStream(HttpClient httpClient, Uri uri)
+        {
+            return httpClient.GetStreamAsync(uri).Result;
         }
 
         public static async Task<Stream> GetWebStreamAsync(HttpClient httpClient, Uri uri)

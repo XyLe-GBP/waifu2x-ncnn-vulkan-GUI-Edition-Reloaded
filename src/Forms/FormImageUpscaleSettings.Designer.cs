@@ -65,6 +65,8 @@ namespace NVGE
             this.checkBox_destfolder = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBox_syncgap = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
@@ -317,7 +319,8 @@ namespace NVGE
             this.comboBox_engine.FormattingEnabled = true;
             this.comboBox_engine.Items.AddRange(new object[] {
             resources.GetString("comboBox_engine.Items"),
-            resources.GetString("comboBox_engine.Items1")});
+            resources.GetString("comboBox_engine.Items1"),
+            resources.GetString("comboBox_engine.Items2")});
             this.comboBox_engine.Name = "comboBox_engine";
             this.toolTip1.SetToolTip(this.comboBox_engine, resources.GetString("comboBox_engine.ToolTip"));
             this.comboBox_engine.SelectedIndexChanged += new System.EventHandler(this.ComboBox_engine_SelectedIndexChanged);
@@ -352,6 +355,8 @@ namespace NVGE
             // tabPage1
             // 
             resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Controls.Add(this.comboBox_syncgap);
+            this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.checkBox_destfolder);
             this.tabPage1.Controls.Add(this.checkBox_updetail);
             this.tabPage1.Controls.Add(this.comboBox_engine);
@@ -368,6 +373,25 @@ namespace NVGE
             this.tabPage1.Name = "tabPage1";
             this.toolTip1.SetToolTip(this.tabPage1, resources.GetString("tabPage1.ToolTip"));
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox_syncgap
+            // 
+            resources.ApplyResources(this.comboBox_syncgap, "comboBox_syncgap");
+            this.comboBox_syncgap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_syncgap.FormattingEnabled = true;
+            this.comboBox_syncgap.Items.AddRange(new object[] {
+            resources.GetString("comboBox_syncgap.Items"),
+            resources.GetString("comboBox_syncgap.Items1"),
+            resources.GetString("comboBox_syncgap.Items2"),
+            resources.GetString("comboBox_syncgap.Items3")});
+            this.comboBox_syncgap.Name = "comboBox_syncgap";
+            this.toolTip1.SetToolTip(this.comboBox_syncgap, resources.GetString("comboBox_syncgap.ToolTip"));
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            this.toolTip1.SetToolTip(this.label14, resources.GetString("label14.ToolTip"));
             // 
             // label13
             // 
@@ -457,5 +481,7 @@ namespace NVGE
         private System.Windows.Forms.ComboBox comboBox_engine;
         private System.Windows.Forms.CheckBox checkBox_destfolder;
         private System.Windows.Forms.CheckBox checkBox_updetail;
+        private System.Windows.Forms.ComboBox comboBox_syncgap;
+        private System.Windows.Forms.Label label14;
     }
 }
