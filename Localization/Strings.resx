@@ -377,6 +377,30 @@ Please configure the settings from the 'Settings' item.</value>
   <data name="SizeString" xml:space="preserve">
     <value>Bytes.</value>
   </data>
+  <data name="SplashFormConfigCaption" xml:space="preserve">
+    <value>Checking configuration information...</value>
+  </data>
+  <data name="SplashFormFFCaption" xml:space="preserve">
+    <value>Check for FFmpeg updates...</value>
+  </data>
+  <data name="SplashFormFileCaption" xml:space="preserve">
+    <value>Loaded: '{0}'</value>
+  </data>
+  <data name="SplashFormFinalCaption" xml:space="preserve">
+    <value>Running...</value>
+  </data>
+  <data name="SplashFormSystemCaption" xml:space="preserve">
+    <value>Getting system information...</value>
+  </data>
+  <data name="SplashFormUpdateCaption" xml:space="preserve">
+    <value>Check for updates...</value>
+  </data>
+  <data name="SplashFormUpdatedCaption" xml:space="preserve">
+    <value>Update Successfuly.</value>
+  </data>
+  <data name="SplashFormUpdatingCaption" xml:space="preserve">
+    <value>Updating application...</value>
+  </data>
   <data name="UnExpectedError" xml:space="preserve">
     <value>An unexpected error has occurred.
 {0}</value>

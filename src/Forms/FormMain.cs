@@ -36,6 +36,18 @@ namespace NVGE
             FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
             Text = "waifu2x-nvger ( build: " + ver.FileVersion.ToString() + "-Beta )";
 
+            using FormSplash splash = new();
+            splash.Show();
+            splash.Refresh();
+
+            foreach (var files in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\res", "*", SearchOption.AllDirectories))
+            {
+                FileInfo fi = new(files);
+                RefleshSplashForm(splash, string.Format(Strings.SplashFormFileCaption, fi.Name));
+            }
+
+            RefleshSplashForm(splash, Strings.SplashFormSystemCaption);
+
             label1.Text = Strings.DragDropCaption;
 
             string[] OSInfo = new string[17];
@@ -50,6 +62,8 @@ namespace NVGE
             label_Processor.Text = CPUInfo[0] + " [ " + CPUInfo[1] + " Core / " + CPUInfo[2] + " Threads ]";
             label_Graphic.Text = GPUInfo[0] + " - " + GPUInfo[1] + " [ " + GPUInfo[2] + " RAM ]";
             toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+
+            RefleshSplashForm(splash, Strings.SplashFormConfigCaption);
 
             if (!File.Exists(Common.xmlpath))
             {
@@ -97,20 +111,32 @@ namespace NVGE
 
             if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
             {
+                RefleshSplashForm(splash, Strings.SplashFormUpdatingCaption);
                 File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
                 string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
                 File.Delete(updpath + @"\updater.exe");
                 File.Delete(updpath + @"\waifu2x-nvger.zip");
                 Common.DeleteDirectory(updpath + @"\updater-temp");
 
+                RefleshSplashForm(splash, Strings.SplashFormUpdatedCaption);
                 MessageBox.Show(Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                CheckForUpdatesForInit();
+                RefleshSplashForm(splash, Strings.SplashFormUpdateCaption);
+                var update = Task.Run(() => CheckForUpdatesForInit());
+                update.Wait();
             }
 
-            Task.Run(() => CheckForFFmpeg());
+            RefleshSplashForm(splash, Strings.SplashFormFFCaption);
+
+            var ffupdate = Task.Run(() => CheckForFFmpeg());
+            ffupdate.Wait();
+
+            RefleshSplashForm(splash, Strings.SplashFormFinalCaption);
+
+            splash.Close();
+            Activate();
         }
 
         private void OpenImegeIToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4190,7 +4216,7 @@ namespace NVGE
         /// <summary>
         /// 起動時のアップデート確認
         /// </summary>
-        private async void CheckForUpdatesForInit()
+        private async Task CheckForUpdatesForInit()
         {
             if (NetworkInterface.GetIsNetworkAvailable())
             {
@@ -4289,7 +4315,7 @@ namespace NVGE
             }
         }
 
-        private async void CheckForFFmpeg()
+        private async Task CheckForFFmpeg()
         {
             if (NetworkInterface.GetIsNetworkAvailable())
             {
@@ -4536,6 +4562,13 @@ namespace NVGE
             {
                 return;
             }
+        }
+
+        private static void RefleshSplashForm(FormSplash form, string text)
+        {
+            form.ProgressMsg = text;
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(10);
         }
     }
 }

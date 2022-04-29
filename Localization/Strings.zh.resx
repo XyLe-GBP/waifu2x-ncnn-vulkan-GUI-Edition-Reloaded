@@ -376,6 +376,30 @@ Real-ESRGAN Photo：该模型适用于放大照片等。</value>
   <data name="SizeString" xml:space="preserve">
     <value>字节</value>
   </data>
+  <data name="SplashFormConfigCaption" xml:space="preserve">
+    <value>检查应用程序设置...</value>
+  </data>
+  <data name="SplashFormFFCaption" xml:space="preserve">
+    <value>检查FFmpeg的更新...</value>
+  </data>
+  <data name="SplashFormFileCaption" xml:space="preserve">
+    <value>阅读：'{0}'</value>
+  </data>
+  <data name="SplashFormFinalCaption" xml:space="preserve">
+    <value>激活...</value>
+  </data>
+  <data name="SplashFormSystemCaption" xml:space="preserve">
+    <value>获取系统信息的过程中...</value>
+  </data>
+  <data name="SplashFormUpdateCaption" xml:space="preserve">
+    <value>检查更新...</value>
+  </data>
+  <data name="SplashFormUpdatedCaption" xml:space="preserve">
+    <value>更新完成。</value>
+  </data>
+  <data name="SplashFormUpdatingCaption" xml:space="preserve">
+    <value>更新正在进行的申请...</value>
+  </data>
   <data name="UnExpectedError" xml:space="preserve">
     <value>发生了一个意外的错误。
 {0}</value>

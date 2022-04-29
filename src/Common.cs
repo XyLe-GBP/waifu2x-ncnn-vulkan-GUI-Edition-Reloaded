@@ -1224,6 +1224,12 @@ namespace NVGE
         {
             return await httpClient.GetStreamAsync(uri);
         }
+
+        public static async Task<Image> GetWebImageAsync(HttpClient httpClient, Uri uri)
+        {
+            using Stream stream = await GetWebStreamAsync(httpClient, uri);
+            return Image.FromStream(stream);
+        }
     }
 }
 

@@ -10,8 +10,8 @@
     <Authors>XyLe</Authors>
     <Product>waifu2x-ncnn-vulkan GUI Edition Reloaded</Product>
     <Copyright>Copyright (C) 2022 - XyLe. All Rights Reserved.</Copyright>
-    <AssemblyVersion>1.29.2220.412</AssemblyVersion>
-    <FileVersion>1.29.2220.412</FileVersion>
+    <AssemblyVersion>1.29.2220.429</AssemblyVersion>
+    <FileVersion>1.29.2220.429</FileVersion>
     <Version>1.29</Version>
     <Description>Super-Resolution Convolutional Neural Network（SRCNN）Utility.</Description>
     <PackageIcon>csharp-logo.png</PackageIcon>

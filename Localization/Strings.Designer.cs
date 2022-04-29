@@ -771,6 +771,78 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   Checking configuration information... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashFormConfigCaption {
+            get {
+                return ResourceManager.GetString("SplashFormConfigCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Check for FFmpeg updates... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashFormFFCaption {
+            get {
+                return ResourceManager.GetString("SplashFormFFCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Loaded: &apos;{0}&apos; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashFormFileCaption {
+            get {
+                return ResourceManager.GetString("SplashFormFileCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Running... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashFormFinalCaption {
+            get {
+                return ResourceManager.GetString("SplashFormFinalCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Getting system information... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashFormSystemCaption {
+            get {
+                return ResourceManager.GetString("SplashFormSystemCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Check for updates... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashFormUpdateCaption {
+            get {
+                return ResourceManager.GetString("SplashFormUpdateCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Update Successfuly. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashFormUpdatedCaption {
+            get {
+                return ResourceManager.GetString("SplashFormUpdatedCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Updating application... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashFormUpdatingCaption {
+            get {
+                return ResourceManager.GetString("SplashFormUpdatingCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   An unexpected error has occurred.
         ///{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
