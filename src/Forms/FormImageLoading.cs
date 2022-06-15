@@ -6,7 +6,7 @@ namespace NVGE
 {
     public partial class FormImageLoading : Form
     {
-        string inpath, outpath;
+        private readonly string inpath, outpath;
         public FormImageLoading(string inputpath, string outputpath)
         {
             inpath = inputpath;
@@ -16,6 +16,8 @@ namespace NVGE
 
         private async void FormImageLoading_Load(object sender, System.EventArgs e)
         {
+            progressBar1.Style = ProgressBarStyle.Marquee;
+            progressBar1.MarqueeAnimationSpeed = 50;
             await Task.Run(() => Main());
             Close();
         }

@@ -57,278 +57,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBox_destfolder.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+  <data name="&gt;&gt;checkBox_pixel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboBox_Uplevel.Items2" xml:space="preserve">
-    <value>x4</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tabPage1</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;checkBox_TTA.Name" xml:space="preserve">
+    <value>checkBox_TTA</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
+  <data name="&gt;&gt;comboBox_engine.Name" xml:space="preserve">
+    <value>comboBox_engine</value>
   </data>
-  <data name="&gt;&gt;textBox_Blocksize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="comboBox_Thread.Items3" xml:space="preserve">
+    <value>2:2</value>
   </data>
-  <data name="button_Cancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Advanced.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 15</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 72</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;comboBox_GPU.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="comboBox_syncgap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 23</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 179</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 72</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>px</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
   </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Command line arguments:</value>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>16</value>
   </data>
-  <data name="comboBox_Rdlevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 41</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBox_CMD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
   </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="comboBox_Rdlevel.Items4" xml:space="preserve">
-    <value>Level 3</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Use GPU:</value>
-  </data>
-  <data name="checkBox_pixel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 15</value>
-  </data>
-  <data name="textBox_Blocksize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 69</value>
-  </data>
-  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="comboBox_Thread.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 112</value>
-  </data>
-  <data name="&gt;&gt;textBox_Blocksize.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="comboBox_Rdlevel.Items1" xml:space="preserve">
-    <value>Level 0</value>
-  </data>
-  <data name="&gt;&gt;checkBox_pixel.Name" xml:space="preserve">
-    <value>checkBox_pixel</value>
-  </data>
-  <data name="comboBox_Format.Items" xml:space="preserve">
-    <value>Joint Photographic Experts Group (.JPEG)</value>
-  </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="comboBox_GPU.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;comboBox_engine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>GPU Blocksize:</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label13.ToolTip" xml:space="preserve">
+  <data name="tabControl1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;comboBox_GPU.Name" xml:space="preserve">
-    <value>comboBox_GPU</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBox_Blocksize.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;textBox_height.Name" xml:space="preserve">
-    <value>textBox_height</value>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>tabPage2</value>
   </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="comboBox_Model.Items1" xml:space="preserve">
+    <value>RGB (models-upconv_7_anime_style_art_rgb)</value>
   </data>
-  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="comboBox_Uplevel.Items2" xml:space="preserve">
+    <value>x4</value>
   </data>
-  <data name="checkBox_pixel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;checkBox_TTA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_width.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 115</value>
-  </data>
-  <data name="checkBox_Advanced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 15</value>
+  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;checkBox_updetail.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Format.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBox_Format.ToolTip" xml:space="preserve">
-    <value>Specify the output format of the upscaled image.
-Normally '.png' is fine, but if you want to use a different format
-Change this field.
-If you select 'Custom', the format selection screen will appear when upscaling starts.</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
-    <value>button_Cancel</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Uplevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBox_height.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 139</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="label10.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_syncgap.Items2" xml:space="preserve">
-    <value>rough sync</value>
-  </data>
-  <data name="comboBox_engine.Items2" xml:space="preserve">
-    <value>Real-ESRGAN (ultra-high resolution, slowest)</value>
-  </data>
-  <data name="&gt;&gt;checkBox_TTA.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_destfolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBox_CMD.ToolTip" xml:space="preserve">
-    <value>Specifies command line arguments.</value>
-  </data>
-  <data name="comboBox_Format.Items1" xml:space="preserve">
-    <value>Portable Network Graphics (.PNG)</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 37</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="textBox_width.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 139</value>
   </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 237</value>
   </data>
-  <data name="comboBox_Uplevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
-  </data>
-  <data name="textBox_height.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 23</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>x</value>
-  </data>
-  <data name="checkBox_Advanced.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMD.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 275</value>
-  </data>
-  <data name="comboBox_Rdlevel.Items2" xml:space="preserve">
-    <value>Level 1</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Rdlevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="checkBox_Verbose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>350, 86</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="checkBox_Verbose.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="comboBox_Uplevel.ToolTip" xml:space="preserve">
     <value>Specifies the upscaling level.
@@ -337,538 +127,266 @@ If you specify 'x1', the output will be the same pixels as the original image.
 If you specify 'x2' or higher, it will be applied only when upscaling images.
 When upscaling video, it will be forced to 'x2' and will not be applied.</value>
   </data>
-  <data name="button_OK.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 15</value>
   </data>
-  <data name="comboBox_engine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>329, 23</value>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 44</value>
+  <data name="comboBox_GPU.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="&gt;&gt;textBox_Blocksize.Name" xml:space="preserve">
-    <value>textBox_Blocksize</value>
+  <data name="&gt;&gt;textBox_height.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Advanced.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;comboBox_engine.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="checkBox_TTA.Text" xml:space="preserve">
+    <value>Enable TTA mode</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Uplevel.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;textBox_Blocksize.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="comboBox_Uplevel.Items4" xml:space="preserve">
-    <value>x16</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Rdlevel.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Thread.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="comboBox_Format.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 23</value>
-  </data>
-  <data name="&gt;&gt;textBox_width.Name" xml:space="preserve">
-    <value>textBox_width</value>
-  </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_syncgap.Items1" xml:space="preserve">
-    <value>accurate sync</value>
-  </data>
-  <data name="comboBox_Thread.Items4" xml:space="preserve">
-    <value>2:2:2</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="textBox_Blocksize.ToolTip" xml:space="preserve">
-    <value>Specifies the block size to be allocated to the GPU.
-If '0' is specified, the block size is automatically allocated.
-The larger the value, the faster the conversion will be, but the more memory the GPU will use.
-This item depends on the GPU performance, so if the value is too large, the conversion will fail.</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBox_Blocksize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Advanced.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="checkBox_destfolder.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBox_height.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_updetail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 178</value>
-  </data>
-  <data name="checkBox_updetail.Text" xml:space="preserve">
-    <value>Display image comparison dialog when upscaling is complete</value>
   </data>
   <data name="checkBox_TTA.ToolTip" xml:space="preserve">
     <value>Enables the TTA mode.
 Enabling this will improve the image index, but
 it takes a huge amount of time for image conversion.</value>
   </data>
-  <data name="comboBox_syncgap.Items" xml:space="preserve">
-    <value>no sync</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Format.Name" xml:space="preserve">
-    <value>comboBox_Format</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 15</value>
-  </data>
-  <data name="checkBox_destfolder.Text" xml:space="preserve">
-    <value>Open destination folder after completion</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 15</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Verbose.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_destfolder.Name" xml:space="preserve">
-    <value>checkBox_destfolder</value>
-  </data>
-  <data name="checkBox_destfolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBox_pixel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 19</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="comboBox_Model.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 55</value>
-  </data>
-  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
-    <value>toolTip1</value>
-  </data>
-  <data name="checkBox_updetail.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="textBox_height.ToolTip" xml:space="preserve">
-    <value>Specify the number of pixels in the image by height:width.
-This is useful, for example, when you want to output an upscaled image scaled down to a specified number of pixels.
-The aspect ratio of the image is preserved.</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Blocks</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBox_Verbose.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;checkBox_pixel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="comboBox_engine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>329, 23</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>441, 72</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="textBox_Blocksize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 23</value>
-  </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Image Format:</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 15</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Thread.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;checkBox_TTA.Name" xml:space="preserve">
-    <value>checkBox_TTA</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Verbose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBox_syncgap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 97</value>
-  </data>
-  <data name="checkBox_TTA.Enabled" type="System.Boolean, mscorlib">
+  <data name="checkBox_pixel.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;checkBox_pixel.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
-  </data>
-  <data name="button_Cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 237</value>
-  </data>
-  <data name="button_OK.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Verbose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 19</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="textBox_CMD.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;textBox_width.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Verbose.Name" xml:space="preserve">
-    <value>checkBox_Verbose</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;checkBox_TTA.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="comboBox_GPU.Items2" xml:space="preserve">
-    <value>dGPU 0</value>
-  </data>
-  <data name="comboBox_Model.Items1" xml:space="preserve">
-    <value>RGB (models-upconv_7_anime_style_art_rgb)</value>
-  </data>
-  <data name="textBox_width.MaxLength" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="comboBox_Thread.Items3" xml:space="preserve">
-    <value>2:2</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Verbose.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 87</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Rdlevel.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="textBox_width.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comboBox_GPU.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="checkBox_TTA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 19</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_Advanced.ToolTip" xml:space="preserve">
-    <value>Activate the 'Advanced Settings' item.</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Format.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="comboBox_Thread.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="comboBox_Format.Items2" xml:space="preserve">
-    <value>Google WEB Picture (.WEBP)</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;comboBox_syncgap.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBox_Uplevel.Items" xml:space="preserve">
-    <value>x1</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="textBox_height.MaxLength" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="textBox_width.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 139</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="comboBox_Thread.Items2" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>533, 306</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 15</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;comboBox_engine.Name" xml:space="preserve">
-    <value>comboBox_engine</value>
-  </data>
-  <data name="textBox_width.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 23</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Model.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBox_engine.Items" xml:space="preserve">
-    <value>waifu2x (high resolution, fastest)</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Model.Name" xml:space="preserve">
-    <value>comboBox_Model</value>
-  </data>
-  <data name="checkBox_pixel.Text" xml:space="preserve">
-    <value>Enable pixel specification (beta)</value>
-  </data>
-  <data name="&gt;&gt;textBox_height.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="checkBox_destfolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 19</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 15</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 15</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 142</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBox_pixel.ToolTip" xml:space="preserve">
-    <value>Enables the pixel specification item for the output image.</value>
-  </data>
-  <data name="&gt;&gt;comboBox_GPU.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBox_GPU.Items4" xml:space="preserve">
-    <value>dGPU 2</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Sync gap mode:</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Verbose.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="comboBox_syncgap.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_engine.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="comboBox_Thread.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 23</value>
-  </data>
-  <data name="checkBox_Advanced.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>px</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMD.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Reduction Level:</value>
-  </data>
-  <data name="comboBox_Rdlevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Format.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Upscaling Level:</value>
-  </data>
-  <data name="checkBox_TTA.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="comboBox_engine.ToolTip" xml:space="preserve">
-    <value>Specify the conversion engine.
-waifu2x: Lower quality than Real-CUGAN and Real-ESRGAN, but faster.
-Real-CUGAN: Converts with much higher quality, but takes longer than waifu2x.
-Real-ESRGAN: Converts with much higher quality, but takes longer than waifu2x.</value>
-  </data>
-  <data name="comboBox_Model.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBox_CMD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 198</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>221, 44</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Model.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="textBox_CMD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>487, 23</value>
-  </data>
-  <data name="comboBox_GPU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 23</value>
-  </data>
-  <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="comboBox_Model.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="checkBox_destfolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 203</value>
-  </data>
-  <data name="checkBox_TTA.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="checkBox_updetail.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="comboBox_GPU.Items3" xml:space="preserve">
-    <value>dGPU 1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_destfolder.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;textBox_height.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 100</value>
   </data>
-  <data name="comboBox_GPU.Items" xml:space="preserve">
-    <value>Auto</value>
+  <data name="textBox_CMD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 198</value>
   </data>
-  <data name="comboBox_Uplevel.Items3" xml:space="preserve">
-    <value>x8</value>
+  <data name="comboBox_Format.Items" xml:space="preserve">
+    <value>Joint Photographic Experts Group (.JPEG)</value>
   </data>
-  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 275</value>
+  <data name="&gt;&gt;checkBox_pixel.Name" xml:space="preserve">
+    <value>checkBox_pixel</value>
   </data>
-  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;comboBox_Thread.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_TTA.Text" xml:space="preserve">
-    <value>Enable TTA mode</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Upscaling Level:</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="checkBox_updetail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 19</value>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="textBox_width.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>533, 306</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Uplevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_syncgap.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;checkBox_updetail.Name" xml:space="preserve">
+    <value>checkBox_updetail</value>
+  </data>
+  <data name="button_OK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;comboBox_GPU.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 15</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_TTA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 19</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;comboBox_engine.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;textBox_height.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox_CMD.Name" xml:space="preserve">
-    <value>textBox_CMD</value>
+  <data name="checkBox_TTA.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_Thread.Items1" xml:space="preserve">
+    <value>1:2</value>
+  </data>
+  <data name="comboBox_Model.Items" xml:space="preserve">
+    <value>CUnet (models-cunet)</value>
+  </data>
+  <data name="&gt;&gt;textBox_height.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 72</value>
+  </data>
+  <data name="comboBox_Rdlevel.Items2" xml:space="preserve">
+    <value>Level 1</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_GPU.Items2" xml:space="preserve">
+    <value>dGPU 0</value>
+  </data>
+  <data name="tabPage1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 15</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Rdlevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_width.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Use GPU:</value>
+  </data>
+  <data name="&gt;&gt;checkBox_TTA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_destfolder.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_Format.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 23</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Verbose.Name" xml:space="preserve">
+    <value>checkBox_Verbose</value>
+  </data>
+  <data name="comboBox_Thread.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 112</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 15</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBox_GPU.Items" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="checkBox_pixel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;checkBox_TTA.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Blocks</value>
+  </data>
+  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_pixel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>302, 141</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Name" xml:space="preserve">
+    <value>button_OK</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="textBox_height.MaxLength" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
   </data>
-  <data name="&gt;&gt;checkBox_Advanced.Name" xml:space="preserve">
-    <value>checkBox_Advanced</value>
+  <data name="comboBox_Uplevel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="comboBox_Uplevel.Items1" xml:space="preserve">
+    <value>x2</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Use waifu2x model:</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBox_Rdlevel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="comboBox_GPU.ToolTip" xml:space="preserve">
     <value>Specifies the GPU to be used during conversion.
@@ -877,345 +395,434 @@ If you specify 'iGPU', the conversion will be performed using the CPU's built-in
 (iGPU cannot be specified for CPUs that do not have built-in graphics.)
 If you have a multi-GPU environment, you can also specify either 'dGPU'.</value>
   </data>
-  <data name="&gt;&gt;checkBox_updetail.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="checkBox_updetail.Text" xml:space="preserve">
+    <value>Display image comparison dialog when upscaling is complete</value>
   </data>
-  <data name="comboBox_Rdlevel.Items3" xml:space="preserve">
-    <value>Level 2</value>
+  <data name="comboBox_engine.ToolTip" xml:space="preserve">
+    <value>Specify the conversion engine.
+waifu2x: Lower quality than Real-CUGAN and Real-ESRGAN, but faster.
+Real-CUGAN: Converts with much higher quality, but takes longer than waifu2x.
+Real-ESRGAN: Converts with much higher quality, but takes longer than waifu2x.</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;textBox_Blocksize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_Model.Items2" xml:space="preserve">
-    <value>Photo (models-upconv_7_photo)</value>
-  </data>
-  <data name="&gt;&gt;comboBox_engine.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 15</value>
-  </data>
-  <data name="comboBox_GPU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 69</value>
-  </data>
-  <data name="comboBox_Format.Enabled" type="System.Boolean, mscorlib">
+  <data name="comboBox_Model.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="comboBox_Model.Items" xml:space="preserve">
-    <value>CUnet (models-cunet)</value>
-  </data>
-  <data name="&gt;&gt;comboBox_syncgap.Name" xml:space="preserve">
-    <value>comboBox_syncgap</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Engine used for conversion:</value>
-  </data>
-  <data name="checkBox_Verbose.ToolTip" xml:space="preserve">
-    <value>Enables verbose output.
-This option is for developers, so it is usually not necessary to enable it.</value>
-  </data>
-  <data name="comboBox_syncgap.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormImageUpscaleSettings</value>
-  </data>
-  <data name="textBox_width.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBox_Verbose.Text" xml:space="preserve">
-    <value>Enable Verbose output</value>
-  </data>
-  <data name="tabControl1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;comboBox_Uplevel.Name" xml:space="preserve">
-    <value>comboBox_Uplevel</value>
-  </data>
-  <data name="textBox_Blocksize.MaxLength" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label10.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBox_Advanced.Text" xml:space="preserve">
-    <value>Enable Advanced Settings</value>
   </data>
   <data name="&gt;&gt;comboBox_syncgap.Parent" xml:space="preserve">
     <value>tabPage1</value>
   </data>
-  <data name="comboBox_Thread.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="comboBox_Model.Size" type="System.Drawing.Size, System.Drawing">
-    <value>487, 23</value>
-  </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 237</value>
-  </data>
-  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Advanced.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>508, 265</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Name" xml:space="preserve">
-    <value>button_OK</value>
-  </data>
-  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="&gt;&gt;textBox_CMD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="tabPage1.ToolTip" xml:space="preserve">
+  <data name="label10.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="comboBox_Thread.ToolTip" xml:space="preserve">
-    <value>Specifies the number of threads used during conversion.
-The number of threads used can be assigned in the order 'load:proc:save'.
-This item can be changed only in a multi-GPU environment.
-Normally, specify '1:2:2'.</value>
-  </data>
-  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;comboBox_engine.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="comboBox_Format.Items3" xml:space="preserve">
-    <value>Icon (.ICO)</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Model.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 37</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>Advanced</value>
   </data>
-  <data name="checkBox_pixel.Enabled" type="System.Boolean, mscorlib">
+  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>441, 275</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="comboBox_Thread.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label14.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 142</value>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBox_Format.Items1" xml:space="preserve">
+    <value>Portable Network Graphics (.PNG)</value>
+  </data>
+  <data name="checkBox_destfolder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Image Upscaling Settings</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 15</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 15</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Rdlevel.Name" xml:space="preserve">
-    <value>comboBox_Rdlevel</value>
-  </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="comboBox_Rdlevel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="checkBox_updetail.ToolTip" xml:space="preserve">
-    <value>Displays an image comparison dialog when upscaling is complete.
-Normally enabled, but can be disabled to speed up the conversion process.</value>
   </data>
   <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="checkBox_pixel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>302, 141</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Thread.Name" xml:space="preserve">
-    <value>comboBox_Thread</value>
-  </data>
-  <data name="comboBox_engine.Items1" xml:space="preserve">
-    <value>Real-CUGAN (ultra-high resolution, adjustable, fastest)</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 15</value>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 15</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;checkBox_destfolder.Parent" xml:space="preserve">
+    <value>tabPage1</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Output image pixel:</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>13</value>
   </data>
-  <data name="&gt;&gt;textBox_width.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="textBox_Blocksize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;comboBox_engine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_engine.Items1" xml:space="preserve">
+    <value>Real-CUGAN (ultra-high resolution, adjustable, fastest)</value>
+  </data>
+  <data name="&gt;&gt;textBox_Blocksize.Name" xml:space="preserve">
+    <value>textBox_Blocksize</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
+    <value>toolTip1</value>
   </data>
   <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="comboBox_engine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 15</value>
-  </data>
-  <data name="checkBox_TTA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>350, 111</value>
-  </data>
-  <data name="textBox_CMD.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="comboBox_syncgap.Items3" xml:space="preserve">
-    <value>very rough sync</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Use Threads:</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="label11.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="comboBox_Format.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;checkBox_updetail.Name" xml:space="preserve">
-    <value>checkBox_updetail</value>
-  </data>
-  <data name="comboBox_Thread.Items" xml:space="preserve">
-    <value>1:2:2</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;comboBox_syncgap.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 15</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>312, 72</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="comboBox_Uplevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>312, 41</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBox_pixel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="comboBox_Thread.Items1" xml:space="preserve">
-    <value>1:2</value>
+  <data name="&gt;&gt;comboBox_syncgap.Name" xml:space="preserve">
+    <value>comboBox_syncgap</value>
   </data>
-  <data name="textBox_width.ToolTip" xml:space="preserve">
-    <value>Sets the pixels of the output image.
-Specify the number of pixels in the image by height:width.
-This is useful, for example, when you want to output an upscaled image scaled down to a specified number of pixels.
-The aspect ratio of the image is preserved.</value>
-  </data>
-  <data name="comboBox_Rdlevel.ToolTip" xml:space="preserve">
-    <value>Specifies the noise removal level of the image.
-If you specify 'No Reduction', the noise will not be removed.
-If you set the denoising level too high, details may be lost.</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="textBox_height.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+  <data name="comboBox_Rdlevel.Items4" xml:space="preserve">
+    <value>Level 3</value>
+  </data>
+  <data name="textBox_CMD.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMD.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="comboBox_GPU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 23</value>
+  </data>
+  <data name="comboBox_Rdlevel.Items3" xml:space="preserve">
+    <value>Level 2</value>
+  </data>
+  <data name="checkBox_Advanced.Text" xml:space="preserve">
+    <value>Enable Advanced Settings</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;comboBox_GPU.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Thread.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Advanced.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Advanced.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 142</value>
+  </data>
+  <data name="comboBox_Format.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;checkBox_updetail.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBox_width.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 23</value>
+  </data>
+  <data name="label11.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="comboBox_Model.Items2" xml:space="preserve">
+    <value>Photo (models-upconv_7_photo)</value>
+  </data>
+  <data name="textBox_Blocksize.ToolTip" xml:space="preserve">
+    <value>Specifies the block size to be allocated to the GPU.
+If '0' is specified, the block size is automatically allocated.
+The larger the value, the faster the conversion will be, but the more memory the GPU will use.
+This item depends on the GPU performance, so if the value is too large, the conversion will fail.</value>
+  </data>
+  <data name="comboBox_GPU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 69</value>
+  </data>
+  <data name="comboBox_Model.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Sync gap mode:</value>
+  </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 237</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_Rdlevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 41</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Thread.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 44</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>x</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Thread.Name" xml:space="preserve">
+    <value>comboBox_Thread</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_TTA.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Model.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_updetail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 178</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_Format.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="comboBox_Format.Items3" xml:space="preserve">
+    <value>Icon (.ICO)</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 142</value>
+  </data>
+  <data name="checkBox_Verbose.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>GPU Blocksize:</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="comboBox_Model.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 55</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Format.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Rdlevel.Name" xml:space="preserve">
+    <value>comboBox_Rdlevel</value>
+  </data>
+  <data name="comboBox_syncgap.Items" xml:space="preserve">
+    <value>no sync</value>
+  </data>
+  <data name="&gt;&gt;checkBox_destfolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 18</value>
+  </data>
+  <data name="textBox_CMD.ToolTip" xml:space="preserve">
+    <value>Specifies command line arguments.</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>508, 265</value>
+  </data>
+  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="checkBox_TTA.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_Thread.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="checkBox_updetail.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="comboBox_GPU.Items1" xml:space="preserve">
+    <value>iGPU</value>
+  </data>
+  <data name="comboBox_Thread.Items" xml:space="preserve">
+    <value>1:2:2</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="comboBox_Rdlevel.Items1" xml:space="preserve">
+    <value>Level 0</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="checkBox_Advanced.ToolTip" xml:space="preserve">
+    <value>Activate the 'Advanced Settings' item.</value>
+  </data>
+  <data name="comboBox_syncgap.Items2" xml:space="preserve">
+    <value>rough sync</value>
+  </data>
+  <data name="checkBox_updetail.ToolTip" xml:space="preserve">
+    <value>Displays an image comparison dialog when upscaling is complete.
+Normally enabled, but can be disabled to speed up the conversion process.</value>
+  </data>
+  <data name="&gt;&gt;checkBox_updetail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Format.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="comboBox_Rdlevel.Items" xml:space="preserve">
+    <value>No Reduction</value>
+  </data>
+  <data name="comboBox_Thread.Items2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBox_Blocksize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 69</value>
+  </data>
+  <data name="textBox_height.ToolTip" xml:space="preserve">
+    <value>Specify the number of pixels in the image by height:width.
+This is useful, for example, when you want to output an upscaled image scaled down to a specified number of pixels.
+The aspect ratio of the image is preserved.</value>
+  </data>
+  <data name="&gt;&gt;textBox_width.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_syncgap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Verbose.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkBox_pixel.Text" xml:space="preserve">
+    <value>Enable pixel specification (beta)</value>
+  </data>
+  <data name="checkBox_Advanced.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Verbose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_engine.Items2" xml:space="preserve">
+    <value>Real-ESRGAN (ultra-high resolution, slowest)</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_Blocksize.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="textBox_height.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 139</value>
+  </data>
+  <data name="&gt;&gt;checkBox_updetail.Parent" xml:space="preserve">
+    <value>tabPage1</value>
   </data>
   <data name="comboBox_Model.ToolTip" xml:space="preserve">
     <value>Specify the model to be used when upscaling.
@@ -1223,87 +830,480 @@ CUnet: This is selected by default.
 RGB: This model is suitable for upscaling illustrations.
 Photo: This model is suitable for upscaling photos.</value>
   </data>
-  <data name="comboBox_Uplevel.TabIndex" type="System.Int32, mscorlib">
+  <data name="$this.Text" xml:space="preserve">
+    <value>Image Upscaling Settings</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMD.Name" xml:space="preserve">
+    <value>textBox_CMD</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_Uplevel.Items3" xml:space="preserve">
+    <value>x8</value>
+  </data>
+  <data name="comboBox_engine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>165, 15</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;comboBox_GPU.Name" xml:space="preserve">
+    <value>comboBox_GPU</value>
+  </data>
+  <data name="comboBox_Uplevel.Items4" xml:space="preserve">
+    <value>x16</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Uplevel.Name" xml:space="preserve">
+    <value>comboBox_Uplevel</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 15</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="comboBox_GPU.Items4" xml:space="preserve">
+    <value>dGPU 2</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="textBox_width.ToolTip" xml:space="preserve">
+    <value>Sets the pixels of the output image.
+Specify the number of pixels in the image by height:width.
+This is useful, for example, when you want to output an upscaled image scaled down to a specified number of pixels.
+The aspect ratio of the image is preserved.</value>
+  </data>
+  <data name="checkBox_Verbose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 19</value>
+  </data>
+  <data name="checkBox_destfolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_pixel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 19</value>
+  </data>
+  <data name="textBox_width.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBox_syncgap.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBox_Advanced.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Use Threads:</value>
+  </data>
+  <data name="checkBox_Verbose.Text" xml:space="preserve">
+    <value>Enable Verbose output</value>
+  </data>
+  <data name="checkBox_pixel.ToolTip" xml:space="preserve">
+    <value>Enables the pixel specification item for the output image.</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Command line arguments:</value>
+  </data>
+  <data name="&gt;&gt;checkBox_pixel.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 15</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_Uplevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 41</value>
+  </data>
+  <data name="textBox_height.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
+    <value>button_Cancel</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Output image pixel:</value>
+  </data>
+  <data name="textBox_Blocksize.MaxLength" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Image Format:</value>
+  </data>
+  <data name="textBox_Blocksize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 23</value>
+  </data>
+  <data name="comboBox_Rdlevel.ToolTip" xml:space="preserve">
+    <value>Specifies the noise removal level of the image.
+If you specify 'No Reduction', the noise will not be removed.
+If you set the denoising level too high, details may be lost.</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
+  </data>
+  <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 84</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Model.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Reduction Level:</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="checkBox_TTA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>350, 111</value>
+  </data>
+  <data name="comboBox_syncgap.Items3" xml:space="preserve">
+    <value>very rough sync</value>
+  </data>
+  <data name="checkBox_Verbose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>350, 86</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Thread.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="comboBox_Uplevel.Items" xml:space="preserve">
+    <value>x1</value>
+  </data>
+  <data name="&gt;&gt;comboBox_GPU.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="comboBox_Rdlevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="textBox_CMD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 23</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="comboBox_Uplevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Model.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_Model.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 23</value>
+  </data>
+  <data name="&gt;&gt;textBox_Blocksize.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 15</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Uplevel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 19</value>
+  </data>
+  <data name="comboBox_syncgap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 97</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 179</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 115</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 15</value>
+  </data>
+  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 275</value>
+  </data>
+  <data name="comboBox_Format.ToolTip" xml:space="preserve">
+    <value>Specify the output format of the upscaled image.
+Normally '.png' is fine, but if you want to use a different format
+Change this field.
+If you select 'Custom', the format selection screen will appear when upscaling starts.</value>
+  </data>
+  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="comboBox_Format.Items4" xml:space="preserve">
+    <value>Custom (user-specified)</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Verbose.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Rdlevel.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 15</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="label10.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 142</value>
+  </data>
+  <data name="textBox_width.MaxLength" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBox_destfolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 203</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMD.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBox_updetail.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Uplevel.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Engine used for conversion:</value>
+  </data>
+  <data name="button_OK.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Format.Name" xml:space="preserve">
+    <value>comboBox_Format</value>
+  </data>
+  <data name="comboBox_syncgap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 23</value>
+  </data>
+  <data name="checkBox_Advanced.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_Thread.Items4" xml:space="preserve">
+    <value>2:2:2</value>
+  </data>
+  <data name="checkBox_TTA.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBox_GPU.Items3" xml:space="preserve">
+    <value>dGPU 1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Advanced.Name" xml:space="preserve">
+    <value>checkBox_Advanced</value>
+  </data>
+  <data name="comboBox_engine.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="comboBox_Thread.ToolTip" xml:space="preserve">
+    <value>Specifies the number of threads used during conversion.
+The number of threads used can be assigned in the order 'load:proc:save'.
+This item can be changed only in a multi-GPU environment.
+Normally, specify '1:2:2'.</value>
+  </data>
+  <data name="comboBox_Format.Items2" xml:space="preserve">
+    <value>Google WEB Picture (.WEBP)</value>
+  </data>
+  <data name="textBox_CMD.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_Cancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox_Verbose.ToolTip" xml:space="preserve">
+    <value>Enables verbose output.
+This option is for developers, so it is usually not necessary to enable it.</value>
+  </data>
+  <data name="comboBox_engine.Items" xml:space="preserve">
+    <value>waifu2x (high resolution, fastest)</value>
+  </data>
+  <data name="comboBox_Thread.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 23</value>
+  </data>
+  <data name="checkBox_destfolder.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Model.Name" xml:space="preserve">
+    <value>comboBox_Model</value>
+  </data>
+  <data name="&gt;&gt;textBox_width.Name" xml:space="preserve">
+    <value>textBox_width</value>
   </data>
   <data name="checkBox_destfolder.ToolTip" xml:space="preserve">
     <value>Displays the destination folder for upscaled images each time after completion.
 Normally enabled.</value>
   </data>
-  <data name="comboBox_Uplevel.Items1" xml:space="preserve">
-    <value>x2</value>
+  <data name="checkBox_destfolder.Text" xml:space="preserve">
+    <value>Open destination folder after completion</value>
+  </data>
+  <data name="comboBox_syncgap.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormImageUpscaleSettings</value>
+  </data>
+  <data name="&gt;&gt;textBox_CMD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 15</value>
+  </data>
+  <data name="checkBox_destfolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 19</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;comboBox_Format.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;checkBox_pixel.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="comboBox_Format.Items4" xml:space="preserve">
-    <value>Custom (user-specified)</value>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>General</value>
   </data>
-  <data name="comboBox_Format.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 84</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="checkBox_Verbose.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;comboBox_Rdlevel.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;textBox_width.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;checkBox_destfolder.Name" xml:space="preserve">
+    <value>checkBox_destfolder</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
   <data name="tabPage2.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="textBox_CMD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 72</value>
   </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="textBox_height.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 23</value>
   </data>
-  <data name="textBox_Blocksize.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="&gt;&gt;textBox_height.Name" xml:space="preserve">
+    <value>textBox_height</value>
   </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
-  <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 19</value>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="comboBox_Rdlevel.Items" xml:space="preserve">
-    <value>No Reduction</value>
+  <data name="comboBox_syncgap.Items1" xml:space="preserve">
+    <value>accurate sync</value>
   </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 87</value>
   </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBox_updetail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>349, 19</value>
   </data>
-  <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 8</value>
   </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 18</value>
-  </data>
-  <data name="&gt;&gt;checkBox_updetail.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Use waifu2x model:</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;checkBox_destfolder.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;comboBox_Uplevel.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 142</value>
-  </data>
-  <data name="comboBox_GPU.Items1" xml:space="preserve">
-    <value>iGPU</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 44</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

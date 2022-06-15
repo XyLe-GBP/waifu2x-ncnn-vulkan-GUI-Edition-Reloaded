@@ -64,12 +64,6 @@
     <value>動画のアップスケーリング</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="fileFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 20</value>
-  </data>
-  <data name="fileFToolStripMenuItem.Text" xml:space="preserve">
-    <value>ファイル (&amp;F)</value>
-  </data>
   <data name="openImegeIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 22</value>
   </data>
@@ -100,11 +94,11 @@
   <data name="exitXToolStripMenuItem.Text" xml:space="preserve">
     <value>終了 (&amp;X)</value>
   </data>
-  <data name="settingsCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
+  <data name="fileFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
   </data>
-  <data name="settingsCToolStripMenuItem.Text" xml:space="preserve">
-    <value>設定 (&amp;S)</value>
+  <data name="fileFToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル (&amp;F)</value>
   </data>
   <data name="upscalingSettingsUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 22</value>
@@ -118,32 +112,32 @@
   <data name="videoUpscalingSettingsVToolStripMenuItem.Text" xml:space="preserve">
     <value>動画アップスケール設定 (&amp;V)</value>
   </data>
-  <data name="toolsTToolStripMenuItem.Text" xml:space="preserve">
-    <value>ツール (&amp;T)</value>
+  <data name="settingsCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="settingsCToolStripMenuItem.Text" xml:space="preserve">
+    <value>設定 (&amp;S)</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>168, 22</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
     <value>動画解像度の変更</value>
   </data>
   <data name="changeVideoFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>168, 22</value>
   </data>
   <data name="changeVideoFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>動画形式の変更</value>
   </data>
   <data name="changeImageFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>168, 22</value>
   </data>
   <data name="changeImageFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>画像形式の変更</value>
   </data>
-  <data name="aboutAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
-  </data>
-  <data name="aboutAToolStripMenuItem.Text" xml:space="preserve">
-    <value>ヘルプ (&amp;H)</value>
+  <data name="toolsTToolStripMenuItem.Text" xml:space="preserve">
+    <value>ツール (&amp;T)</value>
   </data>
   <data name="aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>289, 22</value>
@@ -160,6 +154,12 @@
   <data name="checkForUpdatesUToolStripMenuItem.Text" xml:space="preserve">
     <value>アップデートの確認 (&amp;U)</value>
   </data>
+  <data name="aboutAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 20</value>
+  </data>
+  <data name="aboutAToolStripMenuItem.Text" xml:space="preserve">
+    <value>ヘルプ (&amp;H)</value>
+  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 15</value>
   </data>
@@ -171,9 +171,6 @@
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>グラフィックボード：</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>システム情報</value>
   </data>
   <data name="label_OS.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 30</value>
@@ -190,32 +187,36 @@
   <data name="label_Processor.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 51</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>操作</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>システム情報</value>
   </data>
   <data name="button_Merge.Text" xml:space="preserve">
     <value>FFmpegで結合</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>情報</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="label_default.Location" type="System.Drawing.Point, System.Drawing">
+    <value>520, 301</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label_Size.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="label_Size.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 39</value>
+    <value>520, 325</value>
+  </data>
+  <data name="label_Size.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 15</value>
+  </data>
+  <data name="label_Size.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="label_File.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 19</value>
+    <value>520, 304</value>
   </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 15</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>サイズ：</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>ファイル：</value>
+  <data name="label_File.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="toolStripStatusLabel_Status.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 17</value>

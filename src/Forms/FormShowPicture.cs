@@ -1,6 +1,7 @@
 ﻿using BitmapUtils;
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -31,35 +32,37 @@ namespace NVGE
         }
         #endregion
         #region point
-        private PointF _originPoint;
-        private PointF _oldPoint;
-        private RectangleF _originRect;
+        //private PointF _originPoint;
+        private PointF _op;
         #endregion
 
-        internal struct StrB
+        internal struct SBGroup
         {
-            public StrB() { }
+            public SBGroup() { }
             public StringBuilder strZR1 = new("Zoom Ratio: x");
             public StringBuilder strZR2 = new("Zoom Ratio: -");
             public StringBuilder strZR3 = new("Zoom Ratio: Default");
-            public StringBuilder strPosX = new("posX: ");
-            public StringBuilder strPosY = new("posY: ");
         }
 
-        private bool _mdf = false;
-        private float zoomRatio = 1.0f;
-        private readonly string pp;
-        private Image bitmap;
         private Bitmap canvas;
         private Graphics graph;
+        private Matrix _matAffine;
+        private Cursor RotateCursor;
+        private bool _mdf = false;
+        private bool _skf = false;
+        private float zoomRatio = 1.0f;
+        private float _defaultM11;
+        private readonly string pp;
 
         public FormShowPicture(string Imagepath)
         {
             InitializeComponent();
 
+            using var ms = new System.IO.MemoryStream(Properties.Resources.cur_rotate_32);
+            RotateCursor = new Cursor(ms);
             pp = Imagepath;
-            statusLabel_X.Alignment = ToolStripItemAlignment.Right;
-            statusLabel_Y.Alignment = ToolStripItemAlignment.Right;
+            lblImageXY.Alignment = ToolStripItemAlignment.Right;
+            lblMousePosition.Alignment = ToolStripItemAlignment.Right;
             pictureBox_Main.MouseWheel += new MouseEventHandler(PictureBox_Main_MouseWheel);
             pictureBox_Main.MouseDoubleClick += new MouseEventHandler(PictureBox_Main_MouseDoubleClick);
             SetStyle(ControlStyles.DoubleBuffer, true);
@@ -72,59 +75,24 @@ namespace NVGE
             Text = "Viewer";
             Config.Load(Common.xmlpath);
 
-            bitmap = Image.FromFile(pp);
-            canvas = new Bitmap(bitmap.Width, bitmap.Height);
-            BitmapPlus bmpP = new(canvas);
+            CreateGraphics(pictureBox_Main, ref graph);
 
-            bmpP.BeginAccess();
-            for (int i = 0; i < canvas.Width; i++)
-            {
-                for (int j = 0; j < canvas.Height; j++)
-                {
-                    Color bmpCol = bmpP.GetPixel(i, j);
-                    if (bmpCol.R == (byte)0)
-                    {
-                        bmpP.SetPixel(i, j, Color.FromArgb(255, 255, 0, 0));
-                    }
-                    else
-                    {
-                        bmpP.SetPixel(i, j, Color.FromArgb(255, 0, 0, 0));
-                    }
-                }
-            }
-            bmpP.EndAccess();
+            _matAffine = new Matrix();
+            canvas = new Bitmap(pp);
 
-            graph = Graphics.FromImage(canvas);
+            lblImageSize.Text = string.Concat("     [", canvas.Width, "x", canvas.Height, "] pixels.");
+            _matAffine.ZoomFit(pictureBox_Main, canvas);
+            _defaultM11 = _matAffine.MatrixElements.M11;
 
-            fixedRate = (double)GetAspectRetio(bitmap.Width, bitmap.Height)[0] / GetAspectRetio(bitmap.Width, bitmap.Height)[1];
-            FormSizeAlgorithm();
-
-            graph.DrawImage(bitmap, 0, 0, ClientSize.Width, ClientSize.Height);
-            graph.Clear(Color.Transparent);
-            pictureBox_Main.Image = canvas;
-            Refresh();
+            RedrawImage();
         }
 
         private void PictureBox_Main_Paint(object sender, PaintEventArgs e)
         {
-            if (zoomRatio > 1.0f || zoomRatio < 1.0f)
-            {
-                e.Graphics.TranslateTransform((float)_originPoint.X, (float)_originPoint.Y);
-                e.Graphics.ScaleTransform(zoomRatio, zoomRatio);
-                e.Graphics.DrawImage(bitmap, _originRect);
-                e.Graphics.ResetTransform();
-            }
-            else
-            {
-                e.Graphics.DrawImage(bitmap, 0, 0, ClientSize.Width, ClientSize.Height);
-            }
-
-            pictureBox_Main.Image = canvas;
-
             DrawInformation();
         }
 
-        protected override void WndProc(ref Message m)
+        /*protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
             {
@@ -199,7 +167,6 @@ namespace NVGE
                     zoomRatio = 1.0f;
                     _originPoint.X = 0;
                     _originPoint.Y = 0;
-                    _originRect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
                     Refresh();
 
                     Marshal.StructureToPtr(r, m.LParam, false);
@@ -208,16 +175,17 @@ namespace NVGE
                     base.WndProc(ref m);
                     break;
             }
-        }
+        }*/
 
         private void PictureBox_Main_MouseDown(object sender, MouseEventArgs e)
         {
-            _oldPoint.X = e.X;
-            _oldPoint.Y = e.Y;
+            pictureBox_Main.Focus();
+            _op.X = e.X;
+            _op.Y = e.Y;
 
             if (e.Button == MouseButtons.Left)
             {
-                if (zoomRatio > 1.0f || zoomRatio < 1.0f)
+                if (_matAffine.MatrixElements.M11 >  _defaultM11 || _matAffine.MatrixElements.M11 < _defaultM11)
                 {
                     Cursor = Cursors.NoMove2D;
                 }
@@ -226,7 +194,6 @@ namespace NVGE
                     Cursor = Cursors.No;
                 }
                 _mdf = true;
-
             }
             else if (e.Button == MouseButtons.Right)
             {
@@ -237,15 +204,13 @@ namespace NVGE
         {
             if (_mdf && e.Button == MouseButtons.Left)
             {
-                if (zoomRatio > 1.0f || zoomRatio < 1.0f)
+                if (_matAffine.MatrixElements.M11 > _defaultM11 || _matAffine.MatrixElements.M11 < _defaultM11)
                 {
-                    _originPoint.X += e.X - _oldPoint.X;
-                    _originPoint.Y += e.Y - _oldPoint.Y;
+                    _matAffine.Translate(e.X - _op.X, e.Y - _op.Y, System.Drawing.Drawing2D.MatrixOrder.Append);
+                    RedrawImage();
 
-                    ResizeAlgorithm(_originPoint.X, _originPoint.Y);
-
-                    _oldPoint.X = e.X;
-                    _oldPoint.Y = e.Y;
+                    _op.X = e.X;
+                    _op.Y = e.Y;
                 }
                 else
                 {
@@ -253,6 +218,14 @@ namespace NVGE
                 }
 
             }
+            lblMousePosition.Text = $"Mouse {e.Location}";
+            var invert = _matAffine.Clone();
+            invert.Invert();
+
+            var pf = new PointF[] { e.Location };
+            invert.TransformPoints(pf);
+
+            lblImageXY.Text = $"Image {pf[0]}";
         }
 
         private void PictureBox_Main_MouseUp(object sender, MouseEventArgs e)
@@ -268,276 +241,142 @@ namespace NVGE
 
         private void PictureBox_Main_MouseWheel(object sender, MouseEventArgs e)
         {
-            float prevRatio = zoomRatio;
+            if ((ModifierKeys & Keys.Shift) == Keys.Shift)
+            {
+                _skf = true;
+            }
+            else
+            {
+                _skf = false;
+            }
 
             if (e.Delta > 0)
             {
-                if (zoomRatio < 2.0f)
+                if (_skf)
                 {
-                    zoomRatio += 0.01f;
+                    _matAffine.RotateAt(5f, e.Location, MatrixOrder.Append);
                 }
                 else
                 {
-                    System.Media.SystemSounds.Asterisk.Play();
-                    zoomRatio = 2.0f;
+                    if (zoomRatio < 1000f)
+                    {
+                        _matAffine.ScaleAt(1.5f, e.Location);
+                    }
+                    else
+                    {
+                        System.Media.SystemSounds.Asterisk.Play();
+                        zoomRatio = 1000f;
+                    }
                 }
             }
             else
             {
-                if (zoomRatio > 0.7f)
+                if (_skf)
                 {
-                    zoomRatio -= 0.01f;
+                    _matAffine.RotateAt(-5f, e.Location, MatrixOrder.Append);
                 }
                 else
                 {
-                    System.Media.SystemSounds.Asterisk.Play();
-                    zoomRatio = Math.Max(0.7f, zoomRatio - 0.7f);
+                    if (zoomRatio > 10f)
+                    {
+                        _matAffine.ScaleAt(1.0f / 1.5f, e.Location);
+                    }
+                    else
+                    {
+                        System.Media.SystemSounds.Asterisk.Play();
+                        zoomRatio = 10f;
+                    }
                 }
             }
-
-            _originRect.Width = (float)(pictureBox_Main.Width * zoomRatio);
-            _originRect.Height = (float)(pictureBox_Main.Height * zoomRatio);
-            _originRect.X = (float)(e.X - (e.X - _originRect.X) * zoomRatio / prevRatio);
-            _originRect.Y = (float)(e.Y - (e.Y - _originRect.Y) * zoomRatio / prevRatio);
-            Refresh();
+            RedrawImage();
         }
 
         private void PictureBox_Main_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            zoomRatio = 1.0f;
-            _originPoint.X = 0;
-            _originPoint.Y = 0;
-            _originRect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
-            Refresh();
-        }
-
-        private void ResizeAlgorithm(float x, float y)
-        {
-            if (_mdf)
-            {
-                if (zoomRatio > 1.0f)
-                {
-                    var tl = -_originRect.X;
-                    var tt = -_originRect.Y;
-                    var tr = pictureBox_Main.Width - _originRect.Width + zoomRatio;
-                    var tb = pictureBox_Main.Height - _originRect.Height + zoomRatio;
-
-                    if (_originPoint.X > tl)
-                    {
-                        _originPoint.X -= tl;
-                        _originPoint.X = tl;
-                    }
-                    else if (_originPoint.X < tr)
-                    {
-                        _originPoint.X += tr;
-                        _originPoint.X = tr;
-                    }
-                    else if (_originPoint.Y > tt)
-                    {
-                        _originPoint.Y -= tt;
-                        _originPoint.Y = tt;
-                    }
-                    else if (_originPoint.Y < tb)
-                    {
-                        _originPoint.Y += tb;
-                        _originPoint.Y = tb;
-                    }
-                    else if (_originPoint.Y > tt && _originPoint.X == tl)
-                    {
-                        _originPoint.Y -= tt;
-                        _originPoint.Y = tt;
-                    }
-                    else if (_originPoint.Y > tt && _originPoint.X == tr)
-                    {
-                        _originPoint.Y -= tt;
-                        _originPoint.Y = tt;
-                    }
-                    else if (_originPoint.X == tl)
-                    {
-                        if (tb > tt)
-                        {
-                            _originPoint.Y += tb;
-                            _originPoint.Y = tb;
-                        }
-                        else
-                        {
-                            _originPoint.Y -= tt;
-                            _originPoint.Y = tt;
-                        }
-                    }
-                    else if (_originPoint.X == tr)
-                    {
-                        if (tb > tt)
-                        {
-                            _originPoint.Y += tb;
-                            _originPoint.Y = tb;
-                        }
-                        else
-                        {
-                            _originPoint.Y -= tt;
-                            _originPoint.Y = tt;
-                        }
-                    }
-                    else
-                    {
-                        //_originPoint.X = x;
-                        //_originPoint.Y = y;
-                    }
-                }
-                else if (zoomRatio < 1.0f)
-                {
-                    var tl = _originRect.X / zoomRatio;
-                    var tt = _originRect.Y / zoomRatio;
-                    var tr = pictureBox_Main.Width - _originRect.Width;
-                    var tb = pictureBox_Main.Height - _originRect.Height;
-
-                    if (_originPoint.X < tl)
-                    {
-                        _originPoint.X += tl;
-                        _originPoint.X = tl;
-                    }
-                    else if (_originPoint.X > tr)
-                    {
-                        _originPoint.X -= tr;
-                        _originPoint.X = tr;
-                    }
-                    else if (_originPoint.Y < tt)
-                    {
-                        _originPoint.Y += tt;
-                        _originPoint.Y = tt;
-                    }
-                    else if (_originPoint.Y > tb)
-                    {
-                        _originPoint.Y -= tb;
-                        _originPoint.Y = tb;
-                    }
-                    else if (_originPoint.X == tl)
-                    {
-                        if (tb < tt)
-                        {
-                            _originPoint.Y -= tb;
-                            _originPoint.Y = tb;
-                        }
-                        else
-                        {
-                            _originPoint.Y += tt;
-                            _originPoint.Y = tt;
-                        }
-                    }
-                    else if (_originPoint.X == tr)
-                    {
-                        if (tb < tt)
-                        {
-                            _originPoint.Y -= tb;
-                            _originPoint.Y = tb;
-                        }
-                        else
-                        {
-                            _originPoint.Y += tt;
-                            _originPoint.Y = tt;
-                        }
-                    }
-                    else
-                    {
-                        //_originPoint.X = x;
-                        //_originPoint.Y = y;
-                    }
-                }
-            }
-            else
-            {
-                return;
-            }
+            zoomRatio = _defaultM11;
+            _matAffine.ZoomFit(pictureBox_Main, canvas);
+            RedrawImage();
         }
 
         private void DrawInformation()
         {
-            StrB strB = new();
-            if (zoomRatio > 1.0f)
+            SBGroup sbg = new();
+            if (_matAffine.MatrixElements.M11 > _defaultM11)
             {
-                statusLabel_size.Text = strB.strZR1.Append(Math.Truncate(zoomRatio * 100.0) / 100.0).ToString();
+                statusLabel_size.Text = sbg.strZR1.Append(Math.Truncate(zoomRatio * 100.0) / 100.0).ToString();
             }
-            else if (zoomRatio < 1.0f)
+            else if (_matAffine.MatrixElements.M11 < _defaultM11)
             {
-                statusLabel_size.Text = strB.strZR2.Append(Math.Truncate(zoomRatio * 100.0) / 100.0).ToString();
+                statusLabel_size.Text = sbg.strZR2.Append(Math.Truncate(zoomRatio * 100.0) / 100.0).ToString();
             }
             else
             {
-                statusLabel_size.Text = strB.strZR3.ToString();
+                statusLabel_size.Text = sbg.strZR3.ToString();
             }
-            statusLabel_X.Text = strB.strPosX.Append(Math.Truncate(_originPoint.X * 100.0) / 100.0).ToString();
-            statusLabel_Y.Text = strB.strPosY.Append(Math.Truncate(_originPoint.Y * 100.0) / 100.0).ToString();
+            zoomRatio = _matAffine.MatrixElements.M11 / _defaultM11 * 100;
         }
 
-        private void FormSizeAlgorithm()
+        private static void CreateGraphics(PictureBox pic, ref Graphics g)
         {
-            int w, h;
-
-            if (bitmap.Width > 3840)
+            if (g != null)
             {
-                w = bitmap.Width / 16;
+                g.Dispose();
+                g = null;
             }
-            else if (bitmap.Width >= 2160 && bitmap.Width <= 3840)
+            if (pic.Image != null)
             {
-                w = bitmap.Width / 8;
-            }
-            else if (bitmap.Width < 2159 && bitmap.Width >= 1920)
-            {
-                w = bitmap.Width / 4;
-            }
-            else if (bitmap.Width < 1921 && bitmap.Width > 1280)
-            {
-                w = bitmap.Width / 3;
-            }
-            else
-            {
-                w = bitmap.Width;
+                pic.Image.Dispose();
+                pic.Image = null;
             }
 
-            if (bitmap.Height > 3840)
+            if ((pic.Width == 0) || (pic.Height == 0))
             {
-                h = bitmap.Height / 16;
-            }
-            else if (bitmap.Height >= 2160 && bitmap.Height <= 3840)
-            {
-                h = bitmap.Height / 8;
-            }
-            else if (bitmap.Height < 2159 && bitmap.Width >= 1920)
-            {
-                h = bitmap.Height / 4;
-            }
-            else if (bitmap.Height < 1921 && bitmap.Height > 1280)
-            {
-                h = bitmap.Height / 3;
-            }
-            else if (bitmap.Height < 1279 && bitmap.Height > 1000)
-            {
-                h = bitmap.Height / 2;
-            }
-            else
-            {
-                h = bitmap.Height;
+                return;
             }
 
-            ClientSize = new Size(w, h);
-            MinimumSize = new Size(w, h);
-            MaximumSize = new Size(w * 2, h * 2);
+            pic.Image = new Bitmap(pic.Width, pic.Height);
 
-            pictureBox_Main.Size = new Size(ClientSize.Width, ClientSize.Height);
-            _originRect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
+            g = Graphics.FromImage(pic.Image);
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
         }
 
-        private static int[] GetAspectRetio(int width, int height)
+        private void RedrawImage()
         {
-            int d = Common.Gcd(width, height);
-            return new int[] { width / d, height / d };
+            if (graph is null)
+            {
+
+            }
+            else
+            {
+                graph.Clear(pictureBox_Main.BackColor);
+                graph.DrawImage(canvas, _matAffine);
+                pictureBox_Main.Refresh();
+            }
         }
 
         private void FormShowPicture_FormClosing(object sender, FormClosingEventArgs e)
         {
             graph.Dispose();
-            bitmap.Dispose();
             canvas.Dispose();
+        }
+
+        private void FormShowPicture_Resize(object sender, EventArgs e)
+        {
+            CreateGraphics(pictureBox_Main, ref graph);
+            RedrawImage();
+        }
+
+        private void FormShowPicture_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Modifiers & Keys.Shift) == Keys.Shift)
+                Cursor = RotateCursor;
+        }
+
+        private void FormShowPicture_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((e.Modifiers & Keys.Shift) == Keys.Shift)
+                Cursor = Cursors.Default;
         }
     }
 }

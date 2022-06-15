@@ -59,22 +59,18 @@ namespace NVGE
             this.label_Graphic = new System.Windows.Forms.Label();
             this.label_Processor = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button_Merge = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox_DD = new System.Windows.Forms.PictureBox();
-            this.button_Merge = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label_default = new System.Windows.Forms.Label();
             this.label_Size = new System.Windows.Forms.Label();
             this.label_File = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_Status = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DD)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -266,14 +262,19 @@ namespace NVGE
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.pictureBox_DD);
             this.groupBox2.Controls.Add(this.button_Merge);
             this.groupBox2.Controls.Add(this.button_Image);
             this.groupBox2.Controls.Add(this.button_Video);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // button_Merge
+            // 
+            resources.ApplyResources(this.button_Merge, "button_Merge");
+            this.button_Merge.Name = "button_Merge";
+            this.button_Merge.UseVisualStyleBackColor = true;
+            this.button_Merge.Click += new System.EventHandler(this.Button_Merge_Click);
             // 
             // label1
             // 
@@ -286,31 +287,12 @@ namespace NVGE
             // 
             // pictureBox_DD
             // 
-            this.pictureBox_DD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.pictureBox_DD, "pictureBox_DD");
             this.pictureBox_DD.Name = "pictureBox_DD";
             this.pictureBox_DD.TabStop = false;
             this.pictureBox_DD.Click += new System.EventHandler(this.PictureBox_DD_Click);
             this.pictureBox_DD.DragDrop += new System.Windows.Forms.DragEventHandler(this.PictureBox_DD_DragDrop);
             this.pictureBox_DD.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureBox_DD_DragEnter);
-            // 
-            // button_Merge
-            // 
-            resources.ApplyResources(this.button_Merge, "button_Merge");
-            this.button_Merge.Name = "button_Merge";
-            this.button_Merge.UseVisualStyleBackColor = true;
-            this.button_Merge.Click += new System.EventHandler(this.Button_Merge_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label_default);
-            this.groupBox3.Controls.Add(this.label_Size);
-            this.groupBox3.Controls.Add(this.label_File);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.label6);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
             // 
             // label_default
             // 
@@ -328,16 +310,6 @@ namespace NVGE
             resources.ApplyResources(this.label_File, "label_File");
             this.label_File.Name = "label_File";
             // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -354,11 +326,15 @@ namespace NVGE
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label_default);
+            this.Controls.Add(this.label_File);
+            this.Controls.Add(this.label_Size);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox_DD);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -372,8 +348,6 @@ namespace NVGE
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DD)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -407,9 +381,6 @@ namespace NVGE
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesUToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label_Size;
         private System.Windows.Forms.Label label_File;
         private System.Windows.Forms.Button button_Merge;

@@ -36,7 +36,7 @@ namespace NVGE
             FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
             Text = "waifu2x-nvger ( build: " + ver.FileVersion.ToString() + "-Beta )";
 
-            using FormSplash splash = new();
+            using var splash = new FormSplash();
             splash.Show();
             splash.Refresh();
 
@@ -56,6 +56,9 @@ namespace NVGE
             SystemInfo.GetSystemInformation(OSInfo);
             SystemInfo.GetProcessorsInformation(CPUInfo);
             SystemInfo.GetVideoControllerInformation(GPUInfo);
+            /*OSInfo = splash.OSInfo;
+            CPUInfo = splash.CPUInfo;
+            GPUInfo = splash.GPUInfo;*/
 
             ResetLabels();
             label_OS.Text = OSInfo[1] + " - " + OSInfo[3] + " [ build: " + OSInfo[4] + " ]";
@@ -251,7 +254,7 @@ namespace NVGE
 
         private void CloseFileCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Common.ImageFile == null && Common.VideoPath == null || Common.VideoPath.Length == 0)
+            if (Common.ImageFile == null && Common.VideoPath == null)
             {
                 MessageBox.Show(Strings.FileNotReadedWarning, Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -3752,6 +3755,7 @@ namespace NVGE
                     ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
 
                     pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+
                     closeFileCToolStripMenuItem.Enabled = true;
 
                     return;
@@ -4561,6 +4565,18 @@ namespace NVGE
             else
             {
                 return;
+            }
+        }
+
+        private static void SplashOperation(bool reflesh)
+        {
+            while (reflesh)
+            {
+                Application.DoEvents();
+                if (!reflesh)
+                {
+                    break;
+                }
             }
         }
 
