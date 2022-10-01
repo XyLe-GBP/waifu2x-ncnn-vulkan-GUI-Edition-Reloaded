@@ -405,6 +405,10 @@ Please configure the settings from the 'Settings' item.</value>
     <value>An unexpected error has occurred.
 {0}</value>
   </data>
+  <data name="UnknownFFmpegCaption" xml:space="preserve">
+    <value>FFmpeg exists, but the version is unknown.
+Do you want to download the official version?</value>
+  </data>
   <data name="UpdateCompletedCaption" xml:space="preserve">
     <value>The update has been completed.</value>
   </data>

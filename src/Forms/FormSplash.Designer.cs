@@ -68,7 +68,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label_log;
+        public System.Windows.Forms.Label label_log;
         private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

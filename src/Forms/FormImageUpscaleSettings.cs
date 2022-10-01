@@ -1,5 +1,7 @@
 ﻿using NVGE.Localization;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace NVGE
@@ -15,10 +17,62 @@ namespace NVGE
 
         private void FormImageUpscaleSettings_Load(object sender, EventArgs e)
         {
-            string[] GPUInfo = new string[3];
-            SystemInfo.GetVideoControllerInformation(GPUInfo);
+            comboBox_GPU.Items.Clear();
+            string[] CPUInfo = new string[3];
+            SystemInfo.GetProcessorsInformation(CPUInfo);
+            List<string> GPUNList = new();
+            GPUNList = SystemInfo.GetGraphicsCardNamesInformation();
+
+            foreach (var GPU in GPUNList)
+            {
+                if (GPU.Contains("Intel"))
+                {
+                    if (GPU.Contains("HD Graphics"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                    }
+                    if (GPU.Contains("Iris"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                    }
+                    if (GPU.Contains("Xe Graphics"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                    }
+                }
+                else if (GPU.Contains("Radeon"))
+                {
+                    if (GPU.Contains("Vega 11"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                    }
+                    if (GPU.Contains("Vega 8"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                    }
+                    if (GPU.Contains("Vega 7"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                    }
+                    if (GPU.Contains("Vega 6"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                    }
+                }
+                else
+                {
+                    comboBox_GPU.Items.Add("dGPU [ " + GPU + " ]");
+                }
+            }
+            comboBox_GPU.Items.Add("Auto");
+            ArrayList array = ArrayList.Adapter(comboBox_GPU.Items);
+            array.Reverse();
+
+            
 
             Config.Load(Common.xmlpath);
+
+            
 
             switch (int.Parse(Config.Entry["ConversionType"].Value))
             {
@@ -985,6 +1039,7 @@ namespace NVGE
 
         private void ComboBox_GPU_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string item = (string)comboBox_GPU.Items[1];
             if (checkBox_Advanced.Checked != false)
             {
                 switch (comboBox_engine.SelectedIndex)
@@ -999,22 +1054,50 @@ namespace NVGE
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 1:
-                                    usegpu = " -g -1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 0";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g -1";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 2:
-                                    usegpu = " -g 0";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 1";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 0";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 3:
-                                    usegpu = " -g 1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 2";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 1";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 4:
-                                    usegpu = " -g 2";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g default";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 2";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
@@ -1036,22 +1119,50 @@ namespace NVGE
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 1:
-                                    usegpu = " -g -1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 0";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g -1";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 2:
-                                    usegpu = " -g 0";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 1";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 0";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 3:
-                                    usegpu = " -g 1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 2";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 1";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 4:
-                                    usegpu = " -g 2";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g default";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 2";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
@@ -1068,27 +1179,60 @@ namespace NVGE
                             switch (comboBox_GPU.SelectedIndex)
                             {
                                 case 0:
-                                    usegpu = " -g auto";
+                                    usegpu = " -g default";
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 1:
-                                    usegpu = " -g 0";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 0";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g -1";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 2:
-                                    usegpu = " -g 1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 1";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 0";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 3:
-                                    usegpu = " -g 2";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 2";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 1";
+                                    }
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 4:
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g default";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 2";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 default:
-                                    usegpu = " -g auto";
+                                    usegpu = " -g default";
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
@@ -1105,22 +1249,50 @@ namespace NVGE
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 1:
-                                    usegpu = " -g -1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 0";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g -1";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 2:
-                                    usegpu = " -g 0";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 1";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 0";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 3:
-                                    usegpu = " -g 1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 2";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 1";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
                                 case 4:
-                                    usegpu = " -g 2";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g default";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 2";
+                                    }
                                     cmdparam = RefleshParams();
                                     textBox_CMD.Text = cmdparam;
                                     break;
@@ -1145,26 +1317,60 @@ namespace NVGE
                                 case 0:
                                     usegpu = " -g default";
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 1:
-                                    usegpu = " -g -1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 0";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g -1";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 2:
-                                    usegpu = " -g 0";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 1";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 0";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 3:
-                                    usegpu = " -g 1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 2";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 1";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 4:
-                                    usegpu = " -g 2";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g default";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 2";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 default:
                                     usegpu = " -g default";
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                             }
                         }
@@ -1176,26 +1382,60 @@ namespace NVGE
                                 case 0:
                                     usegpu = " -g default";
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 1:
-                                    usegpu = " -g -1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 0";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g -1";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 2:
-                                    usegpu = " -g 0";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 1";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 0";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 3:
-                                    usegpu = " -g 1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 2";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 1";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 4:
-                                    usegpu = " -g 2";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g default";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 2";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 default:
                                     usegpu = " -g default";
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                             }
                         }
@@ -1205,24 +1445,62 @@ namespace NVGE
                             switch (comboBox_GPU.SelectedIndex)
                             {
                                 case 0:
-                                    usegpu = " -g auto";
+                                    usegpu = " -g default";
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 1:
-                                    usegpu = " -g 0";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 0";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g -1";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 2:
-                                    usegpu = " -g 1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 1";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 0";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 3:
-                                    usegpu = " -g 2";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 2";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 1";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
+                                    break;
+                                case 4:
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g default";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 2";
+                                    }
+                                    cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 default:
-                                    usegpu = " -g auto";
+                                    usegpu = " -g default";
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                             }
                         }
@@ -1234,26 +1512,60 @@ namespace NVGE
                                 case 0:
                                     usegpu = " -g default";
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 1:
-                                    usegpu = " -g -1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 0";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g -1";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 2:
-                                    usegpu = " -g 0";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 1";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 0";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 3:
-                                    usegpu = " -g 1";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g 2";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 1";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 case 4:
-                                    usegpu = " -g 2";
+                                    if (!item.Contains("iGPU"))
+                                    {
+                                        usegpu = " -g default";
+                                    }
+                                    else
+                                    {
+                                        usegpu = " -g 2";
+                                    }
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                                 default:
                                     usegpu = " -g default";
                                     cmdparam = RefleshParams();
+                                    textBox_CMD.Text = cmdparam;
                                     break;
                             }
                         }

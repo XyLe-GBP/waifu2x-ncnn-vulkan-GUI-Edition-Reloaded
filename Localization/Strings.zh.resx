@@ -404,6 +404,10 @@ Real-ESRGAN Photo：该模型适用于放大照片等。</value>
     <value>发生了一个意外的错误。
 {0}</value>
   </data>
+  <data name="UnknownFFmpegCaption" xml:space="preserve">
+    <value>FFmpeg存在，但版本不明。
+你想下载官方版本吗？</value>
+  </data>
   <data name="UpdateCompletedCaption" xml:space="preserve">
     <value>更新完成。</value>
   </data>

@@ -853,6 +853,16 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   FFmpeg exists, but the version is unknown.
+        ///Do you want to download the official version? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string UnknownFFmpegCaption {
+            get {
+                return ResourceManager.GetString("UnknownFFmpegCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   The update has been completed. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string UpdateCompletedCaption {

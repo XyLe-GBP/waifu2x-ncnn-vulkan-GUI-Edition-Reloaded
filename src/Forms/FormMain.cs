@@ -8,6 +8,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
 using System.Net.NetworkInformation;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,6 +26,9 @@ namespace NVGE
         private static readonly HttpClient FFupdatechecker = new(handler);
         #endregion
 
+        static FormSplash fs;
+        static object lockobj;
+
         public FormMain()
         {
             InitializeComponent();
@@ -36,109 +40,199 @@ namespace NVGE
             FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
             Text = "waifu2x-nvger ( build: " + ver.FileVersion.ToString() + "-Beta )";
 
-            using var splash = new FormSplash();
-            splash.Show();
-            splash.Refresh();
+            lockobj = new object();
 
-            foreach (var files in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\res", "*", SearchOption.AllDirectories))
+            lock (lockobj)
             {
-                FileInfo fi = new(files);
-                RefleshSplashForm(splash, string.Format(Strings.SplashFormFileCaption, fi.Name));
+                ThreadStart ts = new(StartThread);
+                Thread thread = new(ts)
+                {
+                    Name = "Splash",
+                    IsBackground = true
+                };
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+
+                dmes d = new(ShowMessage);
+                if (fs != null)
+                {
+                    fs.Invoke(d, "Initializing...");
+                }
+                label1.Text = Strings.DragDropCaption;
+                Thread.Sleep(1000);
+
+                foreach (var files in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\res", "*", SearchOption.AllDirectories))
+                {
+                    FileInfo fi = new(files);
+                    if (fs != null)
+                    {
+                        fs.Invoke(d, string.Format(Strings.SplashFormFileCaption, fi.Name));
+                        Thread.Sleep(10);
+                    }
+                }
+
+                if (fs != null)
+                {
+                    fs.Invoke(d, Strings.SplashFormConfigCaption);
+                }
+
+                if (!File.Exists(Common.xmlpath))
+                {
+                    Common.InitConfig();
+                }
+
+                Config.Load(Common.xmlpath);
+
+                Common.FFmpegPath = Config.Entry["FFmpegLocation"].Value;
+                Common.ImageParam = Config.Entry["Param"].Value;
+                Common.VideoParam = Config.Entry["VideoParam"].Value;
+                Common.AudioParam = Config.Entry["AudioParam"].Value;
+                Common.MergeParam = Config.Entry["MergeParam"].Value;
+
+                if (Directory.Exists(Directory.GetCurrentDirectory() + @"\_temp-project\"))
+                {
+                    Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\");
+                }
+                if (Config.Entry["VideoLocation"].Value != "")
+                {
+                    Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames");
+                    Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames2x");
+                    Common.DeletePathFrames = Config.Entry["VideoLocation"].Value + @"\image-frames";
+                    Common.DeletePathFrames2x = Config.Entry["VideoLocation"].Value + @"\image-frames2x";
+                }
+                else
+                {
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames");
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x");
+                    Common.DeletePathFrames = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                    Common.DeletePathFrames2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
+                }
+                if (Config.Entry["AudioLocation"].Value != "")
+                {
+                    Directory.CreateDirectory(Config.Entry["AudioLocation"].Value + @"\audio");
+                    Common.DeletePathAudio = Config.Entry["AudioLocation"].Value + @"\audio";
+                }
+                else
+                {
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\audio");
+                    Common.DeletePathAudio = Directory.GetCurrentDirectory() + @"\_temp-project\audio";
+                }
+
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                Thread.Sleep(1000);
+
+                if (fs != null)
+                {
+                    fs.Invoke(d, Strings.SplashFormSystemCaption);
+                }
+                string[] OSInfo = new string[17];
+                string[] CPUInfo = new string[3];
+                string[] GPUInfo = new string[3];
+                SystemInfo.GetSystemInformation(OSInfo);
+                SystemInfo.GetProcessorsInformation(CPUInfo);
+                SystemInfo.GetVideoControllerInformation(GPUInfo);
+
+                List<string> GPUList = new();
+                List<string> GPUNList = new();
+                GPUList = SystemInfo.GetGraphicsCardsInformation();
+                GPUNList = SystemInfo.GetGraphicsCardNamesInformation();
+                if (GPUList.Count == 0)
+                {
+                    MessageBox.Show("GPUInfo", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (GPUNList.Count == 0)
+                {
+                    MessageBox.Show("GPUInfo", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                ResetLabels();
+                label_OS.Text = OSInfo[1] + " - " + OSInfo[3] + " [ build: " + OSInfo[4] + " ]";
+                label_Processor.Text = CPUInfo[0] + " [ " + CPUInfo[1] + " Core / " + CPUInfo[2] + " Threads ]";
+                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+
+                if (fs != null)
+                {
+                    fs.Invoke(d, "Detected OS: " + OSInfo[1]);
+                }
+                Thread.Sleep(10);
+                if (fs != null)
+                {
+                    fs.Invoke(d, "Detected CPU: " + CPUInfo[0]);
+                }
+                Thread.Sleep(10);
+
+                if (GPUList.Count == 1)
+                {
+                    if (fs != null)
+                    {
+                        fs.Invoke(d, "Detected GPU: " + GPUNList);
+                    }
+                    Thread.Sleep(10);
+                    comboBox_GPU.Items.Add(GPUNList[0]);
+                    comboBox_GPU.SelectedIndex = 0;
+                    comboBox_GPU.Enabled = false;
+                    label_Graphic.Text = GPUList[0];
+                }
+                else
+                {
+                    foreach (var GPU in GPUNList)
+                    {
+                        if (fs != null)
+                        {
+                            fs.Invoke(d, "Detected GPU: " + GPU);
+                        }
+                        Thread.Sleep(10);
+                        comboBox_GPU.Items.Add(GPU);
+                    }
+                    comboBox_GPU.SelectedIndex = 0;
+                    comboBox_GPU.Enabled = true;
+                    label_Graphic.Text = GPUList[0];
+                }
+
+                if (fs != null)
+                {
+                    fs.Invoke(d, Strings.SplashFormFFCaption);
+                }
+                var ffupdate = Task.Run(() => CheckForFFmpeg());
+                ffupdate.Wait();
+
+                if (fs != null)
+                {
+                    fs.Invoke(d, Strings.SplashFormUpdateCaption);
+                }
+                Thread.Sleep(500);
+                if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
+                {
+                    if (fs != null)
+                    {
+                        fs.Invoke(d, Strings.SplashFormUpdatingCaption);
+                    }
+                    File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
+                    string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+                    File.Delete(updpath + @"\updater.exe");
+                    File.Delete(updpath + @"\waifu2x-nvger.zip");
+                    Common.DeleteDirectory(updpath + @"\updater-temp");
+
+                    if (fs != null)
+                    {
+                        fs.Invoke(d, Strings.SplashFormUpdatedCaption);
+                    }
+                    MessageBox.Show(fs, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    var update = Task.Run(() => CheckForUpdatesForInit());
+                    update.Wait();
+                }
+
+                if (fs != null)
+                {
+                    fs.Invoke(d, Strings.SplashFormFinalCaption);
+                }
+                Thread.Sleep(500);
             }
 
-            RefleshSplashForm(splash, Strings.SplashFormSystemCaption);
-
-            label1.Text = Strings.DragDropCaption;
-
-            string[] OSInfo = new string[17];
-            string[] CPUInfo = new string[3];
-            string[] GPUInfo = new string[3];
-            SystemInfo.GetSystemInformation(OSInfo);
-            SystemInfo.GetProcessorsInformation(CPUInfo);
-            SystemInfo.GetVideoControllerInformation(GPUInfo);
-            /*OSInfo = splash.OSInfo;
-            CPUInfo = splash.CPUInfo;
-            GPUInfo = splash.GPUInfo;*/
-
-            ResetLabels();
-            label_OS.Text = OSInfo[1] + " - " + OSInfo[3] + " [ build: " + OSInfo[4] + " ]";
-            label_Processor.Text = CPUInfo[0] + " [ " + CPUInfo[1] + " Core / " + CPUInfo[2] + " Threads ]";
-            label_Graphic.Text = GPUInfo[0] + " - " + GPUInfo[1] + " [ " + GPUInfo[2] + " RAM ]";
-            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-
-            RefleshSplashForm(splash, Strings.SplashFormConfigCaption);
-
-            if (!File.Exists(Common.xmlpath))
-            {
-                Common.InitConfig();
-            }
-            
-            Config.Load(Common.xmlpath);
-
-            Common.FFmpegPath = Config.Entry["FFmpegLocation"].Value;
-            Common.ImageParam = Config.Entry["Param"].Value;
-            Common.VideoParam = Config.Entry["VideoParam"].Value;
-            Common.AudioParam = Config.Entry["AudioParam"].Value;
-            Common.MergeParam = Config.Entry["MergeParam"].Value;
-
-            if (Directory.Exists(Directory.GetCurrentDirectory() + @"\_temp-project\"))
-            {
-                Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\");
-            }
-            if (Config.Entry["VideoLocation"].Value != "")
-            {
-                Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames");
-                Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames2x");
-                Common.DeletePathFrames = Config.Entry["VideoLocation"].Value + @"\image-frames";
-                Common.DeletePathFrames2x = Config.Entry["VideoLocation"].Value + @"\image-frames2x";
-            }
-            else
-            {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames");
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x");
-                Common.DeletePathFrames = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
-                Common.DeletePathFrames2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
-            }
-            if (Config.Entry["AudioLocation"].Value != "")
-            {
-                Directory.CreateDirectory(Config.Entry["AudioLocation"].Value + @"\audio");
-                Common.DeletePathAudio = Config.Entry["AudioLocation"].Value + @"\audio";
-            }
-            else
-            {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\audio");
-                Common.DeletePathAudio = Directory.GetCurrentDirectory() + @"\_temp-project\audio";
-            }
-            
-            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-
-            if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
-            {
-                RefleshSplashForm(splash, Strings.SplashFormUpdatingCaption);
-                File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
-                string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
-                File.Delete(updpath + @"\updater.exe");
-                File.Delete(updpath + @"\waifu2x-nvger.zip");
-                Common.DeleteDirectory(updpath + @"\updater-temp");
-
-                RefleshSplashForm(splash, Strings.SplashFormUpdatedCaption);
-                MessageBox.Show(Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                RefleshSplashForm(splash, Strings.SplashFormUpdateCaption);
-                var update = Task.Run(() => CheckForUpdatesForInit());
-                update.Wait();
-            }
-
-            RefleshSplashForm(splash, Strings.SplashFormFFCaption);
-
-            var ffupdate = Task.Run(() => CheckForFFmpeg());
-            ffupdate.Wait();
-
-            RefleshSplashForm(splash, Strings.SplashFormFinalCaption);
-
-            splash.Close();
+            CloseSplash();
             Activate();
         }
 
@@ -4181,6 +4275,7 @@ namespace NVGE
                                 };
                                 Process.Start(pi);
                                 Close();
+                                return;
                             }
                             else
                             {
@@ -4195,7 +4290,6 @@ namespace NVGE
                                     return;
                                 }
                             }
-                            return;
                         case 0:
                             MessageBox.Show(this, Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.Uptodate, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
@@ -4286,6 +4380,7 @@ namespace NVGE
                                 };
                                 Process.Start(pi);
                                 Close();
+                                return;
                             }
                             else
                             {
@@ -4300,7 +4395,6 @@ namespace NVGE
                                     return;
                                 }
                             }
-                            return;
                         case 0: // Latest
                             break;
                         case 1:
@@ -4392,59 +4486,119 @@ namespace NVGE
                 }
                 else if (Config.Entry["FFmpegVersion"].Value == "") // Unknown version ffmpeg
                 {
-                    DialogResult dr = MessageBox.Show(Strings.DLConfirm, Strings.MSGWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dr == DialogResult.Yes)
+                    if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                     {
-                        if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                        DialogResult dr = MessageBox.Show(Strings.UnknownFFmpegCaption, Strings.MSGWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (dr == DialogResult.Yes)
                         {
-                            File.Delete(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
-                        }
-                        Form.ShowDialog();
-
-                        if (Common.AbortFlag != 0)
-                        {
-                            Common.DlcancelFlag = 0;
-                            Config.Entry["FFmpegLocation"].Value = "";
-                            Config.Save(Common.xmlpath);
-                            MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else
-                        {
-                            if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                            if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
                             {
-                                using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
-                                foreach (ZipArchiveEntry entry in archive.Entries)
-                                {
-                                    if (entry.FullName == "ffmpeg-" + hv + "-essentials_build/bin/ffmpeg.exe")
-                                    {
-                                        entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
-                                    }
-                                }
+                                File.Delete(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                            }
+                            Form.ShowDialog();
 
-                                if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
-                                {
-                                    Config.Entry["FFmpegLocation"].Value = Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe";
-                                    Config.Entry["FFmpegVersion"].Value = "essentials_build " + hv;
-                                    Config.Save(Common.xmlpath);
-                                    MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DlcancelFlag = 0;
+                                Config.Entry["FFmpegLocation"].Value = "";
+                                Config.Save(Common.xmlpath);
+                                MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                             else
                             {
-                                Config.Entry["FFmpegLocation"].Value = "";
-                                Config.Save(Common.xmlpath);
-                                MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                                {
+                                    using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                                    foreach (ZipArchiveEntry entry in archive.Entries)
+                                    {
+                                        if (entry.FullName == "ffmpeg-" + hv + "-essentials_build/bin/ffmpeg.exe")
+                                        {
+                                            entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
+                                        }
+                                    }
+
+                                    if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                                    {
+                                        Config.Entry["FFmpegLocation"].Value = Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe";
+                                        Config.Entry["FFmpegVersion"].Value = "essentials_build " + hv;
+                                        Config.Save(Common.xmlpath);
+                                        MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else
+                                {
+                                    Config.Entry["FFmpegLocation"].Value = "";
+                                    Config.Save(Common.xmlpath);
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
+                        }
+                        else
+                        {
+                            return;
                         }
                     }
                     else
                     {
-                        return;
+                        DialogResult dr = MessageBox.Show(Strings.DLConfirm, Strings.MSGWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (dr == DialogResult.Yes)
+                        {
+                            if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                            {
+                                File.Delete(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe");
+                            }
+                            Form.ShowDialog();
+
+                            if (Common.AbortFlag != 0)
+                            {
+                                Common.DlcancelFlag = 0;
+                                Config.Entry["FFmpegLocation"].Value = "";
+                                Config.Save(Common.xmlpath);
+                                MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
+                                {
+                                    using ZipArchive archive = ZipFile.OpenRead(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
+                                    foreach (ZipArchiveEntry entry in archive.Entries)
+                                    {
+                                        if (entry.FullName == "ffmpeg-" + hv + "-essentials_build/bin/ffmpeg.exe")
+                                        {
+                                            entry.ExtractToFile(Directory.GetCurrentDirectory() + @"\res\" + entry.Name, true);
+                                        }
+                                    }
+
+                                    if (File.Exists(Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe"))
+                                    {
+                                        Config.Entry["FFmpegLocation"].Value = Directory.GetCurrentDirectory() + @"\res\ffmpeg.exe";
+                                        Config.Entry["FFmpegVersion"].Value = "essentials_build " + hv;
+                                        Config.Save(Common.xmlpath);
+                                        MessageBox.Show(Strings.DLSuccess, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(string.Format(Strings.UnExpectedError, "extract failed."), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else
+                                {
+                                    Config.Entry["FFmpegLocation"].Value = "";
+                                    Config.Save(Common.xmlpath);
+                                    MessageBox.Show(string.Format(Strings.UnExpectedError, Common.DLlog), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
+                    
                 }
                 else // Update ffmpeg
                 {
@@ -4568,23 +4722,45 @@ namespace NVGE
             }
         }
 
-        private static void SplashOperation(bool reflesh)
+        #region SplashScreenCommon
+        private static void StartThread()
         {
-            while (reflesh)
+            fs = new FormSplash();
+            Application.Run(fs);
+        }
+
+
+        private static void CloseSplash()
+        {
+            dop d = new dop(CloseForm);
+            if (fs != null)
             {
-                Application.DoEvents();
-                if (!reflesh)
-                {
-                    break;
-                }
+                fs.Invoke(d);
             }
         }
 
-        private static void RefleshSplashForm(FormSplash form, string text)
+        private delegate void dop();
+        private static void CloseForm()
         {
-            form.ProgressMsg = text;
-            Application.DoEvents();
-            System.Threading.Thread.Sleep(10);
+            fs.Close();
+        }
+
+        private delegate void dmes(string message);
+        private static void ShowMessage(string message)
+        {
+            fs.label_log.Text = message;
+        }
+        #endregion
+
+        private void ComboBox_GPU_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<string> GPUList = new();
+            GPUList = SystemInfo.GetGraphicsCardsInformation();
+            if (GPUList.Count == 0)
+            {
+                MessageBox.Show("GPUInfo", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            label_Graphic.Text = GPUList[comboBox_GPU.SelectedIndex];
         }
     }
 }

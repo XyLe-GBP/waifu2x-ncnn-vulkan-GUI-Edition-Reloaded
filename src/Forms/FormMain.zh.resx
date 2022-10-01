@@ -187,24 +187,11 @@
   <data name="button_Merge.Text" xml:space="preserve">
     <value>与FFmpeg合并</value>
   </data>
-  <data name="label_default.Location" type="System.Drawing.Point, System.Drawing">
-    <value>520, 301</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label_Size.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="label_Size.Location" type="System.Drawing.Point, System.Drawing">
-    <value>520, 325</value>
+    <value>520, 330</value>
   </data>
-  <data name="label_Size.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 15</value>
-  </data>
-  <data name="label_Size.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="label_File.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="label_File.Location" type="System.Drawing.Point, System.Drawing">
+    <value>520, 348</value>
   </data>
   <data name="toolStripStatusLabel_Status.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 17</value>

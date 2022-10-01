@@ -404,6 +404,10 @@ Real-ESRGAN Photo: 写真等をアップスケールする際に適したモデ�
     <value>予期せぬエラーが発生しました。
 {0}</value>
   </data>
+  <data name="UnknownFFmpegCaption" xml:space="preserve">
+    <value>FFmpegが存在しますが、バージョンが不明です。
+正規バージョンをダウンロードしますか？</value>
+  </data>
   <data name="UpdateCompletedCaption" xml:space="preserve">
     <value>アップデートが完了しました。</value>
   </data>

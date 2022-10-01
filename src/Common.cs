@@ -1170,6 +1170,49 @@ namespace NVGE
                 }
             }
         }
+
+        public static List<string> GetGraphicsCardNamesInformation()
+        {
+            var clist = new List<string>();
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+            string graphicsCard = string.Empty;
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                if (obj["CurrentBitsPerPixel"] != null && obj["CurrentHorizontalResolution"] != null)
+                {
+                    graphicsCard = obj["Name"].ToString();
+                    clist.Add(graphicsCard);
+                }
+            }
+
+            if (clist.Count != 0)
+            {
+                return clist;
+            }
+            else { return null; }
+        }
+
+        public static List<string> GetGraphicsCardsInformation()
+        {
+            var clist = new List<string>();
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+            string graphicsCard = string.Empty;
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                if (obj["CurrentBitsPerPixel"] != null && obj["CurrentHorizontalResolution"] != null)
+                {
+                    long ram = long.Parse(obj["AdapterRAM"].ToString()) / 1048576;
+                    graphicsCard = obj["Name"].ToString() + " - " + obj["DriverVersion"].ToString() + " [ " + ram.ToString() + "MiB RAM ]";
+                    clist.Add(graphicsCard);
+                }
+            }
+
+            if (clist.Count != 0)
+            {
+                return clist;
+            }
+            else { return null; }
+        }
     }
 
     class Config
