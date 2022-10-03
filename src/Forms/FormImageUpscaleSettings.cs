@@ -64,7 +64,7 @@ namespace NVGE
                     comboBox_GPU.Items.Add("dGPU [ " + GPU + " ]");
                 }
             }
-            comboBox_GPU.Items.Add("Auto");
+            comboBox_GPU.Items.Add(Strings.SelectGPUAutoCaption);
             ArrayList array = ArrayList.Adapter(comboBox_GPU.Items);
             array.Reverse();
 

@@ -59,7 +59,7 @@ namespace NVGE
                     fs.Invoke(d, "Initializing...");
                 }
                 label1.Text = Strings.DragDropCaption;
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
 
                 foreach (var files in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\res", "*", SearchOption.AllDirectories))
                 {
@@ -119,7 +119,7 @@ namespace NVGE
                 }
 
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
 
                 if (fs != null)
                 {
@@ -200,7 +200,7 @@ namespace NVGE
                 {
                     fs.Invoke(d, Strings.SplashFormUpdateCaption);
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(200);
                 if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
                 {
                     if (fs != null)
@@ -229,7 +229,7 @@ namespace NVGE
                 {
                     fs.Invoke(d, Strings.SplashFormFinalCaption);
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(200);
             }
 
             CloseSplash();
@@ -2334,11 +2334,13 @@ namespace NVGE
 
                     if (Common.ImgDetFlag == 0)
                     {
-                        FolderBrowserDialog fbd = new();
-                        fbd.Description = Strings.FBDImageTitle;
-                        fbd.RootFolder = Environment.SpecialFolder.Desktop;
-                        fbd.SelectedPath = Application.ExecutablePath.Replace(Path.GetFileName(Application.ExecutablePath), "");
-                        fbd.ShowNewFolderButton = true;
+                        FolderBrowserDialog fbd = new()
+                        {
+                            Description = Strings.FBDImageTitle,
+                            RootFolder = Environment.SpecialFolder.Desktop,
+                            SelectedPath = Application.ExecutablePath.Replace(Path.GetFileName(Application.ExecutablePath), ""),
+                            ShowNewFolderButton = true
+                        };
 
                         if (fbd.ShowDialog(this) == DialogResult.OK)
                         {
