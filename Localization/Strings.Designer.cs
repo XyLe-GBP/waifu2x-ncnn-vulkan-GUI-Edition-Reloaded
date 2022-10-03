@@ -734,6 +734,15 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   Auto に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SelectGPUAutoCaption {
+            get {
+                return ResourceManager.GetString("SelectGPUAutoCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   The operation cannot be continued because the settings are not correct.
         ///Please configure the settings from the &apos;Settings&apos; item. に類似しているローカライズされた文字列を検索します。
         /// </summary>

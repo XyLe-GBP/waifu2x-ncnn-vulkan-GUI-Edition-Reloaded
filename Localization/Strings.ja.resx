@@ -363,6 +363,9 @@ Real-ESRGAN Photo: 写真等をアップスケールする際に適したモデ�
   <data name="SaveFormatChangeDialogCaption" xml:space="preserve">
     <value>形式変更したファイルを保存</value>
   </data>
+  <data name="SelectGPUAutoCaption" xml:space="preserve">
+    <value>自動</value>
+  </data>
   <data name="SettingError" xml:space="preserve">
     <value>設定が正しく行われていないため、操作を続行できません。
 '設定'項目から設定を行ってください。</value>

@@ -364,6 +364,9 @@ Real-ESRGAN Photo: This model is suitable for upscaling photos.</value>
   <data name="SaveFormatChangeDialogCaption" xml:space="preserve">
     <value>Save the reformatted file.</value>
   </data>
+  <data name="SelectGPUAutoCaption" xml:space="preserve">
+    <value>Auto</value>
+  </data>
   <data name="SettingError" xml:space="preserve">
     <value>The operation cannot be continued because the settings are not correct.
 Please configure the settings from the 'Settings' item.</value>

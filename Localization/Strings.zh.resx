@@ -363,6 +363,9 @@ Real-ESRGAN Photo：该模型适用于放大照片等。</value>
   <data name="SaveFormatChangeDialogCaption" xml:space="preserve">
     <value>保存重新格式化的文件</value>
   </data>
+  <data name="SelectGPUAutoCaption" xml:space="preserve">
+    <value>自动</value>
+  </data>
   <data name="SettingError" xml:space="preserve">
     <value>设置不正确，不能继续操作。
 请到 "设置 "部分来配置你的设置。</value>
