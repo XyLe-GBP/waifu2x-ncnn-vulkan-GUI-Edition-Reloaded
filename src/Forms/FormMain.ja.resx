@@ -71,31 +71,31 @@
     <value>ファイル (&amp;F)</value>
   </data>
   <data name="openImegeIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="openImegeIToolStripMenuItem.Text" xml:space="preserve">
     <value>画像ファイルを開く (&amp;I)</value>
   </data>
   <data name="openVideoVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="openVideoVToolStripMenuItem.Text" xml:space="preserve">
     <value>動画ファイルを開く (&amp;V)</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="closeFileCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="closeFileCToolStripMenuItem.Text" xml:space="preserve">
     <value>ファイルを閉じる (&amp;C)</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="exitXToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="exitXToolStripMenuItem.Text" xml:space="preserve">
     <value>終了 (&amp;X)</value>
@@ -118,23 +118,32 @@
   <data name="videoUpscalingSettingsVToolStripMenuItem.Text" xml:space="preserve">
     <value>動画アップスケール設定 (&amp;V)</value>
   </data>
+  <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 6</value>
+  </data>
+  <data name="preferencesSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 22</value>
+  </data>
+  <data name="preferencesSToolStripMenuItem.Text" xml:space="preserve">
+    <value>詳細設定 (&amp;S)</value>
+  </data>
   <data name="toolsTToolStripMenuItem.Text" xml:space="preserve">
     <value>ツール (&amp;T)</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
     <value>動画解像度の変更</value>
   </data>
   <data name="changeVideoFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="changeVideoFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>動画形式の変更</value>
   </data>
   <data name="changeImageFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="changeImageFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>画像形式の変更</value>

@@ -1039,7 +1039,38 @@ namespace NVGE
 
         private void ComboBox_GPU_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string item = (string)comboBox_GPU.Items[1];
+            string item = null!, item1 = null!, item2 = null!, item3 = null!;
+            if (comboBox_GPU.Items.Count < 2)
+            {
+                item = "unknown";
+            }
+            else
+            {
+                int count = 0;
+                foreach (var gpname in comboBox_GPU.Items)
+                {
+                    if (count == 0)
+                    {
+                        count++;
+                        continue;
+                    }
+                    else if (count == 1)
+                    {
+                        item = gpname.ToString();
+                        item1 = gpname.ToString();
+                    }
+                    else if (count == 2)
+                    {
+                        item2 = gpname.ToString();
+                    }
+                    else if (count == 3)
+                    {
+                        item3 = gpname.ToString();
+                    }
+                    count++;
+                }
+            }
+            
             if (checkBox_Advanced.Checked != false)
             {
                 switch (comboBox_engine.SelectedIndex)

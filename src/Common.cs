@@ -399,7 +399,7 @@ namespace NVGE
         }
 
         /// <summary>
-        /// 設定ファイルに全てを書き出す
+        /// 設定ファイルにデフォルトの設定レコード全てを書き出す
         /// </summary>
         public static void InitConfig()
         {
@@ -634,6 +634,14 @@ namespace NVGE
             if (Config.Entry["FFmpegVersion"].Value == null)
             {
                 Config.Entry["FFmpegVersion"].Value = "";
+            }
+            if (Config.Entry["CheckUpdateWithStartup"].Value == null)
+            {
+                Config.Entry["CheckUpdateWithStartup"].Value = "true";
+            }
+            if (Config.Entry["CheckUpdateFFWithStartup"].Value == null)
+            {
+                Config.Entry["CheckUpdateFFWithStartup"].Value = "true";
             }
             Config.Save(xmlpath);
         }

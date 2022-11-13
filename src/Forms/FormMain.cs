@@ -191,13 +191,6 @@ namespace NVGE
 
                 if (fs != null)
                 {
-                    fs.Invoke(d, Strings.SplashFormFFCaption);
-                }
-                var ffupdate = Task.Run(() => CheckForFFmpeg());
-                ffupdate.Wait();
-
-                if (fs != null)
-                {
                     fs.Invoke(d, Strings.SplashFormUpdateCaption);
                 }
                 Thread.Sleep(200);
@@ -221,10 +214,24 @@ namespace NVGE
                 }
                 else
                 {
-                    var update = Task.Run(() => CheckForUpdatesForInit());
-                    update.Wait();
+                    if (bool.Parse(Config.Entry["CheckUpdateWithStartup"].Value) == true)
+                    {
+                        var update = Task.Run(() => CheckForUpdatesForInit());
+                        update.Wait();
+                    }
                 }
 
+                if (fs != null)
+                {
+                    fs.Invoke(d, Strings.SplashFormFFCaption);
+                }
+
+                if (bool.Parse(Config.Entry["CheckUpdateFFWithStartup"].Value) == true)
+                {
+                    var ffupdate = Task.Run(() => CheckForFFmpeg());
+                    ffupdate.Wait();
+                }
+                
                 if (fs != null)
                 {
                     fs.Invoke(d, Strings.SplashFormFinalCaption);
@@ -4763,6 +4770,12 @@ namespace NVGE
                 MessageBox.Show("GPUInfo", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             label_Graphic.Text = GPUList[comboBox_GPU.SelectedIndex];
+        }
+
+        private void PreferencesSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using FormPreferencesSettings Form = new();
+            Form.ShowDialog();
         }
     }
 }
