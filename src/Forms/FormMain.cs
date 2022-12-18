@@ -11,6 +11,7 @@ using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
 
 namespace NVGE
 {
@@ -26,7 +27,8 @@ namespace NVGE
         private static readonly HttpClient FFupdatechecker = new(handler);
         #endregion
 
-        static FormSplash fs;
+        //static FormSplash fs;
+        static FormSplashWPF fs;
         static object lockobj;
 
         public FormMain()
@@ -39,6 +41,11 @@ namespace NVGE
         {
             FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
             Text = "waifu2x-nvger ( build: " + ver.FileVersion.ToString() + "-Beta )";
+
+            if (!File.Exists(Common.xmlpath))
+            {
+                Common.InitConfig();
+            }
 
             lockobj = new object();
 
@@ -54,10 +61,9 @@ namespace NVGE
                 thread.Start();
 
                 dmes d = new(ShowMessage);
-                if (fs != null)
-                {
-                    fs.Invoke(d, "Initializing...");
-                }
+
+                //fs?.Invoke(d, "Initializing...");
+                fs?.Dispatcher.Invoke(d, "Initializing...");
                 label1.Text = Strings.DragDropCaption;
                 Thread.Sleep(200);
 
@@ -66,20 +72,13 @@ namespace NVGE
                     FileInfo fi = new(files);
                     if (fs != null)
                     {
-                        fs.Invoke(d, string.Format(Strings.SplashFormFileCaption, fi.Name));
+                        fs.Dispatcher.Invoke(d, string.Format(Strings.SplashFormFileCaption, fi.Name));
                         Thread.Sleep(10);
                     }
                 }
 
-                if (fs != null)
-                {
-                    fs.Invoke(d, Strings.SplashFormConfigCaption);
-                }
-
-                if (!File.Exists(Common.xmlpath))
-                {
-                    Common.InitConfig();
-                }
+                //fs?.Invoke(d, Strings.SplashFormConfigCaption);
+                fs?.Dispatcher.Invoke(d, Strings.SplashFormConfigCaption);
 
                 Config.Load(Common.xmlpath);
 
@@ -123,7 +122,7 @@ namespace NVGE
 
                 if (fs != null)
                 {
-                    fs.Invoke(d, Strings.SplashFormSystemCaption);
+                    fs.Dispatcher.Invoke(d, Strings.SplashFormSystemCaption);
                 }
                 string[] OSInfo = new string[17];
                 string[] CPUInfo = new string[3];
@@ -152,12 +151,12 @@ namespace NVGE
 
                 if (fs != null)
                 {
-                    fs.Invoke(d, "Detected OS: " + OSInfo[1]);
+                    fs.Dispatcher.Invoke(d, "Detected OS: " + OSInfo[1]);
                 }
                 Thread.Sleep(10);
                 if (fs != null)
                 {
-                    fs.Invoke(d, "Detected CPU: " + CPUInfo[0]);
+                    fs.Dispatcher.Invoke(d, "Detected CPU: " + CPUInfo[0]);
                 }
                 Thread.Sleep(10);
 
@@ -165,7 +164,7 @@ namespace NVGE
                 {
                     if (fs != null)
                     {
-                        fs.Invoke(d, "Detected GPU: " + GPUNList);
+                        fs.Dispatcher.Invoke(d, "Detected GPU: " + GPUNList);
                     }
                     Thread.Sleep(10);
                     comboBox_GPU.Items.Add(GPUNList[0]);
@@ -179,7 +178,7 @@ namespace NVGE
                     {
                         if (fs != null)
                         {
-                            fs.Invoke(d, "Detected GPU: " + GPU);
+                            fs.Dispatcher.Invoke(d, "Detected GPU: " + GPU);
                         }
                         Thread.Sleep(10);
                         comboBox_GPU.Items.Add(GPU);
@@ -191,14 +190,14 @@ namespace NVGE
 
                 if (fs != null)
                 {
-                    fs.Invoke(d, Strings.SplashFormUpdateCaption);
+                    fs.Dispatcher.Invoke(d, Strings.SplashFormUpdateCaption);
                 }
                 Thread.Sleep(200);
                 if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
                 {
                     if (fs != null)
                     {
-                        fs.Invoke(d, Strings.SplashFormUpdatingCaption);
+                        fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatingCaption);
                     }
                     File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
                     string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
@@ -208,9 +207,9 @@ namespace NVGE
 
                     if (fs != null)
                     {
-                        fs.Invoke(d, Strings.SplashFormUpdatedCaption);
+                        fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatedCaption);
                     }
-                    MessageBox.Show(fs, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -223,7 +222,7 @@ namespace NVGE
 
                 if (fs != null)
                 {
-                    fs.Invoke(d, Strings.SplashFormFFCaption);
+                    fs.Dispatcher.Invoke(d, Strings.SplashFormFFCaption);
                 }
 
                 if (bool.Parse(Config.Entry["CheckUpdateFFWithStartup"].Value) == true)
@@ -234,7 +233,7 @@ namespace NVGE
                 
                 if (fs != null)
                 {
-                    fs.Invoke(d, Strings.SplashFormFinalCaption);
+                    fs.Dispatcher.Invoke(d, Strings.SplashFormFinalCaption);
                 }
                 Thread.Sleep(200);
             }
@@ -353,6 +352,36 @@ namespace NVGE
             }
         }
 
+        private void OpenFromClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsImage())
+            {
+                var img = Clipboard.GetImage();
+                if (img != null) {
+                    ImageConvert.IMAGEtoPNG32Async(Common.xmlpath, Directory.GetCurrentDirectory() + @"\tmp.png", true, img);
+                    FileInfo file = new(Directory.GetCurrentDirectory() + @"\tmp.png");
+                    long FileSize = file.Length;
+                    string sz = string.Format("{0} ", FileSize);
+                    toolStripStatusLabel_Status.Text = Strings.ReadedString;
+                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
+                    ReadLabels();
+                    label_File.Text = Strings.ClipboardCaption;
+                    label_Size.Text = sz + Strings.SizeString;
+                    button_Image.Enabled = true;
+                    closeFileCToolStripMenuItem.Enabled = true;
+                    label1.Visible = false;
+                    pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                    Common.ImageFile = new string[1];
+                    Common.ImageFile[0] = Directory.GetCurrentDirectory() + @"\tmp.png";
+                }
+            }
+            else
+            {
+                MessageBox.Show(Strings.ClipboardErrorCaption, Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+
         private void CloseFileCToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Common.ImageFile == null && Common.VideoPath == null)
@@ -465,7 +494,7 @@ namespace NVGE
 
         private void Button_Image_Click(object sender, EventArgs e)
         {
-            if (Common.ImageParam.Length < 69 || Common.ImageParam.Length == 0)
+            if (Common.ImageParam.Length < 69 || Common.ImageParam.Length == 0 || string.IsNullOrWhiteSpace(Common.ImageParam))
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -4734,17 +4763,19 @@ namespace NVGE
         #region SplashScreenCommon
         private static void StartThread()
         {
-            fs = new FormSplash();
-            Application.Run(fs);
+            //fs = new FormSplash();
+            fs = new FormSplashWPF();
+            //Application.Run(fs);
+            fs.ShowDialog();
         }
 
 
         private static void CloseSplash()
         {
-            dop d = new dop(CloseForm);
+            dop d = new(CloseForm);
             if (fs != null)
             {
-                fs.Invoke(d);
+                fs.Dispatcher.Invoke(d);
             }
         }
 
@@ -4757,7 +4788,8 @@ namespace NVGE
         private delegate void dmes(string message);
         private static void ShowMessage(string message)
         {
-            fs.label_log.Text = message;
+            //fs.label_log.Text = message;
+            fs.TextBlock_Log.Text = message;
         }
         #endregion
 

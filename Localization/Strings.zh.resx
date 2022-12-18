@@ -139,6 +139,12 @@
   <data name="ButtonUpscaleVideo" xml:space="preserve">
     <value>视频的缩放比例</value>
   </data>
+  <data name="ClipboardCaption" xml:space="preserve">
+    <value>剪贴板</value>
+  </data>
+  <data name="ClipboardErrorCaption" xml:space="preserve">
+    <value>剪贴板的内容不是图像。</value>
+  </data>
   <data name="ConfirmClose" xml:space="preserve">
     <value>目前有一个升格的框架文件。
 如果你在这时退出应用程序，所有被放大的
@@ -340,6 +346,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="OpenFormatChangeDialogCaption" xml:space="preserve">
     <value>打开要重新格式化的文件</value>
   </data>
+  <data name="OpenImageCaption" xml:space="preserve">
+    <value>打开图片。</value>
+  </data>
   <data name="PixelValueNotSetCaption" xml:space="preserve">
     <value>像素值没有正确输入。</value>
   </data>
@@ -402,6 +411,13 @@ Real-ESRGAN Photo：该模型适用于放大照片等。</value>
   </data>
   <data name="SplashFormUpdatingCaption" xml:space="preserve">
     <value>更新正在进行的申请...</value>
+  </data>
+  <data name="SplashImagePathInvalidCaption" xml:space="preserve">
+    <value>未指定图像路径。</value>
+  </data>
+  <data name="SplashImageSizeInvalidCaption" xml:space="preserve">
+    <value>图像尺寸不正确。 
+只有490x330像素的图像可以被指定。</value>
   </data>
   <data name="UnExpectedError" xml:space="preserve">
     <value>发生了一个意外的错误。

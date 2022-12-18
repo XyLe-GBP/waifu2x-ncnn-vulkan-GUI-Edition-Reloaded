@@ -139,6 +139,12 @@ If you have enabled advanced settings, please check your settings.</value>
   <data name="ButtonUpscaleVideo" xml:space="preserve">
     <value>Upscaling Video</value>
   </data>
+  <data name="ClipboardCaption" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="ClipboardErrorCaption" xml:space="preserve">
+    <value>Clipboard contents are not images.</value>
+  </data>
   <data name="ConfirmClose" xml:space="preserve">
     <value>There is currently an upscaled frame file.
 If you exit the application at this point, all upscaled
@@ -341,6 +347,9 @@ Do you wish to continue?</value>
   <data name="OpenFormatChangeDialogCaption" xml:space="preserve">
     <value>Open the file to be reformatted.</value>
   </data>
+  <data name="OpenImageCaption" xml:space="preserve">
+    <value>Open Image</value>
+  </data>
   <data name="PixelValueNotSetCaption" xml:space="preserve">
     <value>Pixel values are not entered correctly.</value>
   </data>
@@ -403,6 +412,13 @@ Please configure the settings from the 'Settings' item.</value>
   </data>
   <data name="SplashFormUpdatingCaption" xml:space="preserve">
     <value>Updating application...</value>
+  </data>
+  <data name="SplashImagePathInvalidCaption" xml:space="preserve">
+    <value>Image path is invalid.</value>
+  </data>
+  <data name="SplashImageSizeInvalidCaption" xml:space="preserve">
+    <value>Image file size is incorrect.
+Only 490x330 pixel images can be loaded.</value>
   </data>
   <data name="UnExpectedError" xml:space="preserve">
     <value>An unexpected error has occurred.

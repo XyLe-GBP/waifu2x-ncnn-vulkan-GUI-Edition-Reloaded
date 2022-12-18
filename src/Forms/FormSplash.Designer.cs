@@ -35,9 +35,9 @@
             // label_log
             // 
             this.label_log.AutoEllipsis = true;
-            this.label_log.Location = new System.Drawing.Point(12, 322);
+            this.label_log.Location = new System.Drawing.Point(0, 319);
             this.label_log.Name = "label_log";
-            this.label_log.Size = new System.Drawing.Size(466, 19);
+            this.label_log.Size = new System.Drawing.Size(490, 29);
             this.label_log.TabIndex = 0;
             this.label_log.Text = "Loading...";
             this.label_log.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -53,6 +53,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(490, 350);
             this.ControlBox = false;
             this.Controls.Add(this.progressBar1);

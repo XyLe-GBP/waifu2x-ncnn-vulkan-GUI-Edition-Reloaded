@@ -125,6 +125,24 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   Clipboard に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ClipboardCaption {
+            get {
+                return ResourceManager.GetString("ClipboardCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Clipboard contents are not images. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ClipboardErrorCaption {
+            get {
+                return ResourceManager.GetString("ClipboardErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   There is currently an upscaled frame file.
         ///If you exit the application at this point, all upscaled
         ///file will be lost. Are you sure you want to exit? に類似しているローカライズされた文字列を検索します。
@@ -675,6 +693,15 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   Open Image に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string OpenImageCaption {
+            get {
+                return ResourceManager.GetString("OpenImageCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Pixel values are not entered correctly. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string PixelValueNotSetCaption {
@@ -848,6 +875,25 @@ namespace NVGE.Localization {
         public static string SplashFormUpdatingCaption {
             get {
                 return ResourceManager.GetString("SplashFormUpdatingCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Image path is invalid. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashImagePathInvalidCaption {
+            get {
+                return ResourceManager.GetString("SplashImagePathInvalidCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Image file size is incorrect.
+        ///Only 490x330 pixel images can be loaded. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SplashImageSizeInvalidCaption {
+            get {
+                return ResourceManager.GetString("SplashImageSizeInvalidCaption", resourceCulture);
             }
         }
         

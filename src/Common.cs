@@ -643,6 +643,14 @@ namespace NVGE
             {
                 Config.Entry["CheckUpdateFFWithStartup"].Value = "true";
             }
+            if (Config.Entry["CustomSplashImage"].Value == null)
+            {
+                Config.Entry["CustomSplashImage"].Value = "false";
+            }
+            if (Config.Entry["SplashImagePath"].Value == null)
+            {
+                Config.Entry["SplashImagePath"].Value = "";
+            }
             Config.Save(xmlpath);
         }
 
@@ -805,9 +813,9 @@ namespace NVGE
             }
         }
 
-        public static bool IMAGEtoPNG32Async(string IMAGEpath, string PNGpath)
+        public static bool IMAGEtoPNG32Async(string IMAGEpath, string PNGpath, bool IsImageObj = false, Image image = null)
         {
-            FormImageLoading form = new(IMAGEpath, PNGpath);
+            FormImageLoading form = new(IMAGEpath, PNGpath, IsImageObj, image);
             if (!File.Exists(IMAGEpath))
             {
                 form.Dispose();
@@ -1103,6 +1111,18 @@ namespace NVGE
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 画像オブジェクトをバイト配列に変換する
+        /// </summary>
+        /// <param name="img">画像オブジェクト</param>
+        /// <returns></returns>
+        public static byte[] ImageToByteArray(Image img)
+        {
+            ImageConverter imgconv = new();
+            byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return b;
         }
     }
 

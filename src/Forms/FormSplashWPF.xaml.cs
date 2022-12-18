@@ -1,15 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
-using System.Net;
+using System.Linq;
 using System.Net.Http;
 using System.Net.NetworkInformation;
+using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Forms;
+using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using Brush = System.Windows.Media.Brush;
+using Brushes = System.Windows.Media.Brushes;
+using Pen = System.Windows.Media.Pen;
+using Point = System.Windows.Point;
 
 namespace NVGE
 {
-    public partial class FormSplash : Form
+    /// <summary>
+    /// FormSplashWPF.xaml の相互作用ロジック
+    /// </summary>
+    public partial class FormSplashWPF : Window
     {
         #region NetworkCommon
         private static readonly HttpClientHandler handler = new()
@@ -19,13 +40,12 @@ namespace NVGE
         };
         private static readonly HttpClient stream = new(handler);
         #endregion
-
-        public FormSplash()
+        public FormSplashWPF()
         {
             InitializeComponent();
         }
 
-        private void FormSplash_Load(object sender, EventArgs e)
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             Config.Load(Common.xmlpath);
 
@@ -37,7 +57,8 @@ namespace NVGE
                         Bitmap cimg = new(Config.Entry["SplashImagePath"].Value);
                         Graphics g = Graphics.FromImage(cimg);
                         g.DrawImage(bimg, 0, 0, bimg.Width, bimg.Height);
-                        BackgroundImage = cimg;
+
+                        image.Source = BIMG.ToBitmapImage(cimg);
                         break;
                     }
                 case false:
@@ -48,26 +69,46 @@ namespace NVGE
                             Task<Stream> st = stream.GetStreamAsync(url);
                             Bitmap bitmap = new(st.Result);
 
-                            BackgroundImage = bitmap;
+                            image.Source = BIMG.ToBitmapImage(bitmap);
                         }
                         else
                         {
-                            BackgroundImage = Properties.Resources.waifu2x_splash;
+                            image.Source = BIMG.ToBitmapImage(Properties.Resources.waifu2x_splash);
                         }
                         break;
                     }
             }
-            
-            progressBar1.Style = ProgressBarStyle.Marquee;
-            progressBar1.MarqueeAnimationSpeed = 50;
         }
 
         public string ProgressMsg
         {
             set
             {
-                label_log.Text = value;
+                TextBlock_Log.Text = value;
             }
         }
     }
+
+    internal static class BIMG
+    {
+        public static BitmapImage ToBitmapImage(this Bitmap bitmap)
+        {
+            using (var memory = new MemoryStream())
+            {
+                bitmap.Save(memory, ImageFormat.Png);
+                memory.Position = 0;
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+
+                return bitmapImage;
+            }
+        }
+    }
+
+    
 }

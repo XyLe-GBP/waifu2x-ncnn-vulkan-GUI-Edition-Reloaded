@@ -61,6 +61,21 @@
     <value>一般</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label_imagepath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 79</value>
+  </data>
+  <data name="label_imagepath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 15</value>
+  </data>
+  <data name="label_imagepath.Text" xml:space="preserve">
+    <value>画像パス：</value>
+  </data>
+  <data name="checkBox_splashImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 19</value>
+  </data>
+  <data name="checkBox_splashImage.Text" xml:space="preserve">
+    <value>独自のスプラッシュスクリーン画像を指定</value>
+  </data>
   <data name="checkBox_checkupdate.Size" type="System.Drawing.Size, System.Drawing">
     <value>253, 19</value>
   </data>

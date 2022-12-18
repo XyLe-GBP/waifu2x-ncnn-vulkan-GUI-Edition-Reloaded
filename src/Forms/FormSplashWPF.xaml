@@ -1,0 +1,14 @@
+﻿<Window x:Class="NVGE.FormSplashWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NVGE"
+        mc:Ignorable="d"
+        Title="Initialized..." Height="330" Width="490" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+    <Grid Loaded="Grid_Loaded">
+        <Image x:Name="image" Opacity="1" />
+        <ProgressBar x:Name="ProgressBar_log" HorizontalAlignment="Center" Height="15" Margin="0,305,0,0" VerticalAlignment="Top" Width="470" IsIndeterminate="True"/>
+        <TextBlock x:Name="TextBlock_Log" HorizontalAlignment="Center" Margin="0,301,0,0" TextWrapping="Wrap" Text="Loading..." TextAlignment="Center" VerticalAlignment="Top" FontWeight="Normal" FontSize="15" local:Adorning.Stroke="Black" local:Adorning.StrokeThickness="1" Foreground="Black" RenderTransformOrigin="1.274,5.547" Width="470" Height="17"/>
+    </Grid>
+</Window>

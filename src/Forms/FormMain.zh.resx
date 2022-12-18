@@ -76,6 +76,12 @@
   <data name="openImegeIToolStripMenuItem.Text" xml:space="preserve">
     <value>打开图像文件 (&amp;I)</value>
   </data>
+  <data name="openFromClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 22</value>
+  </data>
+  <data name="openFromClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>从剪贴板上打开图像</value>
+  </data>
   <data name="openVideoVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 22</value>
   </data>
@@ -106,11 +112,23 @@
   <data name="settingsCToolStripMenuItem.Text" xml:space="preserve">
     <value>设置 (&amp;S)</value>
   </data>
+  <data name="upscalingSettingsUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
   <data name="upscalingSettingsUToolStripMenuItem.Text" xml:space="preserve">
     <value>图像升格设置 (&amp;U)</value>
   </data>
+  <data name="videoUpscalingSettingsVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
   <data name="videoUpscalingSettingsVToolStripMenuItem.Text" xml:space="preserve">
     <value>视频升频设置 (&amp;V)</value>
+  </data>
+  <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 6</value>
+  </data>
+  <data name="preferencesSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
   </data>
   <data name="preferencesSToolStripMenuItem.Text" xml:space="preserve">
     <value>详细设置 (&amp;S)</value>

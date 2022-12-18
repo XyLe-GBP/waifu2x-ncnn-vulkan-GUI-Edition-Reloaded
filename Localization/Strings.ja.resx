@@ -139,6 +139,12 @@
   <data name="ButtonUpscaleVideo" xml:space="preserve">
     <value>動画のアップスケーリング</value>
   </data>
+  <data name="ClipboardCaption" xml:space="preserve">
+    <value>クリップボード</value>
+  </data>
+  <data name="ClipboardErrorCaption" xml:space="preserve">
+    <value>クリップボードのコンテンツは画像ではありません。</value>
+  </data>
   <data name="ConfirmClose" xml:space="preserve">
     <value>現在、アップスケールされたフレームファイルが存在します。
 このままアプリケーションを終了すると、アップスケールされた
@@ -340,6 +346,9 @@ Nose: アップスケール倍率は'2倍'のみ指定できます。ノイズ�
   <data name="OpenFormatChangeDialogCaption" xml:space="preserve">
     <value>形式変更するファイルを開く</value>
   </data>
+  <data name="OpenImageCaption" xml:space="preserve">
+    <value>画像を開く</value>
+  </data>
   <data name="PixelValueNotSetCaption" xml:space="preserve">
     <value>ピクセル値が正しく入力されていません。</value>
   </data>
@@ -402,6 +411,13 @@ Real-ESRGAN Photo: 写真等をアップスケールする際に適したモデ�
   </data>
   <data name="SplashFormUpdatingCaption" xml:space="preserve">
     <value>アプリケーションのアップデート中…</value>
+  </data>
+  <data name="SplashImagePathInvalidCaption" xml:space="preserve">
+    <value>画像パスが指定されていません。</value>
+  </data>
+  <data name="SplashImageSizeInvalidCaption" xml:space="preserve">
+    <value>画像サイズが不正です。
+490x330 ピクセルの画像のみ指定可能です。</value>
   </data>
   <data name="UnExpectedError" xml:space="preserve">
     <value>予期せぬエラーが発生しました。

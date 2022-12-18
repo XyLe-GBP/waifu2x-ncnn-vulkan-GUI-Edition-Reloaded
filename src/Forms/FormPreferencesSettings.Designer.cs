@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPreferencesSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button_browsecimg = new System.Windows.Forms.Button();
+            this.textBox_imagepath = new System.Windows.Forms.TextBox();
+            this.label_imagepath = new System.Windows.Forms.Label();
+            this.checkBox_splashImage = new System.Windows.Forms.CheckBox();
             this.checkBox_checkupdate = new System.Windows.Forms.CheckBox();
             this.checkBox_checkupdateff = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -51,10 +55,39 @@
             // tabPage1
             // 
             resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Controls.Add(this.button_browsecimg);
+            this.tabPage1.Controls.Add(this.textBox_imagepath);
+            this.tabPage1.Controls.Add(this.label_imagepath);
+            this.tabPage1.Controls.Add(this.checkBox_splashImage);
             this.tabPage1.Controls.Add(this.checkBox_checkupdate);
             this.tabPage1.Controls.Add(this.checkBox_checkupdateff);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button_browsecimg
+            // 
+            resources.ApplyResources(this.button_browsecimg, "button_browsecimg");
+            this.button_browsecimg.Name = "button_browsecimg";
+            this.button_browsecimg.UseVisualStyleBackColor = true;
+            this.button_browsecimg.Click += new System.EventHandler(this.Button_browsecimg_Click);
+            // 
+            // textBox_imagepath
+            // 
+            resources.ApplyResources(this.textBox_imagepath, "textBox_imagepath");
+            this.textBox_imagepath.Name = "textBox_imagepath";
+            this.textBox_imagepath.ReadOnly = true;
+            // 
+            // label_imagepath
+            // 
+            resources.ApplyResources(this.label_imagepath, "label_imagepath");
+            this.label_imagepath.Name = "label_imagepath";
+            // 
+            // checkBox_splashImage
+            // 
+            resources.ApplyResources(this.checkBox_splashImage, "checkBox_splashImage");
+            this.checkBox_splashImage.Name = "checkBox_splashImage";
+            this.checkBox_splashImage.UseVisualStyleBackColor = true;
+            this.checkBox_splashImage.CheckedChanged += new System.EventHandler(this.CheckBox_splashImage_CheckedChanged);
             // 
             // checkBox_checkupdate
             // 
@@ -121,5 +154,9 @@
         private System.Windows.Forms.CheckBox checkBox_checkupdateff;
         private System.Windows.Forms.Button button_OK;
         private System.Windows.Forms.Button button_Cancel;
+        private System.Windows.Forms.Button button_browsecimg;
+        private System.Windows.Forms.TextBox textBox_imagepath;
+        private System.Windows.Forms.Label label_imagepath;
+        private System.Windows.Forms.CheckBox checkBox_splashImage;
     }
 }

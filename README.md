@@ -15,11 +15,17 @@ nihui氏開発の [waifu2x ncnn Vulkan](https://github.com/nihui/waifu2x-ncnn-vu
 
 本アプリケーションは発行されているため、ランタイムのインストール不要で実行可能です。
 
-※何らかの理由でポータブル版を使用する場合は、ランタイムのインストールが必要です。
+※何らかの理由でポータブル版を使用する場合は、.NET ランタイムのインストールが必要です。
+**version 1.32以降**
+[.NET Desktop Runtime 7](https://dotnet.microsoft.com/download/dotnet/7.0)
 
-[.NET Desktop Runtime 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)
+**version 1.32以前**
+[.NET Desktop Runtime 6](https://dotnet.microsoft.com/download/dotnet/6.0)
 
-まだインストールを行っていない場合、上記から再頒布可能パッケージをダウンロードし、PCにインストールしてください。  
+**version 1.22以前**
+[.NET Desktop Runtime 5](https://dotnet.microsoft.com/download/dotnet/5.0)
+
+まだインストールを行っていない場合、上記からランタイムをダウンロードし、PCにインストールしてください。  
 
 
 ## これは何？
@@ -29,17 +35,11 @@ AIを用いて画像の鮮明さを保ちつつ、綺麗に拡大できます。
 例：  
 **※クリックすることで画像を拡大できます。**  
 
-<kbd><img src="https://user-images.githubusercontent.com/59692068/124342813-b6824200-dc01-11eb-9603-7e5127ef55af.jpg" width="350"><br>**オリジナル (640x800)**</kbd>
-<kbd><img src="https://user-images.githubusercontent.com/59692068/124342863-2395d780-dc02-11eb-94e7-05e4ba0f8b6a.png" width="350"><br>**waifu2x (640x800, 除去レベル2, CUnet)**</kbd>
+<kbd><img src="https://user-images.githubusercontent.com/59692068/208298936-7848ebfa-388f-4277-8956-588323efb7b8.jpg" width="350"><br>**オリジナル (500x252)**</kbd>
+<kbd><img src="https://user-images.githubusercontent.com/59692068/208299024-20532d8d-a8a3-4f38-8bf8-770fbce20e4e.png" width="350"><br>**waifu2x (1000x504, 除去レベル2, CUnet)**</kbd>
 
-<kbd><img src="https://user-images.githubusercontent.com/59692068/124342967-fa297b80-dc02-11eb-845f-90fb6236dd82.png" width="350"><br>**通常拡大 (1280x1600, バイリニア補間)**</kbd>
-<kbd><img src="https://user-images.githubusercontent.com/59692068/124342972-0ca3b500-dc03-11eb-8ac5-ba8cf4b21ca6.png" width="350"><br>**通常拡大 (1280x1600, Lanczos3補間)**</kbd>
-
-<kbd><img src="https://user-images.githubusercontent.com/59692068/124342976-14635980-dc03-11eb-8207-feb18e0e36de.png" width="350"><br>**waifu2xで拡大 (1280x1600, 除去レベル2, CUnet)**</kbd>
-<kbd><img src="https://user-images.githubusercontent.com/59692068/124343761-07496900-dc09-11eb-8465-ca91b6839623.png" width="350"><br>**waifu2xで拡大 (1280x1600, 除去レベル2, RGB)**</kbd>
-
-<kbd><img src="https://user-images.githubusercontent.com/59692068/124343766-0d3f4a00-dc09-11eb-8ed6-53f80b983930.png" width="350"><br>**waifu2xで拡大 (1280x1600, 除去レベル2, Photo)**</kbd>
-<kbd><img src="https://user-images.githubusercontent.com/59692068/124343864-c4d45c00-dc09-11eb-97fd-337a68323bd4.png" width="350"><br>**waifu2xで拡大 (1280x1600, 除去レベル3, CUnet, TTA有効)**</kbd>
+<kbd><img src="https://user-images.githubusercontent.com/59692068/208299226-8cf05c1d-ea02-43d2-8af2-f94c58774610.png" width="350"><br>**Real-CUGAN (2000x1008, 除去レベル0, 正確な同期)**</kbd>
+<kbd><img src="https://user-images.githubusercontent.com/59692068/208299608-37bd9940-b938-4e4c-847e-e518e6f8c135.png" width="350"><br>**通常拡大 (1000x504, Lanczos3補間)**</kbd>
 
 **画像アップスケーリングの注意点**
 
@@ -78,7 +78,7 @@ x86用が必要な場合、C++ソースからご自身でビルドを行って�
 
 **推薦**
 
-OS: Windows10 64bit  
+OS: Windows10 or 11 64bit  
 CPU: Intel Core i3 またはそれ以上  AMD Ryzen 3 またはそれ以上  
 RAM: 8GB またはそれ以上  
 GPU: NVIDIA GeForce GTX 1060 またはそれ以上  
