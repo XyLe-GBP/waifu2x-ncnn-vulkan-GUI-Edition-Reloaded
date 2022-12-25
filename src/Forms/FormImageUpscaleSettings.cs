@@ -27,41 +27,80 @@ namespace NVGE
             {
                 if (GPU.Contains("Intel"))
                 {
-                    if (GPU.Contains("HD Graphics"))
+                    if (GPU.Contains("HD"))
                     {
-                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                        comboBox_GPU.Items.Add("iGPU [(Intel) " + GPU + " ]");
                     }
-                    if (GPU.Contains("Iris"))
+                    else if (GPU.Contains("Iris"))
                     {
-                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                        comboBox_GPU.Items.Add("iGPU [(Intel) " + GPU + " ]");
                     }
-                    if (GPU.Contains("Xe Graphics"))
+                    else if (GPU.Contains("Xe"))
                     {
-                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                        comboBox_GPU.Items.Add("iGPU [(Intel) " + GPU + " ]");
+                    }
+                    else if (GPU.Contains("Mobile"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [(Intel) " + GPU + " ]");
+                    }
+                    else if (GPU.Contains("Arc"))
+                    {
+                        comboBox_GPU.Items.Add("dGPU [(Intel) " + GPU + " ]");
+                    }
+                    else
+                    {
+                        comboBox_GPU.Items.Add("dGPU [(Intel) " + GPU + " ]");
                     }
                 }
                 else if (GPU.Contains("Radeon"))
                 {
-                    if (GPU.Contains("Vega 11"))
+                    if (GPU.Contains("with"))
                     {
-                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                        comboBox_GPU.Items.Add("iGPU [(AMD) " + GPU + " ]");
                     }
-                    if (GPU.Contains("Vega 8"))
+                    else if (GPU.Contains("Vega 11"))
                     {
-                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                        comboBox_GPU.Items.Add("iGPU [(AMD) " + GPU + " ]");
                     }
-                    if (GPU.Contains("Vega 7"))
+                    else if (GPU.Contains("Vega 8"))
                     {
-                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                        comboBox_GPU.Items.Add("iGPU [(AMD) " + GPU + " ]");
                     }
-                    if (GPU.Contains("Vega 6"))
+                    else if (GPU.Contains("Vega 7"))
                     {
-                        comboBox_GPU.Items.Add("iGPU [ " + GPU + " ]");
+                        comboBox_GPU.Items.Add("iGPU [(AMD) " + GPU + " ]");
+                    }
+                    else if (GPU.Contains("Vega 6"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [(AMD) " + GPU + " ]");
+                    }
+                    else if (GPU.Contains("Vega 3"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [(AMD) " + GPU + " ]");
+                    }
+                    else if (GPU.Contains("Mobile"))
+                    {
+                        comboBox_GPU.Items.Add("iGPU [(AMD) " + GPU + " ]");
+                    }
+                    else
+                    {
+                        comboBox_GPU.Items.Add("dGPU [(AMD) " + GPU + " ]");
+                    }
+                }
+                else if (GPU.Contains("NVIDIA"))
+                {
+                    if (GPU.Contains("Max-Q"))
+                    {
+                        comboBox_GPU.Items.Add("dGPU [(NVIDIA) " + GPU + " (Laptop) ]");
+                    }
+                    else
+                    {
+                        comboBox_GPU.Items.Add("dGPU [(NVIDIA) " + GPU + " ]");
                     }
                 }
                 else
                 {
-                    comboBox_GPU.Items.Add("dGPU [ " + GPU + " ]");
+                    comboBox_GPU.Items.Add("Unknown GPU [ " + GPU + " ]");
                 }
             }
             comboBox_GPU.Items.Add(Strings.SelectGPUAutoCaption);

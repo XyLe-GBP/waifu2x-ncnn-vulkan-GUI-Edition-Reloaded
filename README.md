@@ -15,15 +15,15 @@ nihui氏開発の [waifu2x ncnn Vulkan](https://github.com/nihui/waifu2x-ncnn-vu
 
 本アプリケーションは発行されているため、ランタイムのインストール不要で実行可能です。
 
-※何らかの理由でポータブル版を使用する場合は、.NET ランタイムのインストールが必要です。
+※何らかの理由でポータブル版を使用する場合は、.NET ランタイムのインストールが必要です。  
 **version 1.32以降**
-[.NET Desktop Runtime 7](https://dotnet.microsoft.com/download/dotnet/7.0)
+[.NET Desktop Runtime 7](https://dotnet.microsoft.com/download/dotnet/7.0)  
 
 **version 1.32以前**
-[.NET Desktop Runtime 6](https://dotnet.microsoft.com/download/dotnet/6.0)
+[.NET Desktop Runtime 6](https://dotnet.microsoft.com/download/dotnet/6.0)  
 
 **version 1.22以前**
-[.NET Desktop Runtime 5](https://dotnet.microsoft.com/download/dotnet/5.0)
+[.NET Desktop Runtime 5](https://dotnet.microsoft.com/download/dotnet/5.0)  
 
 まだインストールを行っていない場合、上記からランタイムをダウンロードし、PCにインストールしてください。  
 

@@ -106,6 +106,9 @@
   <data name="comboBox_GPU.Location" type="System.Drawing.Point, System.Drawing">
     <value>85, 66</value>
   </data>
+  <data name="comboBox_GPU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 23</value>
+  </data>
   <data name="comboBox_GPU.ToolTip" xml:space="preserve">
     <value>指定转换要使用的GPU。
 如果指定 "自动"，在转换过程中将自动使用GPU。

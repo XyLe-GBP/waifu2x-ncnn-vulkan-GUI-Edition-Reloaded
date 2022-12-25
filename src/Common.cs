@@ -1,4 +1,5 @@
 ﻿using ImageMagick;
+using Microsoft.Win32;
 using NVGE.Localization;
 using OpenCvSharp;
 using System;
@@ -111,13 +112,26 @@ namespace NVGE
         public static Stopwatch stopwatch = null;
         public static TimeSpan timeSpan;
 
+        /// <summary>
+        /// ポータブル版か否か
+        /// </summary>
         public static bool ApplicationPortable = false;
+        /// <summary>
+        /// GitHubのバージョン
+        /// </summary>
         public static string GitHubLatestVersion;
 
         /// <summary>
         /// ログ
         /// </summary>
         public static StreamReader Log = null;
+
+        /// <summary>
+        /// GPU
+        /// </summary>
+        public static List<string> GPUList = new();
+        public static List<long> GPURAMList = new();
+
         #endregion
 
         public static string CheckVideoAudioCodec(string VideoPath)
@@ -1240,6 +1254,94 @@ namespace NVGE
                 return clist;
             }
             else { return null; }
+        }
+    }
+
+    public class VRAMInfo
+    {
+        public string[] Name { get; set; }
+        public long[] VRAM { get; set; }
+
+        public VRAMInfo(string[] Name, long[] VRAM)
+        {
+            this.Name = Name;
+            this.VRAM = VRAM;
+        }
+    }
+
+    class VRAM
+    {
+        public VRAMInfo GetdGPUInfo()
+        {
+            string[] nm = new string[GetCount()];
+            long[] rm = new long[GetCount()];
+            RegistryKey rKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}");
+            int count = 0;
+            foreach (string kn in rKey.GetSubKeyNames())
+            {
+                if (kn.Contains("0"))
+                {
+                    RegistryKey vk = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\" + kn);
+                    foreach (string skn in vk.GetValueNames())
+                    {
+                        if (skn.Contains("DriverDesc"))
+                        {
+                            nm[count] = (string)vk.GetValue("DriverDesc") + " - " + (string)vk.GetValue("DriverVersion");
+                        }
+                        else if (skn.Contains("HardwareInformation.qwMemorySize"))
+                        {
+                            rm[count] = (long)vk.GetValue("HardwareInformation.qwMemorySize") / 1048576;
+
+                        }
+                        else if (skn.Contains("HardwareInformation.MemorySize"))
+                        {
+                            if (rm[count] == 0)
+                            {
+                                try
+                                {
+                                    rm[count] = (long)vk.GetValue("HardwareInformation.MemorySize");
+                                }
+                                catch (Exception ex)
+                                {
+                                    rm[count] = 0;
+                                }
+                            }
+                        }
+                        else
+                        {
+                        }
+                    }
+                    vk.Close();
+                    count++;
+                    continue;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            rKey.Close();
+            VRAMInfo vi = new(nm, rm);
+            return vi;
+        }
+
+        public int GetCount()
+        {
+            int count = 0;
+            RegistryKey rKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}");
+            foreach (string kn in rKey.GetSubKeyNames())
+            {
+                if (kn.Contains("0"))
+                {
+                    count++;
+                    continue;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return count;
         }
     }
 

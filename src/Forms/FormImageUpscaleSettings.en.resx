@@ -57,8 +57,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>145, 102</value>
+  </data>
+  <data name="textBox_Blocksize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 99</value>
   </data>
   <data name="textBox_Blocksize.ToolTip" xml:space="preserve">
     <value>Specifies the block size to be allocated to the GPU.
@@ -66,25 +70,13 @@ If '0' is specified, the block size is automatically allocated.
 The larger the value, the faster the conversion will be, but the more memory the GPU will use.
 This item depends on the GPU performance. If the value is too large, the conversion will fail.</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox_GPU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>427, 23</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 102</value>
   </data>
   <data name="textBox_height.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label10.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="textBox_width.ToolTip" xml:space="preserve">
@@ -93,50 +85,14 @@ This item depends on the GPU performance. If the value is too large, the convers
   <data name="checkBox_pixel.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBox_TTA.ToolTip" xml:space="preserve">
     <value>Enables the TTA mode.
 Enabling this will improve the image index, but will take a huge amount of time for image conversion.</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBox_syncgap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 129</value>
   </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="button_OK.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="button_Cancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabControl1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPage1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_syncgap.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label14.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label13.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPage2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 132</value>
   </data>
 </root>

@@ -108,6 +108,9 @@
   <data name="comboBox_GPU.Location" type="System.Drawing.Point, System.Drawing">
     <value>117, 67</value>
   </data>
+  <data name="comboBox_GPU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 23</value>
+  </data>
   <data name="comboBox_GPU.ToolTip" xml:space="preserve">
     <value>変換時に使用するGPUを指定します。
 '自動'を指定すると、変換時に自動的に使用するGPUを決定します。

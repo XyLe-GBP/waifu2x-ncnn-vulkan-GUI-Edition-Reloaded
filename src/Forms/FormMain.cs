@@ -1,17 +1,22 @@
-﻿using NVGE.Localization;
+﻿using Microsoft.Win32;
+using NVGE.Localization;
 using OpenCvSharp;
+using OpenCvSharp.XFeatures2D;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Application = System.Windows.Forms.Application;
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
 
 namespace NVGE
 {
@@ -30,6 +35,9 @@ namespace NVGE
         //static FormSplash fs;
         static FormSplashWPF fs;
         static object lockobj;
+        private bool RunUpdate = false;
+        private Task UpdateTask;
+        private ProcessStartInfo UpdateProcess;
 
         public FormMain()
         {
@@ -60,7 +68,7 @@ namespace NVGE
                 thread.SetApartmentState(ApartmentState.STA);
                 thread.Start();
 
-                dmes d = new(ShowMessage);
+                DlgMsg d = new(ShowMessage);
 
                 //fs?.Invoke(d, "Initializing...");
                 fs?.Dispatcher.Invoke(d, "Initializing...");
@@ -78,7 +86,11 @@ namespace NVGE
                 }
 
                 //fs?.Invoke(d, Strings.SplashFormConfigCaption);
-                fs?.Dispatcher.Invoke(d, Strings.SplashFormConfigCaption);
+                if (fs != null)
+                {
+                    fs.Dispatcher.Invoke(d, Strings.SplashFormConfigCaption);
+                }
+                
 
                 Config.Load(Common.xmlpath);
 
@@ -132,16 +144,22 @@ namespace NVGE
                 SystemInfo.GetVideoControllerInformation(GPUInfo);
 
                 List<string> GPUList = new();
-                List<string> GPUNList = new();
-                GPUList = SystemInfo.GetGraphicsCardsInformation();
-                GPUNList = SystemInfo.GetGraphicsCardNamesInformation();
+                List<long> GPURAMList = new();
+                string[] vn = null;
+                long[] vr = null;
+
+                VRAM v = new();
+                VRAMInfo vram = new(vn, vr);
+                vram = v.GetdGPUInfo();
+                GPUList = new(vram.Name);//SystemInfo.GetGraphicsCardsInformation();
+                GPURAMList = new(vram.VRAM);//SystemInfo.GetGraphicsCardNamesInformation();
                 if (GPUList.Count == 0)
                 {
-                    MessageBox.Show("GPUInfo", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to retrieve information.", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (GPUNList.Count == 0)
+                if (GPURAMList.Count == 0)
                 {
-                    MessageBox.Show("GPUInfo", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to retrieve information.", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 ResetLabels();
@@ -160,7 +178,30 @@ namespace NVGE
                 }
                 Thread.Sleep(10);
 
-                if (GPUList.Count == 1)
+                int gpucount = 0;
+                foreach (var gpu in GPUList)
+                {
+                    if (gpu != null && GPURAMList[gpucount] != 0 && !Common.GPUList.Contains(gpu))
+                    {
+                        fs?.Dispatcher.Invoke(d, "Detected GPU: " + gpu);
+                        Thread.Sleep(10);
+                        comboBox_GPU.Items.Add(gpu);
+                        Common.GPUList.Add(gpu);
+                        Common.GPURAMList.Add(GPURAMList[gpucount]);
+                    }
+                    else if (gpu != null && GPURAMList[gpucount] == 0)
+                    {
+                        fs?.Dispatcher.Invoke(d, "Detected Discrate iGPU: " + gpu);
+                        Thread.Sleep(10);
+                    }
+                    gpucount++;
+                }
+
+                comboBox_GPU.SelectedIndex = 0;
+                comboBox_GPU.Enabled = true;
+                label_Graphic.Text = Common.GPUList[0] + " [ " + Common.GPURAMList[0] + " MiB RAM ]";
+
+                /*if (GPUList.Count == 1)
                 {
                     if (fs != null)
                     {
@@ -186,7 +227,7 @@ namespace NVGE
                     comboBox_GPU.SelectedIndex = 0;
                     comboBox_GPU.Enabled = true;
                     label_Graphic.Text = GPUList[0];
-                }
+                }*/
 
                 if (fs != null)
                 {
@@ -204,19 +245,33 @@ namespace NVGE
                     File.Delete(updpath + @"\updater.exe");
                     File.Delete(updpath + @"\waifu2x-nvger.zip");
                     Common.DeleteDirectory(updpath + @"\updater-temp");
+                    Thread.Sleep(200);
 
                     if (fs != null)
                     {
                         fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatedCaption);
                     }
-                    MessageBox.Show(this, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Thread.Sleep(200);
+
+                    using Form dummy = new();
+                    dummy.TopMost = true;
+                    MessageBox.Show(dummy, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dummy.TopMost = false;
                 }
                 else
                 {
                     if (bool.Parse(Config.Entry["CheckUpdateWithStartup"].Value) == true)
                     {
-                        var update = Task.Run(() => CheckForUpdatesForInit());
-                        update.Wait();
+                        UpdateTask = Task.Run(() => CheckForUpdatesForInit());
+                        UpdateTask.Wait();
+
+                        if (RunUpdate == true)
+                        {
+                            CloseSplash();
+                            Activate();
+                            Close();
+                            return;
+                        }
                     }
                 }
 
@@ -3615,6 +3670,7 @@ namespace NVGE
                     e.Cancel = true;
                 }
             }
+            //Environment.Exit(0);
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -3642,6 +3698,18 @@ namespace NVGE
                 File.Delete(Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4");
             }
             Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project");
+            if (RunUpdate == true)
+            {
+                string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+                UpdateProcess = new()
+                {
+                    FileName = updpath + @"\updater.exe",
+                    Arguments = null,
+                    UseShellExecute = true,
+                    WindowStyle = ProcessWindowStyle.Normal,
+                };
+                Process.Start(UpdateProcess);
+            }
         }
 
         private void ResetStatusALL()
@@ -4360,9 +4428,12 @@ namespace NVGE
                 {
                     string hv = null!;
 
-                    using Stream hcs = await Task.Run(() => Network.GetWebStreamAsync(appUpdatechecker, Network.GetUri("https://raw.githubusercontent.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/master/VERSIONINFO")));
+                    // Debug URI:https://dl.cdn.xyle-official.com/content/app/utils/waifu2x/debug/VERSIONINFO
+                    // Release URI:https://raw.githubusercontent.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/master/VERSIONINFO
+
+                    using Stream hcs = await Task.Run(() => Network.GetWebStreamAsync(appUpdatechecker, Network.GetUri("https://raw.githubusercontent.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/master/VERSIONINFO"))).ConfigureAwait(false);
                     using StreamReader hsr = new(hcs);
-                    hv = await Task.Run(() => hsr.ReadToEndAsync());
+                    hv = await Task.Run(() => hsr.ReadToEndAsync()).ConfigureAwait(false);
                     Common.GitHubLatestVersion = hv[8..].Replace("\n", "");
 
                     FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
@@ -4370,7 +4441,7 @@ namespace NVGE
                     switch (ver.FileVersion.ToString().CompareTo(hv[8..].Replace("\n", "")))
                     {
                         case -1:
-                            DialogResult dr = MessageBox.Show(this, Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.AppUpdateConfirmCaption, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            DialogResult dr = MessageBox.Show(Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.AppUpdateConfirmCaption, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (dr == DialogResult.Yes)
                             {
                                 using FormUpdateApplicationType fuat = new();
@@ -4409,15 +4480,12 @@ namespace NVGE
                                     File.Move(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip", updpath + @"\waifu2x-nvger.zip");
                                 }
 
-                                ProcessStartInfo pi = new()
-                                {
-                                    FileName = updpath + @"\updater.exe",
-                                    Arguments = null,
-                                    UseShellExecute = true,
-                                    WindowStyle = ProcessWindowStyle.Normal,
-                                };
-                                Process.Start(pi);
-                                Close();
+                                RunUpdate = true;
+                                //throw new OperationCanceledException("Cancelled");
+                                
+                                //Process.Start(pi);
+
+
                                 return;
                             }
                             else
@@ -4772,20 +4840,20 @@ namespace NVGE
 
         private static void CloseSplash()
         {
-            dop d = new(CloseForm);
+            SplashDlg d = new(CloseForm);
             if (fs != null)
             {
                 fs.Dispatcher.Invoke(d);
             }
         }
 
-        private delegate void dop();
+        private delegate void SplashDlg();
         private static void CloseForm()
         {
             fs.Close();
         }
 
-        private delegate void dmes(string message);
+        private delegate void DlgMsg(string message);
         private static void ShowMessage(string message)
         {
             //fs.label_log.Text = message;
@@ -4795,13 +4863,11 @@ namespace NVGE
 
         private void ComboBox_GPU_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<string> GPUList = new();
-            GPUList = SystemInfo.GetGraphicsCardsInformation();
-            if (GPUList.Count == 0)
+            if (Common.GPUList.Count == 0)
             {
-                MessageBox.Show("GPUInfo", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to retrieve information.", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            label_Graphic.Text = GPUList[comboBox_GPU.SelectedIndex];
+            label_Graphic.Text = Common.GPUList[comboBox_GPU.SelectedIndex] + " [ " + Common.GPURAMList[comboBox_GPU.SelectedIndex] + " MiB RAM]";
         }
 
         private void PreferencesSToolStripMenuItem_Click(object sender, EventArgs e)

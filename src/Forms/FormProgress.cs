@@ -552,6 +552,12 @@ namespace NVGE
                     break;
                 case 8: // Update Application
                     {
+
+                        // Debug URI:https://dl.cdn.xyle-official.com/content/app/utils/waifu2x/debug/debug.zip
+                        // Debug Portable URI:https://dl.cdn.xyle-official.com/content/app/utils/waifu2x/debug/debug-p.zip
+                        // Release URI:https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases/download/v" + Common.GitHubLatestVersion + "/waifu2x-nvger-release.zip"
+                        // Release Portable URI:https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases/download/v" + Common.GitHubLatestVersion + "/waifu2x-nvger-portable.zip
+
                         Uri uri;
 
                         switch (Common.ApplicationPortable)
@@ -1038,7 +1044,7 @@ namespace NVGE
             };
             if (Common.ConvMultiFlag == 0)
             {
-                FileInfo file = new(Common.GetShortPath(Common.ImageFile[0]));
+                FileInfo file = new(Common.ImageFile[0]);
 
                 lst.Add(file.Name);
                 lst2.Add(file.Extension);
@@ -1100,7 +1106,7 @@ namespace NVGE
             {
                 foreach (var sources in Common.ImageFile)
                 {
-                    FileInfo file = new(Common.GetShortPath(sources));
+                    FileInfo file = new(sources);
 
                     lst.Add(file.Name);
                     lst2.Add(file.Extension);
