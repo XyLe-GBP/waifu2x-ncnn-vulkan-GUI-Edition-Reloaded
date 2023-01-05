@@ -474,6 +474,15 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   Failed to retrieve information. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string GPUInfomationFailedCaption {
+            get {
+                return ResourceManager.GetString("GPUInfomationFailedCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   It is not possible to load multiple files except for images. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ImgOnlyMultipleCaption {
@@ -626,6 +635,26 @@ namespace NVGE.Localization {
         public static string MultipleImageCaption {
             get {
                 return ResourceManager.GetString("MultipleImageCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The opened file is a PostScript image, but Ghostscript is
+        ///not installed on the computer and the file cannot be opened. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NotInstalledGSCaption {
+            get {
+                return ResourceManager.GetString("NotInstalledGSCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The opened file contains a PostScript image, but I cannot open the file
+        ///because I do not have Ghostscript installed on my computer. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NotInstalledGSCaption2 {
+            get {
+                return ResourceManager.GetString("NotInstalledGSCaption2", resourceCulture);
             }
         }
         

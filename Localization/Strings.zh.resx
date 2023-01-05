@@ -271,6 +271,9 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="FmtErrorCaption" xml:space="preserve">
     <value>这是一种不支持的文件格式。</value>
   </data>
+  <data name="GPUInfomationFailedCaption" xml:space="preserve">
+    <value>检索信息失败。</value>
+  </data>
   <data name="ImgOnlyMultipleCaption" xml:space="preserve">
     <value>不可能加载一个以上的文件，图像除外。</value>
   </data>
@@ -324,6 +327,13 @@ CRF级别 "的值必须至少是一个字符。</value>
   </data>
   <data name="MultipleImageCaption" xml:space="preserve">
     <value>多个图像文件</value>
+  </data>
+  <data name="NotInstalledGSCaption" xml:space="preserve">
+    <value>打开的文件是一个PostScript图像，但
+由于计算机上没有安装Ghostscript，所以无法打开该文件。</value>
+  </data>
+  <data name="NotInstalledGSCaption2" xml:space="preserve">
+    <value>打开的文件包含一个PostScript图像，但由于计算机上没有安装Ghostscript，所以无法打开该文件。</value>
   </data>
   <data name="NotNetworkConnectionCaption" xml:space="preserve">
     <value>你的电脑没有连接到互联网。</value>

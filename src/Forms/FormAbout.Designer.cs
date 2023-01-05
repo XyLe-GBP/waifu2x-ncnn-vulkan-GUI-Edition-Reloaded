@@ -145,7 +145,7 @@ namespace NVGE
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(181, 15);
             this.label4.TabIndex = 8;
-            this.label4.Text = " Copyright © 2022, OpenCV team";
+            this.label4.Text = " Copyright © 2023, OpenCV team";
             // 
             // pictureBox3
             // 
@@ -164,7 +164,8 @@ namespace NVGE
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(131, 15);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Copyright © 2022, XyLe";
+            this.label6.Text = "Copyright © 2023, XyLe";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox4
             // 
@@ -202,7 +203,7 @@ namespace NVGE
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(265, 15);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Copyright © 1999-2022, ImageMagick Studio LLC";
+            this.label8.Text = "Copyright © 1999-2023, ImageMagick Studio LLC";
             // 
             // label9
             // 

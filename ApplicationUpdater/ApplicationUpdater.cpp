@@ -23,6 +23,9 @@ int main()
 			, sfname = common->TWStringToString(fname)
 			, sext = common->TWStringToString(ext);
 
+		HWND handle = FindWindow(_T("waifu2x-nvger"), NULL);
+		PostMessage(handle, WM_CLOSE, 0, 0);
+
 		if (PathFileExists(common->StringToWString(sdrive + sdir + "updater.dat").c_str())) {
 			cout << "Updater - Application Update Utility v1.2" << endl;
 			cout << "Copyright (C) 2022 XyLe. All Rights Reserved.\n" << endl;

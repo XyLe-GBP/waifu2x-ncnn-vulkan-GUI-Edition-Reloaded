@@ -1,5 +1,5 @@
 ﻿using ImageMagick;
-using Microsoft.VisualBasic;
+using NVGE.Localization;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,7 +36,7 @@ namespace NVGE
         {
             progressBar1.Style = ProgressBarStyle.Marquee;
             progressBar1.MarqueeAnimationSpeed = 50;
-            await Task.Run(() => Main());
+            await Task.Run(Main);
             Close();
         }
 
@@ -50,8 +50,10 @@ namespace NVGE
             else
             {
                 using var image = new MagickImage(inpath);
+                image.Depth = 16;
                 image.Write(outpath, MagickFormat.Png32);
             }
         }
+
     }
 }

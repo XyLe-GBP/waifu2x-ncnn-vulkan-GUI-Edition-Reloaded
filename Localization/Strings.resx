@@ -272,6 +272,9 @@ Do you want to update it?</value>
   <data name="FmtErrorCaption" xml:space="preserve">
     <value>This is an unsupported file format.</value>
   </data>
+  <data name="GPUInfomationFailedCaption" xml:space="preserve">
+    <value>Failed to retrieve information.</value>
+  </data>
   <data name="ImgOnlyMultipleCaption" xml:space="preserve">
     <value>It is not possible to load multiple files except for images.</value>
   </data>
@@ -325,6 +328,14 @@ Do you wish to continue?</value>
   </data>
   <data name="MultipleImageCaption" xml:space="preserve">
     <value>Multiple image files</value>
+  </data>
+  <data name="NotInstalledGSCaption" xml:space="preserve">
+    <value>The opened file is a PostScript image, but Ghostscript is
+not installed on the computer and the file cannot be opened.</value>
+  </data>
+  <data name="NotInstalledGSCaption2" xml:space="preserve">
+    <value>The opened file contains a PostScript image, but I cannot open the file
+because I do not have Ghostscript installed on my computer.</value>
   </data>
   <data name="NotNetworkConnectionCaption" xml:space="preserve">
     <value>The computer is not connected to the Internet.</value>

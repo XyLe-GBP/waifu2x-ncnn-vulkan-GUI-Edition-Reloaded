@@ -1,14 +1,11 @@
-﻿using Microsoft.Win32;
-using NVGE.Localization;
+﻿using NVGE.Localization;
 using OpenCvSharp;
-using OpenCvSharp.XFeatures2D;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Threading;
@@ -155,11 +152,11 @@ namespace NVGE
                 GPURAMList = new(vram.VRAM);//SystemInfo.GetGraphicsCardNamesInformation();
                 if (GPUList.Count == 0)
                 {
-                    MessageBox.Show("Failed to retrieve information.", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 if (GPURAMList.Count == 0)
                 {
-                    MessageBox.Show("Failed to retrieve information.", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 ResetLabels();
@@ -193,12 +190,23 @@ namespace NVGE
                     {
                         fs?.Dispatcher.Invoke(d, "Detected Discrate iGPU: " + gpu);
                         Thread.Sleep(10);
+                        comboBox_GPU.Items.Add(gpu);
+                        Common.GPUList.Add(gpu);
+                        Common.GPURAMList.Add(GPURAMList[gpucount]);
                     }
                     gpucount++;
                 }
 
                 comboBox_GPU.SelectedIndex = 0;
-                comboBox_GPU.Enabled = true;
+                if (Common.GPUList.Count == 1)
+                {
+                    comboBox_GPU.Enabled = false;
+                }
+                else
+                {
+                    comboBox_GPU.Enabled = true;
+                }
+                
                 label_Graphic.Text = Common.GPUList[0] + " [ " + Common.GPURAMList[0] + " MiB RAM ]";
 
                 /*if (GPUList.Count == 1)
@@ -320,22 +328,58 @@ namespace NVGE
                 if (Common.ImageFile.Length == 1)
                 {
                     FileInfo file = new(ofd.FileName);
-                    long FileSize = file.Length;
-                    string sz = string.Format("{0} ", FileSize);
-                    toolStripStatusLabel_Status.Text = Strings.ReadedString;
-                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
-                    ReadLabels();
-                    label_File.Text = ofd.FileName;
-                    label_Size.Text = sz + Strings.SizeString;
-                    button_Image.Enabled = true;
-                    closeFileCToolStripMenuItem.Enabled = true;
-                    label1.Visible = false;
-                    ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
-                    pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
-                    return;
+                    if (file.Extension.ToUpper() == ".EPS")
+                    {
+                        if (Common.CheckGhostscript())
+                        {
+                            long FileSize = file.Length;
+                            string sz = string.Format("{0} ", FileSize);
+                            toolStripStatusLabel_Status.Text = Strings.ReadedString;
+                            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
+                            ReadLabels();
+                            label_File.Text = ofd.FileName;
+                            label_Size.Text = sz + Strings.SizeString;
+                            button_Image.Enabled = true;
+                            closeFileCToolStripMenuItem.Enabled = true;
+                            label1.Visible = false;
+                            ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
+                            pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show(Strings.NotInstalledGSCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        long FileSize = file.Length;
+                        string sz = string.Format("{0} ", FileSize);
+                        toolStripStatusLabel_Status.Text = Strings.ReadedString;
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
+                        ReadLabels();
+                        label_File.Text = ofd.FileName;
+                        label_Size.Text = sz + Strings.SizeString;
+                        button_Image.Enabled = true;
+                        closeFileCToolStripMenuItem.Enabled = true;
+                        label1.Visible = false;
+                        ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
+                        pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                        return;
+                    }
                 }
                 else
                 {
+                    if (lst.Contains(".eps") || lst.Contains(".EPS"))
+                    {
+                        if (!Common.CheckGhostscript())
+                        {
+                            MessageBox.Show(Strings.NotInstalledGSCaption2, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
                     long FS = 0;
                     foreach (string file in Common.ImageFile)
                     {
@@ -494,9 +538,8 @@ namespace NVGE
         {
             Config.Load(Common.xmlpath);
 
-            Form form = new FormImageUpscaleSettings();
+            using FormImageUpscaleSettings form = new();
             form.ShowDialog();
-            form.Dispose();
             Common.ImageParam = Config.Entry["Param"].Value;
             return;
         }
@@ -505,9 +548,8 @@ namespace NVGE
         {
             Config.Load(Common.xmlpath);
 
-            Form form = new FormVideoUpscaleSettings();
+            using FormVideoUpscaleSettings form = new();
             form.ShowDialog();
-            form.Dispose();
             if (Config.Entry["VideoLocation"].Value != "")
             {
                 Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames");
@@ -541,9 +583,8 @@ namespace NVGE
 
         private void AboutWaifu2xncnnvulkanGUIToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAbout Form = new();
+            using FormAbout Form = new();
             Form.ShowDialog();
-            Form.Dispose();
             return;
         }
 
@@ -552,6 +593,8 @@ namespace NVGE
             if (Common.ImageParam.Length < 69 || Common.ImageParam.Length == 0 || string.IsNullOrWhiteSpace(Common.ImageParam))
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using FormImageUpscaleSettings form = new();
+                form.ShowDialog();
                 return;
             }
 
@@ -2597,19 +2640,25 @@ namespace NVGE
 
         private void Button_Video_Click(object sender, EventArgs e)
         {
-            if (Common.ImageParam.Length < 69 || Common.ImageParam.Length == 0)
+            if (Common.ImageParam.Length < 69 || Common.ImageParam.Length == 0 || string.IsNullOrWhiteSpace(Common.ImageParam))
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using FormImageUpscaleSettings form = new();
+                form.ShowDialog();
                 return;
             }
-            if (Common.VideoParam.Length <= 50 || Common.VideoParam.Length == 0)
+            if (Common.VideoParam.Length <= 50 || Common.VideoParam.Length == 0 || string.IsNullOrWhiteSpace(Common.VideoParam))
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using FormVideoUpscaleSettings form = new();
+                form.ShowDialog();
                 return;
             }
-            if (Common.AudioParam.Length <= 50 || Common.AudioParam.Length == 0)
+            if (Common.AudioParam.Length <= 50 || Common.AudioParam.Length == 0 || string.IsNullOrWhiteSpace(Common.AudioParam))
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using FormVideoUpscaleSettings form = new();
+                form.ShowDialog();
                 return;
             }
             if (Common.downloadClient != null)
@@ -3670,7 +3719,6 @@ namespace NVGE
                     e.Cancel = true;
                 }
             }
-            //Environment.Exit(0);
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -3769,7 +3817,7 @@ namespace NVGE
             {
                 FileInfo file = new(dd[0]);
                 string ext = file.Extension.ToUpper();
-                if (ext == ".BMP" || ext == ".DIB" || ext == ".EPS" || ext == ".WEBP" || ext == ".ICO" || ext == ".ICNS" || ext == ".JFIF" || ext == ".JPG" || ext == ".JPE" || ext == ".JPEG" || ext == ".PJPEG" || ext == ".PJP" || ext == ".PNG" || ext == ".PICT" || ext == ".SVG" || ext == ".SVGZ" || ext == ".TIF" || ext == ".TIFF")
+                if (ext == ".BMP" || ext == ".DIB" || ext == ".WEBP" || ext == ".ICO" || ext == ".ICNS" || ext == ".JFIF" || ext == ".JPG" || ext == ".JPE" || ext == ".JPEG" || ext == ".PJPEG" || ext == ".PJP" || ext == ".PNG" || ext == ".PICT" || ext == ".SVG" || ext == ".SVGZ" || ext == ".TIF" || ext == ".TIFF")
                 {
                     long FileSize = file.Length;
                     string sz = string.Format("{0} ", FileSize);
@@ -3786,6 +3834,32 @@ namespace NVGE
                     pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
                     closeFileCToolStripMenuItem.Enabled = true;
                     return;
+                }
+                else if (ext == ".EPS")
+                {
+                    if (Common.CheckGhostscript())
+                    {
+                        long FileSize = file.Length;
+                        string sz = string.Format("{0} ", FileSize);
+                        toolStripStatusLabel_Status.Text = Strings.ReadedString;
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
+                        ReadLabels();
+                        label_File.Text = dd[0];
+                        label_Size.Text = sz + Strings.SizeString;
+                        button_Image.Enabled = true;
+                        label1.Visible = false;
+
+                        ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
+
+                        pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                        closeFileCToolStripMenuItem.Enabled = true;
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show(Strings.NotInstalledGSCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 else if (ext == ".GIF")
                 {
@@ -3884,6 +3958,15 @@ namespace NVGE
                     }
                 }
 
+                if (lst.Contains(".eps") || lst.Contains(".EPS"))
+                {
+                    if (!Common.CheckGhostscript())
+                    {
+                        MessageBox.Show(Strings.NotInstalledGSCaption2, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
                 long FS = 0;
                 foreach (string file in Common.ImageFile)
                 {
@@ -3941,7 +4024,7 @@ namespace NVGE
             {
                 FileInfo file = new(dd[0]);
                 string ext = file.Extension.ToUpper();
-                if (ext == ".BMP" || ext == ".DIB" || ext == ".EPS" || ext == ".WEBP" || ext == ".ICO" || ext == ".ICNS" || ext == ".JFIF" || ext == ".JPG" || ext == ".JPE" || ext == ".JPEG" || ext == ".PJPEG" || ext == ".PJP" || ext == ".PNG" || ext == ".PICT" || ext == ".SVG" || ext == ".SVGZ" || ext == ".TIF" || ext == ".TIFF")
+                if (ext == ".BMP" || ext == ".DIB" || ext == ".WEBP" || ext == ".ICO" || ext == ".ICNS" || ext == ".JFIF" || ext == ".JPG" || ext == ".JPE" || ext == ".JPEG" || ext == ".PJPEG" || ext == ".PJP" || ext == ".PNG" || ext == ".PICT" || ext == ".SVG" || ext == ".SVGZ" || ext == ".TIF" || ext == ".TIFF")
                 {
                     long FileSize = file.Length;
                     string sz = string.Format("{0} ", FileSize);
@@ -3959,6 +4042,33 @@ namespace NVGE
                     closeFileCToolStripMenuItem.Enabled = true;
 
                     return;
+                }
+                else if (ext == ".EPS")
+                {
+                    if (Common.CheckGhostscript())
+                    {
+                        long FileSize = file.Length;
+                        string sz = string.Format("{0} ", FileSize);
+                        toolStripStatusLabel_Status.Text = Strings.ReadedString;
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
+                        ReadLabels();
+                        label_File.Text = dd[0];
+                        label_Size.Text = sz + Strings.SizeString;
+                        button_Image.Enabled = true;
+
+                        ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
+
+                        pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+
+                        closeFileCToolStripMenuItem.Enabled = true;
+
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show(Strings.NotInstalledGSCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 else if (ext == ".GIF")
                 {
@@ -4055,6 +4165,15 @@ namespace NVGE
                         default:
                             MessageBox.Show(Strings.ImgOnlyMultipleCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
+                    }
+                }
+
+                if (lst.Contains(".eps") || lst.Contains(".EPS"))
+                {
+                    if (!Common.CheckGhostscript())
+                    {
+                        MessageBox.Show(Strings.NotInstalledGSCaption2, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                 }
 
@@ -4841,10 +4960,7 @@ namespace NVGE
         private static void CloseSplash()
         {
             SplashDlg d = new(CloseForm);
-            if (fs != null)
-            {
-                fs.Dispatcher.Invoke(d);
-            }
+            fs?.Dispatcher.Invoke(d);
         }
 
         private delegate void SplashDlg();
@@ -4865,7 +4981,7 @@ namespace NVGE
         {
             if (Common.GPUList.Count == 0)
             {
-                MessageBox.Show("Failed to retrieve information.", Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             label_Graphic.Text = Common.GPUList[comboBox_GPU.SelectedIndex] + " [ " + Common.GPURAMList[comboBox_GPU.SelectedIndex] + " MiB RAM]";
         }

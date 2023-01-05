@@ -113,10 +113,16 @@
   </data>
   <data name="comboBox_GPU.ToolTip" xml:space="preserve">
     <value>変換時に使用するGPUを指定します。
-'自動'を指定すると、変換時に自動的に使用するGPUを決定します。
+
+'自動'を指定すると、アプリケーション側で自動的に最適なGPUを決定します。
+
+'CPU'を選択するとGPUを使用せず、CPUのみでの変換を試みます。(非常に低速のため非推奨)
+
 'iGPU'を指定すると、CPU内臓グラフィックで変換を行います。
-(内蔵グラフィック機能が存在しないCPUではiGPUは指定できません)
-マルチGPU環境の場合は'dGPU'のいづれかを指定することも可能です。</value>
+(内蔵グラフィック機能が存在しないプロセッサー、またはBIOSで内臓グラフィックが無効になっている場合、iGPUは指定できません)
+
+ほとんどの場合は'自動'を指定すると、最適なGPUで変換を行いますが
+マルチGPU環境の場合等は'dGPU'のいづれかを指定することも可能です。</value>
   </data>
   <data name="comboBox_Uplevel.Items" xml:space="preserve">
     <value>1倍 (等倍)</value>
@@ -138,10 +144,12 @@
   </data>
   <data name="comboBox_Uplevel.ToolTip" xml:space="preserve">
     <value>画像アップスケールのレベルを指定します。
-'2倍'を指定すると、元画像の2倍のピクセルで出力を行います。
-'1倍'を指定すると、元画像と同じピクセルで出力を行います。
-'2倍'以上を指定する場合、画像のアップスケーリング時にのみ適用されます。
-動画のアップスケーリング時は強制的に'2倍'になり、適用されません。</value>
+
+'n倍'を指定すると、元画像のn倍のピクセルで出力を行います。
+'等倍'の場合は元画像と同じピクセルで出力を行います。
+
+動画アップスケール時はwaifu2xエンジンで'2倍'以上を指定する場合、画像のアップスケーリング時にのみ適用されます。
+CUGAN,ESRGANでは'4倍'以上を指定する場合、同様の動作になります。</value>
   </data>
   <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 19</value>
@@ -385,11 +393,15 @@ Photo: 写真等をアップスケールする際に適したモデルです。<
   </data>
   <data name="comboBox_engine.ToolTip" xml:space="preserve">
     <value>変換エンジンを指定します。
-waifu2x: Real-CUGANやReal-ESRGANより画質が劣りますが、その分高速に変換できます。
-Real-CUGAN: かなり高画質で変換できますが、waifu2xより変換に時間がかかります。
-Real-ESRGAN: かなり高画質で変換できますが、waifu2xより変換に時間がかかります。
 
-</value>
+waifu2x: 高画質かつ高速に変換可能です。CUGANやESRGANと比べ、若干画質が劣ります。
+同期モードのオプションは指定できません。
+
+Real-CUGAN: 超高画質かつ高速に変換可能です。
+waifu2xやESRGANと比べ、同期モードのオプションが指定可能です。
+
+Real-ESRGAN: 超高画質で変換可能ですが、CUGANと比べて処理が重めです。
+ノイズ除去レベル、同期モード、CPUで変換するオプションは指定できません。</value>
   </data>
   <data name="checkBox_updetail.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 177</value>
@@ -417,6 +429,32 @@ Real-ESRGAN: かなり高画質で変換できますが、waifu2xより変換に
     <value>アップスケーリング完了時に保存先のフォルダを表示します。
 通常では有効になっています。</value>
   </data>
+  <data name="comboBox_syncgap.Items" xml:space="preserve">
+    <value>no sync (無同期)</value>
+  </data>
+  <data name="comboBox_syncgap.Items1" xml:space="preserve">
+    <value>accurate sync (正確な同期)</value>
+  </data>
+  <data name="comboBox_syncgap.Items2" xml:space="preserve">
+    <value>rough sync (曖昧な同期)</value>
+  </data>
+  <data name="comboBox_syncgap.Items3" xml:space="preserve">
+    <value>very rough sync (非常に曖昧な同期)</value>
+  </data>
+  <data name="comboBox_syncgap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 119</value>
+  </data>
+  <data name="comboBox_syncgap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 23</value>
+  </data>
+  <data name="comboBox_syncgap.ToolTip" xml:space="preserve">
+    <value>同期モードを指定します。
+
+無同期：同期を使用しません。
+正確な同期：低速ですが、一番正確なモードです。
+曖昧な同期：標準的なモードです。
+非常に曖昧な同期：高速ですが、非常に曖昧なモードです。</value>
+  </data>
   <data name="tabControl1.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -424,24 +462,6 @@ Real-ESRGAN: かなり高画質で変換できますが、waifu2xより変換に
     <value>基本</value>
   </data>
   <data name="tabPage1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_syncgap.Items" xml:space="preserve">
-    <value>無同期</value>
-  </data>
-  <data name="comboBox_syncgap.Items1" xml:space="preserve">
-    <value>正確な同期</value>
-  </data>
-  <data name="comboBox_syncgap.Items2" xml:space="preserve">
-    <value>曖昧な同期</value>
-  </data>
-  <data name="comboBox_syncgap.Items3" xml:space="preserve">
-    <value>非常に曖昧な同期</value>
-  </data>
-  <data name="comboBox_syncgap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 119</value>
-  </data>
-  <data name="comboBox_syncgap.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
