@@ -260,6 +260,9 @@ Do you want to update it?</value>
   <data name="FilterVideo" xml:space="preserve">
     <value>Audio Video Interleave (*.avi)|*.avi;|MPEG-4 (*.mp4)|*.mp4;|Animation GIF (*.gif)|*.gif;|QuickTime Video (*.mov)|*.mov;|Google WebM (*.webm)|*.webm;|Matroska Video (*.mkv)|*.mkv;|Windows Media Video (*.wmv)|*.wmv;|All Supported Files|*.avi;*.mp4;*.gif;*.mov;*.webm;*.mkv;*.wmv</value>
   </data>
+  <data name="GPUInfomationFailedCaption" xml:space="preserve">
+    <value>Failed to retrieve information.</value>
+  </data>
   <data name="IMGS" xml:space="preserve">
     <value>Image(s)</value>
   </data>
@@ -307,6 +310,14 @@ Do you wish to continue?</value>
   </data>
   <data name="MSGWarning" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="NotInstalledGSCaption" xml:space="preserve">
+    <value>The opened file is a PostScript image, but Ghostscript is
+not installed on the computer and the file cannot be opened.</value>
+  </data>
+  <data name="NotInstalledGSCaption2" xml:space="preserve">
+    <value>The opened file contains a PostScript image, but I cannot open the file
+because I do not have Ghostscript installed on my computer.</value>
   </data>
   <data name="NotNetworkConnectionCaption" xml:space="preserve">
     <value>The computer is not connected to the Internet.</value>

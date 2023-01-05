@@ -63,9 +63,9 @@ namespace NVGE
             this.comboBox_engine = new System.Windows.Forms.ComboBox();
             this.checkBox_updetail = new System.Windows.Forms.CheckBox();
             this.checkBox_destfolder = new System.Windows.Forms.CheckBox();
+            this.comboBox_syncgap = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.comboBox_syncgap = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -343,6 +343,19 @@ namespace NVGE
             this.toolTip1.SetToolTip(this.checkBox_destfolder, resources.GetString("checkBox_destfolder.ToolTip"));
             this.checkBox_destfolder.UseVisualStyleBackColor = true;
             // 
+            // comboBox_syncgap
+            // 
+            resources.ApplyResources(this.comboBox_syncgap, "comboBox_syncgap");
+            this.comboBox_syncgap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_syncgap.FormattingEnabled = true;
+            this.comboBox_syncgap.Items.AddRange(new object[] {
+            resources.GetString("comboBox_syncgap.Items"),
+            resources.GetString("comboBox_syncgap.Items1"),
+            resources.GetString("comboBox_syncgap.Items2"),
+            resources.GetString("comboBox_syncgap.Items3")});
+            this.comboBox_syncgap.Name = "comboBox_syncgap";
+            this.toolTip1.SetToolTip(this.comboBox_syncgap, resources.GetString("comboBox_syncgap.ToolTip"));
+            // 
             // tabControl1
             // 
             resources.ApplyResources(this.tabControl1, "tabControl1");
@@ -373,19 +386,6 @@ namespace NVGE
             this.tabPage1.Name = "tabPage1";
             this.toolTip1.SetToolTip(this.tabPage1, resources.GetString("tabPage1.ToolTip"));
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox_syncgap
-            // 
-            resources.ApplyResources(this.comboBox_syncgap, "comboBox_syncgap");
-            this.comboBox_syncgap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_syncgap.FormattingEnabled = true;
-            this.comboBox_syncgap.Items.AddRange(new object[] {
-            resources.GetString("comboBox_syncgap.Items"),
-            resources.GetString("comboBox_syncgap.Items1"),
-            resources.GetString("comboBox_syncgap.Items2"),
-            resources.GetString("comboBox_syncgap.Items3")});
-            this.comboBox_syncgap.Name = "comboBox_syncgap";
-            this.toolTip1.SetToolTip(this.comboBox_syncgap, resources.GetString("comboBox_syncgap.ToolTip"));
             // 
             // label14
             // 

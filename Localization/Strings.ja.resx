@@ -271,6 +271,9 @@ Nose: アップスケール倍率は'2倍'のみ指定できます。ノイズ�
   <data name="FmtErrorCaption" xml:space="preserve">
     <value>サポートされていないファイル形式です。</value>
   </data>
+  <data name="GPUInfomationFailedCaption" xml:space="preserve">
+    <value>情報の取得に失敗しました。</value>
+  </data>
   <data name="ImgOnlyMultipleCaption" xml:space="preserve">
     <value>画像以外は複数のファイルを読み込むことはできません。</value>
   </data>
@@ -324,6 +327,14 @@ Nose: アップスケール倍率は'2倍'のみ指定できます。ノイズ�
   </data>
   <data name="MultipleImageCaption" xml:space="preserve">
     <value>複数の画像ファイル</value>
+  </data>
+  <data name="NotInstalledGSCaption" xml:space="preserve">
+    <value>開かれたファイルはPostScript画像ですが
+コンピュータにGhostscriptがインストールされていないため、ファイルが開けません。</value>
+  </data>
+  <data name="NotInstalledGSCaption2" xml:space="preserve">
+    <value>開かれたファイルにPostScript画像が含まれていますが
+コンピュータにGhostscriptがインストールされていないため、ファイルが開けません。</value>
   </data>
   <data name="NotNetworkConnectionCaption" xml:space="preserve">
     <value>コンピューターがインターネットに接続されていません。</value>

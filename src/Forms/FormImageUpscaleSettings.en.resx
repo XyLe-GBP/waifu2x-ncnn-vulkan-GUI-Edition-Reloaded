@@ -61,6 +61,9 @@
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>145, 102</value>
   </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox_Blocksize.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 99</value>
   </data>
@@ -76,7 +79,25 @@ This item depends on the GPU performance. If the value is too large, the convers
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 102</value>
   </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox_height.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="textBox_width.ToolTip" xml:space="preserve">
@@ -85,14 +106,53 @@ This item depends on the GPU performance. If the value is too large, the convers
   <data name="checkBox_pixel.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_TTA.ToolTip" xml:space="preserve">
     <value>Enables the TTA mode.
 Enabling this will improve the image index, but will take a huge amount of time for image conversion.</value>
   </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_OK.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_Cancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="comboBox_syncgap.Location" type="System.Drawing.Point, System.Drawing">
     <value>106, 129</value>
   </data>
+  <data name="tabControl1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPage1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 132</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPage2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

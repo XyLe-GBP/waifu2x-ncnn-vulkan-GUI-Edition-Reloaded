@@ -134,6 +134,27 @@ namespace NVGE
 
         #endregion
 
+        /// <summary>
+        /// Ghostscriptがインストールされているかどうかを調べる
+        /// </summary>
+        /// <returns>true: インストールされている</returns>
+        public static bool CheckGhostscript()
+        {
+            string[] list = SystemInfo.GetUninstallList();
+            foreach (string app in list)
+            {
+                if (app.Contains("Ghostscript"))
+                {
+                    return true;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return false;
+        }
+
         public static string CheckVideoAudioCodec(string VideoPath)
         {
             ProcessStartInfo pi = new();
@@ -1255,6 +1276,31 @@ namespace NVGE
             }
             else { return null; }
         }
+
+        public static string[] GetUninstallList()
+        {
+            List<string> ret = new();
+
+            string uninstall_path = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall";
+            Microsoft.Win32.RegistryKey uninstall = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(uninstall_path, false);
+            if (uninstall != null)
+            {
+                foreach (string subKey in uninstall.GetSubKeyNames())
+                {
+                    string appName = null;
+                    Microsoft.Win32.RegistryKey appkey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(uninstall_path + "\\" + subKey, false);
+
+                    if (appkey.GetValue("DisplayName") != null)
+                        appName = appkey.GetValue("DisplayName").ToString();
+                    else
+                        appName = subKey;
+
+                    ret.Add(appName);
+                }
+            }
+
+            return ret.ToArray();
+        }
     }
 
     public class VRAMInfo
@@ -1279,41 +1325,52 @@ namespace NVGE
             int count = 0;
             foreach (string kn in rKey.GetSubKeyNames())
             {
-                if (kn.Contains("0"))
+                if (kn.Contains('0'))
                 {
                     RegistryKey vk = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\" + kn);
-                    foreach (string skn in vk.GetValueNames())
+                    foreach (string vs in vk.GetSubKeyNames())
                     {
-                        if (skn.Contains("DriverDesc"))
+                        if (vs.Contains("VolatileSettings"))
                         {
-                            nm[count] = (string)vk.GetValue("DriverDesc") + " - " + (string)vk.GetValue("DriverVersion");
-                        }
-                        else if (skn.Contains("HardwareInformation.qwMemorySize"))
-                        {
-                            rm[count] = (long)vk.GetValue("HardwareInformation.qwMemorySize") / 1048576;
-
-                        }
-                        else if (skn.Contains("HardwareInformation.MemorySize"))
-                        {
-                            if (rm[count] == 0)
+                            foreach (string skn in vk.GetValueNames())
                             {
-                                try
+                                if (skn.Contains("DriverDesc"))
                                 {
-                                    rm[count] = (long)vk.GetValue("HardwareInformation.MemorySize");
+                                    nm[count] = (string)vk.GetValue("DriverDesc") + " - " + (string)vk.GetValue("DriverVersion");
                                 }
-                                catch (Exception ex)
+                                else if (skn.Contains("HardwareInformation.qwMemorySize"))
                                 {
-                                    rm[count] = 0;
+                                    rm[count] = (long)vk.GetValue("HardwareInformation.qwMemorySize") / 1048576;
+
+                                }
+                                else if (skn.Contains("HardwareInformation.MemorySize"))
+                                {
+                                    if (rm[count] == 0)
+                                    {
+                                        try
+                                        {
+                                            rm[count] = (long)vk.GetValue("HardwareInformation.MemorySize");
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            rm[count] = 0;
+                                        }
+                                    }
+                                }
+                                else
+                                {
                                 }
                             }
+                            vk.Close();
+                            count++;
+                            continue;
                         }
                         else
                         {
+                            continue;
                         }
                     }
-                    vk.Close();
-                    count++;
-                    continue;
+                    
                 }
                 else
                 {
@@ -1325,22 +1382,39 @@ namespace NVGE
             return vi;
         }
 
-        public int GetCount()
+        /// <summary>
+        /// グラフィックボードの数を取得
+        /// </summary>
+        /// <returns></returns>
+        public static int GetCount()
         {
             int count = 0;
             RegistryKey rKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}");
             foreach (string kn in rKey.GetSubKeyNames())
             {
-                if (kn.Contains("0"))
+                if (kn.Contains('0'))
                 {
-                    count++;
-                    continue;
+                    RegistryKey vk = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\" + kn);
+                    foreach (string vs in vk.GetSubKeyNames())
+                    {
+                        if (vs.Contains("VolatileSettings"))
+                        {
+                            count++;
+                            continue;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    vk.Close();
                 }
                 else
                 {
                     continue;
                 }
             }
+            rKey.Close();
             return count;
         }
     }

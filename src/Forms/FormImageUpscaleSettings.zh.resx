@@ -110,11 +110,32 @@
     <value>409, 23</value>
   </data>
   <data name="comboBox_GPU.ToolTip" xml:space="preserve">
-    <value>指定转换要使用的GPU。
-如果指定 "自动"，在转换过程中将自动使用GPU。
-如果指定了 'iGPU'，转换将使用CPU的内部图形来完成。
-(对于没有内置图形的CPU不能指定iGPU）
-如果你有一个多GPU环境，你也可以指定 "dGPU "。</value>
+    <value>指定转换过程中使用的GPU。
+
+如果选择 "自动"，应用程序将自动确定最合适的GPU。
+
+如果选择 "CPU"，则仅使用CPU尝试转换，不使用GPU。 (由于速度很低而被废弃）。
+
+如果指定 "iGPU"，则使用CPU的内部图形进行转换。
+(如果处理器没有内部图形功能或在BIOS中禁用了内部图形，则不能指定iGPU)。
+
+在大多数情况下，如果你指定 "自动"，将用最合适的GPU进行转换。
+例如，在多GPU环境中，你也可以指定 "dGPU "选项之一。</value>
+  </data>
+  <data name="comboBox_Uplevel.Items" xml:space="preserve">
+    <value>1x</value>
+  </data>
+  <data name="comboBox_Uplevel.Items1" xml:space="preserve">
+    <value>2x</value>
+  </data>
+  <data name="comboBox_Uplevel.Items2" xml:space="preserve">
+    <value>4x</value>
+  </data>
+  <data name="comboBox_Uplevel.Items3" xml:space="preserve">
+    <value>8x</value>
+  </data>
+  <data name="comboBox_Uplevel.Items4" xml:space="preserve">
+    <value>16x</value>
   </data>
   <data name="comboBox_Uplevel.Location" type="System.Drawing.Point, System.Drawing">
     <value>244, 41</value>
@@ -123,11 +144,13 @@
     <value>79, 23</value>
   </data>
   <data name="comboBox_Uplevel.ToolTip" xml:space="preserve">
-    <value>指定升频级别。
-'x2'意味着输出将是原始图像像素的两倍。
-'x1'意味着输出将具有与原始图像相同的像素。
-如果你指定'x2'或更高，它将只在放大图像时应用。 
-当对视频进行升格时将被强制为'x2'，并且不会被应用。</value>
+    <value>指定图像升格的级别。
+
+如果指定了'n x'，则输出是原始图像像素的n倍。
+如果指定了'1x'，输出将是与原始图像相同的像素。
+
+在视频升格过程中，如果在waifu2x引擎中指定'2x'或更多，那么它只在图像升格过程中应用。
+对于CUGAN和ESRGAN，当指定'4x'或更多时，同样的行为适用。</value>
   </data>
   <data name="checkBox_Advanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 19</value>
@@ -324,9 +347,15 @@ Photo：该模型适合用于放大照片。</value>
   </data>
   <data name="comboBox_engine.ToolTip" xml:space="preserve">
     <value>指定转换引擎。
-waifu2x: 比Real-CUGAN和Real-ESRGAN的质量低，但转换速度快。
-Real-CUGAN：转换的质量要高得多，但比waifu2x花的时间长。
-Real-ESRGAN：转换的质量要高得多，但比waifu2x花费的时间长。</value>
+
+waifu2x: 高质量和高速的转换，比CUGAN或ESRGAN的质量略低。
+不能指定同步模式选项。
+
+Real-CUGAN：超高的质量和高速的转换。
+与waifu2x和ESRGAN相比，可以指定同步模式选项。
+
+Real-ESRGAN：超高质量的转换，但与CUGAN相比，处理量更大。
+不能指定降噪水平、同步模式和在CPU上转换的选项。</value>
   </data>
   <data name="checkBox_updetail.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 181</value>
@@ -354,11 +383,34 @@ Real-ESRGAN：转换的质量要高得多，但比waifu2x花费的时间长。</
     <value>显示每次完成后存储升格图像的文件夹。
 通常情况下启用。</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>一般</value>
+  <data name="comboBox_syncgap.Items" xml:space="preserve">
+    <value>no sync (异步)</value>
+  </data>
+  <data name="comboBox_syncgap.Items1" xml:space="preserve">
+    <value>accurate sync (准确同步)</value>
+  </data>
+  <data name="comboBox_syncgap.Items2" xml:space="preserve">
+    <value>rough sync (暧昧的同步)</value>
+  </data>
+  <data name="comboBox_syncgap.Items3" xml:space="preserve">
+    <value>very rough sync (非常模糊的同步)</value>
   </data>
   <data name="comboBox_syncgap.Location" type="System.Drawing.Point, System.Drawing">
     <value>85, 117</value>
+  </data>
+  <data name="comboBox_syncgap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 23</value>
+  </data>
+  <data name="comboBox_syncgap.ToolTip" xml:space="preserve">
+    <value>指定同步模式。
+
+no sync：不使用同步功能。
+accurate sync：最慢但最准确的模式。
+rough sync：标准模式。
+very rough sync：快速，但非常模糊的模式。</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>一般</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 120</value>
