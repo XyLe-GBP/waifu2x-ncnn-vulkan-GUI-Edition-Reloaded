@@ -131,7 +131,7 @@ namespace NVGE
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
                 Thread.Sleep(200);
 
-                /*if (fs != null)
+                if (fs != null)
                 {
                     fs.Dispatcher.Invoke(d, Strings.SplashFormSystemCaption);
                 }
@@ -162,8 +162,8 @@ namespace NVGE
                 }
 
                 ResetLabels();
-                label_OS.Text = OSInfo[1] + " - " + OSInfo[3] + " [ build: " + OSInfo[4] + " ]";
-                label_Processor.Text = CPUInfo[0] + " [ " + CPUInfo[1] + " Core / " + CPUInfo[2] + " Threads ]";
+                //label_OS.Text = OSInfo[1] + " - " + OSInfo[3] + " [ build: " + OSInfo[4] + " ]";
+                //label_Processor.Text = CPUInfo[0] + " [ " + CPUInfo[1] + " Core / " + CPUInfo[2] + " Threads ]";
                 toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
 
                 if (fs != null)
@@ -184,7 +184,7 @@ namespace NVGE
                     {
                         fs?.Dispatcher.Invoke(d, "Detected GPU: " + gpu);
                         Thread.Sleep(10);
-                        comboBox_GPU.Items.Add(gpu);
+                        //comboBox_GPU.Items.Add(gpu);
                         Common.GPUList.Add(gpu);
                         Common.GPURAMList.Add(GPURAMList[gpucount]);
                     }
@@ -192,14 +192,14 @@ namespace NVGE
                     {
                         fs?.Dispatcher.Invoke(d, "Detected Discrate iGPU: " + gpu);
                         Thread.Sleep(10);
-                        comboBox_GPU.Items.Add(gpu);
+                        //comboBox_GPU.Items.Add(gpu);
                         Common.GPUList.Add(gpu);
                         Common.GPURAMList.Add(GPURAMList[gpucount]);
                     }
                     gpucount++;
                 }
 
-                comboBox_GPU.SelectedIndex = 0;
+                /*comboBox_GPU.SelectedIndex = 0;
                 if (Common.GPUList.Count == 1)
                 {
                     comboBox_GPU.Enabled = false;
