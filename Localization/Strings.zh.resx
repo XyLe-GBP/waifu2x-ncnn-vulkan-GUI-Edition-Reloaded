@@ -274,6 +274,12 @@ CRF级别 "的值必须至少是一个字符。</value>
   <data name="GPUInfomationFailedCaption" xml:space="preserve">
     <value>检索信息失败。</value>
   </data>
+  <data name="ImageMultipleConversionSuccess" xml:space="preserve">
+    <value>{0} 个文件从 {1}。</value>
+  </data>
+  <data name="ImageMultipleConversionWarning" xml:space="preserve">
+    <value>文件：{0}未能转换为{1}。</value>
+  </data>
   <data name="ImgOnlyMultipleCaption" xml:space="preserve">
     <value>不可能加载一个以上的文件，图像除外。</value>
   </data>

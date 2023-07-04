@@ -483,6 +483,24 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
+        ///   {0} files converted from {1}. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ImageMultipleConversionSuccess {
+            get {
+                return ResourceManager.GetString("ImageMultipleConversionSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   File: {0} failed to convert to {1}. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ImageMultipleConversionWarning {
+            get {
+                return ResourceManager.GetString("ImageMultipleConversionWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   It is not possible to load multiple files except for images. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ImgOnlyMultipleCaption {

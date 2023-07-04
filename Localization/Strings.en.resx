@@ -263,6 +263,12 @@ Do you want to update it?</value>
   <data name="GPUInfomationFailedCaption" xml:space="preserve">
     <value>Failed to retrieve information.</value>
   </data>
+  <data name="ImageMultipleConversionSuccess" xml:space="preserve">
+    <value>{0} files converted from {1}.</value>
+  </data>
+  <data name="ImageMultipleConversionWarning" xml:space="preserve">
+    <value>File: {0} failed to convert to {1}.</value>
+  </data>
   <data name="IMGS" xml:space="preserve">
     <value>Image(s)</value>
   </data>

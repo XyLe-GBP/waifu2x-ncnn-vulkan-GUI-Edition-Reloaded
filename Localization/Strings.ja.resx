@@ -274,6 +274,12 @@ Nose: アップスケール倍率は'2倍'のみ指定できます。ノイズ�
   <data name="GPUInfomationFailedCaption" xml:space="preserve">
     <value>情報の取得に失敗しました。</value>
   </data>
+  <data name="ImageMultipleConversionSuccess" xml:space="preserve">
+    <value>{0} 個のファイルを {1} へ変換しました。</value>
+  </data>
+  <data name="ImageMultipleConversionWarning" xml:space="preserve">
+    <value>ファイル：{0} は {1} への変換に失敗しました。</value>
+  </data>
   <data name="ImgOnlyMultipleCaption" xml:space="preserve">
     <value>画像以外は複数のファイルを読み込むことはできません。</value>
   </data>
