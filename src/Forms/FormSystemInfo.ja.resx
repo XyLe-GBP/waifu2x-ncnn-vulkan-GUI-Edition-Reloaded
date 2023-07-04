@@ -1,0 +1,163 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>グラフィックス</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>システム</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>M/B メーカー：</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>モデル：</value>
+  </data>
+  <data name="label_MBMaker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 37</value>
+  </data>
+  <data name="label_MBMaker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 15</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 15</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>オペレーティング・システム：</value>
+  </data>
+  <data name="label_OSName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 19</value>
+  </data>
+  <data name="label_OSName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 15</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>プロセッサー</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>名称：</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 15</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>スレッド数：</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>コア数：</value>
+  </data>
+  <data name="label_CPUThreads.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 37</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>グラフィックボード</value>
+  </data>
+  <data name="label_GPUDriver.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 68</value>
+  </data>
+  <data name="label_GPUDriver.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 15</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 68</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 15</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>ドライバーバージョン：</value>
+  </data>
+  <data name="label_GPUMemory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>60, 68</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 15</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>総メモリ：</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>ブランド：</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>名称：</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>システム情報</value>
+  </data>
+</root>

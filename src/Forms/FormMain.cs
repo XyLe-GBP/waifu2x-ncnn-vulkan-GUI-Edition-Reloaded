@@ -1,4 +1,5 @@
 ﻿using NVGE.Localization;
+using NVGE.src.Forms;
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -129,7 +131,7 @@ namespace NVGE
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
                 Thread.Sleep(200);
 
-                if (fs != null)
+                /*if (fs != null)
                 {
                     fs.Dispatcher.Invoke(d, Strings.SplashFormSystemCaption);
                 }
@@ -207,7 +209,7 @@ namespace NVGE
                     comboBox_GPU.Enabled = true;
                 }
                 
-                label_Graphic.Text = Common.GPUList[0] + " [ " + Common.GPURAMList[0] + " MiB RAM ]";
+                label_Graphic.Text = Common.GPUList[0] + " [ " + Common.GPURAMList[0] + " MiB RAM ]";*/
 
                 /*if (GPUList.Count == 1)
                 {
@@ -236,6 +238,9 @@ namespace NVGE
                     comboBox_GPU.Enabled = true;
                     label_Graphic.Text = GPUList[0];
                 }*/
+
+                ResetLabels();
+                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
 
                 if (fs != null)
                 {
@@ -4379,51 +4384,108 @@ namespace NVGE
                 Filter = Strings.FilterImage,
                 FilterIndex = 11,
                 Title = Strings.OpenFormatChangeDialogCaption,
-                RestoreDirectory = true
+                RestoreDirectory = true,
+                Multiselect = true,
             };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                string open = ofd.FileName;
-                SaveFileDialog sfd = new()
+                string[] opens = ofd.FileNames;
+
+                if (opens.Length == 1)
                 {
-                    FileName = Common.SFDRandomNumber(),
-                    InitialDirectory = "",
-                    Filter = Strings.FilterImage,
-                    FilterIndex = 1,
-                    Title = Strings.SaveFormatChangeDialogCaption,
-                    OverwritePrompt = true,
-                    RestoreDirectory = true
-                };
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    string save = sfd.FileName;
-                    fi = new FileInfo(open);
-                    fi2 = new FileInfo(save);
-
-                    if (fi.Extension.ToUpper() == fi2.Extension.ToUpper())
+                    SaveFileDialog sfd = new()
                     {
-                        MessageBox.Show(Strings.VideoFormatChange_FmtErrorCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    ImageConvert.IMAGEtoAnyIMAGE(open, save);
-
-                    if (File.Exists(save))
+                        FileName = Common.SFDRandomNumber(),
+                        InitialDirectory = "",
+                        Filter = Strings.FilterImage,
+                        FilterIndex = 1,
+                        Title = Strings.SaveFormatChangeDialogCaption,
+                        OverwritePrompt = true,
+                        RestoreDirectory = true
+                    };
+                    if (sfd.ShowDialog() == DialogResult.OK)
                     {
-                        MessageBox.Show(Strings.VideoFormatChange_SuccessCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Process.Start("EXPLORER.EXE", @"/select,""" + save + @"""");
-                        return;
+                        string save = sfd.FileName;
+                        fi = new FileInfo(opens[0]);
+                        fi2 = new FileInfo(save);
+
+                        if (fi.Extension.ToUpper() == fi2.Extension.ToUpper())
+                        {
+                            MessageBox.Show(Strings.VideoFormatChange_FmtErrorCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (File.Exists(save))
+                        {
+                            File.Delete(save);
+                        }
+                        ImageConvert.IMAGEtoAnyIMAGE(opens[0], save);
+
+                        if (File.Exists(save))
+                        {
+                            MessageBox.Show(Strings.VideoFormatChange_SuccessCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Process.Start("EXPLORER.EXE", @"/select,""" + save + @"""");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show(Strings.VideoFormatChange_ErrorCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(Strings.VideoFormatChange_ErrorCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
-                else
+                else // multiple
                 {
-                    return;
+                    FolderBrowserDialog fbd = new()
+                    {
+                        InitialDirectory = "",
+                        ShowNewFolderButton = true,
+                    };
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        int count = 0;
+
+                        using FormImageConvertTarget Form = new();
+                        Form.ShowDialog();
+
+                        if (string.IsNullOrEmpty(Common.ImageConversionExtension))
+                        {
+                            return;
+                        }
+                        string destext = Common.ImageConversionExtension;
+
+                        foreach (var item in opens)
+                        {
+                            fi = new FileInfo(item);
+                            string fname = fi.Name, savepath = fbd.SelectedPath + @"\" + fname + destext;
+
+                            if (File.Exists(savepath))
+                            {
+                                File.Delete(savepath);
+                            }
+                            ImageConvert.IMAGEtoAnyIMAGE(item, savepath);
+
+                            if (File.Exists(savepath))
+                            {
+                                count++;
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format(Strings.ImageMultipleConversionWarning, fname, destext.Replace(".", "")), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+
+                        MessageBox.Show(string.Format(Strings.ImageMultipleConversionSuccess, count, destext.Replace(".", "")), Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Process.Start("EXPLORER.EXE", @"/select,""" + fbd.SelectedPath + @"""");
+                        return;
+                    }
                 }
+
+                
             }
             else
             {
@@ -4977,18 +5039,24 @@ namespace NVGE
         }
         #endregion
 
-        private void ComboBox_GPU_SelectedIndexChanged(object sender, EventArgs e)
+        /*private void ComboBox_GPU_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Common.GPUList.Count == 0)
             {
                 MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             label_Graphic.Text = Common.GPUList[comboBox_GPU.SelectedIndex] + " [ " + Common.GPURAMList[comboBox_GPU.SelectedIndex] + " MiB RAM]";
-        }
+        }*/
 
         private void PreferencesSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using FormPreferencesSettings Form = new();
+            Form.ShowDialog();
+        }
+
+        private void GetSystemInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using FormSystemInfo Form = new();
             Form.ShowDialog();
         }
     }

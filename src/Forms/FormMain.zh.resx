@@ -140,22 +140,28 @@
     <value>工具 (&amp;T)</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
     <value>改变视频分辨率</value>
   </data>
   <data name="changeVideoFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="changeVideoFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>改变视频格式</value>
   </data>
   <data name="changeImageFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="changeImageFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>改变图像格式</value>
+  </data>
+  <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 6</value>
+  </data>
+  <data name="getSystemInformationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
   </data>
   <data name="aboutAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 20</value>
@@ -165,36 +171,6 @@
   </data>
   <data name="checkForUpdatesUToolStripMenuItem.Text" xml:space="preserve">
     <value>更新确认 (&amp;U)</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 15</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>处理器：</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 15</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>图形板：</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>系统信息</value>
-  </data>
-  <data name="label_OS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 30</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>操作系统：</value>
-  </data>
-  <data name="label_Graphic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 71</value>
-  </data>
-  <data name="label_Processor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 51</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>运作</value>

@@ -50,17 +50,12 @@ namespace NVGE
             this.changeVideoResolutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeVideoFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeImageFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.getSystemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.checkForUpdatesUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label_OS = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label_Graphic = new System.Windows.Forms.Label();
-            this.label_Processor = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button_Merge = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,9 +65,7 @@ namespace NVGE
             this.label_File = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_Status = new System.Windows.Forms.ToolStripStatusLabel();
-            this.comboBox_GPU = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DD)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -194,7 +187,9 @@ namespace NVGE
             this.toolsTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeVideoResolutionToolStripMenuItem,
             this.changeVideoFormatToolStripMenuItem,
-            this.changeImageFormatToolStripMenuItem});
+            this.changeImageFormatToolStripMenuItem,
+            this.toolStripMenuItem5,
+            this.getSystemInformationToolStripMenuItem});
             this.toolsTToolStripMenuItem.Name = "toolsTToolStripMenuItem";
             // 
             // changeVideoResolutionToolStripMenuItem
@@ -214,6 +209,17 @@ namespace NVGE
             resources.ApplyResources(this.changeImageFormatToolStripMenuItem, "changeImageFormatToolStripMenuItem");
             this.changeImageFormatToolStripMenuItem.Name = "changeImageFormatToolStripMenuItem";
             this.changeImageFormatToolStripMenuItem.Click += new System.EventHandler(this.ChangeImageFormatToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            // 
+            // getSystemInformationToolStripMenuItem
+            // 
+            resources.ApplyResources(this.getSystemInformationToolStripMenuItem, "getSystemInformationToolStripMenuItem");
+            this.getSystemInformationToolStripMenuItem.Name = "getSystemInformationToolStripMenuItem";
+            this.getSystemInformationToolStripMenuItem.Click += new System.EventHandler(this.GetSystemInformationToolStripMenuItem_Click);
             // 
             // aboutAToolStripMenuItem
             // 
@@ -241,48 +247,6 @@ namespace NVGE
             resources.ApplyResources(this.checkForUpdatesUToolStripMenuItem, "checkForUpdatesUToolStripMenuItem");
             this.checkForUpdatesUToolStripMenuItem.Name = "checkForUpdatesUToolStripMenuItem";
             this.checkForUpdatesUToolStripMenuItem.Click += new System.EventHandler(this.CheckForUpdatesUToolStripMenuItem_Click);
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // groupBox1
-            // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.label_OS);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label_Graphic);
-            this.groupBox1.Controls.Add(this.label_Processor);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // label_OS
-            // 
-            resources.ApplyResources(this.label_OS, "label_OS");
-            this.label_OS.Name = "label_OS";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label_Graphic
-            // 
-            resources.ApplyResources(this.label_Graphic, "label_Graphic");
-            this.label_Graphic.Name = "label_Graphic";
-            // 
-            // label_Processor
-            // 
-            resources.ApplyResources(this.label_Processor, "label_Processor");
-            this.label_Processor.Name = "label_Processor";
             // 
             // groupBox2
             // 
@@ -346,26 +310,16 @@ namespace NVGE
             resources.ApplyResources(this.toolStripStatusLabel_Status, "toolStripStatusLabel_Status");
             this.toolStripStatusLabel_Status.Name = "toolStripStatusLabel_Status";
             // 
-            // comboBox_GPU
-            // 
-            resources.ApplyResources(this.comboBox_GPU, "comboBox_GPU");
-            this.comboBox_GPU.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_GPU.FormattingEnabled = true;
-            this.comboBox_GPU.Name = "comboBox_GPU";
-            this.comboBox_GPU.SelectedIndexChanged += new System.EventHandler(this.ComboBox_GPU_SelectedIndexChanged);
-            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox_GPU);
             this.Controls.Add(this.label_default);
             this.Controls.Add(this.label_File);
             this.Controls.Add(this.label_Size);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox_DD);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -377,8 +331,6 @@ namespace NVGE
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DD)).EndInit();
             this.statusStrip1.ResumeLayout(false);
@@ -402,11 +354,6 @@ namespace NVGE
         private System.Windows.Forms.ToolStripMenuItem settingsCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem upscalingSettingsUToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem videoUpscalingSettingsVToolStripMenuItem;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label_Graphic;
-        private System.Windows.Forms.Label label_Processor;
         private System.Windows.Forms.ToolStripMenuItem toolsTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeVideoResolutionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutAToolStripMenuItem;
@@ -419,17 +366,16 @@ namespace NVGE
         private System.Windows.Forms.Button button_Merge;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Status;
-        private System.Windows.Forms.Label label_OS;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox_DD;
         private System.Windows.Forms.Label label_default;
         private System.Windows.Forms.ToolStripMenuItem changeVideoFormatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeImageFormatToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboBox_GPU;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem preferencesSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openFromClipboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem getSystemInformationToolStripMenuItem;
     }
 }
 

@@ -81,6 +81,8 @@ namespace NVGE
         public static string ManualImageFormat;
         public static string ManualImageFormatFilter;
 
+        public static string ImageConversionExtension;
+
         public static string DLlog, DLInfo;
         public static string DeletePath, DeletePathFrames, DeletePathFrames2x, DeletePathAudio;
         public static string FFmpegPath;
@@ -1230,6 +1232,50 @@ namespace NVGE
                     buffers[0] = string.Format("{0}", mo["Name"]);
                     buffers[1] = string.Format("{0}", mo["DriverVersion"]);
                     buffers[2] = string.Format("{0}", mo["AdapterRAM"]);
+                }
+            }
+        }
+
+        public static void GetBaseBoardInformation(string[] buffers)
+        {
+            if (buffers.Length != 3)
+            {
+                return;
+            }
+            else
+            {
+                var mc = new ManagementClass("Win32_BaseBoard");
+                ManagementObjectCollection moc = mc.GetInstances();
+                foreach (ManagementObject mo in moc)
+                {
+                    buffers[0] = string.Format("{0}", mo["Manufacturer"]);
+                    buffers[1] = string.Format("{0}", mo["Model"]);
+                    buffers[2] = string.Format("{0}", mo["Product"]);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 0:SMBIOSBIOSVersion,1:Manufacturer,2:Name,3:SerialNumber,4:Version
+        /// </summary>
+        /// <param name="buffers"></param>
+        public static void GetBIOSInformation(string[] buffers)
+        {
+            if (buffers.Length != 5)
+            {
+                return;
+            }
+            else
+            {
+                var mc = new ManagementClass("Win32_BIOS");
+                ManagementObjectCollection moc = mc.GetInstances();
+                foreach (ManagementObject mo in moc)
+                {
+                    buffers[0] = string.Format("{0}", mo["SMBIOSBIOSVersion"]);
+                    buffers[1] = string.Format("{0}", mo["Manufacturer"]);
+                    buffers[2] = string.Format("{0}", mo["Name"]);
+                    buffers[3] = string.Format("{0}", mo["SerialNumber"]);
+                    buffers[4] = string.Format("{0}", mo["Version"]);
                 }
             }
         }

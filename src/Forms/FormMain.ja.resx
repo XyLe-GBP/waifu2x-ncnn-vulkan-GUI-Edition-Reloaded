@@ -137,22 +137,31 @@
     <value>ツール (&amp;T)</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="changeVideoResolutionToolStripMenuItem.Text" xml:space="preserve">
     <value>動画解像度の変更</value>
   </data>
   <data name="changeVideoFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="changeVideoFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>動画形式の変更</value>
   </data>
   <data name="changeImageFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="changeImageFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>画像形式の変更</value>
+  </data>
+  <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 6</value>
+  </data>
+  <data name="getSystemInformationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 22</value>
+  </data>
+  <data name="getSystemInformationToolStripMenuItem.Text" xml:space="preserve">
+    <value>システム情報の取得</value>
   </data>
   <data name="aboutAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 20</value>
@@ -174,36 +183,6 @@
   </data>
   <data name="checkForUpdatesUToolStripMenuItem.Text" xml:space="preserve">
     <value>アップデートの確認 (&amp;U)</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 15</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>プロセッサー：</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 15</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>グラフィックボード：</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>システム情報</value>
-  </data>
-  <data name="label_OS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 30</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 15</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>オペレーティング・システム：</value>
-  </data>
-  <data name="label_Graphic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 71</value>
-  </data>
-  <data name="label_Processor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 51</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>操作</value>
