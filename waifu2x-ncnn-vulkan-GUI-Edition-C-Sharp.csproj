@@ -10,8 +10,8 @@
     <Authors>XyLe</Authors>
     <Product>waifu2x-ncnn-vulkan GUI Edition Reloaded</Product>
     <Copyright>Copyright (C) 2023 - XyLe. All Rights Reserved.</Copyright>
-    <AssemblyVersion>1.34.2320.105</AssemblyVersion>
-    <FileVersion>1.34.2320.105</FileVersion>
+    <AssemblyVersion>1.35.2320.704</AssemblyVersion>
+    <FileVersion>1.35.2320.704</FileVersion>
     <Version>1.30</Version>
     <Description>Super-Resolution Convolutional Neural Network（SRCNN）Utility.</Description>
     <PackageIcon>csharp-logo.png</PackageIcon>
@@ -39,6 +39,7 @@
     <PackageReference Include="OpenCvSharp4" Version="4.6.0.20220608" />
     <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.6.0.20220608" />
     <PackageReference Include="System.Management" Version="7.0.0" />
+    <PackageReference Include="Vortice.DXGI" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
