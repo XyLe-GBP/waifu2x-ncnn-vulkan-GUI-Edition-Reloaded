@@ -142,4 +142,271 @@
   <data name="cur_rotate_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>cur_rotate_32.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="amd_athlon_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\Athlon\amd_athlon_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amd_inside" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\amd_inside.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amd_ryzen_3_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\Ryzen3\amd_ryzen_3_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amd_ryzen_3_pro_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\Ryzen3\amd_ryzen_3_pro_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amd_ryzen_5_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\Ryzen5\amd_ryzen_5_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amd_ryzen_5_pro_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\Ryzen5\amd_ryzen_5_pro_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amd_ryzen_7_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\Ryzen7\amd_ryzen_7_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amd_ryzen_7_pro_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\Ryzen7\amd_ryzen_7_pro_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amd_ryzen_9_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\Ryzen9\amd_ryzen_9_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amd_ryzen_threadripper_pro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\RyzenThreadripper\amd_ryzen_threadripper_pro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i3_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i3\i3_10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i3_11_13th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i3\i3_11-13th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i3_1st" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i3\i3_1st.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i3_2nd_3rd_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i3\i3_2nd-3rd_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i3_4th_5th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i3\i3_4th-5th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i3_6th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i3\i3_6th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i3_7th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i3\i3_7th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i3_8th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i3\i3_8th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i3_9th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i3\i3_9th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_11_13th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_11-13th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_1st_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_1st_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_2_3th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_2-3th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_4_5th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_4-5th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_6th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_6th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_7th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_7th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_8th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_8th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_9th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_9th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i5_x_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i5\i5_x_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_11_13th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_11-13th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_1st_extreme_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_1st_extreme_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_1st_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_1st_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_2_3_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_2-3_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_4_5th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_4-5th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_6th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_6th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_7th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_7th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_8th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_8th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_9th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_9th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i7_x_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i7\i7_x_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i9_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i9\i9_10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i9_11_13th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i9\i9_11-13th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i9_9th_extreme_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i9\i9_9th_extreme_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i9_9th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i9\i9_9th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="i9_x_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\i9\i9_x_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="intel_arc_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\intel_arc_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="intel_hd_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\intel_hd_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="intel_inside" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\intel_inside.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="intel_iris_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\intel_iris_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nvidia_gtx_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\nvidia_gtx_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nvidia_rtx_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\nvidia_rtx_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="radeon_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\radeon_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="radeon_rx_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\radeon_rx_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="radeon_vega_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\radeon_vega_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ryzen_threadripper_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\AMD\RyzenThreadripper\ryzen_threadripper_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="atom_11th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Atom\atom_11th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="atom_1st_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Atom\atom_1st_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="atom_2_3_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Atom\atom_2-3_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="atom_x3_4_5th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Atom\atom_x3_4-5th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="atom_x3_6_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Atom\atom_x3_6-10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="atom_x5_4_5th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Atom\atom_x5_4-5th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="atom_x5_6_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Atom\atom_x5_6-10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="atom_x7_4_5th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Atom\atom_x7_4-5th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="atom_x7_6_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Atom\atom_x7_6-10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="celeron_12th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Cerelon\celeron_12th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="celeron_1st_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Cerelon\celeron_1st_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="celeron_2_3_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Cerelon\celeron_2-3_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="celeron_4_5th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Cerelon\celeron_4-5th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="celeron_6_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Cerelon\celeron_6-10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="m3_7th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\CoreM\m3_7th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="m3_8th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\CoreM\m3_8th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="m5_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\CoreM\m5_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="m7_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\CoreM\m7_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="minside_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\CoreM\minside_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pentiumd_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Pentium\pentiumd_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pentium_11th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Pentium\pentium_11th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pentium_2_3_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Pentium\pentium_2-3_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pentium_4_5th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Pentium\pentium-4-5th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pentium_6_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Pentium\pentium_6-10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xeon_1st_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Xeon\xeon_1st_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xeon_2_3_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Xeon\xeon_2-3_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xeon_4_5th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Xeon\xeon_4-5th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xeon_6_10th_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Xeon\xeon_6-10th_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2duo_1st_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Core2\2duo_1st_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2duo_old_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Core2\2duo_old_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2extreme_1_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Core2\2extreme_1_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2extreme_old_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Core2\2extreme_old_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2quad_1st_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Core2\2quad_1st_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2quad_old_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>logos\Processors\Intel\Core2\2quad_old_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
