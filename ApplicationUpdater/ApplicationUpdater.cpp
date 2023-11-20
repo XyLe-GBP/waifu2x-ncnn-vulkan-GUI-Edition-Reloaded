@@ -5,6 +5,11 @@
 
 int main()
 {
+	cout << "Updater - Application Update Utility v1.3" << endl;
+	cout << "Copyright (C) 2023 XyLe. All Rights Reserved.\n" << endl;
+
+	cout << "Initializing...\n" << endl;
+
 	Common* common = new Common;
 	TCHAR Path[MAX_PATH + 1];
 	string AppPath, AppType;
@@ -27,9 +32,7 @@ int main()
 		PostMessage(handle, WM_CLOSE, 0, 0);
 
 		if (PathFileExists(common->StringToWString(sdrive + sdir + "updater.dat").c_str())) {
-			cout << "Updater - Application Update Utility v1.2" << endl;
-			cout << "Copyright (C) 2022 XyLe. All Rights Reserved.\n" << endl;
-
+			cout << "PathFileExists: '" + sdrive + sdir + "updater.dat' OK" << endl;
 			ifstream ifs(common->StringToWString(sdrive + sdir + "updater.dat").c_str());
 			if (!ifs) {
 				MessageBox(NULL, TEXT("Could not open file."), TEXT("Error"), MB_ICONWARNING);
@@ -51,8 +54,19 @@ int main()
 				}
 			}
 			ifs.close();
+			cout << "Get update source: '" + AppPath + "' OK" << endl;
+			cout << "Get update type: '" + AppType + "' OK" << endl;
 			DeleteFile(common->StringToWString(sdrive + sdir + "updater.dat").c_str());
+			cout << "--------------------------------------" << endl;
+			cout << "Initialization is completed.\n" << endl;
 			
+			Sleep(1000);
+
+			cout << "\033[33m" << "WARNING: Do not close this window while the update is running!!!\nThis program will close automatically when the update is complete." << "\033[m" << endl;
+			cout << "Waiting 3 seconds..." << endl;
+			Sleep(3000);
+			cout << "--------------------------------------" << endl;
+
 			common->DeleteDirectory(common->StringToWString(AppPath).c_str());
 			if (PathFileExists(common->StringToWString(sdrive + sdir + "waifu2x-nvger.zip").c_str())) {
 				HRESULT hr;
@@ -62,7 +76,7 @@ int main()
 					OutputDebugString(_T("CoInitializeEx: S_OK\n"));
 				}
 				else {
-					cout << "WARNING: CoInitializeEx: S_FALSE" << endl;
+					cout << "\033[33m" << "WARNING: CoInitializeEx: S_FALSE" << "\033[m" << endl;
 					OutputDebugString(_T("CoInitializeEx: S_FALSE\n"));
 				}
 				hr = CoCreateInstance(CLSID_Shell, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&pShellDisp));
@@ -77,7 +91,7 @@ int main()
 					cout << "_mkdir(" + tmpd + ") completed." << endl;
 				}
 				else {
-					cout << "ERROR: _mkdir(" + tmpd + ") failed." << endl;
+					cout << "\033[31m" << "ERROR: _mkdir(" + tmpd + ") failed." << "\033[m" << endl;
 					MessageBox(NULL, TEXT("failed create directory."), TEXT("Error"), MB_ICONWARNING);
 					SAFE_DELETE(common);
 					return -1;
@@ -94,7 +108,7 @@ int main()
 					SAFE_DELETE(common);
 				}
 				else {
-					cout << "ERROR: '" + sdrive + sdir + "waifu2x-nvger.zip' to '" + sdrive + sdir + "updater-temp' extract failed." << endl;
+					cout << "\033[31m" << "ERROR: '" + sdrive + sdir + "waifu2x-nvger.zip' to '" + sdrive + sdir + "updater-temp' extract failed." << "\033[m" << endl;
 					CoUninitialize();
 					SAFE_FREE(SourcePath);
 					SAFE_FREE(ExtPath);
@@ -115,7 +129,7 @@ int main()
 					common->CopyDirectoryFiles(common->StringToWString(sdrive + sdir + "updater-temp\\release-portable").c_str(), common->StringToWString(AppPath + "\\").c_str(), tvector);
 				}
 				else {
-					cout << "ERROR: Unknown type." << endl;
+					cout << "\033[31m" << "ERROR: Unknown type." << "\033[m" << endl;
 					MessageBox(NULL, TEXT("unknown release type."), TEXT("Error"), MB_ICONWARNING);
 					SAFE_DELETE(common);
 					return -1;
@@ -126,6 +140,8 @@ int main()
 				ofs.open(fn, ios::out);
 				ofs << "updated." << endl;
 				ofs.close();
+				cout << "Update completed, restart application in 2 seconds..." << endl;
+				Sleep(2000);
 
 				wstring ExectablePath = common->StringToWString(AppPath) + L"\\waifu2x-nvger.exe";
 				wstring Current = common->StringToWString(AppPath);
@@ -141,6 +157,7 @@ int main()
 				return 0;
 			}
 			else {
+				cout << "\033[31m" << "ERROR: Target file not found." << "\033[m" << endl;
 				MessageBox(NULL, TEXT("Target file not found."), TEXT("Error"), MB_ICONWARNING);
 				SAFE_DELETE(common);
 				return -1;
@@ -148,13 +165,14 @@ int main()
 		}
 		else {
 			SAFE_DELETE(common);
-			cout << "Updater - Application Auto Update Utility v1.2" << endl;
-			cout << "Copyright (C) 2022 XyLe. All Rights Reserved." << endl;
+			cout << "\033[31m" << "ERROR: Information file not found." << "\033[m" << endl;
 			MessageBox(NULL, TEXT("Update information file not found."), TEXT("Warning"), MB_ICONWARNING);
 			return -1;
 		}
 	}
 	else {
+		cout << "\033[31m" << "ERROR: GetModuleFileName is zero." << "\033[m" << endl;
+		MessageBox(NULL, TEXT("GetModuleFileName is zero."), TEXT("Error"), MB_ICONWARNING);
 		SAFE_DELETE(common);
 		return -1;
 	}

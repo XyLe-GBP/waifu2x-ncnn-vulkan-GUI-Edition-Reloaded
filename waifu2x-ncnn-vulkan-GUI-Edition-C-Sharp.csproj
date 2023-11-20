@@ -35,11 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="12.2.2" />
-    <PackageReference Include="OpenCvSharp4" Version="4.6.0.20220608" />
-    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.6.0.20220608" />
-    <PackageReference Include="System.Management" Version="7.0.0" />
-    <PackageReference Include="Vortice.DXGI" Version="2.2.0" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="13.4.0" />
+    <PackageReference Include="OpenCvSharp4" Version="4.8.0.20230708" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.8.0.20230708" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="Vortice.DXGI" Version="3.3.4" />
   </ItemGroup>
 
   <ItemGroup>

@@ -9,7 +9,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
 using System.Net.NetworkInformation;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,6 +53,12 @@ namespace NVGE
                 Common.InitConfig();
             }
 
+            if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
+            {
+                TopMost = true;
+                TopMost = false;
+            }
+
             lockobj = new object();
 
             lock (lockobj)
@@ -89,7 +94,7 @@ namespace NVGE
                 {
                     fs.Dispatcher.Invoke(d, Strings.SplashFormConfigCaption);
                 }
-                
+
 
                 Config.Load(Common.xmlpath);
 
@@ -298,7 +303,7 @@ namespace NVGE
                     var ffupdate = Task.Run(() => CheckForFFmpeg());
                     ffupdate.Wait();
                 }
-                
+
                 if (fs != null)
                 {
                     fs.Dispatcher.Invoke(d, Strings.SplashFormFinalCaption);
@@ -461,7 +466,8 @@ namespace NVGE
             if (Clipboard.ContainsImage())
             {
                 var img = Clipboard.GetImage();
-                if (img != null) {
+                if (img != null)
+                {
                     ImageConvert.IMAGEtoPNG32Async(Common.xmlpath, Directory.GetCurrentDirectory() + @"\tmp.png", true, img);
                     FileInfo file = new(Directory.GetCurrentDirectory() + @"\tmp.png");
                     long FileSize = file.Length;
@@ -1498,7 +1504,7 @@ namespace NVGE
                                         break;
                                 }
                             }
-                            
+
                             if (File.Exists(sfd.FileName))
                             {
                                 Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
@@ -1775,7 +1781,7 @@ namespace NVGE
                                 {
                                     case 4: // x8
                                         {
-                                            using FormProgress Form2 = new(1,1);
+                                            using FormProgress Form2 = new(1, 1);
                                             Common.FBDSavePath = Directory.GetCurrentDirectory() + @"\_temp-project\images\2x";
                                             Common.ProgMin = 0;
                                             Common.ProgMax = Common.ImageFile.Length;
@@ -2519,7 +2525,7 @@ namespace NVGE
                                             MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             return;
                                         }
-                                        
+
                                     }
                                     Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
                                     Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
@@ -2789,7 +2795,7 @@ namespace NVGE
                         break;
                     case 1: // cugan
                         {
-                            using FormProgress Form2 = new(2,1);
+                            using FormProgress Form2 = new(2, 1);
                             if (vl != "")
                             {
                                 if (!Directory.Exists(vl + @"\image-frames\"))
@@ -3134,7 +3140,7 @@ namespace NVGE
                         break;
                     case 1: // cugan
                         {
-                            using FormProgress Form2 = new(3,1);
+                            using FormProgress Form2 = new(3, 1);
                             if (vl != "")
                             {
                                 if (!Directory.Exists(vl + @"\image-frames\"))
@@ -4485,7 +4491,7 @@ namespace NVGE
                     }
                 }
 
-                
+
             }
             else
             {
@@ -4663,7 +4669,7 @@ namespace NVGE
 
                                 RunUpdate = true;
                                 //throw new OperationCanceledException("Cancelled");
-                                
+
                                 //Process.Start(pi);
 
 
@@ -4885,7 +4891,7 @@ namespace NVGE
                             return;
                         }
                     }
-                    
+
                 }
                 else // Update ffmpeg
                 {
@@ -5058,6 +5064,125 @@ namespace NVGE
         {
             using FormSystemInfo Form = new();
             Form.ShowDialog();
+        }
+
+        private void ConvertCRgbaSDEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileInfo fi, fi2;
+
+            OpenFileDialog ofd = new()
+            {
+                FileName = "",
+                InitialDirectory = "",
+                Filter = Strings.FilterImage,
+                FilterIndex = 11,
+                Title = Strings.OpenFormatChangeDialogCaption,
+                RestoreDirectory = true,
+                Multiselect = true,
+            };
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string[] opens = ofd.FileNames;
+
+                if (opens.Length == 1)
+                {
+                    SaveFileDialog sfd = new()
+                    {
+                        FileName = Common.SFDRandomNumber(),
+                        InitialDirectory = "",
+                        Filter = "DirectDraw Surface (*.dds)|*.dds||",
+                        FilterIndex = 1,
+                        Title = Strings.SaveFormatChangeDialogCaption,
+                        OverwritePrompt = true,
+                        RestoreDirectory = true
+                    };
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        string save = sfd.FileName;
+                        fi = new FileInfo(opens[0]);
+                        fi2 = new FileInfo(save);
+
+                        if (fi.Extension.ToUpper() == fi2.Extension.ToUpper())
+                        {
+                            MessageBox.Show(Strings.VideoFormatChange_FmtErrorCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (File.Exists(save))
+                        {
+                            File.Delete(save);
+                        }
+                        ImageConvert.IMAGEtoAnyIMAGE(opens[0], save);
+
+                        if (File.Exists(save))
+                        {
+                            MessageBox.Show(Strings.VideoFormatChange_SuccessCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Process.Start("EXPLORER.EXE", @"/select,""" + save + @"""");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show(Strings.VideoFormatChange_ErrorCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else // multiple
+                {
+                    FolderBrowserDialog fbd = new()
+                    {
+                        InitialDirectory = "",
+                        ShowNewFolderButton = true,
+                    };
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        int count = 0;
+
+                        Common.ImageConversionExtension = ".DDS";
+
+                        if (string.IsNullOrEmpty(Common.ImageConversionExtension))
+                        {
+                            return;
+                        }
+                        string destext = Common.ImageConversionExtension;
+
+                        foreach (var item in opens)
+                        {
+                            fi = new FileInfo(item);
+                            string fname = fi.Name, savepath = fbd.SelectedPath + @"\" + fname + destext;
+
+                            if (File.Exists(savepath))
+                            {
+                                File.Delete(savepath);
+                            }
+                            ImageConvert.IMAGEtoAnyIMAGE(item, savepath);
+
+                            if (File.Exists(savepath))
+                            {
+                                count++;
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format(Strings.ImageMultipleConversionWarning, fname, destext.Replace(".", "")), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+
+                        MessageBox.Show(string.Format(Strings.ImageMultipleConversionSuccess, count, destext.Replace(".", "")), Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Process.Start("EXPLORER.EXE", @"/select,""" + fbd.SelectedPath + @"""");
+                        return;
+                    }
+                }
+
+
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
