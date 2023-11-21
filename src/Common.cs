@@ -993,6 +993,9 @@ namespace NVGE
                         case ".DIB":
                             fmt = MagickFormat.Dib;
                             break;
+                        case ".DDS":
+                            fmt = MagickFormat.Dds;
+                            break;
                         case ".EPS":
                             fmt = MagickFormat.Eps;
                             break;
@@ -1076,6 +1079,9 @@ namespace NVGE
                             break;
                         case ".DIB":
                             fmt = MagickFormat.Dib;
+                            break;
+                        case ".DDS":
+                            fmt = MagickFormat.Dds;
                             break;
                         case ".EPS":
                             fmt = MagickFormat.Eps;

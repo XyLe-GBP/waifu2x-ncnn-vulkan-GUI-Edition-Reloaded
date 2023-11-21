@@ -280,7 +280,7 @@ namespace NVGE
                 {
                     if (bool.Parse(Config.Entry["CheckUpdateWithStartup"].Value) == true)
                     {
-                        UpdateTask = Task.Run(() => CheckForUpdatesForInit());
+                        UpdateTask = Task.Run(CheckForUpdatesForInit);
                         UpdateTask.Wait();
 
                         if (RunUpdate == true)
@@ -4514,7 +4514,7 @@ namespace NVGE
 
                     using Stream hcs = await Task.Run(() => Network.GetWebStreamAsync(appUpdatechecker, Network.GetUri("https://raw.githubusercontent.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/master/VERSIONINFO")));
                     using StreamReader hsr = new(hcs);
-                    hv = await Task.Run(() => hsr.ReadToEndAsync());
+                    hv = await Task.Run(hsr.ReadToEndAsync);
 
                     FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
 
@@ -4526,6 +4526,13 @@ namespace NVGE
                             {
                                 using FormUpdateApplicationType fuat = new();
                                 fuat.ShowDialog();
+
+                                if (File.Exists(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip"))
+                                {
+                                    File.Delete(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip");
+                                }
+
+                                Common.ProgMin = 0;
                                 using FormProgress form = new(8);
                                 form.ShowDialog();
 
@@ -4537,6 +4544,20 @@ namespace NVGE
                                 }
 
                                 string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+
+                                if (File.Exists(updpath + @"\updater.exe"))
+                                {
+                                    File.Delete(updpath + @"\updater.exe");
+                                }
+                                if (Directory.Exists(updpath + @"\updater-temp"))
+                                {
+                                    Common.DeleteDirectory(updpath + @"\updater-temp");
+                                }
+                                if (File.Exists(updpath + @"\waifu2x-nvger.zip"))
+                                {
+                                    File.Delete(updpath + @"\waifu2x-nvger.zip");
+                                }
+
                                 File.Move(Directory.GetCurrentDirectory() + @"\res\updater.exe", updpath + @"\updater.exe");
                                 string wtext;
                                 switch (Common.ApplicationPortable)
@@ -4618,9 +4639,9 @@ namespace NVGE
                     // Debug URI:https://dl.cdn.xyle-official.com/content/app/utils/waifu2x/debug/VERSIONINFO
                     // Release URI:https://raw.githubusercontent.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/master/VERSIONINFO
 
-                    using Stream hcs = await Task.Run(() => Network.GetWebStreamAsync(appUpdatechecker, Network.GetUri("https://raw.githubusercontent.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/master/VERSIONINFO"))).ConfigureAwait(false);
+                    using Stream hcs = await Task.Run(() => Network.GetWebStreamAsync(appUpdatechecker, Network.GetUri("https://raw.githubusercontent.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/master/VERSIONINFO")));
                     using StreamReader hsr = new(hcs);
-                    hv = await Task.Run(() => hsr.ReadToEndAsync()).ConfigureAwait(false);
+                    hv = await Task.Run(hsr.ReadToEndAsync);
                     Common.GitHubLatestVersion = hv[8..].Replace("\n", "");
 
                     FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
@@ -4633,6 +4654,12 @@ namespace NVGE
                             {
                                 using FormUpdateApplicationType fuat = new();
                                 fuat.ShowDialog();
+
+                                if (File.Exists(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip"))
+                                {
+                                    File.Delete(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip");
+                                }
+
                                 Common.ProgMin = 0;
                                 using FormProgress form = new(8);
                                 form.ShowDialog();
@@ -4645,6 +4672,20 @@ namespace NVGE
                                 }
 
                                 string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+
+                                if (File.Exists(updpath + @"\updater.exe"))
+                                {
+                                    File.Delete(updpath + @"\updater.exe");
+                                }
+                                if (Directory.Exists(updpath + @"\updater-temp"))
+                                {
+                                    Common.DeleteDirectory(updpath + @"\updater-temp");
+                                }
+                                if (File.Exists(updpath + @"\waifu2x-nvger.zip"))
+                                {
+                                    File.Delete(updpath + @"\waifu2x-nvger.zip");
+                                }
+
                                 File.Move(Directory.GetCurrentDirectory() + @"\res\updater.exe", updpath + @"\updater.exe");
                                 string wtext;
                                 switch (Common.ApplicationPortable)
@@ -4668,10 +4709,6 @@ namespace NVGE
                                 }
 
                                 RunUpdate = true;
-                                //throw new OperationCanceledException("Cancelled");
-
-                                //Process.Start(pi);
-
 
                                 return;
                             }

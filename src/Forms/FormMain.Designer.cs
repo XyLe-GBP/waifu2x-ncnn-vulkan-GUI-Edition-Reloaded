@@ -30,314 +30,303 @@ namespace NVGE
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.button_Image = new System.Windows.Forms.Button();
-            this.button_Video = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openImegeIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFromClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openVideoVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.closeFileCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.upscalingSettingsUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.videoUpscalingSettingsVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.preferencesSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeVideoResolutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeVideoFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeImageFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.getSystemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.checkForUpdatesUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button_Merge = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox_DD = new System.Windows.Forms.PictureBox();
-            this.label_default = new System.Windows.Forms.Label();
-            this.label_Size = new System.Windows.Forms.Label();
-            this.label_File = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel_Status = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuStrip1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DD)).BeginInit();
-            this.statusStrip1.SuspendLayout();
-            this.SuspendLayout();
+            button_Image = new System.Windows.Forms.Button();
+            button_Video = new System.Windows.Forms.Button();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            openImegeIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            openFromClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            openVideoVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            closeFileCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            exitXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            settingsCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            upscalingSettingsUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            videoUpscalingSettingsVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            preferencesSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolsTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            changeVideoResolutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            changeVideoFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            changeImageFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            getSystemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            aboutAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            aboutWaifu2xncnnvulkanGUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            checkForUpdatesUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            button_Merge = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            pictureBox_DD = new System.Windows.Forms.PictureBox();
+            label_default = new System.Windows.Forms.Label();
+            label_Size = new System.Windows.Forms.Label();
+            label_File = new System.Windows.Forms.Label();
+            statusStrip1 = new System.Windows.Forms.StatusStrip();
+            toolStripStatusLabel_Status = new System.Windows.Forms.ToolStripStatusLabel();
+            specificsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            convertCRgbaSDEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_DD).BeginInit();
+            statusStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // button_Image
             // 
-            resources.ApplyResources(this.button_Image, "button_Image");
-            this.button_Image.Name = "button_Image";
-            this.button_Image.UseVisualStyleBackColor = true;
-            this.button_Image.Click += new System.EventHandler(this.Button_Image_Click);
+            resources.ApplyResources(button_Image, "button_Image");
+            button_Image.Name = "button_Image";
+            button_Image.UseVisualStyleBackColor = true;
+            button_Image.Click += Button_Image_Click;
             // 
             // button_Video
             // 
-            resources.ApplyResources(this.button_Video, "button_Video");
-            this.button_Video.Name = "button_Video";
-            this.button_Video.UseVisualStyleBackColor = true;
-            this.button_Video.Click += new System.EventHandler(this.Button_Video_Click);
+            resources.ApplyResources(button_Video, "button_Video");
+            button_Video.Name = "button_Video";
+            button_Video.UseVisualStyleBackColor = true;
+            button_Video.Click += Button_Video_Click;
             // 
             // menuStrip1
             // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileFToolStripMenuItem,
-            this.settingsCToolStripMenuItem,
-            this.toolsTToolStripMenuItem,
-            this.aboutAToolStripMenuItem});
-            this.menuStrip1.Name = "menuStrip1";
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileFToolStripMenuItem, settingsCToolStripMenuItem, toolsTToolStripMenuItem, aboutAToolStripMenuItem });
+            resources.ApplyResources(menuStrip1, "menuStrip1");
+            menuStrip1.Name = "menuStrip1";
             // 
             // fileFToolStripMenuItem
             // 
-            resources.ApplyResources(this.fileFToolStripMenuItem, "fileFToolStripMenuItem");
-            this.fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openImegeIToolStripMenuItem,
-            this.openFromClipboardToolStripMenuItem,
-            this.openVideoVToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.closeFileCToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.exitXToolStripMenuItem});
-            this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
+            fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openImegeIToolStripMenuItem, openFromClipboardToolStripMenuItem, openVideoVToolStripMenuItem, toolStripMenuItem1, closeFileCToolStripMenuItem, toolStripMenuItem2, exitXToolStripMenuItem });
+            fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
+            resources.ApplyResources(fileFToolStripMenuItem, "fileFToolStripMenuItem");
             // 
             // openImegeIToolStripMenuItem
             // 
-            resources.ApplyResources(this.openImegeIToolStripMenuItem, "openImegeIToolStripMenuItem");
-            this.openImegeIToolStripMenuItem.Name = "openImegeIToolStripMenuItem";
-            this.openImegeIToolStripMenuItem.Click += new System.EventHandler(this.OpenImegeIToolStripMenuItem_Click);
+            openImegeIToolStripMenuItem.Name = "openImegeIToolStripMenuItem";
+            resources.ApplyResources(openImegeIToolStripMenuItem, "openImegeIToolStripMenuItem");
+            openImegeIToolStripMenuItem.Click += OpenImegeIToolStripMenuItem_Click;
             // 
             // openFromClipboardToolStripMenuItem
             // 
-            resources.ApplyResources(this.openFromClipboardToolStripMenuItem, "openFromClipboardToolStripMenuItem");
-            this.openFromClipboardToolStripMenuItem.Name = "openFromClipboardToolStripMenuItem";
-            this.openFromClipboardToolStripMenuItem.Click += new System.EventHandler(this.OpenFromClipboardToolStripMenuItem_Click);
+            openFromClipboardToolStripMenuItem.Name = "openFromClipboardToolStripMenuItem";
+            resources.ApplyResources(openFromClipboardToolStripMenuItem, "openFromClipboardToolStripMenuItem");
+            openFromClipboardToolStripMenuItem.Click += OpenFromClipboardToolStripMenuItem_Click;
             // 
             // openVideoVToolStripMenuItem
             // 
-            resources.ApplyResources(this.openVideoVToolStripMenuItem, "openVideoVToolStripMenuItem");
-            this.openVideoVToolStripMenuItem.Name = "openVideoVToolStripMenuItem";
-            this.openVideoVToolStripMenuItem.Click += new System.EventHandler(this.OpenVideoVToolStripMenuItem_Click);
+            openVideoVToolStripMenuItem.Name = "openVideoVToolStripMenuItem";
+            resources.ApplyResources(openVideoVToolStripMenuItem, "openVideoVToolStripMenuItem");
+            openVideoVToolStripMenuItem.Click += OpenVideoVToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // closeFileCToolStripMenuItem
             // 
-            resources.ApplyResources(this.closeFileCToolStripMenuItem, "closeFileCToolStripMenuItem");
-            this.closeFileCToolStripMenuItem.Name = "closeFileCToolStripMenuItem";
-            this.closeFileCToolStripMenuItem.Click += new System.EventHandler(this.CloseFileCToolStripMenuItem_Click);
+            resources.ApplyResources(closeFileCToolStripMenuItem, "closeFileCToolStripMenuItem");
+            closeFileCToolStripMenuItem.Name = "closeFileCToolStripMenuItem";
+            closeFileCToolStripMenuItem.Click += CloseFileCToolStripMenuItem_Click;
             // 
             // toolStripMenuItem2
             // 
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(toolStripMenuItem2, "toolStripMenuItem2");
             // 
             // exitXToolStripMenuItem
             // 
-            resources.ApplyResources(this.exitXToolStripMenuItem, "exitXToolStripMenuItem");
-            this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
-            this.exitXToolStripMenuItem.Click += new System.EventHandler(this.ExitXToolStripMenuItem_Click);
+            exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
+            resources.ApplyResources(exitXToolStripMenuItem, "exitXToolStripMenuItem");
+            exitXToolStripMenuItem.Click += ExitXToolStripMenuItem_Click;
             // 
             // settingsCToolStripMenuItem
             // 
-            resources.ApplyResources(this.settingsCToolStripMenuItem, "settingsCToolStripMenuItem");
-            this.settingsCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.upscalingSettingsUToolStripMenuItem,
-            this.videoUpscalingSettingsVToolStripMenuItem,
-            this.toolStripMenuItem4,
-            this.preferencesSToolStripMenuItem});
-            this.settingsCToolStripMenuItem.Name = "settingsCToolStripMenuItem";
+            settingsCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { upscalingSettingsUToolStripMenuItem, videoUpscalingSettingsVToolStripMenuItem, toolStripMenuItem4, preferencesSToolStripMenuItem });
+            settingsCToolStripMenuItem.Name = "settingsCToolStripMenuItem";
+            resources.ApplyResources(settingsCToolStripMenuItem, "settingsCToolStripMenuItem");
             // 
             // upscalingSettingsUToolStripMenuItem
             // 
-            resources.ApplyResources(this.upscalingSettingsUToolStripMenuItem, "upscalingSettingsUToolStripMenuItem");
-            this.upscalingSettingsUToolStripMenuItem.Name = "upscalingSettingsUToolStripMenuItem";
-            this.upscalingSettingsUToolStripMenuItem.Click += new System.EventHandler(this.UpscalingSettingsUToolStripMenuItem_Click);
+            upscalingSettingsUToolStripMenuItem.Name = "upscalingSettingsUToolStripMenuItem";
+            resources.ApplyResources(upscalingSettingsUToolStripMenuItem, "upscalingSettingsUToolStripMenuItem");
+            upscalingSettingsUToolStripMenuItem.Click += UpscalingSettingsUToolStripMenuItem_Click;
             // 
             // videoUpscalingSettingsVToolStripMenuItem
             // 
-            resources.ApplyResources(this.videoUpscalingSettingsVToolStripMenuItem, "videoUpscalingSettingsVToolStripMenuItem");
-            this.videoUpscalingSettingsVToolStripMenuItem.Name = "videoUpscalingSettingsVToolStripMenuItem";
-            this.videoUpscalingSettingsVToolStripMenuItem.Click += new System.EventHandler(this.VideoUpscalingSettingsVToolStripMenuItem_Click);
+            videoUpscalingSettingsVToolStripMenuItem.Name = "videoUpscalingSettingsVToolStripMenuItem";
+            resources.ApplyResources(videoUpscalingSettingsVToolStripMenuItem, "videoUpscalingSettingsVToolStripMenuItem");
+            videoUpscalingSettingsVToolStripMenuItem.Click += VideoUpscalingSettingsVToolStripMenuItem_Click;
             // 
             // toolStripMenuItem4
             // 
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(toolStripMenuItem4, "toolStripMenuItem4");
             // 
             // preferencesSToolStripMenuItem
             // 
-            resources.ApplyResources(this.preferencesSToolStripMenuItem, "preferencesSToolStripMenuItem");
-            this.preferencesSToolStripMenuItem.Name = "preferencesSToolStripMenuItem";
-            this.preferencesSToolStripMenuItem.Click += new System.EventHandler(this.PreferencesSToolStripMenuItem_Click);
+            preferencesSToolStripMenuItem.Name = "preferencesSToolStripMenuItem";
+            resources.ApplyResources(preferencesSToolStripMenuItem, "preferencesSToolStripMenuItem");
+            preferencesSToolStripMenuItem.Click += PreferencesSToolStripMenuItem_Click;
             // 
             // toolsTToolStripMenuItem
             // 
-            resources.ApplyResources(this.toolsTToolStripMenuItem, "toolsTToolStripMenuItem");
-            this.toolsTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changeVideoResolutionToolStripMenuItem,
-            this.changeVideoFormatToolStripMenuItem,
-            this.changeImageFormatToolStripMenuItem,
-            this.toolStripMenuItem5,
-            this.getSystemInformationToolStripMenuItem});
-            this.toolsTToolStripMenuItem.Name = "toolsTToolStripMenuItem";
+            toolsTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { changeVideoResolutionToolStripMenuItem, changeVideoFormatToolStripMenuItem, changeImageFormatToolStripMenuItem, specificsToolStripMenuItem, toolStripMenuItem5, getSystemInformationToolStripMenuItem });
+            toolsTToolStripMenuItem.Name = "toolsTToolStripMenuItem";
+            resources.ApplyResources(toolsTToolStripMenuItem, "toolsTToolStripMenuItem");
             // 
             // changeVideoResolutionToolStripMenuItem
             // 
-            resources.ApplyResources(this.changeVideoResolutionToolStripMenuItem, "changeVideoResolutionToolStripMenuItem");
-            this.changeVideoResolutionToolStripMenuItem.Name = "changeVideoResolutionToolStripMenuItem";
-            this.changeVideoResolutionToolStripMenuItem.Click += new System.EventHandler(this.ChangeVideoResolutionToolStripMenuItem_Click);
+            changeVideoResolutionToolStripMenuItem.Name = "changeVideoResolutionToolStripMenuItem";
+            resources.ApplyResources(changeVideoResolutionToolStripMenuItem, "changeVideoResolutionToolStripMenuItem");
+            changeVideoResolutionToolStripMenuItem.Click += ChangeVideoResolutionToolStripMenuItem_Click;
             // 
             // changeVideoFormatToolStripMenuItem
             // 
-            resources.ApplyResources(this.changeVideoFormatToolStripMenuItem, "changeVideoFormatToolStripMenuItem");
-            this.changeVideoFormatToolStripMenuItem.Name = "changeVideoFormatToolStripMenuItem";
-            this.changeVideoFormatToolStripMenuItem.Click += new System.EventHandler(this.ChangeVideoFormatToolStripMenuItem_Click);
+            changeVideoFormatToolStripMenuItem.Name = "changeVideoFormatToolStripMenuItem";
+            resources.ApplyResources(changeVideoFormatToolStripMenuItem, "changeVideoFormatToolStripMenuItem");
+            changeVideoFormatToolStripMenuItem.Click += ChangeVideoFormatToolStripMenuItem_Click;
             // 
             // changeImageFormatToolStripMenuItem
             // 
-            resources.ApplyResources(this.changeImageFormatToolStripMenuItem, "changeImageFormatToolStripMenuItem");
-            this.changeImageFormatToolStripMenuItem.Name = "changeImageFormatToolStripMenuItem";
-            this.changeImageFormatToolStripMenuItem.Click += new System.EventHandler(this.ChangeImageFormatToolStripMenuItem_Click);
+            changeImageFormatToolStripMenuItem.Name = "changeImageFormatToolStripMenuItem";
+            resources.ApplyResources(changeImageFormatToolStripMenuItem, "changeImageFormatToolStripMenuItem");
+            changeImageFormatToolStripMenuItem.Click += ChangeImageFormatToolStripMenuItem_Click;
             // 
             // toolStripMenuItem5
             // 
-            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            toolStripMenuItem5.Name = "toolStripMenuItem5";
+            resources.ApplyResources(toolStripMenuItem5, "toolStripMenuItem5");
             // 
             // getSystemInformationToolStripMenuItem
             // 
-            resources.ApplyResources(this.getSystemInformationToolStripMenuItem, "getSystemInformationToolStripMenuItem");
-            this.getSystemInformationToolStripMenuItem.Name = "getSystemInformationToolStripMenuItem";
-            this.getSystemInformationToolStripMenuItem.Click += new System.EventHandler(this.GetSystemInformationToolStripMenuItem_Click);
+            getSystemInformationToolStripMenuItem.Name = "getSystemInformationToolStripMenuItem";
+            resources.ApplyResources(getSystemInformationToolStripMenuItem, "getSystemInformationToolStripMenuItem");
+            getSystemInformationToolStripMenuItem.Click += GetSystemInformationToolStripMenuItem_Click;
             // 
             // aboutAToolStripMenuItem
             // 
-            resources.ApplyResources(this.aboutAToolStripMenuItem, "aboutAToolStripMenuItem");
-            this.aboutAToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.aboutAToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.checkForUpdatesUToolStripMenuItem});
-            this.aboutAToolStripMenuItem.Name = "aboutAToolStripMenuItem";
+            aboutAToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            aboutAToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { aboutWaifu2xncnnvulkanGUIToolStripMenuItem, toolStripMenuItem3, checkForUpdatesUToolStripMenuItem });
+            aboutAToolStripMenuItem.Name = "aboutAToolStripMenuItem";
+            resources.ApplyResources(aboutAToolStripMenuItem, "aboutAToolStripMenuItem");
             // 
             // aboutWaifu2xncnnvulkanGUIToolStripMenuItem
             // 
-            resources.ApplyResources(this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem, "aboutWaifu2xncnnvulkanGUIToolStripMenuItem");
-            this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Name = "aboutWaifu2xncnnvulkanGUIToolStripMenuItem";
-            this.aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Click += new System.EventHandler(this.AboutWaifu2xncnnvulkanGUIToolStripMenuItem_Click);
+            aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Name = "aboutWaifu2xncnnvulkanGUIToolStripMenuItem";
+            resources.ApplyResources(aboutWaifu2xncnnvulkanGUIToolStripMenuItem, "aboutWaifu2xncnnvulkanGUIToolStripMenuItem");
+            aboutWaifu2xncnnvulkanGUIToolStripMenuItem.Click += AboutWaifu2xncnnvulkanGUIToolStripMenuItem_Click;
             // 
             // toolStripMenuItem3
             // 
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(toolStripMenuItem3, "toolStripMenuItem3");
             // 
             // checkForUpdatesUToolStripMenuItem
             // 
-            resources.ApplyResources(this.checkForUpdatesUToolStripMenuItem, "checkForUpdatesUToolStripMenuItem");
-            this.checkForUpdatesUToolStripMenuItem.Name = "checkForUpdatesUToolStripMenuItem";
-            this.checkForUpdatesUToolStripMenuItem.Click += new System.EventHandler(this.CheckForUpdatesUToolStripMenuItem_Click);
+            checkForUpdatesUToolStripMenuItem.Name = "checkForUpdatesUToolStripMenuItem";
+            resources.ApplyResources(checkForUpdatesUToolStripMenuItem, "checkForUpdatesUToolStripMenuItem");
+            checkForUpdatesUToolStripMenuItem.Click += CheckForUpdatesUToolStripMenuItem_Click;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.button_Merge);
-            this.groupBox2.Controls.Add(this.button_Image);
-            this.groupBox2.Controls.Add(this.button_Video);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            groupBox2.Controls.Add(button_Merge);
+            groupBox2.Controls.Add(button_Image);
+            groupBox2.Controls.Add(button_Video);
+            resources.ApplyResources(groupBox2, "groupBox2");
+            groupBox2.Name = "groupBox2";
+            groupBox2.TabStop = false;
             // 
             // button_Merge
             // 
-            resources.ApplyResources(this.button_Merge, "button_Merge");
-            this.button_Merge.Name = "button_Merge";
-            this.button_Merge.UseVisualStyleBackColor = true;
-            this.button_Merge.Click += new System.EventHandler(this.Button_Merge_Click);
+            resources.ApplyResources(button_Merge, "button_Merge");
+            button_Merge.Name = "button_Merge";
+            button_Merge.UseVisualStyleBackColor = true;
+            button_Merge.Click += Button_Merge_Click;
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.AllowDrop = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Name = "label1";
-            this.label1.DragDrop += new System.Windows.Forms.DragEventHandler(this.Label1_DragDrop);
-            this.label1.DragEnter += new System.Windows.Forms.DragEventHandler(this.Label1_DragEnter);
+            label1.AllowDrop = true;
+            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            label1.DragDrop += Label1_DragDrop;
+            label1.DragEnter += Label1_DragEnter;
             // 
             // pictureBox_DD
             // 
-            resources.ApplyResources(this.pictureBox_DD, "pictureBox_DD");
-            this.pictureBox_DD.Name = "pictureBox_DD";
-            this.pictureBox_DD.TabStop = false;
-            this.pictureBox_DD.Click += new System.EventHandler(this.PictureBox_DD_Click);
-            this.pictureBox_DD.DragDrop += new System.Windows.Forms.DragEventHandler(this.PictureBox_DD_DragDrop);
-            this.pictureBox_DD.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureBox_DD_DragEnter);
+            resources.ApplyResources(pictureBox_DD, "pictureBox_DD");
+            pictureBox_DD.Name = "pictureBox_DD";
+            pictureBox_DD.TabStop = false;
+            pictureBox_DD.Click += PictureBox_DD_Click;
+            pictureBox_DD.DragDrop += PictureBox_DD_DragDrop;
+            pictureBox_DD.DragEnter += PictureBox_DD_DragEnter;
             // 
             // label_default
             // 
-            resources.ApplyResources(this.label_default, "label_default");
-            this.label_default.Name = "label_default";
+            resources.ApplyResources(label_default, "label_default");
+            label_default.Name = "label_default";
             // 
             // label_Size
             // 
-            resources.ApplyResources(this.label_Size, "label_Size");
-            this.label_Size.Name = "label_Size";
+            resources.ApplyResources(label_Size, "label_Size");
+            label_Size.Name = "label_Size";
             // 
             // label_File
             // 
-            resources.ApplyResources(this.label_File, "label_File");
-            this.label_File.AutoEllipsis = true;
-            this.label_File.Name = "label_File";
+            label_File.AutoEllipsis = true;
+            resources.ApplyResources(label_File, "label_File");
+            label_File.Name = "label_File";
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel_Status});
-            this.statusStrip1.Name = "statusStrip1";
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabel_Status });
+            resources.ApplyResources(statusStrip1, "statusStrip1");
+            statusStrip1.Name = "statusStrip1";
             // 
             // toolStripStatusLabel_Status
             // 
-            resources.ApplyResources(this.toolStripStatusLabel_Status, "toolStripStatusLabel_Status");
-            this.toolStripStatusLabel_Status.Name = "toolStripStatusLabel_Status";
+            toolStripStatusLabel_Status.Name = "toolStripStatusLabel_Status";
+            resources.ApplyResources(toolStripStatusLabel_Status, "toolStripStatusLabel_Status");
+            // 
+            // specificsToolStripMenuItem
+            // 
+            specificsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { convertCRgbaSDEToolStripMenuItem });
+            specificsToolStripMenuItem.Name = "specificsToolStripMenuItem";
+            resources.ApplyResources(specificsToolStripMenuItem, "specificsToolStripMenuItem");
+            // 
+            // convertCRgbaSDEToolStripMenuItem
+            // 
+            convertCRgbaSDEToolStripMenuItem.Name = "convertCRgbaSDEToolStripMenuItem";
+            resources.ApplyResources(convertCRgbaSDEToolStripMenuItem, "convertCRgbaSDEToolStripMenuItem");
+            convertCRgbaSDEToolStripMenuItem.Click += ConvertCRgbaSDEToolStripMenuItem_Click;
             // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label_default);
-            this.Controls.Add(this.label_File);
-            this.Controls.Add(this.label_Size);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.pictureBox_DD);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
-            this.Name = "FormMain";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
-            this.Load += new System.EventHandler(this.FormMain_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DD)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(label_default);
+            Controls.Add(label_File);
+            Controls.Add(label_Size);
+            Controls.Add(label1);
+            Controls.Add(statusStrip1);
+            Controls.Add(groupBox2);
+            Controls.Add(menuStrip1);
+            Controls.Add(pictureBox_DD);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
+            Name = "FormMain";
+            FormClosing += FormMain_FormClosing;
+            FormClosed += FormMain_FormClosed;
+            Load += FormMain_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox_DD).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -376,6 +365,8 @@ namespace NVGE
         private System.Windows.Forms.ToolStripMenuItem openFromClipboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem getSystemInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem specificsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem convertCRgbaSDEToolStripMenuItem;
     }
 }
 

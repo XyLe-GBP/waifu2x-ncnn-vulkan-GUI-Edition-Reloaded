@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NVGE"
         mc:Ignorable="d"
-        Title="Initialized..." Height="330" Width="490" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="Initialized..." Height="330" Width="490" Background="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Grid Loaded="Grid_Loaded">
-        <Image x:Name="image" Opacity="1" />
+        <Border Background="WhiteSmoke" CornerRadius="10" BorderThickness="1" BorderBrush="Black" Opacity="0.9">
+            <Image x:Name="image" Opacity="1"/>
+        </Border>
         <ProgressBar x:Name="ProgressBar_log" HorizontalAlignment="Center" Height="15" Margin="0,305,0,0" VerticalAlignment="Top" Width="470" IsIndeterminate="True"/>
         <TextBlock x:Name="TextBlock_Log" HorizontalAlignment="Center" Margin="0,301,0,0" TextWrapping="Wrap" Text="Loading..." TextAlignment="Center" VerticalAlignment="Top" FontWeight="Normal" FontSize="15" local:Adorning.Stroke="Black" local:Adorning.StrokeThickness="1" Foreground="Black" RenderTransformOrigin="1.274,5.547" Width="470" Height="17"/>
     </Grid>
+    
 </Window>
