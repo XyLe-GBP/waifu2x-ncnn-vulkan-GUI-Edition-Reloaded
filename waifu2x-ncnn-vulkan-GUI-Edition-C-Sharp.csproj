@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <RootNamespace>NVGE</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -10,8 +10,8 @@
     <Authors>XyLe</Authors>
     <Product>waifu2x-ncnn-vulkan GUI Edition Reloaded</Product>
     <Copyright>Copyright (C) 2023 - XyLe. All Rights Reserved.</Copyright>
-    <AssemblyVersion>1.36.2320.1120</AssemblyVersion>
-    <FileVersion>1.36.2320.1120</FileVersion>
+    <AssemblyVersion>1.36.2320.1205</AssemblyVersion>
+    <FileVersion>1.36.2320.1205</FileVersion>
     <Version>1.30</Version>
     <Description>Super-Resolution Convolutional Neural Network（SRCNN）Utility.</Description>
     <PackageIcon>csharp-logo.png</PackageIcon>
