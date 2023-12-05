@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
@@ -31,35 +32,44 @@ namespace NVGE
         {
             Config.Load(Common.xmlpath);
 
-            switch (bool.Parse(Config.Entry["CustomSplashImage"].Value))
+            try
             {
-                case true:
-                    {
-                        Bitmap bimg = new(Properties.Resources.waifu2x_splash);
-                        Bitmap cimg = new(Config.Entry["SplashImagePath"].Value);
-                        Graphics g = Graphics.FromImage(cimg);
-                        g.DrawImage(bimg, 0, 0, bimg.Width, bimg.Height);
-
-                        image.Source = BIMG.ToBitmapImage(cimg);
-                        break;
-                    }
-                case false:
-                    {
-                        if (NetworkInterface.GetIsNetworkAvailable())
+                switch (bool.Parse(Config.Entry["CustomSplashImage"].Value))
+                {
+                    case true:
                         {
-                            string url = "https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/raw/master/Properties/waifu2x-splash.png";
-                            Task<Stream> st = stream.GetStreamAsync(url);
-                            Bitmap bitmap = new(st.Result);
+                            Bitmap bimg = new(Properties.Resources.waifu2x_splash);
+                            Bitmap cimg = new(Config.Entry["SplashImagePath"].Value);
+                            Graphics g = Graphics.FromImage(cimg);
+                            g.DrawImage(bimg, 0, 0, bimg.Width, bimg.Height);
 
-                            image.Source = BIMG.ToBitmapImage(bitmap);
+                            image.Source = BIMG.ToBitmapImage(cimg);
+                            break;
                         }
-                        else
+                    case false:
                         {
-                            image.Source = BIMG.ToBitmapImage(Properties.Resources.waifu2x_splash);
+                            if (NetworkInterface.GetIsNetworkAvailable())
+                            {
+                                string url = "https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/raw/master/Properties/waifu2x-splash.png";
+                                Task<Stream> st = stream.GetStreamAsync(url);
+                                Bitmap bitmap = new(st.Result);
+
+                                image.Source = BIMG.ToBitmapImage(bitmap);
+                            }
+                            else
+                            {
+                                image.Source = BIMG.ToBitmapImage(Properties.Resources.waifu2x_splash);
+                            }
+                            break;
                         }
-                        break;
-                    }
+                }
             }
+            catch (Exception ex)
+            {
+                Common.GlobalException = ex;
+                image.Source = BIMG.ToBitmapImage(Properties.Resources.waifu2x_splash);
+            }
+            
         }
 
         public string ProgressMsg

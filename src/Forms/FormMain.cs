@@ -61,258 +61,277 @@ namespace NVGE
 
             lockobj = new object();
 
-            lock (lockobj)
+            try
             {
-                ThreadStart ts = new(StartThread);
-                Thread thread = new(ts)
+                lock (lockobj)
                 {
-                    Name = "Splash",
-                    IsBackground = true
-                };
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.Start();
+                    ThreadStart ts = new(StartThread);
+                    Thread thread = new(ts)
+                    {
+                        Name = "Splash",
+                        IsBackground = true
+                    };
+                    thread.SetApartmentState(ApartmentState.STA);
+                    thread.Start();
 
-                DlgMsg d = new(ShowMessage);
+                    DlgMsg d = new(ShowMessage);
 
-                //fs?.Invoke(d, "Initializing...");
-                fs?.Dispatcher.Invoke(d, "Initializing...");
-                label1.Text = Strings.DragDropCaption;
-                Thread.Sleep(200);
+                    //fs?.Invoke(d, "Initializing...");
+                    fs?.Dispatcher.Invoke(d, "Initializing...");
+                    label1.Text = Strings.DragDropCaption;
+                    Thread.Sleep(200);
 
-                foreach (var files in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\res", "*", SearchOption.AllDirectories))
-                {
-                    FileInfo fi = new(files);
+                    foreach (var files in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\res", "*", SearchOption.AllDirectories))
+                    {
+                        FileInfo fi = new(files);
+                        if (fs != null)
+                        {
+                            fs.Dispatcher.Invoke(d, string.Format(Strings.SplashFormFileCaption, fi.Name));
+                            Thread.Sleep(10);
+                        }
+                    }
+
+                    //fs?.Invoke(d, Strings.SplashFormConfigCaption);
                     if (fs != null)
                     {
-                        fs.Dispatcher.Invoke(d, string.Format(Strings.SplashFormFileCaption, fi.Name));
-                        Thread.Sleep(10);
+                        fs.Dispatcher.Invoke(d, Strings.SplashFormConfigCaption);
                     }
-                }
-
-                //fs?.Invoke(d, Strings.SplashFormConfigCaption);
-                if (fs != null)
-                {
-                    fs.Dispatcher.Invoke(d, Strings.SplashFormConfigCaption);
-                }
 
 
-                Config.Load(Common.xmlpath);
+                    Config.Load(Common.xmlpath);
 
-                Common.FFmpegPath = Config.Entry["FFmpegLocation"].Value;
-                Common.ImageParam = Config.Entry["Param"].Value;
-                Common.VideoParam = Config.Entry["VideoParam"].Value;
-                Common.AudioParam = Config.Entry["AudioParam"].Value;
-                Common.MergeParam = Config.Entry["MergeParam"].Value;
+                    Common.FFmpegPath = Config.Entry["FFmpegLocation"].Value;
+                    Common.ImageParam = Config.Entry["Param"].Value;
+                    Common.VideoParam = Config.Entry["VideoParam"].Value;
+                    Common.AudioParam = Config.Entry["AudioParam"].Value;
+                    Common.MergeParam = Config.Entry["MergeParam"].Value;
 
-                if (Directory.Exists(Directory.GetCurrentDirectory() + @"\_temp-project\"))
-                {
-                    Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\");
-                }
-                if (Config.Entry["VideoLocation"].Value != "")
-                {
-                    Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames");
-                    Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames2x");
-                    Common.DeletePathFrames = Config.Entry["VideoLocation"].Value + @"\image-frames";
-                    Common.DeletePathFrames2x = Config.Entry["VideoLocation"].Value + @"\image-frames2x";
-                }
-                else
-                {
-                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames");
-                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x");
-                    Common.DeletePathFrames = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
-                    Common.DeletePathFrames2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
-                }
-                if (Config.Entry["AudioLocation"].Value != "")
-                {
-                    Directory.CreateDirectory(Config.Entry["AudioLocation"].Value + @"\audio");
-                    Common.DeletePathAudio = Config.Entry["AudioLocation"].Value + @"\audio";
-                }
-                else
-                {
-                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\audio");
-                    Common.DeletePathAudio = Directory.GetCurrentDirectory() + @"\_temp-project\audio";
-                }
-
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                Thread.Sleep(200);
-
-                if (fs != null)
-                {
-                    fs.Dispatcher.Invoke(d, Strings.SplashFormSystemCaption);
-                }
-                string[] OSInfo = new string[17];
-                string[] CPUInfo = new string[3];
-                string[] GPUInfo = new string[3];
-                SystemInfo.GetSystemInformation(OSInfo);
-                SystemInfo.GetProcessorsInformation(CPUInfo);
-                SystemInfo.GetVideoControllerInformation(GPUInfo);
-
-                List<string> GPUList = new();
-                List<long> GPURAMList = new();
-                string[] vn = null;
-                long[] vr = null;
-
-                VRAM v = new();
-                VRAMInfo vram = new(vn, vr);
-                vram = v.GetdGPUInfo();
-                GPUList = new(vram.Name);//SystemInfo.GetGraphicsCardsInformation();
-                GPURAMList = new(vram.VRAM);//SystemInfo.GetGraphicsCardNamesInformation();
-                if (GPUList.Count == 0)
-                {
-                    MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                if (GPURAMList.Count == 0)
-                {
-                    MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                ResetLabels();
-                //label_OS.Text = OSInfo[1] + " - " + OSInfo[3] + " [ build: " + OSInfo[4] + " ]";
-                //label_Processor.Text = CPUInfo[0] + " [ " + CPUInfo[1] + " Core / " + CPUInfo[2] + " Threads ]";
-                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-
-                if (fs != null)
-                {
-                    fs.Dispatcher.Invoke(d, "Detected OS: " + OSInfo[1]);
-                }
-                Thread.Sleep(10);
-                if (fs != null)
-                {
-                    fs.Dispatcher.Invoke(d, "Detected CPU: " + CPUInfo[0]);
-                }
-                Thread.Sleep(10);
-
-                int gpucount = 0;
-                foreach (var gpu in GPUList)
-                {
-                    if (gpu != null && GPURAMList[gpucount] != 0 && !Common.GPUList.Contains(gpu))
+                    if (Directory.Exists(Directory.GetCurrentDirectory() + @"\_temp-project\"))
                     {
-                        fs?.Dispatcher.Invoke(d, "Detected GPU: " + gpu);
-                        Thread.Sleep(10);
-                        //comboBox_GPU.Items.Add(gpu);
-                        Common.GPUList.Add(gpu);
-                        Common.GPURAMList.Add(GPURAMList[gpucount]);
+                        Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\");
                     }
-                    else if (gpu != null && GPURAMList[gpucount] == 0)
+                    if (Config.Entry["VideoLocation"].Value != "")
                     {
-                        fs?.Dispatcher.Invoke(d, "Detected Discrate iGPU: " + gpu);
-                        Thread.Sleep(10);
-                        //comboBox_GPU.Items.Add(gpu);
-                        Common.GPUList.Add(gpu);
-                        Common.GPURAMList.Add(GPURAMList[gpucount]);
+                        Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames");
+                        Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames2x");
+                        Common.DeletePathFrames = Config.Entry["VideoLocation"].Value + @"\image-frames";
+                        Common.DeletePathFrames2x = Config.Entry["VideoLocation"].Value + @"\image-frames2x";
                     }
-                    gpucount++;
-                }
+                    else
+                    {
+                        Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames");
+                        Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x");
+                        Common.DeletePathFrames = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                        Common.DeletePathFrames2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
+                    }
+                    if (Config.Entry["AudioLocation"].Value != "")
+                    {
+                        Directory.CreateDirectory(Config.Entry["AudioLocation"].Value + @"\audio");
+                        Common.DeletePathAudio = Config.Entry["AudioLocation"].Value + @"\audio";
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\audio");
+                        Common.DeletePathAudio = Directory.GetCurrentDirectory() + @"\_temp-project\audio";
+                    }
 
-                /*comboBox_GPU.SelectedIndex = 0;
-                if (Common.GPUList.Count == 1)
-                {
-                    comboBox_GPU.Enabled = false;
-                }
-                else
-                {
-                    comboBox_GPU.Enabled = true;
-                }
-                
-                label_Graphic.Text = Common.GPUList[0] + " [ " + Common.GPURAMList[0] + " MiB RAM ]";*/
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                    Thread.Sleep(200);
 
-                /*if (GPUList.Count == 1)
-                {
                     if (fs != null)
                     {
-                        fs.Dispatcher.Invoke(d, "Detected GPU: " + GPUNList);
+                        fs.Dispatcher.Invoke(d, Strings.SplashFormSystemCaption);
+                    }
+                    string[] OSInfo = new string[17];
+                    string[] CPUInfo = new string[3];
+                    string[] GPUInfo = new string[3];
+                    SystemInfo.GetSystemInformation(OSInfo);
+                    SystemInfo.GetProcessorsInformation(CPUInfo);
+                    SystemInfo.GetVideoControllerInformation(GPUInfo);
+
+                    List<string> GPUList = new();
+                    List<long> GPURAMList = new();
+                    string[] vn = null;
+                    long[] vr = null;
+
+                    VRAM v = new();
+                    VRAMInfo vram = new(vn, vr);
+                    vram = v.GetdGPUInfo();
+                    GPUList = new(vram.Name);//SystemInfo.GetGraphicsCardsInformation();
+                    GPURAMList = new(vram.VRAM);//SystemInfo.GetGraphicsCardNamesInformation();
+                    if (GPUList.Count == 0)
+                    {
+                        MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    if (GPURAMList.Count == 0)
+                    {
+                        MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    ResetLabels();
+                    //label_OS.Text = OSInfo[1] + " - " + OSInfo[3] + " [ build: " + OSInfo[4] + " ]";
+                    //label_Processor.Text = CPUInfo[0] + " [ " + CPUInfo[1] + " Core / " + CPUInfo[2] + " Threads ]";
+                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+
+                    if (fs != null)
+                    {
+                        fs.Dispatcher.Invoke(d, "Detected OS: " + OSInfo[1]);
                     }
                     Thread.Sleep(10);
-                    comboBox_GPU.Items.Add(GPUNList[0]);
-                    comboBox_GPU.SelectedIndex = 0;
-                    comboBox_GPU.Enabled = false;
-                    label_Graphic.Text = GPUList[0];
-                }
-                else
-                {
-                    foreach (var GPU in GPUNList)
+                    if (fs != null)
+                    {
+                        fs.Dispatcher.Invoke(d, "Detected CPU: " + CPUInfo[0]);
+                    }
+                    Thread.Sleep(10);
+
+                    int gpucount = 0;
+                    foreach (var gpu in GPUList)
+                    {
+                        if (gpu != null && GPURAMList[gpucount] != 0 && !Common.GPUList.Contains(gpu))
+                        {
+                            fs?.Dispatcher.Invoke(d, "Detected GPU: " + gpu);
+                            Thread.Sleep(10);
+                            //comboBox_GPU.Items.Add(gpu);
+                            Common.GPUList.Add(gpu);
+                            Common.GPURAMList.Add(GPURAMList[gpucount]);
+                        }
+                        else if (gpu != null && GPURAMList[gpucount] == 0)
+                        {
+                            fs?.Dispatcher.Invoke(d, "Detected Discrate iGPU: " + gpu);
+                            Thread.Sleep(10);
+                            //comboBox_GPU.Items.Add(gpu);
+                            Common.GPUList.Add(gpu);
+                            Common.GPURAMList.Add(GPURAMList[gpucount]);
+                        }
+                        gpucount++;
+                    }
+
+                    /*comboBox_GPU.SelectedIndex = 0;
+                    if (Common.GPUList.Count == 1)
+                    {
+                        comboBox_GPU.Enabled = false;
+                    }
+                    else
+                    {
+                        comboBox_GPU.Enabled = true;
+                    }
+
+                    label_Graphic.Text = Common.GPUList[0] + " [ " + Common.GPURAMList[0] + " MiB RAM ]";*/
+
+                    /*if (GPUList.Count == 1)
                     {
                         if (fs != null)
                         {
-                            fs.Dispatcher.Invoke(d, "Detected GPU: " + GPU);
+                            fs.Dispatcher.Invoke(d, "Detected GPU: " + GPUNList);
                         }
                         Thread.Sleep(10);
-                        comboBox_GPU.Items.Add(GPU);
+                        comboBox_GPU.Items.Add(GPUNList[0]);
+                        comboBox_GPU.SelectedIndex = 0;
+                        comboBox_GPU.Enabled = false;
+                        label_Graphic.Text = GPUList[0];
                     }
-                    comboBox_GPU.SelectedIndex = 0;
-                    comboBox_GPU.Enabled = true;
-                    label_Graphic.Text = GPUList[0];
-                }*/
-
-                ResetLabels();
-                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-
-                if (fs != null)
-                {
-                    fs.Dispatcher.Invoke(d, Strings.SplashFormUpdateCaption);
-                }
-                Thread.Sleep(200);
-                if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
-                {
-                    if (fs != null)
+                    else
                     {
-                        fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatingCaption);
-                    }
-                    File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
-                    string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
-                    File.Delete(updpath + @"\updater.exe");
-                    File.Delete(updpath + @"\waifu2x-nvger.zip");
-                    Common.DeleteDirectory(updpath + @"\updater-temp");
-                    Thread.Sleep(200);
-
-                    if (fs != null)
-                    {
-                        fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatedCaption);
-                    }
-                    Thread.Sleep(200);
-
-                    using Form dummy = new();
-                    dummy.TopMost = true;
-                    MessageBox.Show(dummy, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dummy.TopMost = false;
-                }
-                else
-                {
-                    if (bool.Parse(Config.Entry["CheckUpdateWithStartup"].Value) == true)
-                    {
-                        UpdateTask = Task.Run(CheckForUpdatesForInit);
-                        UpdateTask.Wait();
-
-                        if (RunUpdate == true)
+                        foreach (var GPU in GPUNList)
                         {
-                            CloseSplash();
-                            Activate();
-                            Close();
-                            return;
+                            if (fs != null)
+                            {
+                                fs.Dispatcher.Invoke(d, "Detected GPU: " + GPU);
+                            }
+                            Thread.Sleep(10);
+                            comboBox_GPU.Items.Add(GPU);
+                        }
+                        comboBox_GPU.SelectedIndex = 0;
+                        comboBox_GPU.Enabled = true;
+                        label_Graphic.Text = GPUList[0];
+                    }*/
+
+                    ResetLabels();
+                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+
+                    if (fs != null)
+                    {
+                        fs.Dispatcher.Invoke(d, Strings.SplashFormUpdateCaption);
+                    }
+                    Thread.Sleep(200);
+                    if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
+                    {
+                        if (fs != null)
+                        {
+                            fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatingCaption);
+                        }
+                        File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
+                        string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+                        File.Delete(updpath + @"\updater.exe");
+                        File.Delete(updpath + @"\waifu2x-nvger.zip");
+                        Common.DeleteDirectory(updpath + @"\updater-temp");
+                        Thread.Sleep(200);
+
+                        if (fs != null)
+                        {
+                            fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatedCaption);
+                        }
+                        Thread.Sleep(200);
+
+                        using Form dummy = new();
+                        dummy.TopMost = true;
+                        MessageBox.Show(dummy, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dummy.TopMost = false;
+                    }
+                    else
+                    {
+                        if (bool.Parse(Config.Entry["CheckUpdateWithStartup"].Value) == true)
+                        {
+                            UpdateTask = Task.Run(CheckForUpdatesForInit);
+                            UpdateTask.Wait();
+
+                            if (RunUpdate == true)
+                            {
+                                CloseSplash();
+                                Activate();
+                                Close();
+                                return;
+                            }
                         }
                     }
+
+                    if (fs != null)
+                    {
+                        fs.Dispatcher.Invoke(d, Strings.SplashFormFFCaption);
+                    }
+
+                    if (bool.Parse(Config.Entry["CheckUpdateFFWithStartup"].Value) == true)
+                    {
+                        var ffupdate = Task.Run(() => CheckForFFmpeg());
+                        ffupdate.Wait();
+                    }
+
+                    if (fs != null)
+                    {
+                        fs.Dispatcher.Invoke(d, Strings.SplashFormFinalCaption);
+                    }
+                    Thread.Sleep(200);
                 }
 
-                if (fs != null)
+                if (Common.GlobalException is not null)
                 {
-                    fs.Dispatcher.Invoke(d, Strings.SplashFormFFCaption);
+                    MessageBox.Show(this, string.Format(Strings.UnExpectedError, Common.GlobalException), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                if (bool.Parse(Config.Entry["CheckUpdateFFWithStartup"].Value) == true)
-                {
-                    var ffupdate = Task.Run(() => CheckForFFmpeg());
-                    ffupdate.Wait();
-                }
-
-                if (fs != null)
-                {
-                    fs.Dispatcher.Invoke(d, Strings.SplashFormFinalCaption);
-                }
-                Thread.Sleep(200);
+                CloseSplash();
+                Activate();
             }
+            catch (Exception ex)
+            {
+                using Form dummy = new();
+                dummy.TopMost = true;
+                MessageBox.Show(dummy, "An unexpected error has occurred.\n\n" + ex, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dummy.TopMost = false;
 
-            CloseSplash();
-            Activate();
+                CloseSplash();
+                Activate();
+            }
+            
         }
 
         private void OpenImegeIToolStripMenuItem_Click(object sender, EventArgs e)

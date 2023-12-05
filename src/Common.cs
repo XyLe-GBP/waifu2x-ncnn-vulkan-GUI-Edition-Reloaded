@@ -134,6 +134,8 @@ namespace NVGE
         public static List<string> GPUList = new();
         public static List<long> GPURAMList = new();
 
+        public static Exception GlobalException = null;
+
         #endregion
 
         /// <summary>
