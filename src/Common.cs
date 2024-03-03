@@ -1,9 +1,11 @@
 ﻿using ImageMagick;
 using Microsoft.Win32;
 using NVGE.Localization;
+using NVGE.Properties;
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -18,6 +20,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
+using Xabe.FFmpeg;
 
 namespace NVGE
 {
@@ -44,6 +47,10 @@ namespace NVGE
         /// GIFアニメーションかどうかのフラグ
         /// </summary>
         public static bool GIFflag = false;
+        /// <summary>
+        /// 動画ファイルかどうか
+        /// </summary>
+        public static bool IsVideo = false;
         /// <summary>
         /// ダウンロードが開始されたかのフラグ
         /// </summary>
@@ -136,6 +143,11 @@ namespace NVGE
 
         public static Exception GlobalException = null;
 
+        public static Bitmap bimg;
+        public static Bitmap cimg;
+        public static Graphics graph;
+
+        public static bool IsVideoThumbnailGenerated = false;
         #endregion
 
         /// <summary>
@@ -437,6 +449,13 @@ namespace NVGE
             }
         }
 
+        public static void ExportExceptionLog(Exception ex)
+        {
+            File.WriteAllText(Directory.GetCurrentDirectory() + @"\Exception.txt", Common.SFDRandomNumber() + ":\n" + ex + Environment.NewLine);
+            MessageBox.Show("The error log was output to the same location as the application.\r\nCheck the log for error details.", Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
         /// <summary>
         /// 設定ファイルにデフォルトの設定レコード全てを書き出す
         /// </summary>
@@ -682,6 +701,10 @@ namespace NVGE
             {
                 Config.Entry["CheckUpdateFFWithStartup"].Value = "true";
             }
+            if (Config.Entry["IsNoSplash"].Value == null)
+            {
+                Config.Entry["IsNoSplash"].Value = "false";
+            }
             if (Config.Entry["CustomSplashImage"].Value == null)
             {
                 Config.Entry["CustomSplashImage"].Value = "false";
@@ -689,6 +712,30 @@ namespace NVGE
             if (Config.Entry["SplashImagePath"].Value == null)
             {
                 Config.Entry["SplashImagePath"].Value = "";
+            }
+            if (Config.Entry["IsFixedLocation"].Value == null)
+            {
+                Config.Entry["IsFixedLocation"].Value = "false";
+            }
+            if (Config.Entry["FixedLocationPath"].Value == null)
+            {
+                Config.Entry["FixedLocationPath"].Value = "";
+            }
+            if (Config.Entry["IsShowDirectory"].Value == null)
+            {
+                Config.Entry["IsShowDirectory"].Value = "true";
+            }
+            if (Config.Entry["IsPNGMethod"].Value == null)
+            {
+                Config.Entry["IsPNGMethod"].Value = "false";
+            }
+            if (Config.Entry["PNGMethodType"].Value == null)
+            {
+                Config.Entry["PNGMethodType"].Value = "0";
+            }
+            if (Config.Entry["ApplicationLanguage"].Value == null)
+            {
+                Config.Entry["ApplicationLanguage"].Value = "0";
             }
             Config.Save(xmlpath);
         }
@@ -840,7 +887,31 @@ namespace NVGE
             else
             {
                 using var image = new MagickImage(IMAGEpath);
-                image.Write(PNGpath, MagickFormat.Png32);
+                switch (int.Parse(Config.Entry["PNGMethodType"].Value))
+                {
+                    case 0:
+                        image.Write(PNGpath, MagickFormat.Png32);
+                        break;
+                    case 1:
+                        image.Write(PNGpath, MagickFormat.Png8);
+                        break;
+                    case 2:
+                        image.Write(PNGpath, MagickFormat.Png24);
+                        break;
+                    case 3:
+                        image.Write(PNGpath, MagickFormat.Png32);
+                        break;
+                    case 4:
+                        image.Write(PNGpath, MagickFormat.Png48);
+                        break;
+                    case 5:
+                        image.Write(PNGpath, MagickFormat.Png64);
+                        break;
+                    default:
+                        image.Write(PNGpath, MagickFormat.Png00);
+                        break;
+                }
+                
                 if (File.Exists(PNGpath))
                 {
                     return true;
@@ -1001,6 +1072,21 @@ namespace NVGE
                         case ".EPS":
                             fmt = MagickFormat.Eps;
                             break;
+                        case ".EPS2":
+                            fmt = MagickFormat.Eps2;
+                            break;
+                        case ".EPS3":
+                            fmt = MagickFormat.Eps3;
+                            break;
+                        case ".EPSF":
+                            fmt = MagickFormat.Epsf;
+                            break;
+                        case ".EPSI":
+                            fmt = MagickFormat.Epsi;
+                            break;
+                        case ".EPT":
+                            fmt = MagickFormat.Ept;
+                            break;
                         case ".WEBP":
                             fmt = MagickFormat.WebP;
                             break;
@@ -1088,6 +1174,21 @@ namespace NVGE
                         case ".EPS":
                             fmt = MagickFormat.Eps;
                             break;
+                        case ".EPS2":
+                            fmt = MagickFormat.Eps2;
+                            break;
+                        case ".EPS3":
+                            fmt = MagickFormat.Eps3;
+                            break;
+                        case ".EPSF":
+                            fmt = MagickFormat.Epsf;
+                            break;
+                        case ".EPSI":
+                            fmt = MagickFormat.Epsi;
+                            break;
+                        case ".EPT":
+                            fmt = MagickFormat.Ept;
+                            break;
                         case ".WEBP":
                             fmt = MagickFormat.WebP;
                             break;
@@ -1168,6 +1269,44 @@ namespace NVGE
             ImageConverter imgconv = new();
             byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
             return b;
+        }
+
+        public static async Task GetVideoThumbnail(string input, string output)
+        {
+            if (File.Exists(output))
+            {
+                Common.bimg?.Dispose();
+                Common.cimg?.Dispose();
+                Common.graph?.Dispose();
+                File.Delete(output);
+            }
+            var conversion = await FFmpeg.Conversions.FromSnippet.Snapshot(input, output, TimeSpan.FromSeconds(1.0d));
+            await conversion.Start();
+        }
+
+        public static bool GetVideoThumbnailAsync(string VIDEOpath, string Outputpath)
+        {
+            FormVideoLoading form = new(VIDEOpath, Outputpath);
+            if (!File.Exists(VIDEOpath))
+            {
+                form.Dispose();
+                return false;
+            }
+            else
+            {
+                form.ShowDialog();
+
+                if (File.Exists(Outputpath))
+                {
+                    form.Dispose();
+                    return true;
+                }
+                else
+                {
+                    form.Dispose();
+                    return false;
+                }
+            }
         }
     }
 
@@ -1639,6 +1778,7 @@ namespace NVGE
             return Image.FromStream(stream);
         }
     }
+
 }
 
 namespace BitmapUtils
@@ -1676,7 +1816,7 @@ namespace BitmapUtils
             // Bitmapに直接アクセスするためのオブジェクト取得(LockBits)
             _img = _bmp.LockBits(new Rectangle(0, 0, _bmp.Width, _bmp.Height),
                 ImageLockMode.ReadWrite,
-                PixelFormat.Format24bppRgb);
+                System.Drawing.Imaging.PixelFormat.Format24bppRgb);
         }
 
         /// <summary>
