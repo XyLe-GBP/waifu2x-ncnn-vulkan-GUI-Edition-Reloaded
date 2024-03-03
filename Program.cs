@@ -1,5 +1,7 @@
 using System;
+using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace NVGE
@@ -18,6 +20,11 @@ namespace NVGE
             bool hasHandle = false;
             try
             {
+                if (!File.Exists(Common.xmlpath))
+                {
+                    Common.InitConfig();
+                }
+
                 try
                 {
                     hasHandle = mutex.WaitOne(0, false);
@@ -51,6 +58,23 @@ namespace NVGE
                 {
                     MessageBox.Show("The required file 'updater.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                }
+
+                Config.Load(Common.xmlpath);
+                switch (int.Parse(Config.Entry["ApplicationLanguage"].Value))
+                {
+                    case 0:
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
+                        break;
+                    case 1:
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("ja");
+                        break;
+                    case 2:
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh");
+                        break;
+                    default:
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
+                        break;
                 }
 
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
