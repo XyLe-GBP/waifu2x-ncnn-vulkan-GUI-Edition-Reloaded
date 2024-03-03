@@ -963,6 +963,16 @@ namespace NVGE.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap video_frame {
+            get {
+                object obj = ResourceManager.GetObject("video_frame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap w2xr_64 {
             get {
                 object obj = ResourceManager.GetObject("w2xr_64", resourceCulture);
