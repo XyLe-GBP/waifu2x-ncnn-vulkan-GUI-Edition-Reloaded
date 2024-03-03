@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -57,313 +117,897 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 181</value>
+  <data name="checkBox_splashImage.Text" xml:space="preserve">
+    <value>Enable custom splash screen images</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBox_splashImage.TabIndex" type="System.Int32, mscorlib">
+  <data name="checkBox_fs_dest.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="label_imagepath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 78</value>
+  <data name="&gt;&gt;checkBox_splashImage.Name" xml:space="preserve">
+    <value>checkBox_splashImage</value>
   </data>
-  <data name="label_imagepath.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="groupBox_fs.Text" xml:space="preserve">
+    <value>File Storage Method</value>
   </data>
-  <data name="button_browsecimg.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="&gt;&gt;label_imagepath.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>I/O</value>
   </data>
   <data name="&gt;&gt;button_OK.Name" xml:space="preserve">
     <value>button_OK</value>
   </data>
-  <data name="&gt;&gt;button_browsecimg.Name" xml:space="preserve">
-    <value>button_browsecimg</value>
+  <data name="label_imagepath.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_Cancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;button_browsecimg.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_browsecimg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 249</value>
+  </data>
+  <data name="radioButton_fs_every.Text" xml:space="preserve">
+    <value>Check the location every time</value>
+  </data>
+  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="label_fs_dest.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="checkBox_a_png_enable.Text" xml:space="preserve">
+    <value>Enable Portable Network Graphics  conversion method</value>
+  </data>
+  <data name="checkBox_a_png_enable.ToolTip" xml:space="preserve">
+    <value>Enables PNG conversion method specification.</value>
+  </data>
+  <data name="&gt;&gt;checkBox_splashImage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_32.Name" xml:space="preserve">
+    <value>radioButton_a_png_32</value>
+  </data>
+  <data name="label_fs_dest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_32.Parent" xml:space="preserve">
+    <value>groupBox_a_png</value>
+  </data>
+  <data name="radioButton_a_png_48.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox_fspref.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 280</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButton_a_png_64.Text" xml:space="preserve">
+    <value>PNG 64-bit</value>
+  </data>
+  <data name="&gt;&gt;radioButton_fs_every.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;toolTip_info.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox_fspref.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label_fs_dest.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_imagepath.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 167</value>
+    <value>460, 308</value>
   </data>
-  <data name="&gt;&gt;label_imagepath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="radioButton_fs_every.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="button_fs_browsedest.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="textBox_fs_dest.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBox_checkupdate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="&gt;&gt;checkBox_a_png_enable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_browsecimg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox_fs.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox_fs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 55</value>
+  </data>
+  <data name="radioButton_a_png_24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 19</value>
+  </data>
+  <data name="groupBox_fspref.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 182</value>
+  </data>
+  <data name="&gt;&gt;groupBox_fs.Name" xml:space="preserve">
+    <value>groupBox_fs</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hidesplash.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButton_a_png_8.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBox_fspref.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 67</value>
+  </data>
+  <data name="checkBox_fs_dest.ToolTip" xml:space="preserve">
+    <value>Open the destination folder when upscaling or conversion is complete.</value>
+  </data>
+  <data name="radioButton_fs_fixed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 19</value>
+  </data>
+  <data name="label_imagepath.Text" xml:space="preserve">
+    <value>image path:</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="checkBox_checkupdateff.ToolTip" xml:space="preserve">
+    <value>Checks for the presence of FFmpeg at startup and downloads it if not present.
+Checks for updates to FFmpeg, if present.</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_8.Parent" xml:space="preserve">
+    <value>groupBox_a_png</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_8.Name" xml:space="preserve">
+    <value>radioButton_a_png_8</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_64.Parent" xml:space="preserve">
+    <value>groupBox_a_png</value>
+  </data>
+  <data name="&gt;&gt;checkBox_fs_dest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButton_a_png_24.Text" xml:space="preserve">
+    <value>PNG 24-bit</value>
+  </data>
+  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;textBox_imagepath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="checkBox_checkupdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 19</value>
-  </data>
-  <data name="&gt;&gt;button_browsecimg.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBox_checkupdate.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
     <value>tabPage1</value>
   </data>
-  <data name="checkBox_checkupdateff.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="radioButton_fs_fixed.Text" xml:space="preserve">
+    <value>Save in fixed location</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>439, 211</value>
+  <data name="radioButton_a_png_48.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 19</value>
   </data>
-  <data name="button_OK.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="&gt;&gt;label_imagepath.Name" xml:space="preserve">
+    <value>label_imagepath</value>
   </data>
-  <data name="&gt;&gt;checkBox_checkupdateff.Name" xml:space="preserve">
-    <value>checkBox_checkupdateff</value>
+  <data name="radioButton_fs_every.ToolTip" xml:space="preserve">
+    <value>Check the location each time you save.</value>
   </data>
-  <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="radioButton_a_png_default.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>I/O</value>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
-    <value>button_Cancel</value>
-  </data>
-  <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
+  <data name="checkBox_splashImage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;textBox_imagepath.Name" xml:space="preserve">
-    <value>textBox_imagepath</value>
-  </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label_imagepath.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label_imagepath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 15</value>
-  </data>
-  <data name="&gt;&gt;checkBox_checkupdate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox_imagepath.ZOrder" xml:space="preserve">
+  <data name="radioButton_a_png_8.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="checkBox_checkupdateff.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 31</value>
-  </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 139</value>
-  </data>
-  <data name="button_browsecimg.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="checkBox_checkupdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="checkBox_checkupdateff.Text" xml:space="preserve">
-    <value>Check for presence of FFmpeg at startup (if present, check for updates)</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;radioButton_a_png_48.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="checkBox_checkupdateff.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 19</value>
+  <data name="&gt;&gt;groupBox_a_png.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;label_imagepath.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="groupBox_a_png.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="checkBox_checkupdateff.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="groupBox_a_png.Text" xml:space="preserve">
+    <value>Portable Network Graphics conversion method</value>
   </data>
-  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 326</value>
   </data>
-  <data name="textBox_imagepath.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="checkBox_hidesplash.Text" xml:space="preserve">
+    <value>Hide splash screen</value>
   </data>
-  <data name="&gt;&gt;button_browsecimg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;radioButton_fs_every.Parent" xml:space="preserve">
+    <value>groupBox_fs</value>
   </data>
-  <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBox_fs.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="label_imagepath.Text" xml:space="preserve">
-    <value>image path:</value>
-  </data>
-  <data name="&gt;&gt;textBox_imagepath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label_imagepath.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
+  <data name="checkBox_hidesplash.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_48.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;checkBox_checkupdate.Name" xml:space="preserve">
     <value>checkBox_checkupdate</value>
   </data>
-  <data name="textBox_imagepath.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;checkBox_checkupdateff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_splashImage.Text" xml:space="preserve">
-    <value>Enable custom splash screen images</value>
-  </data>
-  <data name="textBox_imagepath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 23</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_splashImage.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormPreferencesSettings</value>
-  </data>
-  <data name="checkBox_checkupdate.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="button_browsecimg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 23</value>
-  </data>
-  <data name="checkBox_splashImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 19</value>
-  </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 139</value>
-  </data>
-  <data name="&gt;&gt;checkBox_checkupdateff.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_splashImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Preferences</value>
-  </data>
-  <data name="checkBox_splashImage.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="button_browsecimg.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkBox_checkupdate.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;checkBox_splashImage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 181</value>
-  </data>
-  <data name="checkBox_checkupdate.Text" xml:space="preserve">
-    <value>Check for application updates at startup</value>
-  </data>
-  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;textBox_imagepath.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_splashImage.Name" xml:space="preserve">
-    <value>checkBox_splashImage</value>
-  </data>
-  <data name="label_imagepath.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="button_Cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="&gt;&gt;checkBox_checkupdateff.Name" xml:space="preserve">
+    <value>checkBox_checkupdateff</value>
   </data>
   <data name="&gt;&gt;button_browsecimg.Parent" xml:space="preserve">
     <value>tabPage1</value>
   </data>
-  <data name="&gt;&gt;checkBox_checkupdateff.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;radioButton_a_png_8.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checkBox_fs_dest.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBox_a_png_enable.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;label_imagepath.Name" xml:space="preserve">
-    <value>label_imagepath</value>
+  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBox_imagepath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormPreferencesSettings</value>
+  </data>
+  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="groupBox_a_png.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;groupBox_fs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_fs_dest.Name" xml:space="preserve">
+    <value>textBox_fs_dest</value>
+  </data>
+  <data name="label_imagepath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 253</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBox_checkupdateff.Text" xml:space="preserve">
+    <value>Check for presence of FFmpeg at startup (if present, check for updates)</value>
+  </data>
+  <data name="radioButton_a_png_32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>247, 40</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
+    <value>button_Cancel</value>
+  </data>
+  <data name="radioButton_a_png_8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 19</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
+  <data name="radioButton_a_png_8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_a_png_32.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label_fs_dest.Name" xml:space="preserve">
+    <value>label_fs_dest</value>
+  </data>
+  <data name="radioButton_a_png_24.ToolTip" xml:space="preserve">
+    <value>opaque or binary transparent 24-bit RGB</value>
+  </data>
+  <data name="&gt;&gt;checkBox_splashImage.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox_a_png.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="radioButton_a_png_48.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="button_fs_browsedest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 23</value>
+  </data>
+  <data name="checkBox_checkupdateff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 31</value>
+  </data>
+  <data name="radioButton_a_png_64.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 19</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tabPage3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButton_a_png_8.ToolTip" xml:space="preserve">
+    <value>8-bit indexed with optional binary transparency</value>
+  </data>
+  <data name="checkBox_checkupdate.Text" xml:space="preserve">
+    <value>Check for application updates at startup</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBox_fs_dest.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;radioButton_fs_every.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButton_fs_every.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_fs_every.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 19</value>
+  </data>
+  <data name="radioButton_a_png_64.ToolTip" xml:space="preserve">
+    <value>opaque or transparent 64-bit RGB</value>
+  </data>
+  <data name="radioButton_a_png_48.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_24.Name" xml:space="preserve">
+    <value>radioButton_a_png_24</value>
+  </data>
+  <data name="textBox_fs_dest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 37</value>
+  </data>
+  <data name="&gt;&gt;radioButton_fs_every.Name" xml:space="preserve">
+    <value>radioButton_fs_every</value>
+  </data>
+  <data name="&gt;&gt;groupBox_a_png.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_fs_browsedest.Name" xml:space="preserve">
+    <value>button_fs_browsedest</value>
+  </data>
+  <data name="button_browsecimg.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBox_imagepath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 250</value>
+  </data>
+  <data name="checkBox_checkupdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 19</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="button_browsecimg.ToolTip" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>484, 361</value>
+  </data>
+  <data name="label_fs_dest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 15</value>
+  </data>
+  <data name="&gt;&gt;checkBox_checkupdateff.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="textBox_imagepath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>316, 23</value>
+  </data>
+  <data name="radioButton_a_png_default.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox_fspref.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="radioButton_a_png_48.Location" type="System.Drawing.Point, System.Drawing">
+    <value>336, 40</value>
+  </data>
+  <data name="groupBox_fspref.Text" xml:space="preserve">
+    <value>Setting when 'Save in fixed location' option is specified</value>
+  </data>
+  <data name="radioButton_a_png_default.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="&gt;&gt;textBox_fs_dest.Parent" xml:space="preserve">
+    <value>groupBox_fspref</value>
+  </data>
+  <data name="radioButton_fs_fixed.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_checkupdate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_checkupdateff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_default.Name" xml:space="preserve">
+    <value>radioButton_a_png_default</value>
+  </data>
+  <data name="checkBox_a_png_enable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 22</value>
+  </data>
+  <data name="&gt;&gt;textBox_imagepath.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Preferences</value>
+  </data>
+  <data name="label_fs_dest.Text" xml:space="preserve">
+    <value>Destination folder:</value>
+  </data>
+  <data name="radioButton_a_png_64.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_splashImage.ToolTip" xml:space="preserve">
+    <value>Specify your own splash screen image.</value>
+  </data>
+  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label_imagepath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 15</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 326</value>
+  </data>
+  <data name="radioButton_a_png_24.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabControl1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButton_a_png_default.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 40</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hidesplash.Name" xml:space="preserve">
+    <value>checkBox_hidesplash</value>
+  </data>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 280</value>
+  </data>
+  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;checkBox_a_png_enable.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="radioButton_a_png_24.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkBox_a_png_enable.Parent" xml:space="preserve">
+    <value>groupBox_a_png</value>
+  </data>
+  <data name="textBox_imagepath.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="button_fs_browsedest.ToolTip" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="&gt;&gt;checkBox_splashImage.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="button_browsecimg.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkBox_checkupdate.ToolTip" xml:space="preserve">
+    <value>Check for updates when the application is launched.</value>
+  </data>
+  <data name="checkBox_checkupdateff.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label_imagepath.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 280</value>
+  </data>
+  <data name="checkBox_fs_dest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>316, 19</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_64.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_imagepath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_fs_dest.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_a_png_64.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;button_fs_browsedest.Parent" xml:space="preserve">
+    <value>groupBox_fspref</value>
+  </data>
+  <data name="checkBox_checkupdate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPage1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;radioButton_fs_fixed.Parent" xml:space="preserve">
+    <value>groupBox_fs</value>
+  </data>
+  <data name="button_OK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="radioButton_a_png_8.Text" xml:space="preserve">
+    <value>PNG 8-bit</value>
+  </data>
+  <data name="label_fs_dest.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkBox_checkupdate.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label_fs_dest.Parent" xml:space="preserve">
+    <value>groupBox_fspref</value>
+  </data>
+  <data name="&gt;&gt;button_browsecimg.Name" xml:space="preserve">
+    <value>button_browsecimg</value>
+  </data>
+  <data name="radioButton_fs_fixed.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_32.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;radioButton_fs_fixed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox_fspref.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label_imagepath.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_fs_dest.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;toolTip_info.Name" xml:space="preserve">
+    <value>toolTip_info</value>
+  </data>
+  <data name="&gt;&gt;checkBox_checkupdate.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;textBox_imagepath.Name" xml:space="preserve">
+    <value>textBox_imagepath</value>
+  </data>
+  <data name="radioButton_a_png_default.ToolTip" xml:space="preserve">
+    <value>PNG inheriting subformat from original if possible</value>
+  </data>
+  <data name="radioButton_a_png_32.ToolTip" xml:space="preserve">
+    <value>opaque or transparent 32-bit RGBA</value>
+  </data>
+  <data name="tabPage2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox_fspref.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_48.Name" xml:space="preserve">
+    <value>radioButton_a_png_48</value>
+  </data>
+  <data name="radioButton_a_png_8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 40</value>
+  </data>
+  <data name="&gt;&gt;radioButton_fs_fixed.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox_a_png_enable.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="button_browsecimg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 23</value>
+  </data>
   <data name="checkBox_checkupdate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBox_imagepath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 75</value>
+  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBox_hidesplash.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 19</value>
+  </data>
+  <data name="radioButton_a_png_32.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_a_png_default.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 19</value>
+  </data>
+  <data name="checkBox_checkupdateff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 19</value>
+  </data>
+  <data name="checkBox_splashImage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 231</value>
+  </data>
+  <data name="button_OK.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButton_a_png_24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 40</value>
+  </data>
+  <data name="checkBox_hidesplash.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 15</value>
   </data>
-  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
+    <value>tabPage3</value>
   </data>
-  <data name="checkBox_splashImage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;label_fs_dest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButton_a_png_32.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBox_fs_dest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 255</value>
+  </data>
+  <data name="radioButton_fs_fixed.ToolTip" xml:space="preserve">
+    <value>Save the file in the specified location.
+(If you need to specify a folder to save to)</value>
+  </data>
+  <data name="groupBox_fs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="button_fs_browsedest.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;radioButton_fs_fixed.Name" xml:space="preserve">
+    <value>radioButton_fs_fixed</value>
+  </data>
+  <data name="&gt;&gt;textBox_fs_dest.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;groupBox_fs.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_default.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_24.Parent" xml:space="preserve">
+    <value>groupBox_a_png</value>
+  </data>
+  <data name="checkBox_hidesplash.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 56</value>
   </data>
-  <data name="button_browsecimg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 75</value>
+  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_fs_browsedest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>390, 36</value>
   </data>
+  <data name="checkBox_splashImage.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_a_png_48.ToolTip" xml:space="preserve">
+    <value>opaque or binary transparent 48-bit RGB</value>
+  </data>
+  <data name="&gt;&gt;label_fs_dest.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;groupBox_fspref.Name" xml:space="preserve">
+    <value>groupBox_fspref</value>
+  </data>
+  <data name="label_imagepath.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;checkBox_a_png_enable.Name" xml:space="preserve">
+    <value>checkBox_a_png_enable</value>
+  </data>
+  <data name="radioButton_a_png_32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 19</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hidesplash.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="groupBox_a_png.Size" type="System.Drawing.Size, System.Drawing">
+    <value>446, 85</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_default.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_hidesplash.ToolTip" xml:space="preserve">
+    <value>Hides the splash screen at startup.</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hidesplash.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_checkupdateff.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox_fspref.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_checkupdateff.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="checkBox_splashImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 19</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_48.Parent" xml:space="preserve">
+    <value>groupBox_a_png</value>
+  </data>
+  <data name="&gt;&gt;groupBox_a_png.Name" xml:space="preserve">
+    <value>groupBox_a_png</value>
+  </data>
+  <data name="radioButton_fs_every.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 22</value>
+  </data>
+  <data name="&gt;&gt;button_fs_browsedest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_imagepath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_browsecimg.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="checkBox_a_png_enable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>313, 19</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_64.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBox_fs_dest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButton_a_png_24.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBox_fs_dest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>378, 23</value>
+  </data>
+  <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButton_a_png_64.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="radioButton_a_png_32.Text" xml:space="preserve">
+    <value>PNG 32-bit</value>
+  </data>
+  <data name="radioButton_a_png_64.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 60</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;checkBox_fs_dest.Name" xml:space="preserve">
+    <value>checkBox_fs_dest</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_64.Name" xml:space="preserve">
+    <value>radioButton_a_png_64</value>
+  </data>
+  <data name="&gt;&gt;textBox_imagepath.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButton_fs_fixed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="&gt;&gt;groupBox_a_png.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;groupBox_fs.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;button_fs_browsedest.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButton_a_png_48.Text" xml:space="preserve">
+    <value>PNG 48-bit</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_default.Parent" xml:space="preserve">
+    <value>groupBox_a_png</value>
+  </data>
+  <data name="checkBox_fs_dest.Text" xml:space="preserve">
+    <value>Display destination folder when conversion is complete</value>
+  </data>
+  <data name="&gt;&gt;radioButton_a_png_24.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="toolTip_info.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

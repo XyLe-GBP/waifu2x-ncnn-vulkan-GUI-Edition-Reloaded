@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -60,9 +120,36 @@
   <data name="tabPage1.Text" xml:space="preserve">
     <value>一般</value>
   </data>
+  <data name="tabPage1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPage2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="tabPage3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControl1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox_hidesplash.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 19</value>
+  </data>
+  <data name="checkBox_hidesplash.Text" xml:space="preserve">
+    <value>隐藏闪屏</value>
+  </data>
+  <data name="checkBox_hidesplash.ToolTip" xml:space="preserve">
+    <value>启动时隐藏闪屏。</value>
+  </data>
+  <data name="textBox_imagepath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label_imagepath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 79</value>
+    <value>16, 254</value>
   </data>
   <data name="label_imagepath.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 15</value>
@@ -70,11 +157,17 @@
   <data name="label_imagepath.Text" xml:space="preserve">
     <value>图像路径:</value>
   </data>
+  <data name="label_imagepath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_splashImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 19</value>
   </data>
   <data name="checkBox_splashImage.Text" xml:space="preserve">
     <value>指定你自己的闪屏图像</value>
+  </data>
+  <data name="checkBox_splashImage.ToolTip" xml:space="preserve">
+    <value>指定您自己的闪屏图像。</value>
   </data>
   <data name="checkBox_checkupdate.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 19</value>
@@ -82,19 +175,102 @@
   <data name="checkBox_checkupdate.Text" xml:space="preserve">
     <value>在启动时检查应用程序的更新。</value>
   </data>
+  <data name="checkBox_checkupdate.ToolTip" xml:space="preserve">
+    <value>在程序启动时检查更新。</value>
+  </data>
   <data name="checkBox_checkupdateff.Size" type="System.Drawing.Size, System.Drawing">
     <value>363, 19</value>
   </data>
   <data name="checkBox_checkupdateff.Text" xml:space="preserve">
     <value>在启动时检查是否存在FFmpeg（如果存在，检查是否有更新）。</value>
   </data>
+  <data name="checkBox_checkupdateff.ToolTip" xml:space="preserve">
+    <value>启动时检查 FFmpeg 是否存在，如果不存在则下载。
+如果 FFmpeg 存在，则检查更新。</value>
+  </data>
+  <data name="checkBox_fs_dest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 19</value>
+  </data>
+  <data name="checkBox_fs_dest.Text" xml:space="preserve">
+    <value>转换完成后显示目标文件夹</value>
+  </data>
+  <data name="checkBox_fs_dest.ToolTip" xml:space="preserve">
+    <value>完成缩放或转换后打开保存位置。</value>
+  </data>
+  <data name="groupBox_fspref.Text" xml:space="preserve">
+    <value>指定 "保存在固定位置 "选项时的设置</value>
+  </data>
+  <data name="groupBox_fspref.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox_fs_dest.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label_fs_dest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 15</value>
+  </data>
+  <data name="label_fs_dest.Text" xml:space="preserve">
+    <value>目的地文件夹：</value>
+  </data>
+  <data name="label_fs_dest.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox_fs.Text" xml:space="preserve">
+    <value>文件存储方法</value>
+  </data>
+  <data name="groupBox_fs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButton_fs_fixed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 19</value>
+  </data>
+  <data name="radioButton_fs_fixed.Text" xml:space="preserve">
+    <value>保存在固定位置</value>
+  </data>
+  <data name="radioButton_fs_fixed.ToolTip" xml:space="preserve">
+    <value>将文件保存到指定位置。
+(如果需要指定保存到的文件夹）。</value>
+  </data>
+  <data name="radioButton_fs_every.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 19</value>
+  </data>
+  <data name="radioButton_fs_every.Text" xml:space="preserve">
+    <value>每次检查位置</value>
+  </data>
+  <data name="radioButton_fs_every.ToolTip" xml:space="preserve">
+    <value>每次保存时检查位置。</value>
+  </data>
+  <data name="groupBox_a_png.Text" xml:space="preserve">
+    <value>便携式网络图形转换方法</value>
+  </data>
+  <data name="groupBox_a_png.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox_a_png_enable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 19</value>
+  </data>
+  <data name="checkBox_a_png_enable.Text" xml:space="preserve">
+    <value>启用便携式网络图形转换方法</value>
+  </data>
+  <data name="checkBox_a_png_enable.ToolTip" xml:space="preserve">
+    <value>启用 PNG 转换方法规范。</value>
+  </data>
   <data name="button_OK.Text" xml:space="preserve">
     <value>认可</value>
+  </data>
+  <data name="button_OK.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>取消</value>
   </data>
+  <data name="button_Cancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>设置</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

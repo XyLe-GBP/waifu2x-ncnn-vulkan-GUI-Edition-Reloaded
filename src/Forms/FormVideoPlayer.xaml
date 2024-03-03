@@ -1,0 +1,25 @@
+﻿<Window x:Class="NVGE.FormVideoPlayer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NVGE"
+        mc:Ignorable="d"
+        Title="VideoPlayer" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="585" Width="870">
+    <Grid>
+        <MediaElement x:Name="player" Margin="4,4,4,65" LoadedBehavior="Manual" Stretch="Uniform" MediaOpened="Player_MediaOpened"/>
+        <Button x:Name="play" Content="▶" HorizontalAlignment="Left" Margin="10,503,0,0" Background="{x:Null}" BorderThickness="0" VerticalAlignment="Top" Click="Play_Click" Height="38" Width="38" FontSize="20" />
+        <Button x:Name="stop" Content="■" HorizontalAlignment="Left" Margin="52,503,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderThickness="0" RenderTransformOrigin="0.739,-0.969" Click="Stop_Click" Height="38" Width="38" FontSize="20" />
+        <Slider x:Name="time" HorizontalAlignment="Left" Margin="10,485,0,0" VerticalAlignment="Top" Width="773" ValueChanged="Time_ValueChanged" PreviewMouseDown="Time_PreviewMouseDown" PreviewMouseUp="Time_PreviewMouseUp" Height="18" Cursor="Hand"/>
+        <Slider x:Name="volume" HorizontalAlignment="Left" Margin="483,520,0,0" VerticalAlignment="Top" Minimum="0" Maximum="1" Value="0.5" Width="137" ValueChanged="Volume_ValueChanged" Cursor="Hand"/>
+        <Slider x:Name="speed" HorizontalAlignment="Left" Margin="692,520,0,0" VerticalAlignment="Top" Minimum="0.25" Maximum="2" Value="1" Width="135" ValueChanged="Speed_ValueChanged" PreviewMouseDown="Speed_PreviewMouseDown" PreviewMouseUp="Speed_PreviewMouseUp" Cursor="Hand"/>
+        <TextBlock x:Name="uxTime" HorizontalAlignment="Left" Margin="788,484,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" FontSize="14"/>
+        <TextBlock x:Name="uxVolume" HorizontalAlignment="Left" Margin="623,520,0,0" TextWrapping="Wrap" Text="50%" VerticalAlignment="Top"/>
+        <TextBlock x:Name="uxSpeed" HorizontalAlignment="Left" Margin="828,519,0,0" TextWrapping="Wrap" Text="x1" VerticalAlignment="Top"/>
+        <CheckBox  x:Name="loop" Content="Enable Loop Playback" HorizontalAlignment="Left" Margin="97,515,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="capture" Content="Save current frame" HorizontalAlignment="Left" Margin="244,512,0,0" VerticalAlignment="Top" Width="233" Click="Capture_Click" RenderTransformOrigin="0.411,1.939" />
+        <Label x:Name="labelvolume" Content="Volume:" HorizontalAlignment="Left" Margin="483,499,0,0" VerticalAlignment="Top" Height="26" FontSize="10" FontWeight="Bold" RenderTransformOrigin="2.321,0.482"/>
+        <Label x:Name="labelspeed" Content="Playback Speed:" HorizontalAlignment="Left" Margin="662,499,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.178,-0.2" Height="26" FontSize="10" FontWeight="Bold"/>
+
+    </Grid>
+</Window>

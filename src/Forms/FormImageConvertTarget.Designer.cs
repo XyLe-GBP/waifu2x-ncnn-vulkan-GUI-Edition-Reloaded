@@ -29,66 +29,55 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageConvertTarget));
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox_Extension = new System.Windows.Forms.ComboBox();
-            this.button_OK = new System.Windows.Forms.Button();
-            this.button_Cancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            comboBox_Extension = new System.Windows.Forms.ComboBox();
+            button_OK = new System.Windows.Forms.Button();
+            button_Cancel = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
             // 
             // comboBox_Extension
             // 
-            resources.ApplyResources(this.comboBox_Extension, "comboBox_Extension");
-            this.comboBox_Extension.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Extension.FormattingEnabled = true;
-            this.comboBox_Extension.Items.AddRange(new object[] {
-            resources.GetString("comboBox_Extension.Items"),
-            resources.GetString("comboBox_Extension.Items1"),
-            resources.GetString("comboBox_Extension.Items2"),
-            resources.GetString("comboBox_Extension.Items3"),
-            resources.GetString("comboBox_Extension.Items4"),
-            resources.GetString("comboBox_Extension.Items5"),
-            resources.GetString("comboBox_Extension.Items6"),
-            resources.GetString("comboBox_Extension.Items7"),
-            resources.GetString("comboBox_Extension.Items8"),
-            resources.GetString("comboBox_Extension.Items9")});
-            this.comboBox_Extension.Name = "comboBox_Extension";
+            comboBox_Extension.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox_Extension.FormattingEnabled = true;
+            comboBox_Extension.Items.AddRange(new object[] { resources.GetString("comboBox_Extension.Items"), resources.GetString("comboBox_Extension.Items1"), resources.GetString("comboBox_Extension.Items2"), resources.GetString("comboBox_Extension.Items3"), resources.GetString("comboBox_Extension.Items4"), resources.GetString("comboBox_Extension.Items5"), resources.GetString("comboBox_Extension.Items6"), resources.GetString("comboBox_Extension.Items7"), resources.GetString("comboBox_Extension.Items8"), resources.GetString("comboBox_Extension.Items9"), resources.GetString("comboBox_Extension.Items10"), resources.GetString("comboBox_Extension.Items11"), resources.GetString("comboBox_Extension.Items12"), resources.GetString("comboBox_Extension.Items13") });
+            resources.ApplyResources(comboBox_Extension, "comboBox_Extension");
+            comboBox_Extension.Name = "comboBox_Extension";
             // 
             // button_OK
             // 
-            resources.ApplyResources(this.button_OK, "button_OK");
-            this.button_OK.Name = "button_OK";
-            this.button_OK.UseVisualStyleBackColor = true;
-            this.button_OK.Click += new System.EventHandler(this.Button_OK_Click);
+            resources.ApplyResources(button_OK, "button_OK");
+            button_OK.Name = "button_OK";
+            button_OK.UseVisualStyleBackColor = true;
+            button_OK.Click += Button_OK_Click;
             // 
             // button_Cancel
             // 
-            resources.ApplyResources(this.button_Cancel, "button_Cancel");
-            this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.UseVisualStyleBackColor = true;
-            this.button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
+            resources.ApplyResources(button_Cancel, "button_Cancel");
+            button_Cancel.Name = "button_Cancel";
+            button_Cancel.UseVisualStyleBackColor = true;
+            button_Cancel.Click += Button_Cancel_Click;
             // 
             // FormImageConvertTarget
             // 
-            this.AcceptButton = this.button_OK;
+            AcceptButton = button_OK;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button_Cancel;
-            this.ControlBox = false;
-            this.Controls.Add(this.button_Cancel);
-            this.Controls.Add(this.button_OK);
-            this.Controls.Add(this.comboBox_Extension);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "FormImageConvertTarget";
-            this.Load += new System.EventHandler(this.FormImageConvertTarget_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            CancelButton = button_Cancel;
+            ControlBox = false;
+            Controls.Add(button_Cancel);
+            Controls.Add(button_OK);
+            Controls.Add(comboBox_Extension);
+            Controls.Add(label1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Name = "FormImageConvertTarget";
+            Load += FormImageConvertTarget_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
@@ -48,11 +49,6 @@ namespace NVGE
             FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
             Text = "waifu2x-nvger ( build: " + ver.FileVersion.ToString() + "-Beta )";
 
-            if (!File.Exists(Common.xmlpath))
-            {
-                Common.InitConfig();
-            }
-
             if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
             {
                 TopMost = true;
@@ -65,252 +61,362 @@ namespace NVGE
             {
                 lock (lockobj)
                 {
-                    ThreadStart ts = new(StartThread);
-                    Thread thread = new(ts)
-                    {
-                        Name = "Splash",
-                        IsBackground = true
-                    };
-                    thread.SetApartmentState(ApartmentState.STA);
-                    thread.Start();
-
-                    DlgMsg d = new(ShowMessage);
-
-                    //fs?.Invoke(d, "Initializing...");
-                    fs?.Dispatcher.Invoke(d, "Initializing...");
-                    label1.Text = Strings.DragDropCaption;
-                    Thread.Sleep(200);
-
-                    foreach (var files in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\res", "*", SearchOption.AllDirectories))
-                    {
-                        FileInfo fi = new(files);
-                        if (fs != null)
-                        {
-                            fs.Dispatcher.Invoke(d, string.Format(Strings.SplashFormFileCaption, fi.Name));
-                            Thread.Sleep(10);
-                        }
-                    }
-
-                    //fs?.Invoke(d, Strings.SplashFormConfigCaption);
-                    if (fs != null)
-                    {
-                        fs.Dispatcher.Invoke(d, Strings.SplashFormConfigCaption);
-                    }
-
-
                     Config.Load(Common.xmlpath);
 
-                    Common.FFmpegPath = Config.Entry["FFmpegLocation"].Value;
-                    Common.ImageParam = Config.Entry["Param"].Value;
-                    Common.VideoParam = Config.Entry["VideoParam"].Value;
-                    Common.AudioParam = Config.Entry["AudioParam"].Value;
-                    Common.MergeParam = Config.Entry["MergeParam"].Value;
-
-                    if (Directory.Exists(Directory.GetCurrentDirectory() + @"\_temp-project\"))
+                    switch (int.Parse(Config.Entry["ApplicationLanguage"].Value))
                     {
-                        Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\");
-                    }
-                    if (Config.Entry["VideoLocation"].Value != "")
-                    {
-                        Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames");
-                        Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames2x");
-                        Common.DeletePathFrames = Config.Entry["VideoLocation"].Value + @"\image-frames";
-                        Common.DeletePathFrames2x = Config.Entry["VideoLocation"].Value + @"\image-frames2x";
-                    }
-                    else
-                    {
-                        Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames");
-                        Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x");
-                        Common.DeletePathFrames = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
-                        Common.DeletePathFrames2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
-                    }
-                    if (Config.Entry["AudioLocation"].Value != "")
-                    {
-                        Directory.CreateDirectory(Config.Entry["AudioLocation"].Value + @"\audio");
-                        Common.DeletePathAudio = Config.Entry["AudioLocation"].Value + @"\audio";
-                    }
-                    else
-                    {
-                        Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\audio");
-                        Common.DeletePathAudio = Directory.GetCurrentDirectory() + @"\_temp-project\audio";
+                        case 0:
+                            ChangeLanguageUX("");
+                            break;
+                        case 1:
+                            ChangeLanguageUX("ja");
+                            break;
+                        case 2:
+                            ChangeLanguageUX("zh");
+                            break;
+                        default:
+                            ChangeLanguageUX("");
+                            break;
                     }
 
-                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
-                    Thread.Sleep(200);
-
-                    if (fs != null)
+                    if (Config.Entry["IsNoSplash"].Value == "false")
                     {
-                        fs.Dispatcher.Invoke(d, Strings.SplashFormSystemCaption);
-                    }
-                    string[] OSInfo = new string[17];
-                    string[] CPUInfo = new string[3];
-                    string[] GPUInfo = new string[3];
-                    SystemInfo.GetSystemInformation(OSInfo);
-                    SystemInfo.GetProcessorsInformation(CPUInfo);
-                    SystemInfo.GetVideoControllerInformation(GPUInfo);
-
-                    List<string> GPUList = new();
-                    List<long> GPURAMList = new();
-                    string[] vn = null;
-                    long[] vr = null;
-
-                    VRAM v = new();
-                    VRAMInfo vram = new(vn, vr);
-                    vram = v.GetdGPUInfo();
-                    GPUList = new(vram.Name);//SystemInfo.GetGraphicsCardsInformation();
-                    GPURAMList = new(vram.VRAM);//SystemInfo.GetGraphicsCardNamesInformation();
-                    if (GPUList.Count == 0)
-                    {
-                        MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    if (GPURAMList.Count == 0)
-                    {
-                        MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    ResetLabels();
-                    //label_OS.Text = OSInfo[1] + " - " + OSInfo[3] + " [ build: " + OSInfo[4] + " ]";
-                    //label_Processor.Text = CPUInfo[0] + " [ " + CPUInfo[1] + " Core / " + CPUInfo[2] + " Threads ]";
-                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-
-                    if (fs != null)
-                    {
-                        fs.Dispatcher.Invoke(d, "Detected OS: " + OSInfo[1]);
-                    }
-                    Thread.Sleep(10);
-                    if (fs != null)
-                    {
-                        fs.Dispatcher.Invoke(d, "Detected CPU: " + CPUInfo[0]);
-                    }
-                    Thread.Sleep(10);
-
-                    int gpucount = 0;
-                    foreach (var gpu in GPUList)
-                    {
-                        if (gpu != null && GPURAMList[gpucount] != 0 && !Common.GPUList.Contains(gpu))
+                        ThreadStart ts = new(StartThread);
+                        Thread thread = new(ts)
                         {
-                            fs?.Dispatcher.Invoke(d, "Detected GPU: " + gpu);
-                            Thread.Sleep(10);
-                            //comboBox_GPU.Items.Add(gpu);
-                            Common.GPUList.Add(gpu);
-                            Common.GPURAMList.Add(GPURAMList[gpucount]);
-                        }
-                        else if (gpu != null && GPURAMList[gpucount] == 0)
+                            Name = "Splash",
+                            IsBackground = true
+                        };
+                        thread.SetApartmentState(ApartmentState.STA);
+                        thread.Start();
+
+                        DlgMsg d = new(ShowMessage);
+
+                        fs?.Dispatcher.Invoke(d, "Initializing...");
+                        label1.Text = Strings.DragDropCaption;
+                        Thread.Sleep(200);
+
+                        foreach (var files in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\res", "*", SearchOption.AllDirectories))
                         {
-                            fs?.Dispatcher.Invoke(d, "Detected Discrate iGPU: " + gpu);
-                            Thread.Sleep(10);
-                            //comboBox_GPU.Items.Add(gpu);
-                            Common.GPUList.Add(gpu);
-                            Common.GPURAMList.Add(GPURAMList[gpucount]);
+                            FileInfo fi = new(files);
+                            if (fs != null)
+                            {
+                                fs.Dispatcher.Invoke(d, string.Format(Strings.SplashFormFileCaption, fi.Name));
+                                Thread.Sleep(10);
+                            }
                         }
-                        gpucount++;
-                    }
 
-                    /*comboBox_GPU.SelectedIndex = 0;
-                    if (Common.GPUList.Count == 1)
-                    {
-                        comboBox_GPU.Enabled = false;
-                    }
-                    else
-                    {
-                        comboBox_GPU.Enabled = true;
-                    }
-
-                    label_Graphic.Text = Common.GPUList[0] + " [ " + Common.GPURAMList[0] + " MiB RAM ]";*/
-
-                    /*if (GPUList.Count == 1)
-                    {
                         if (fs != null)
                         {
-                            fs.Dispatcher.Invoke(d, "Detected GPU: " + GPUNList);
+                            fs.Dispatcher.Invoke(d, Strings.SplashFormConfigCaption);
+                        }
+
+                        Common.FFmpegPath = Config.Entry["FFmpegLocation"].Value;
+                        Common.ImageParam = Config.Entry["Param"].Value;
+                        Common.VideoParam = Config.Entry["VideoParam"].Value;
+                        Common.AudioParam = Config.Entry["AudioParam"].Value;
+                        Common.MergeParam = Config.Entry["MergeParam"].Value;
+
+                        if (Directory.Exists(Directory.GetCurrentDirectory() + @"\_temp-project\"))
+                        {
+                            Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\");
+                        }
+                        if (Config.Entry["VideoLocation"].Value != "")
+                        {
+                            Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames");
+                            Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames2x");
+                            Common.DeletePathFrames = Config.Entry["VideoLocation"].Value + @"\image-frames";
+                            Common.DeletePathFrames2x = Config.Entry["VideoLocation"].Value + @"\image-frames2x";
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames");
+                            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x");
+                            Common.DeletePathFrames = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                            Common.DeletePathFrames2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
+                        }
+                        if (Config.Entry["AudioLocation"].Value != "")
+                        {
+                            Directory.CreateDirectory(Config.Entry["AudioLocation"].Value + @"\audio");
+                            Common.DeletePathAudio = Config.Entry["AudioLocation"].Value + @"\audio";
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\audio");
+                            Common.DeletePathAudio = Directory.GetCurrentDirectory() + @"\_temp-project\audio";
+                        }
+
+                        Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                        Thread.Sleep(200);
+
+                        if (fs != null)
+                        {
+                            fs.Dispatcher.Invoke(d, Strings.SplashFormSystemCaption);
+                        }
+                        string[] OSInfo = new string[17];
+                        string[] CPUInfo = new string[3];
+                        string[] GPUInfo = new string[3];
+                        SystemInfo.GetSystemInformation(OSInfo);
+                        SystemInfo.GetProcessorsInformation(CPUInfo);
+                        SystemInfo.GetVideoControllerInformation(GPUInfo);
+
+                        List<string> GPUList = new();
+                        List<long> GPURAMList = new();
+                        string[] vn = null;
+                        long[] vr = null;
+
+                        VRAM v = new();
+                        VRAMInfo vram = new(vn, vr);
+                        vram = v.GetdGPUInfo();
+                        GPUList = new(vram.Name);
+                        GPURAMList = new(vram.VRAM);
+                        if (GPUList.Count == 0)
+                        {
+                            MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        if (GPURAMList.Count == 0)
+                        {
+                            MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        ResetLabels();
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+
+                        if (fs != null)
+                        {
+                            fs.Dispatcher.Invoke(d, "Detected OS: " + OSInfo[1]);
                         }
                         Thread.Sleep(10);
-                        comboBox_GPU.Items.Add(GPUNList[0]);
-                        comboBox_GPU.SelectedIndex = 0;
-                        comboBox_GPU.Enabled = false;
-                        label_Graphic.Text = GPUList[0];
-                    }
-                    else
-                    {
-                        foreach (var GPU in GPUNList)
+                        if (fs != null)
+                        {
+                            fs.Dispatcher.Invoke(d, "Detected CPU: " + CPUInfo[0]);
+                        }
+                        Thread.Sleep(10);
+
+                        int gpucount = 0;
+                        foreach (var gpu in GPUList)
+                        {
+                            if (gpu != null && GPURAMList[gpucount] != 0 && !Common.GPUList.Contains(gpu))
+                            {
+                                fs?.Dispatcher.Invoke(d, "Detected GPU: " + gpu);
+                                Thread.Sleep(10);
+                                Common.GPUList.Add(gpu);
+                                Common.GPURAMList.Add(GPURAMList[gpucount]);
+                            }
+                            else if (gpu != null && GPURAMList[gpucount] == 0)
+                            {
+                                fs?.Dispatcher.Invoke(d, "Detected Discrate iGPU: " + gpu);
+                                Thread.Sleep(10);
+                                Common.GPUList.Add(gpu);
+                                Common.GPURAMList.Add(GPURAMList[gpucount]);
+                            }
+                            gpucount++;
+                        }
+
+                        ResetLabels();
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+
+                        if (fs != null)
+                        {
+                            fs.Dispatcher.Invoke(d, Strings.SplashFormUpdateCaption);
+                        }
+                        Thread.Sleep(200);
+                        if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
                         {
                             if (fs != null)
                             {
-                                fs.Dispatcher.Invoke(d, "Detected GPU: " + GPU);
+                                fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatingCaption);
                             }
-                            Thread.Sleep(10);
-                            comboBox_GPU.Items.Add(GPU);
-                        }
-                        comboBox_GPU.SelectedIndex = 0;
-                        comboBox_GPU.Enabled = true;
-                        label_Graphic.Text = GPUList[0];
-                    }*/
+                            File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
+                            string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+                            File.Delete(updpath + @"\updater.exe");
+                            File.Delete(updpath + @"\waifu2x-nvger.zip");
+                            Common.DeleteDirectory(updpath + @"\updater-temp");
+                            Thread.Sleep(200);
 
-                    ResetLabels();
-                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-
-                    if (fs != null)
-                    {
-                        fs.Dispatcher.Invoke(d, Strings.SplashFormUpdateCaption);
-                    }
-                    Thread.Sleep(200);
-                    if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
-                    {
-                        if (fs != null)
-                        {
-                            fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatingCaption);
-                        }
-                        File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
-                        string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
-                        File.Delete(updpath + @"\updater.exe");
-                        File.Delete(updpath + @"\waifu2x-nvger.zip");
-                        Common.DeleteDirectory(updpath + @"\updater-temp");
-                        Thread.Sleep(200);
-
-                        if (fs != null)
-                        {
-                            fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatedCaption);
-                        }
-                        Thread.Sleep(200);
-
-                        using Form dummy = new();
-                        dummy.TopMost = true;
-                        MessageBox.Show(dummy, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dummy.TopMost = false;
-                    }
-                    else
-                    {
-                        if (bool.Parse(Config.Entry["CheckUpdateWithStartup"].Value) == true)
-                        {
-                            UpdateTask = Task.Run(CheckForUpdatesForInit);
-                            UpdateTask.Wait();
-
-                            if (RunUpdate == true)
+                            if (fs != null)
                             {
-                                CloseSplash();
-                                Activate();
-                                Close();
-                                return;
+                                fs.Dispatcher.Invoke(d, Strings.SplashFormUpdatedCaption);
+                            }
+                            Thread.Sleep(200);
+
+                            using Form dummy = new();
+                            dummy.TopMost = true;
+                            MessageBox.Show(dummy, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dummy.TopMost = false;
+                        }
+                        else
+                        {
+                            if (bool.Parse(Config.Entry["CheckUpdateWithStartup"].Value) == true)
+                            {
+                                UpdateTask = Task.Run(CheckForUpdatesForInit);
+                                UpdateTask.Wait();
+
+                                if (RunUpdate == true)
+                                {
+                                    CloseSplash();
+                                    Activate();
+                                    Close();
+                                    return;
+                                }
                             }
                         }
-                    }
 
-                    if (fs != null)
-                    {
-                        fs.Dispatcher.Invoke(d, Strings.SplashFormFFCaption);
-                    }
+                        if (fs != null)
+                        {
+                            fs.Dispatcher.Invoke(d, Strings.SplashFormFFCaption);
+                        }
 
-                    if (bool.Parse(Config.Entry["CheckUpdateFFWithStartup"].Value) == true)
-                    {
-                        var ffupdate = Task.Run(() => CheckForFFmpeg());
-                        ffupdate.Wait();
-                    }
+                        if (bool.Parse(Config.Entry["CheckUpdateFFWithStartup"].Value) == true)
+                        {
+                            var ffupdate = Task.Run(() => CheckForFFmpeg());
+                            ffupdate.Wait();
+                        }
 
-                    if (fs != null)
-                    {
-                        fs.Dispatcher.Invoke(d, Strings.SplashFormFinalCaption);
+                        if (fs != null)
+                        {
+                            fs.Dispatcher.Invoke(d, Strings.SplashFormFinalCaption);
+                        }
+                        Thread.Sleep(200);
+
+                        CloseSplash();
+                        Activate();
                     }
-                    Thread.Sleep(200);
+                    else // No Splash
+                    {
+                        label1.Text = Strings.DragDropCaption;
+
+                        foreach (var files in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\res", "*", SearchOption.AllDirectories))
+                        {
+                            FileInfo fi = new(files);
+                        }
+
+                        Common.FFmpegPath = Config.Entry["FFmpegLocation"].Value;
+                        Common.ImageParam = Config.Entry["Param"].Value;
+                        Common.VideoParam = Config.Entry["VideoParam"].Value;
+                        Common.AudioParam = Config.Entry["AudioParam"].Value;
+                        Common.MergeParam = Config.Entry["MergeParam"].Value;
+
+                        if (Directory.Exists(Directory.GetCurrentDirectory() + @"\_temp-project\"))
+                        {
+                            Common.DeleteDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\");
+                        }
+                        if (Config.Entry["VideoLocation"].Value != "")
+                        {
+                            Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames");
+                            Directory.CreateDirectory(Config.Entry["VideoLocation"].Value + @"\image-frames2x");
+                            Common.DeletePathFrames = Config.Entry["VideoLocation"].Value + @"\image-frames";
+                            Common.DeletePathFrames2x = Config.Entry["VideoLocation"].Value + @"\image-frames2x";
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames");
+                            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x");
+                            Common.DeletePathFrames = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames";
+                            Common.DeletePathFrames2x = Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x";
+                        }
+                        if (Config.Entry["AudioLocation"].Value != "")
+                        {
+                            Directory.CreateDirectory(Config.Entry["AudioLocation"].Value + @"\audio");
+                            Common.DeletePathAudio = Config.Entry["AudioLocation"].Value + @"\audio";
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\audio");
+                            Common.DeletePathAudio = Directory.GetCurrentDirectory() + @"\_temp-project\audio";
+                        }
+
+                        Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                        Thread.Sleep(200);
+
+                        string[] OSInfo = new string[17];
+                        string[] CPUInfo = new string[3];
+                        string[] GPUInfo = new string[3];
+                        SystemInfo.GetSystemInformation(OSInfo);
+                        SystemInfo.GetProcessorsInformation(CPUInfo);
+                        SystemInfo.GetVideoControllerInformation(GPUInfo);
+
+                        List<string> GPUList = new();
+                        List<long> GPURAMList = new();
+                        string[] vn = null;
+                        long[] vr = null;
+
+                        VRAM v = new();
+                        VRAMInfo vram = new(vn, vr);
+                        vram = v.GetdGPUInfo();
+                        GPUList = new(vram.Name);
+                        GPURAMList = new(vram.VRAM);
+                        if (GPUList.Count == 0)
+                        {
+                            MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        if (GPURAMList.Count == 0)
+                        {
+                            MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        ResetLabels();
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+
+                        int gpucount = 0;
+                        foreach (var gpu in GPUList)
+                        {
+                            if (gpu != null && GPURAMList[gpucount] != 0 && !Common.GPUList.Contains(gpu))
+                            {
+                                Thread.Sleep(10);
+                                Common.GPUList.Add(gpu);
+                                Common.GPURAMList.Add(GPURAMList[gpucount]);
+                            }
+                            else if (gpu != null && GPURAMList[gpucount] == 0)
+                            {
+                                Thread.Sleep(10);
+                                Common.GPUList.Add(gpu);
+                                Common.GPURAMList.Add(GPURAMList[gpucount]);
+                            }
+                            gpucount++;
+                        }
+
+                        ResetLabels();
+                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+
+                        if (File.Exists(Directory.GetCurrentDirectory() + @"\updated.dat"))
+                        {
+                            File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
+                            string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+                            File.Delete(updpath + @"\updater.exe");
+                            File.Delete(updpath + @"\waifu2x-nvger.zip");
+                            Common.DeleteDirectory(updpath + @"\updater-temp");
+
+                            using Form dummy = new();
+                            dummy.TopMost = true;
+                            MessageBox.Show(dummy, Strings.UpdateCompletedCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dummy.TopMost = false;
+                        }
+                        else
+                        {
+                            if (bool.Parse(Config.Entry["CheckUpdateWithStartup"].Value) == true)
+                            {
+                                UpdateTask = Task.Run(CheckForUpdatesForInit);
+                                UpdateTask.Wait();
+
+                                if (RunUpdate == true)
+                                {
+                                    CloseSplash();
+                                    Activate();
+                                    Close();
+                                    return;
+                                }
+                            }
+                        }
+
+                        if (bool.Parse(Config.Entry["CheckUpdateFFWithStartup"].Value) == true)
+                        {
+                            var ffupdate = Task.Run(() => CheckForFFmpeg());
+                            ffupdate.Wait();
+                        }
+
+                        Activate();
+                    }
                 }
 
                 if (Common.GlobalException is not null)
@@ -318,20 +424,23 @@ namespace NVGE
                     MessageBox.Show(this, string.Format(Strings.UnExpectedError, Common.GlobalException), Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                CloseSplash();
-                Activate();
+
             }
             catch (Exception ex)
             {
                 using Form dummy = new();
                 dummy.TopMost = true;
                 MessageBox.Show(dummy, "An unexpected error has occurred.\n\n" + ex, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Common.ExportExceptionLog(ex);
                 dummy.TopMost = false;
 
-                CloseSplash();
+                if (Config.Entry["IsNoSplash"].Value == "false")
+                {
+                    CloseSplash();
+                }
                 Activate();
             }
-            
+
         }
 
         private void OpenImegeIToolStripMenuItem_Click(object sender, EventArgs e)
@@ -373,6 +482,7 @@ namespace NVGE
                             label1.Visible = false;
                             ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
                             pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                            Common.IsVideo = false;
                             return;
                         }
                         else
@@ -395,6 +505,7 @@ namespace NVGE
                         label1.Visible = false;
                         ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
                         pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                        Common.IsVideo = false;
                         return;
                     }
                 }
@@ -424,6 +535,7 @@ namespace NVGE
                     button_Image.Enabled = true;
                     closeFileCToolStripMenuItem.Enabled = true;
                     label1.Text = Strings.MultipleImageCaption;
+                    Common.IsVideo = false;
                     return;
                 }
             }
@@ -433,7 +545,7 @@ namespace NVGE
             }
         }
 
-        private void OpenVideoVToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void OpenVideoVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new()
             {
@@ -453,6 +565,7 @@ namespace NVGE
                 toolStripStatusLabel_Status.Text = Strings.ReadedString;
                 toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
                 ReadLabels();
+                label1.Visible = false;
                 label_File.Text = ofd.FileName;
                 label_Size.Text = sz + Strings.SizeString;
                 button_Video.Enabled = true;
@@ -462,14 +575,26 @@ namespace NVGE
                     button_Video.Text = Strings.ButtonUpScaleGIF;
                     label1.Text = Strings.AnimGIFCaption;
                     Common.GIFflag = true;
+                    Common.IsVideo = false;
                 }
                 else
                 {
                     button_Video.Text = Strings.ButtonUpscaleVideo;
                     label1.Text = Strings.VideoCaption;
                     Common.GIFflag = false;
+                    Common.IsVideo = true;
                 }
 
+                //ImageConvert.GetVideoThumbnailAsync(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
+                await Task.Run(() => ImageConvert.GetVideoThumbnail(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png"));
+
+                Common.bimg = new(Properties.Resources.video_frame);
+                Common.cimg = new(Directory.GetCurrentDirectory() + @"\tmp.png");
+                Common.graph = Graphics.FromImage(Common.cimg);
+                Common.graph.DrawImage(Common.bimg, 0, 0, Common.cimg.Width, Common.cimg.Height);
+                pictureBox_DD.Image = Common.cimg;
+
+                //pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
                 Common.GetVideoFps(Common.VideoPath);
 
                 return;
@@ -502,6 +627,7 @@ namespace NVGE
                     pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
                     Common.ImageFile = new string[1];
                     Common.ImageFile[0] = Directory.GetCurrentDirectory() + @"\tmp.png";
+                    Common.IsVideo = false;
                 }
             }
             else
@@ -520,6 +646,9 @@ namespace NVGE
             }
             else
             {
+                Common.bimg?.Dispose();
+                Common.cimg?.Dispose();
+                Common.graph?.Dispose();
                 if (button_Image.Enabled == true)
                 {
                     button_Image.Enabled = false;
@@ -536,9 +665,13 @@ namespace NVGE
                 {
                     closeFileCToolStripMenuItem.Enabled = false;
                 }
-                if (Common.GIFflag == true)
+                if (Common.GIFflag)
                 {
                     Common.GIFflag = false;
+                }
+                if (Common.IsVideo)
+                {
+                    Common.IsVideo = false;
                 }
                 button_Video.Text = Strings.ButtonUpscaleVideo;
                 ResetLabels();
@@ -1538,7 +1671,7 @@ namespace NVGE
                                 pictureBox_DD.Image = null;
                                 File.Delete(Directory.GetCurrentDirectory() + @"\tmp.png");
                                 MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                switch (bool.Parse(Config.Entry["DestFolder"].Value))
+                                switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
                                 {
                                     case true:
                                         Process.Start("EXPLORER.EXE", @"/select,""" + sfd.FileName + @"""");
@@ -1594,7 +1727,7 @@ namespace NVGE
                     }
 
                 }
-                else
+                else // multiple
                 {
                     switch (fmt)
                     {
@@ -2498,18 +2631,10 @@ namespace NVGE
 
                     if (Common.ImgDetFlag == 0)
                     {
-                        FolderBrowserDialog fbd = new()
-                        {
-                            Description = Strings.FBDImageTitle,
-                            RootFolder = Environment.SpecialFolder.Desktop,
-                            SelectedPath = Application.ExecutablePath.Replace(Path.GetFileName(Application.ExecutablePath), ""),
-                            ShowNewFolderButton = true
-                        };
-
-                        if (fbd.ShowDialog(this) == DialogResult.OK)
+                        if (bool.Parse(Config.Entry["IsFixedLocation"].Value)) // fixed
                         {
                             Common.ProgressFlag = 1;
-                            Common.FBDSavePath = fbd.SelectedPath;
+                            Common.FBDSavePath = Config.Entry["FixedLocationPath"].Value;
                             Common.ProgMin = 0;
                             Common.ProgMax = Common.ImageFile.Length;
 
@@ -2555,7 +2680,7 @@ namespace NVGE
                                     closeFileCToolStripMenuItem.Enabled = false;
                                     label1.Text = Strings.DragDropCaption;
                                     MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    switch (bool.Parse(Config.Entry["DestFolder"].Value))
+                                    switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
                                     {
                                         case true:
                                             Process.Start("EXPLORER.EXE", Common.FBDSavePath);
@@ -2629,7 +2754,7 @@ namespace NVGE
                                 closeFileCToolStripMenuItem.Enabled = false;
                                 label1.Text = Strings.DragDropCaption;
                                 MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                switch (bool.Parse(Config.Entry["DestFolder"].Value))
+                                switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
                                 {
                                     case true:
                                         Process.Start("EXPLORER.EXE", Common.FBDSavePath);
@@ -2639,17 +2764,161 @@ namespace NVGE
                                 }
                             }
                         }
-                        else
+                        else // normal
                         {
-                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
-                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
-                            ResetLabels();
-                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
-                            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
-                            button_Image.Enabled = false;
-                            closeFileCToolStripMenuItem.Enabled = false;
-                            label1.Text = Strings.DragDropCaption;
-                            return;
+                            FolderBrowserDialog fbd = new()
+                            {
+                                Description = Strings.FBDImageTitle,
+                                RootFolder = Environment.SpecialFolder.Desktop,
+                                SelectedPath = Application.ExecutablePath.Replace(Path.GetFileName(Application.ExecutablePath), ""),
+                                ShowNewFolderButton = true
+                            };
+
+                            if (fbd.ShowDialog(this) == DialogResult.OK)
+                            {
+                                Common.ProgressFlag = 1;
+                                Common.FBDSavePath = fbd.SelectedPath;
+                                Common.ProgMin = 0;
+                                Common.ProgMax = Common.ImageFile.Length;
+
+                                if (Directory.GetFiles(Common.FBDSavePath, "*.*").Length != 0)
+                                {
+                                    DialogResult dr = MessageBox.Show(Strings.MSGAlready, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                    if (dr == DialogResult.Yes)
+                                    {
+                                        Common.DeleteDirectoryFiles(Common.FBDSavePath);
+                                        foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*"))
+                                        {
+                                            FileInfo fi = new(file);
+                                            switch (bool.Parse(Config.Entry["Pixel"].Value))
+                                            {
+                                                case true:
+                                                    ImageConvert.IMAGEResize(file, int.Parse(Config.Entry["Pixel_width"].Value), int.Parse(Config.Entry["Pixel_height"].Value), ImageConvert.GetFormat(file));
+                                                    break;
+                                                case false:
+                                                    break;
+                                            }
+                                            File.Move(file, Common.FBDSavePath + @"\" + fi.Name);
+                                            if (!File.Exists(Common.FBDSavePath + @"\" + fi.Name))
+                                            {
+                                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                                ResetLabels();
+                                                toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                                button_Image.Enabled = false;
+                                                closeFileCToolStripMenuItem.Enabled = false;
+                                                label1.Text = Strings.DragDropCaption;
+                                                MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return;
+                                            }
+
+                                        }
+                                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                        ResetLabels();
+                                        toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                        button_Image.Enabled = false;
+                                        closeFileCToolStripMenuItem.Enabled = false;
+                                        label1.Text = Strings.DragDropCaption;
+                                        MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                                        {
+                                            case true:
+                                                Process.Start("EXPLORER.EXE", Common.FBDSavePath);
+                                                break;
+                                            case false:
+                                                break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                        Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                        ResetLabels();
+                                        toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                        toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                        button_Image.Enabled = false;
+                                        closeFileCToolStripMenuItem.Enabled = false;
+                                        label1.Text = Strings.DragDropCaption;
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x", "*"))
+                                    {
+                                        FileInfo fi = new(file);
+                                        switch (bool.Parse(Config.Entry["Pixel"].Value))
+                                        {
+                                            case true:
+                                                ImageConvert.IMAGEResize(file, int.Parse(Config.Entry["Pixel_width"].Value), int.Parse(Config.Entry["Pixel_height"].Value), ImageConvert.GetFormat(file));
+                                                break;
+                                            case false:
+                                                break;
+                                        }
+                                        File.Move(file, Common.FBDSavePath + @"\" + fi.Name);
+                                        if (!File.Exists(Common.FBDSavePath + @"\" + fi.Name))
+                                        {
+                                            Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                            ResetLabels();
+                                            toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                            toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                            button_Image.Enabled = false;
+                                            closeFileCToolStripMenuItem.Enabled = false;
+                                            label1.Text = Strings.DragDropCaption;
+                                            MessageBox.Show(Strings.IMGUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                        switch (fmt)
+                                        {
+                                            case 3:
+                                                {
+                                                    ImageConvert.IMAGEtoICON(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png", Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".ico");
+                                                    File.Delete(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png");
+                                                }
+                                                break;
+                                            case 4:
+                                                {
+                                                    ImageConvert.IMAGEtoAnyIMAGE(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png", Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + Common.ManualImageFormat);
+                                                    File.Delete(Common.FBDSavePath + @"\" + Common.SFDRandomNumber() + ".png");
+                                                }
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images");
+                                    ResetLabels();
+                                    toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                    toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                    button_Image.Enabled = false;
+                                    closeFileCToolStripMenuItem.Enabled = false;
+                                    label1.Text = Strings.DragDropCaption;
+                                    MessageBox.Show(Strings.IMGUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                                    {
+                                        case true:
+                                            Process.Start("EXPLORER.EXE", Common.FBDSavePath);
+                                            break;
+                                        case false:
+                                            break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\sources");
+                                Common.DeleteDirectoryFiles(Directory.GetCurrentDirectory() + @"\_temp-project\images\2x");
+                                ResetLabels();
+                                toolStripStatusLabel_Status.Text = Strings.NotReadedStatusString;
+                                toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 255, 0, 0);
+                                button_Image.Enabled = false;
+                                closeFileCToolStripMenuItem.Enabled = false;
+                                label1.Text = Strings.DragDropCaption;
+                                return;
+                            }
                         }
                     }
                     else
@@ -3102,7 +3371,7 @@ namespace NVGE
                         break;
                 }
             }
-            else
+            else // re-upscale
             {
                 using FormProgress Form1 = new(4);
                 switch (engine)
@@ -3362,7 +3631,14 @@ namespace NVGE
                         closeFileCToolStripMenuItem.Enabled = false;
                         label1.Text = Strings.DragDropCaption;
                         MessageBox.Show(Strings.VRUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                        switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                        {
+                            case true:
+                                Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                                break;
+                            case false:
+                                break;
+                        }
                         Common.GIFflag = false;
                         File.Delete(Directory.GetCurrentDirectory() + @"\_temp-project\tmp.mp4");
                         return;
@@ -3474,7 +3750,14 @@ namespace NVGE
                                     closeFileCToolStripMenuItem.Enabled = false;
                                     label1.Text = Strings.DragDropCaption;
                                     MessageBox.Show(Strings.VRUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                                    switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                                    {
+                                        case true:
+                                            Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                                            break;
+                                        case false:
+                                            break;
+                                    }
                                 }
                                 else
                                 {
@@ -3585,7 +3868,14 @@ namespace NVGE
                                 closeFileCToolStripMenuItem.Enabled = false;
                                 label1.Text = Strings.DragDropCaption;
                                 MessageBox.Show(Strings.VRUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                                switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                                {
+                                    case true:
+                                        Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                                        break;
+                                    case false:
+                                        break;
+                                }
                             }
                             else
                             {
@@ -3693,7 +3983,14 @@ namespace NVGE
                             closeFileCToolStripMenuItem.Enabled = false;
                             label1.Text = Strings.DragDropCaption;
                             MessageBox.Show(Strings.VRUP, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                            switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                            {
+                                case true:
+                                    Process.Start("EXPLORER.EXE", @"/select,""" + Common.SFDSavePath + @"""");
+                                    break;
+                                case false:
+                                    break;
+                            }
                         }
                         else
                         {
@@ -3763,6 +4060,9 @@ namespace NVGE
             {
                 Common.DeleteDirectory(Config.Entry["AudioLocation"].Value + @"\audio");
             }
+            Common.bimg?.Dispose();
+            Common.cimg?.Dispose();
+            Common.graph?.Dispose();
             if (File.Exists(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip"))
             {
                 File.Delete(Directory.GetCurrentDirectory() + @"\ffmpeg-release-essentials.zip");
@@ -3830,7 +4130,7 @@ namespace NVGE
             }
         }
 
-        private void Label1_DragDrop(object sender, DragEventArgs e)
+        private async void Label1_DragDrop(object sender, DragEventArgs e)
         {
             Common.GIFflag = false;
             button_Video.Text = Strings.ButtonUpscaleVideo;
@@ -3858,6 +4158,7 @@ namespace NVGE
                     label_Size.Text = sz + Strings.SizeString;
                     button_Image.Enabled = true;
                     label1.Visible = false;
+                    Common.IsVideo = false;
 
                     ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
 
@@ -3865,7 +4166,7 @@ namespace NVGE
                     closeFileCToolStripMenuItem.Enabled = true;
                     return;
                 }
-                else if (ext == ".EPS")
+                else if (ext == ".EPS" || ext == ".EPS2" || ext == ".EPS3" || ext == ".EPSF" || ext == ".EPSI" || ext == ".EPT")
                 {
                     if (Common.CheckGhostscript())
                     {
@@ -3878,6 +4179,7 @@ namespace NVGE
                         label_Size.Text = sz + Strings.SizeString;
                         button_Image.Enabled = true;
                         label1.Visible = false;
+                        Common.IsVideo = false;
 
                         ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
 
@@ -3907,6 +4209,7 @@ namespace NVGE
                     button_Video.Text = Strings.ButtonUpScaleGIF;
                     closeFileCToolStripMenuItem.Enabled = true;
                     Common.GIFflag = true;
+                    Common.IsVideo = false;
 
                     Common.GetVideoFps(Common.VideoPath);
 
@@ -3920,11 +4223,22 @@ namespace NVGE
                     toolStripStatusLabel_Status.Text = Strings.ReadedString;
                     toolStripStatusLabel_Status.ForeColor = Color.FromArgb(0, 0, 225, 0);
                     ReadLabels();
+                    label1.Visible = false;
                     label_File.Text = file.FullName;
                     label_Size.Text = sz + Strings.SizeString;
                     button_Video.Enabled = true;
                     label1.Text = Strings.VideoCaption;
                     closeFileCToolStripMenuItem.Enabled = true;
+                    Common.GIFflag = false;
+                    Common.IsVideo = true;
+
+                    await Task.Run(() => ImageConvert.GetVideoThumbnail(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png"));
+
+                    Common.bimg = new(Properties.Resources.video_frame);
+                    Common.cimg = new(Directory.GetCurrentDirectory() + @"\tmp.png");
+                    Common.graph = Graphics.FromImage(Common.cimg);
+                    Common.graph.DrawImage(Common.bimg, 0, 0, Common.cimg.Width, Common.cimg.Height);
+                    pictureBox_DD.Image = Common.cimg;
 
                     Common.GetVideoFps(Common.VideoPath);
 
@@ -3949,6 +4263,16 @@ namespace NVGE
                         case ".DIB":
                             continue;
                         case ".EPS":
+                            continue;
+                        case ".EPS2":
+                            continue;
+                        case ".EPS3":
+                            continue;
+                        case ".EPSF":
+                            continue;
+                        case ".EPSI":
+                            continue;
+                        case ".EPT":
                             continue;
                         case ".WEBP":
                             continue;
@@ -3988,7 +4312,7 @@ namespace NVGE
                     }
                 }
 
-                if (lst.Contains(".eps") || lst.Contains(".EPS"))
+                if (lst.Contains(".eps") || lst.Contains(".eps2") || lst.Contains(".eps3") || lst.Contains(".epsf") || lst.Contains(".epsi") || lst.Contains(".ept") || lst.Contains(".EPS") || lst.Contains(".EPS2") || lst.Contains(".EPS3") || lst.Contains(".EPSF") || lst.Contains(".EPSI") || lst.Contains(".EPT"))
                 {
                     if (!Common.CheckGhostscript())
                     {
@@ -4012,15 +4336,24 @@ namespace NVGE
                 button_Image.Enabled = true;
                 label1.Text = Strings.MultipleImageCaption;
                 closeFileCToolStripMenuItem.Enabled = true;
+                Common.IsVideo = false;
                 return;
             }
         }
 
         private void PictureBox_DD_Click(object sender, EventArgs e)
         {
-            FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\tmp.png");
-            formShowPicture.ShowDialog();
-            formShowPicture.Dispose();
+            if (Common.IsVideo)
+            {
+                FormVideoPlayer formVideoPlayer = new(Common.VideoPath);
+                formVideoPlayer.ShowDialog();
+            }
+            else
+            {
+                FormShowPicture formShowPicture = new(Directory.GetCurrentDirectory() + @"\tmp.png");
+                formShowPicture.ShowDialog();
+                formShowPicture.Dispose();
+            }
         }
 
         private void PictureBox_DD_DragEnter(object sender, DragEventArgs e)
@@ -4031,7 +4364,7 @@ namespace NVGE
             }
         }
 
-        private void PictureBox_DD_DragDrop(object sender, DragEventArgs e)
+        private async void PictureBox_DD_DragDrop(object sender, DragEventArgs e)
         {
             button_Video.Text = Strings.ButtonUpscaleVideo;
             Common.GIFflag = false;
@@ -4040,6 +4373,12 @@ namespace NVGE
             if (pictureBox_DD.Image != null)
             {
                 pictureBox_DD.Image = null;
+                if (Common.IsVideo)
+                {
+                    Common.bimg?.Dispose();
+                    Common.cimg?.Dispose();
+                    Common.graph?.Dispose();
+                }
                 File.Delete(Directory.GetCurrentDirectory() + @"\tmp.png");
             }
 
@@ -4064,6 +4403,7 @@ namespace NVGE
                     label_File.Text = dd[0];
                     label_Size.Text = sz + Strings.SizeString;
                     button_Image.Enabled = true;
+                    Common.IsVideo = false;
 
                     ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
 
@@ -4073,7 +4413,7 @@ namespace NVGE
 
                     return;
                 }
-                else if (ext == ".EPS")
+                else if (ext == ".EPS" || ext == ".EPS2" || ext == ".EPS3" || ext == ".EPSF" || ext == ".EPSI" || ext == ".EPT")
                 {
                     if (Common.CheckGhostscript())
                     {
@@ -4085,6 +4425,7 @@ namespace NVGE
                         label_File.Text = dd[0];
                         label_Size.Text = sz + Strings.SizeString;
                         button_Image.Enabled = true;
+                        Common.IsVideo = false;
 
                         ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
 
@@ -4116,6 +4457,7 @@ namespace NVGE
                     button_Video.Text = Strings.ButtonUpScaleGIF;
                     closeFileCToolStripMenuItem.Enabled = true;
                     Common.GIFflag = true;
+                    Common.IsVideo = false;
 
                     Common.GetVideoFps(Common.VideoPath);
 
@@ -4132,9 +4474,19 @@ namespace NVGE
                     label_File.Text = file.FullName;
                     label_Size.Text = sz + Strings.SizeString;
                     button_Video.Enabled = true;
-                    label1.Visible = true;
+                    label1.Visible = false;
                     label1.Text = Strings.VideoCaption;
                     closeFileCToolStripMenuItem.Enabled = true;
+                    Common.GIFflag = false;
+                    Common.IsVideo = true;
+
+                    await Task.Run(() => ImageConvert.GetVideoThumbnail(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png"));
+
+                    Common.bimg = new(Properties.Resources.video_frame);
+                    Common.cimg = new(Directory.GetCurrentDirectory() + @"\tmp.png");
+                    Common.graph = Graphics.FromImage(Common.cimg);
+                    Common.graph.DrawImage(Common.bimg, 0, 0, Common.cimg.Width, Common.cimg.Height);
+                    pictureBox_DD.Image = Common.cimg;
 
                     Common.GetVideoFps(Common.VideoPath);
 
@@ -4159,6 +4511,16 @@ namespace NVGE
                         case ".DIB":
                             continue;
                         case ".EPS":
+                            continue;
+                        case ".EPS2":
+                            continue;
+                        case ".EPS3":
+                            continue;
+                        case ".EPSF":
+                            continue;
+                        case ".EPSI":
+                            continue;
+                        case ".EPT":
                             continue;
                         case ".WEBP":
                             continue;
@@ -4198,7 +4560,7 @@ namespace NVGE
                     }
                 }
 
-                if (lst.Contains(".eps") || lst.Contains(".EPS"))
+                if (lst.Contains(".eps") || lst.Contains(".eps2") || lst.Contains(".eps3") || lst.Contains(".epsf") || lst.Contains(".epsi") || lst.Contains(".ept") || lst.Contains(".EPS") || lst.Contains(".EPS2") || lst.Contains(".EPS3") || lst.Contains(".EPSF") || lst.Contains(".EPSI") || lst.Contains(".EPT"))
                 {
                     if (!Common.CheckGhostscript())
                     {
@@ -4223,6 +4585,7 @@ namespace NVGE
                 label1.Visible = true;
                 label1.Text = Strings.MultipleImageCaption;
                 closeFileCToolStripMenuItem.Enabled = true;
+                Common.IsVideo = false;
                 return;
             }
         }
@@ -4373,7 +4736,14 @@ namespace NVGE
                     if (File.Exists(save))
                     {
                         MessageBox.Show(Strings.VideoFormatChange_SuccessCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Process.Start("EXPLORER.EXE", @"/select,""" + save + @"""");
+                        switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                        {
+                            case true:
+                                Process.Start("EXPLORER.EXE", @"/select,""" + save + @"""");
+                                break;
+                            case false:
+                                break;
+                        }
                         return;
                     }
                     else
@@ -4401,6 +4771,7 @@ namespace NVGE
         private void ChangeImageFormatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FileInfo fi, fi2;
+            Config.Load(Common.xmlpath);
 
             OpenFileDialog ofd = new()
             {
@@ -4449,7 +4820,14 @@ namespace NVGE
                         if (File.Exists(save))
                         {
                             MessageBox.Show(Strings.VideoFormatChange_SuccessCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Process.Start("EXPLORER.EXE", @"/select,""" + save + @"""");
+                            switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                            {
+                                case true:
+                                    Process.Start("EXPLORER.EXE", @"/select,""" + save + @"""");
+                                    break;
+                                case false:
+                                    break;
+                            }
                             return;
                         }
                         else
@@ -4465,12 +4843,7 @@ namespace NVGE
                 }
                 else // multiple
                 {
-                    FolderBrowserDialog fbd = new()
-                    {
-                        InitialDirectory = "",
-                        ShowNewFolderButton = true,
-                    };
-                    if (fbd.ShowDialog() == DialogResult.OK)
+                    if (bool.Parse(Config.Entry["IsFixedLocation"].Value)) // fixed
                     {
                         int count = 0;
 
@@ -4486,7 +4859,7 @@ namespace NVGE
                         foreach (var item in opens)
                         {
                             fi = new FileInfo(item);
-                            string fname = fi.Name, savepath = fbd.SelectedPath + @"\" + fname + destext;
+                            string fname = fi.Name, savepath = Config.Entry["FixedLocationPath"].Value + @"\" + fname + destext;
 
                             if (File.Exists(savepath))
                             {
@@ -4505,12 +4878,70 @@ namespace NVGE
                         }
 
                         MessageBox.Show(string.Format(Strings.ImageMultipleConversionSuccess, count, destext.Replace(".", "")), Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Process.Start("EXPLORER.EXE", @"/select,""" + fbd.SelectedPath + @"""");
+                        switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                        {
+                            case true:
+                                Process.Start("EXPLORER.EXE", @"/select,""" + Config.Entry["FixedLocationPath"].Value + @"""");
+                                break;
+                            case false:
+                                break;
+                        }
                         return;
                     }
+                    else // normal
+                    {
+                        FolderBrowserDialog fbd = new()
+                        {
+                            InitialDirectory = "",
+                            ShowNewFolderButton = true,
+                        };
+                        if (fbd.ShowDialog() == DialogResult.OK)
+                        {
+                            int count = 0;
+
+                            using FormImageConvertTarget Form = new();
+                            Form.ShowDialog();
+
+                            if (string.IsNullOrEmpty(Common.ImageConversionExtension))
+                            {
+                                return;
+                            }
+                            string destext = Common.ImageConversionExtension;
+
+                            foreach (var item in opens)
+                            {
+                                fi = new FileInfo(item);
+                                string fname = fi.Name, savepath = fbd.SelectedPath + @"\" + fname + destext;
+
+                                if (File.Exists(savepath))
+                                {
+                                    File.Delete(savepath);
+                                }
+                                ImageConvert.IMAGEtoAnyIMAGE(item, savepath);
+
+                                if (File.Exists(savepath))
+                                {
+                                    count++;
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format(Strings.ImageMultipleConversionWarning, fname, destext.Replace(".", "")), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+
+                            MessageBox.Show(string.Format(Strings.ImageMultipleConversionSuccess, count, destext.Replace(".", "")), Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                            {
+                                case true:
+                                    Process.Start("EXPLORER.EXE", @"/select,""" + fbd.SelectedPath + @"""");
+                                    break;
+                                case false:
+                                    break;
+                            }
+                            return;
+                        }
+                    }
                 }
-
-
             }
             else
             {
@@ -5125,6 +5556,7 @@ namespace NVGE
         private void ConvertCRgbaSDEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FileInfo fi, fi2;
+            Config.Load(Common.xmlpath);
 
             OpenFileDialog ofd = new()
             {
@@ -5173,7 +5605,14 @@ namespace NVGE
                         if (File.Exists(save))
                         {
                             MessageBox.Show(Strings.VideoFormatChange_SuccessCaption, Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Process.Start("EXPLORER.EXE", @"/select,""" + save + @"""");
+                            switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                            {
+                                case true:
+                                    Process.Start("EXPLORER.EXE", @"/select,""" + save + @"""");
+                                    break;
+                                case false:
+                                    break;
+                            }
                             return;
                         }
                         else
@@ -5189,12 +5628,7 @@ namespace NVGE
                 }
                 else // multiple
                 {
-                    FolderBrowserDialog fbd = new()
-                    {
-                        InitialDirectory = "",
-                        ShowNewFolderButton = true,
-                    };
-                    if (fbd.ShowDialog() == DialogResult.OK)
+                    if (bool.Parse(Config.Entry["IsFixedLocation"].Value)) // fixed
                     {
                         int count = 0;
 
@@ -5209,7 +5643,7 @@ namespace NVGE
                         foreach (var item in opens)
                         {
                             fi = new FileInfo(item);
-                            string fname = fi.Name, savepath = fbd.SelectedPath + @"\" + fname + destext;
+                            string fname = fi.Name, savepath = Config.Entry["FixedLocationPath"].Value + @"\" + fname + destext;
 
                             if (File.Exists(savepath))
                             {
@@ -5228,16 +5662,146 @@ namespace NVGE
                         }
 
                         MessageBox.Show(string.Format(Strings.ImageMultipleConversionSuccess, count, destext.Replace(".", "")), Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Process.Start("EXPLORER.EXE", @"/select,""" + fbd.SelectedPath + @"""");
+                        switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                        {
+                            case true:
+                                Process.Start("EXPLORER.EXE", @"/select,""" + Config.Entry["FixedLocationPath"].Value + @"""");
+                                break;
+                            case false:
+                                break;
+                        }
                         return;
                     }
+                    else // normal
+                    {
+                        FolderBrowserDialog fbd = new()
+                        {
+                            InitialDirectory = "",
+                            ShowNewFolderButton = true,
+                        };
+                        if (fbd.ShowDialog() == DialogResult.OK)
+                        {
+                            int count = 0;
+
+                            Common.ImageConversionExtension = ".DDS";
+
+                            if (string.IsNullOrEmpty(Common.ImageConversionExtension))
+                            {
+                                return;
+                            }
+                            string destext = Common.ImageConversionExtension;
+
+                            foreach (var item in opens)
+                            {
+                                fi = new FileInfo(item);
+                                string fname = fi.Name, savepath = fbd.SelectedPath + @"\" + fname + destext;
+
+                                if (File.Exists(savepath))
+                                {
+                                    File.Delete(savepath);
+                                }
+                                ImageConvert.IMAGEtoAnyIMAGE(item, savepath);
+
+                                if (File.Exists(savepath))
+                                {
+                                    count++;
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format(Strings.ImageMultipleConversionWarning, fname, destext.Replace(".", "")), Strings.MSGWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+
+                            MessageBox.Show(string.Format(Strings.ImageMultipleConversionSuccess, count, destext.Replace(".", "")), Strings.MSGInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            switch (bool.Parse(Config.Entry["IsShowDirectory"].Value))
+                            {
+                                case true:
+                                    Process.Start("EXPLORER.EXE", @"/select,""" + fbd.SelectedPath + @"""");
+                                    break;
+                                case false:
+                                    break;
+                            }
+                            return;
+                        }
+                    }
                 }
-
-
             }
             else
             {
                 return;
+            }
+        }
+
+        private void EnglishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeLanguageUX("");
+            
+            Config.Load(Common.xmlpath);
+            Config.Entry["ApplicationLanguage"].Value = "0";
+            Config.Save(Common.xmlpath);
+            if (MessageBox.Show("Language settings have been changed. \nYou will need to restart the application for the changes to take effect. Would you like to restart?", "Confirmation of restart", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+            else
+            {
+                MessageBox.Show("Changes will take effect after the restart.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void JapaneseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeLanguageUX("ja");
+
+            Config.Load(Common.xmlpath);
+            Config.Entry["ApplicationLanguage"].Value = "1";
+            Config.Save(Common.xmlpath);
+            if (MessageBox.Show("言語設定が変更されました。\n変更を反映するにはアプリケーションを再起動する必要があります。再起動しますか？", "再起動の確認", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+            else
+            {
+                MessageBox.Show("変更は再起動後に反映されます。", "完了", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ChineseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeLanguageUX("zh");
+
+            Config.Load(Common.xmlpath);
+            Config.Entry["ApplicationLanguage"].Value = "2";
+            Config.Save(Common.xmlpath);
+            if (MessageBox.Show("语言设置已更改。 \n您需要重新启动应用程序才能使更改生效。 要重新启动吗？", "确认重新启动", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+            else
+            {
+                MessageBox.Show("更改将在重启后生效。", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ChangeLanguageUX(string culture)
+        {
+            switch (culture)
+            {
+                case "ja":
+                    japaneseToolStripMenuItem.Checked = true;
+                    englishToolStripMenuItem.Checked = false;
+                    chineseToolStripMenuItem.Checked = false;
+                    break;
+                case "zh":
+                    japaneseToolStripMenuItem.Checked = false;
+                    englishToolStripMenuItem.Checked = false;
+                    chineseToolStripMenuItem.Checked = true;
+                    break;
+                default:
+                    japaneseToolStripMenuItem.Checked = false;
+                    englishToolStripMenuItem.Checked = true;
+                    chineseToolStripMenuItem.Checked = false;
+                    break;
             }
         }
     }
