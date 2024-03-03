@@ -485,6 +485,27 @@ Real-ESRGAN Photo: 写真等をアップスケールする際に適したモデ�
   <data name="VideoFormatChange_SuccessCaption" xml:space="preserve">
     <value>形式変換が完了しました。</value>
   </data>
+  <data name="VideoplayerCurrentFrameCaption" xml:space="preserve">
+    <value>現在のフレームを保存</value>
+  </data>
+  <data name="VideoplayerEnableloopCaption" xml:space="preserve">
+    <value>動画のループ再生を有効</value>
+  </data>
+  <data name="VideoplayerSaveFrameErrorCaption" xml:space="preserve">
+    <value>フレームの保存に失敗しました。</value>
+  </data>
+  <data name="VideoplayerSaveFramefilterCaption" xml:space="preserve">
+    <value>Joint Photographic Experts Group (*.jpg)|*.jpg;</value>
+  </data>
+  <data name="VideoplayerSaveFrameTitleCaption" xml:space="preserve">
+    <value>現在の動画フレームを保存</value>
+  </data>
+  <data name="VideoplayerSpeedCaption" xml:space="preserve">
+    <value>再生速度：</value>
+  </data>
+  <data name="VideoplayerVolumeCaption" xml:space="preserve">
+    <value>音量：</value>
+  </data>
   <data name="VRCNG" xml:space="preserve">
     <value>動画ファイルの解像度の変更が完了しました。</value>
   </data>

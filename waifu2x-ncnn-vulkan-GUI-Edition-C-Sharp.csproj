@@ -9,9 +9,9 @@
     <Company>XyLe</Company>
     <Authors>XyLe</Authors>
     <Product>waifu2x-ncnn-vulkan GUI Edition Reloaded</Product>
-    <Copyright>Copyright (C) 2023 - XyLe. All Rights Reserved.</Copyright>
-    <AssemblyVersion>1.36.2320.1205</AssemblyVersion>
-    <FileVersion>1.36.2320.1205</FileVersion>
+    <Copyright>Copyright (C) 2024 - XyLe. All Rights Reserved.</Copyright>
+    <AssemblyVersion>1.37.2420.303</AssemblyVersion>
+    <FileVersion>1.37.2420.303</FileVersion>
     <Version>1.30</Version>
     <Description>Super-Resolution Convolutional Neural Network（SRCNN）Utility.</Description>
     <PackageIcon>csharp-logo.png</PackageIcon>
@@ -35,11 +35,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="13.4.0" />
-    <PackageReference Include="OpenCvSharp4" Version="4.8.0.20230708" />
-    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.8.0.20230708" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="13.6.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="OpenCvSharp4" Version="4.9.0.20240103" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.9.0.20240103" />
     <PackageReference Include="System.Management" Version="8.0.0" />
     <PackageReference Include="Vortice.DXGI" Version="3.3.4" />
+    <PackageReference Include="Xabe.FFmpeg" Version="5.2.6" />
   </ItemGroup>
 
   <ItemGroup>

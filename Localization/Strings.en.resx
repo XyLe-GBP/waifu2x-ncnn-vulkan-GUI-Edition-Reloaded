@@ -448,6 +448,27 @@ Do you want to open the site?</value>
   <data name="VideoFormatChange_SuccessCaption" xml:space="preserve">
     <value>Format conversion has been completed.</value>
   </data>
+  <data name="VideoplayerCurrentFrameCaption" xml:space="preserve">
+    <value>Save current video frame</value>
+  </data>
+  <data name="VideoplayerEnableloopCaption" xml:space="preserve">
+    <value>Enable Loop Playback</value>
+  </data>
+  <data name="VideoplayerSaveFrameErrorCaption" xml:space="preserve">
+    <value>Failed to save frame.</value>
+  </data>
+  <data name="VideoplayerSaveFramefilterCaption" xml:space="preserve">
+    <value>Joint Photographic Experts Group (*.jpg)|*.jpg;</value>
+  </data>
+  <data name="VideoplayerSaveFrameTitleCaption" xml:space="preserve">
+    <value>Save current video frame.</value>
+  </data>
+  <data name="VideoplayerSpeedCaption" xml:space="preserve">
+    <value>Playback Speed:</value>
+  </data>
+  <data name="VideoplayerVolumeCaption" xml:space="preserve">
+    <value>Volume:</value>
+  </data>
   <data name="VRCNG" xml:space="preserve">
     <value>Video resolution has been changed.</value>
   </data>

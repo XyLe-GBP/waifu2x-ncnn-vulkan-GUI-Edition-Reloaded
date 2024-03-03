@@ -261,7 +261,7 @@ Do you want to update it?</value>
     <value>No file is loaded.</value>
   </data>
   <data name="FilterImage" xml:space="preserve">
-    <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All supported formats|*.bmp;*.dib;*.eps;*.webp;*.gif;*.ico;*.icns;*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;*.png;*.pict;*.svg;*.svgz;*.tif;*.tiff</value>
+    <value>Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps, *.epsf)|*.eps;*.epsf;|Level 2 Encapsulated PostScript File/Format (*.eps2)|*.eps2;|Level 3 Encapsulated PostScript File/Format (*.eps3)|*.eps3;|Encapsulated PostScript Interchange File/Format (*.epsi)|*.epsi;|Encapsulated PostScript with TIFF preview (*.ept)|*.ept;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All supported formats|*.bmp;*.dib;*.eps;*.eps2;*.eps3;*.epsi;*.ept;*.webp;*.gif;*.ico;*.icns;*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;*.png;*.pict;*.svg;*.svgz;*.tif;*.tiff</value>
   </data>
   <data name="FilterMPEG4" xml:space="preserve">
     <value>H.264 MPEG-4 (*.mp4)|*.mp4</value>
@@ -481,6 +481,27 @@ Do you want to open the site?</value>
   </data>
   <data name="VideoFormatChange_SuccessCaption" xml:space="preserve">
     <value>Format conversion has been completed.</value>
+  </data>
+  <data name="VideoplayerCurrentFrameCaption" xml:space="preserve">
+    <value>Save current video frame</value>
+  </data>
+  <data name="VideoplayerEnableloopCaption" xml:space="preserve">
+    <value>Enable Loop Playback</value>
+  </data>
+  <data name="VideoplayerSaveFrameErrorCaption" xml:space="preserve">
+    <value>Failed to save frame.</value>
+  </data>
+  <data name="VideoplayerSaveFramefilterCaption" xml:space="preserve">
+    <value>Joint Photographic Experts Group (*.jpg)|*.jpg;</value>
+  </data>
+  <data name="VideoplayerSaveFrameTitleCaption" xml:space="preserve">
+    <value>Save current video frame.</value>
+  </data>
+  <data name="VideoplayerSpeedCaption" xml:space="preserve">
+    <value>Playback Speed:</value>
+  </data>
+  <data name="VideoplayerVolumeCaption" xml:space="preserve">
+    <value>Volume:</value>
   </data>
   <data name="VRCNG" xml:space="preserve">
     <value>Video resolution has been changed.</value>

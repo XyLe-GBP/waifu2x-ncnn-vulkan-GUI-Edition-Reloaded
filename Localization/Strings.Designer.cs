@@ -438,7 +438,7 @@ namespace NVGE.Localization {
         }
         
         /// <summary>
-        ///   Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps)|*.eps;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.jpeg,*.pjpeg,*.pjp)|*.jfif;*.jpg;*.jpe;*.jpeg;*.pjpeg;*.pjp;|Portable Network Graphics (*.png)|*.png;|QuickDraw Picture (*.pict)|*.pict;|Scalable Vector Graphics (*.svg,*.svgz)|*.svg;*.svgz;|Tagged Image File Format (*.tif,*.tiff)|*.tif;*.tiff;|All supported f [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///   Bitmap Image (*.bmp,*.dib)|*.bmp;*.dib;|Encapsulated PostScript File/Format (*.eps, *.epsf)|*.eps;*.epsf;|Level 2 Encapsulated PostScript File/Format (*.eps2)|*.eps2;|Level 3 Encapsulated PostScript File/Format (*.eps3)|*.eps3;|Encapsulated PostScript Interchange File/Format (*.epsi)|*.epsi;|Encapsulated PostScript with TIFF preview (*.ept)|*.ept;|Google webp (*.webp)|*.webp;|Graphics Interchange Format (*.gif)|*.gif;|Icon (*.ico,*.icns)|*.ico;*.icns;|Joint Photographic Experts Group (*.jfif,*.jpg,*.jpe,*.j [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string FilterImage {
             get {
@@ -1070,6 +1070,69 @@ namespace NVGE.Localization {
         public static string VideoFormatChange_SuccessCaption {
             get {
                 return ResourceManager.GetString("VideoFormatChange_SuccessCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Save current video frame に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VideoplayerCurrentFrameCaption {
+            get {
+                return ResourceManager.GetString("VideoplayerCurrentFrameCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Enable Loop Playback に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VideoplayerEnableloopCaption {
+            get {
+                return ResourceManager.GetString("VideoplayerEnableloopCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Failed to save frame. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VideoplayerSaveFrameErrorCaption {
+            get {
+                return ResourceManager.GetString("VideoplayerSaveFrameErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Joint Photographic Experts Group (*.jpg)|*.jpg; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VideoplayerSaveFramefilterCaption {
+            get {
+                return ResourceManager.GetString("VideoplayerSaveFramefilterCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Save current video frame. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VideoplayerSaveFrameTitleCaption {
+            get {
+                return ResourceManager.GetString("VideoplayerSaveFrameTitleCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Playback Speed: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VideoplayerSpeedCaption {
+            get {
+                return ResourceManager.GetString("VideoplayerSpeedCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Volume: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VideoplayerVolumeCaption {
+            get {
+                return ResourceManager.GetString("VideoplayerVolumeCaption", resourceCulture);
             }
         }
         
