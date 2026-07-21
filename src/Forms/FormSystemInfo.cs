@@ -1,6 +1,10 @@
 ﻿using NVGE.Properties;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Management;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Vortice.DXGI;
@@ -9,117 +13,297 @@ namespace NVGE
 {
     public partial class FormSystemInfo : Form
     {
+        private readonly List<GpuAdapterInfo> gpuAdapters = new();
+
         public FormSystemInfo()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
+            comboBox_GPU.SelectedIndexChanged += ComboBox_GPU_SelectedIndexChanged;
         }
 
         private void FormSystemInfo_Load(object sender, EventArgs e)
         {
-            int adaptercount = 0;
             string[] OSInfo = new string[17];
             string[] CPUInfo = new string[3];
             string[] GPUInfo = new string[3];
             string[] BIOSInfo = new string[5];
-            string[] BaseInfo= new string[3];
-            SystemInfo.GetSystemInformation(OSInfo);
-            SystemInfo.GetProcessorsInformation(CPUInfo);
-            SystemInfo.GetVideoControllerInformation(GPUInfo);
-            SystemInfo.GetBIOSInformation(BIOSInfo);
-            SystemInfo.GetBaseBoardInformation(BaseInfo);
+            string[] BaseInfo = new string[3];
 
-            if (DXGI.CreateDXGIFactory1(out IDXGIFactory1 factory).Failure)
+            SafeReadSystemInfo(() => SystemInfo.GetSystemInformation(OSInfo));
+            SafeReadSystemInfo(() => SystemInfo.GetProcessorsInformation(CPUInfo));
+            SafeReadSystemInfo(() => SystemInfo.GetVideoControllerInformation(GPUInfo));
+            SafeReadSystemInfo(() => SystemInfo.GetBIOSInformation(BIOSInfo));
+            SafeReadSystemInfo(() => SystemInfo.GetBaseBoardInformation(BaseInfo));
+
+            LoadGpuAdapters(GPUInfo);
+            PopulateGpuComboBox();
+
+            CPUVendor(CPUInfo[0]);
+            label_CPUName.Text = ValueOrUnknown(CPUInfo[0]);
+            label_CPUCores.Text = ValueOrUnknown(CPUInfo[1]);
+            label_CPUThreads.Text = ValueOrUnknown(CPUInfo[2]);
+            label_OSName.Text = GetOsDisplayName(OSInfo);
+            label_MBMaker.Text = ValueOrUnknown(BaseInfo[0]);
+            label_MBModel.Text = ValueOrUnknown(BaseInfo[2]);
+            ApplySelectedGpuInfo();
+        }
+
+        private void LoadGpuAdapters(string[] fallbackGpuInfo)
+        {
+            gpuAdapters.Clear();
+            LoadDxgiAdapters();
+            LoadWmiVideoControllers();
+
+            if (gpuAdapters.Count == 0 && fallbackGpuInfo?.Length == 3)
+            {
+                AddOrUpdateGpuAdapter(
+                    fallbackGpuInfo[0],
+                    FormatAdapterRam(fallbackGpuInfo[2]),
+                    fallbackGpuInfo[1]);
+            }
+        }
+
+        private void LoadDxgiAdapters()
+        {
+            try
+            {
+                if (DXGI.CreateDXGIFactory1(out IDXGIFactory1 factory).Failure)
+                {
+                    return;
+                }
+
+                using (factory)
+                {
+                    for (int iAdapter = 0; ; iAdapter++)
+                    {
+                        if (factory.EnumAdapters((uint)iAdapter, out IDXGIAdapter adapter).Failure)
+                        {
+                            break;
+                        }
+
+                        using (adapter)
+                        {
+                            string adapterName = NormalizeDisplayName(adapter.Description.Description);
+                            if (string.IsNullOrWhiteSpace(adapterName) ||
+                                adapter.Description.DedicatedVideoMemory == 0)
+                            {
+                                continue;
+                            }
+
+                            string memoryText = adapter.Description.DedicatedVideoMemory / 1024 / 1024 + "MB";
+                            Debug.WriteLine($"[adapter {iAdapter}]");
+                            Debug.WriteLine($"Description:{adapterName}");
+                            Debug.WriteLine($"DedicatedVideoMemory:{memoryText}");
+                            AddOrUpdateGpuAdapter(adapterName, memoryText, null);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) when (IsSystemInfoException(ex))
+            {
+                Debug.WriteLine(ex);
+            }
+        }
+
+        private void LoadWmiVideoControllers()
+        {
+            try
+            {
+                using ManagementObjectSearcher searcher = new(
+                    "SELECT Name, DriverVersion, AdapterRAM, CurrentBitsPerPixel, CurrentHorizontalResolution FROM Win32_VideoController");
+                using ManagementObjectCollection controllers = searcher.Get();
+                foreach (ManagementObject controller in controllers)
+                {
+                    using (controller)
+                    {
+                        string name = NormalizeDisplayName(controller["Name"]?.ToString());
+                        if (string.IsNullOrWhiteSpace(name))
+                        {
+                            continue;
+                        }
+
+                        bool activeDisplay =
+                            controller["CurrentBitsPerPixel"] != null ||
+                            controller["CurrentHorizontalResolution"] != null;
+                        bool alreadyKnown = FindGpuAdapter(name) != null;
+                        if (!activeDisplay && !alreadyKnown && gpuAdapters.Count > 0)
+                        {
+                            continue;
+                        }
+
+                        AddOrUpdateGpuAdapter(
+                            name,
+                            FormatAdapterRam(controller["AdapterRAM"]?.ToString()),
+                            controller["DriverVersion"]?.ToString());
+                    }
+                }
+            }
+            catch (Exception ex) when (IsSystemInfoException(ex))
+            {
+                Debug.WriteLine(ex);
+            }
+        }
+
+        private void PopulateGpuComboBox()
+        {
+            comboBox_GPU.BeginUpdate();
+            try
+            {
+                comboBox_GPU.Items.Clear();
+                foreach (GpuAdapterInfo adapter in gpuAdapters)
+                {
+                    comboBox_GPU.Items.Add(adapter);
+                }
+
+                comboBox_GPU.Enabled = comboBox_GPU.Items.Count > 1;
+                if (comboBox_GPU.Items.Count > 0)
+                {
+                    comboBox_GPU.SelectedIndex = 0;
+                }
+            }
+            finally
+            {
+                comboBox_GPU.EndUpdate();
+            }
+        }
+
+        private void AddOrUpdateGpuAdapter(string name, string memoryText, string driverVersion)
+        {
+            name = NormalizeDisplayName(name);
+            if (string.IsNullOrWhiteSpace(name))
             {
                 return;
             }
 
-            using (factory)
+            GpuAdapterInfo existing = FindGpuAdapter(name);
+            if (existing == null)
             {
-                for (int iAdapter = 0; ; iAdapter++)
-                {
-                    if (factory.EnumAdapters(iAdapter, out IDXGIAdapter adapter).Failure)
-                    {
-                        break;
-                    }
-
-                    using (adapter)
-                    {
-                        if (adapter.Description.DedicatedVideoMemory == 0)
-                        {
-                            continue;
-                        }
-                        adaptercount++;
-
-                        Debug.WriteLine($"[adapter {iAdapter}]");
-                        Debug.WriteLine($"Description:{adapter.Description.Description}");
-                        comboBox_GPU.Items.Add(adapter.Description.Description);
-                        Debug.WriteLine($"DedicatedVideoMemory:{adapter.Description.DedicatedVideoMemory / 1024 / 1024} MB");
-                        label_GPUMemory.Text = adapter.Description.DedicatedVideoMemory / 1024 / 1024 + "MB";
-                    }
-                }
+                gpuAdapters.Add(new GpuAdapterInfo(
+                    name,
+                    ValueOrUnknown(memoryText),
+                    ValueOrUnknown(driverVersion)));
+                return;
             }
 
-            if (adaptercount > 1)
+            if (IsUnknown(existing.MemoryText) && !string.IsNullOrWhiteSpace(memoryText))
             {
-                comboBox_GPU.Enabled = true;
+                existing.MemoryText = memoryText;
             }
-            else
+            if (IsUnknown(existing.DriverVersion) && !string.IsNullOrWhiteSpace(driverVersion))
             {
-                comboBox_GPU.Enabled = false;
+                existing.DriverVersion = driverVersion;
+            }
+        }
+
+        private GpuAdapterInfo FindGpuAdapter(string name)
+        {
+            string normalizedName = NormalizeGpuName(name);
+            return gpuAdapters.FirstOrDefault(adapter =>
+                string.Equals(NormalizeGpuName(adapter.Name), normalizedName, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private void ComboBox_GPU_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplySelectedGpuInfo();
+        }
+
+        private void ApplySelectedGpuInfo()
+        {
+            if (comboBox_GPU.SelectedItem is not GpuAdapterInfo selectedGpu)
+            {
+                selectedGpu = gpuAdapters.FirstOrDefault();
             }
 
-            /*List<string> GPUList = new();
-            List<long> GPURAMList = new();
-            string[] vn = null;
-            long[] vr = null;
-
-            VRAM v = new();
-            VRAMInfo vram = new(vn, vr);
-            vram = v.GetdGPUInfo();
-            GPUList = new(vram.Name);//SystemInfo.GetGraphicsCardsInformation();
-            GPURAMList = new(vram.VRAM);//SystemInfo.GetGraphicsCardNamesInformation();
-            if (GPUList.Count == 0)
+            if (selectedGpu == null)
             {
-                MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            if (GPURAMList.Count == 0)
-            {
-                MessageBox.Show(Strings.GPUInfomationFailedCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                label_GPUName.Text = "Unknown";
+                label_GPUMaker.Text = "Unknown";
+                label_GPUDriver.Text = "Unknown";
+                label_GPUMemory.Text = "Unknown";
+                pictureBox_GPU.Image = null;
+                return;
             }
 
-            foreach (var gpu in GPUList)
+            label_GPUName.Text = ValueOrUnknown(selectedGpu.Name);
+            label_GPUMaker.Text = GPUVendor(selectedGpu.Name);
+            label_GPUDriver.Text = ValueOrUnknown(selectedGpu.DriverVersion);
+            label_GPUMemory.Text = ValueOrUnknown(selectedGpu.MemoryText);
+        }
+
+        private static string NormalizeDisplayName(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
             {
-                comboBox_GPU.Items.Add(gpu);
+                return string.Empty;
             }
 
-            comboBox_GPU.SelectedIndex = 0;
-            if (Common.GPUList.Count == 1)
-            {
-                comboBox_GPU.Enabled = false;
-            }
-            else
-            {
-                comboBox_GPU.Enabled = true;
-            }*/
+            return Regex.Replace(value.Trim().TrimEnd('\0'), @"\s+", " ");
+        }
 
-            CPUVendor(CPUInfo[0]);
-            label_CPUName.Text = CPUInfo[0];//CPUInfo[0];
-            label_CPUCores.Text = CPUInfo[1];
-            label_CPUThreads.Text = CPUInfo[2];
-            label_OSName.Text = OSInfo[1] + " - " + OSInfo[3];// + " [ build: " + OSInfo[4] + " ]";
-            label_MBMaker.Text = BaseInfo[0];
-            label_MBModel.Text = BaseInfo[2];
-            label_GPUName.Text = GPUInfo[0];
-            label_GPUMaker.Text = GPUVendor(GPUInfo[0]);
-            label_GPUDriver.Text = GPUInfo[1];
-            comboBox_GPU.SelectedIndex = 0;
+        private static string NormalizeGpuName(string value)
+        {
+            return NormalizeDisplayName(value).ToUpperInvariant();
+        }
+
+        private static string FormatAdapterRam(string adapterRam)
+        {
+            if (!long.TryParse(adapterRam, out long bytes) || bytes <= 0)
+            {
+                return "Unknown";
+            }
+
+            return bytes / 1024 / 1024 + "MB";
+        }
+
+        private static string GetOsDisplayName(string[] osInfo)
+        {
+            string name = osInfo?.Length > 1 ? ValueOrUnknown(osInfo[1]) : "Unknown";
+            string version = osInfo?.Length > 3 ? osInfo[3] : null;
+            return string.IsNullOrWhiteSpace(version) ? name : name + " - " + version;
+        }
+
+        private static string ValueOrUnknown(string value)
+        {
+            return string.IsNullOrWhiteSpace(value) ? "Unknown" : value;
+        }
+
+        private static bool IsUnknown(string value)
+        {
+            return string.IsNullOrWhiteSpace(value) ||
+                string.Equals(value, "Unknown", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static void SafeReadSystemInfo(Action readAction)
+        {
+            try
+            {
+                readAction();
+            }
+            catch (Exception ex) when (IsSystemInfoException(ex))
+            {
+                Debug.WriteLine(ex);
+            }
+        }
+
+        private static bool IsSystemInfoException(Exception ex)
+        {
+            return ex is ManagementException ||
+                ex is UnauthorizedAccessException ||
+                ex is COMException ||
+                ex is InvalidOperationException;
         }
 
         private void CPUVendor(string Name)
         {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                return;
+            }
+
             if (Name.Contains("Intel"))
             {
-                if (Name.Contains("Cerelon"))
+                if (Name.Contains("Celeron") || Name.Contains("Cerelon"))
                 {
                     if (Regex.IsMatch(Name, "G[6]...")) // 12 [Alder Lake]
                     {
@@ -208,7 +392,7 @@ namespace NVGE
                         pictureBox_CPU.Image = Resources.atom_x7_6_10th_logo;
                     }
                 }
-                else if (Name.Contains("Core 2"))
+                else if (Name.Contains("Core 2")) // Core 2
                 {
                     if (Name.Contains("Duo"))
                     {
@@ -285,7 +469,7 @@ namespace NVGE
                         pictureBox_CPU.Image = Resources.i3_11_13th_logo;
                     }
                 }
-                else if (Name.Contains("i5"))
+                else if (Name.Contains("i5")) // Core i5
                 {
                     if (Name.Contains("XE") || Name.Contains('X'))
                     {
@@ -344,7 +528,7 @@ namespace NVGE
                         pictureBox_CPU.Image = Resources.i5_11_13th_logo;
                     }
                 }
-                else if (Name.Contains("i7"))
+                else if (Name.Contains("i7")) // Core i7
                 {
                     if (Name.Contains("XE") || Name.Contains('X'))
                     {
@@ -407,7 +591,7 @@ namespace NVGE
 
                     }
                 }
-                else if (Name.Contains("i9"))
+                else if (Name.Contains("i9")) // Core i9
                 {
                     if (Name.Contains("XE"))
                     {
@@ -438,7 +622,26 @@ namespace NVGE
                         pictureBox_CPU.Image = Resources.i9_11_13th_logo;
                     }
                 }
-                else if (Name.Contains("Xeon"))
+                else if (Name.Contains("Ultra")) // Core Ultra
+                {
+                    if (Name.Contains("3"))
+                    {
+                        pictureBox_CPU.Image = Resources.ultra_3;
+                    }
+                    else if (Name.Contains("5"))
+                    {
+                        pictureBox_CPU.Image = Resources.ultra_5;
+                    }
+                    else if (Name.Contains("7"))
+                    {
+                        pictureBox_CPU.Image = Resources.ultra_7;
+                    }
+                    else if (Name.Contains("9"))
+                    {
+                        pictureBox_CPU.Image = Resources.ultra_9;
+                    }
+                }
+                else if (Name.Contains("Xeon")) // Xeon
                 {
                     pictureBox_CPU.Image = Resources.xeon_6_10th_logo;
                 }
@@ -517,6 +720,13 @@ namespace NVGE
 
         private string GPUVendor(string Name)
         {
+            pictureBox_GPU.Image = null;
+
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                return "Unknown";
+            }
+
             if (Name.Contains("NVIDIA"))
             {
                 if (Name.Contains("GTX"))
@@ -573,6 +783,25 @@ namespace NVGE
         private void Button_OK_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private sealed class GpuAdapterInfo
+        {
+            public GpuAdapterInfo(string name, string memoryText, string driverVersion)
+            {
+                Name = name;
+                MemoryText = memoryText;
+                DriverVersion = driverVersion;
+            }
+
+            public string Name { get; }
+            public string MemoryText { get; set; }
+            public string DriverVersion { get; set; }
+
+            public override string ToString()
+            {
+                return Name;
+            }
         }
     }
 }

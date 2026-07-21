@@ -44,6 +44,7 @@ namespace NVGE
             settingsCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             upscalingSettingsUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             videoUpscalingSettingsVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            engineManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             launguageLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,7 +149,7 @@ namespace NVGE
             // settingsCToolStripMenuItem
             // 
             resources.ApplyResources(settingsCToolStripMenuItem, "settingsCToolStripMenuItem");
-            settingsCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { upscalingSettingsUToolStripMenuItem, videoUpscalingSettingsVToolStripMenuItem, toolStripMenuItem4, launguageLToolStripMenuItem, toolStripMenuItem6, preferencesSToolStripMenuItem });
+            settingsCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { upscalingSettingsUToolStripMenuItem, videoUpscalingSettingsVToolStripMenuItem, engineManagerToolStripMenuItem, toolStripMenuItem4, launguageLToolStripMenuItem, toolStripMenuItem6, preferencesSToolStripMenuItem });
             settingsCToolStripMenuItem.Name = "settingsCToolStripMenuItem";
             // 
             // upscalingSettingsUToolStripMenuItem
@@ -162,6 +163,13 @@ namespace NVGE
             resources.ApplyResources(videoUpscalingSettingsVToolStripMenuItem, "videoUpscalingSettingsVToolStripMenuItem");
             videoUpscalingSettingsVToolStripMenuItem.Name = "videoUpscalingSettingsVToolStripMenuItem";
             videoUpscalingSettingsVToolStripMenuItem.Click += VideoUpscalingSettingsVToolStripMenuItem_Click;
+            // 
+            // engineManagerToolStripMenuItem
+            // 
+            engineManagerToolStripMenuItem.Name = "engineManagerToolStripMenuItem";
+            engineManagerToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            engineManagerToolStripMenuItem.Text = "Engine Manager...";
+            engineManagerToolStripMenuItem.Click += EngineManagerToolStripMenuItem_Click;
             // 
             // toolStripMenuItem4
             // 
@@ -380,6 +388,7 @@ namespace NVGE
         private System.Windows.Forms.ToolStripMenuItem settingsCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem upscalingSettingsUToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem videoUpscalingSettingsVToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem engineManagerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeVideoResolutionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutAToolStripMenuItem;

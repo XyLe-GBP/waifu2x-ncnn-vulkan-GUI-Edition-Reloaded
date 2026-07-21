@@ -12,6 +12,7 @@ namespace NVGE
         public FormAbout()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
         }
 
         private void FormAbout_Load(object sender, EventArgs e)
@@ -24,7 +25,7 @@ namespace NVGE
             }
             else
             {
-                pictureBox1.Image = Properties.Resources._2021_9_13_18_29_59_Upscaled;
+                pictureBox1.Image = Properties.Resources.serika;
             }
         }
 
@@ -82,6 +83,11 @@ namespace NVGE
         private void Button_OK_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void LinkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Common.OpenURI("https://secure.xyle-official.com/payment/donate/");
         }
     }
 }

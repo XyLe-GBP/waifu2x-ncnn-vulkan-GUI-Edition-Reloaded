@@ -73,29 +73,39 @@ namespace NVGE
         {
             ensureTextBlock();
             base.OnRender(drawingContext);
+
+            double availableWidth =
+                _textBlock.ActualWidth - _textBlock.Padding.Left - _textBlock.Padding.Right;
+            double availableHeight =
+                _textBlock.ActualHeight - _textBlock.Padding.Top - _textBlock.Padding.Bottom;
+            if (!double.IsFinite(availableWidth) || !double.IsFinite(availableHeight) ||
+                availableWidth <= 0 || availableHeight <= 0)
+            {
+                return;
+            }
+
             var formattedText = new FormattedText(
-                _textBlock.Text,
+                _textBlock.Text ?? string.Empty,
                 CultureInfo.CurrentUICulture,
                 _textBlock.FlowDirection,
                 new Typeface(_textBlock.FontFamily, _textBlock.FontStyle, _textBlock.FontWeight, _textBlock.FontStretch),
                 _textBlock.FontSize,
-                    Brushes.Black // This brush does not matter since we use the geometry of the text. 
-                    , 1.0
+                Brushes.Black,
+                VisualTreeHelper.GetDpi(_textBlock).PixelsPerDip
             );
 
             formattedText.TextAlignment = _textBlock.TextAlignment;
             formattedText.Trimming = _textBlock.TextTrimming;
-            formattedText.LineHeight = _textBlock.LineHeight;
-            formattedText.MaxTextWidth = _textBlock.ActualWidth - _textBlock.Padding.Left - _textBlock.Padding.Right;
-            formattedText.MaxTextHeight = _textBlock.ActualHeight - _textBlock.Padding.Top;// - _textBlock.Padding.Bottom;
-            while (formattedText.Extent == double.NegativeInfinity)
+            if (double.IsFinite(_textBlock.LineHeight) && _textBlock.LineHeight > 0)
             {
-                formattedText.MaxTextHeight++;
+                formattedText.LineHeight = _textBlock.LineHeight;
             }
+            formattedText.MaxTextWidth = availableWidth;
+            formattedText.MaxTextHeight = availableHeight;
 
             // Build the geometry object that represents the text.
             var _textGeometry = formattedText.BuildGeometry(new Point(_textBlock.Padding.Left, _textBlock.Padding.Top));
-            var textPen = new Pen(Stroke, StrokeThickness);
+            var textPen = new Pen(Stroke ?? Brushes.Transparent, StrokeThickness);
             drawingContext.DrawGeometry(Brushes.Transparent, textPen, _textGeometry);
         }
 

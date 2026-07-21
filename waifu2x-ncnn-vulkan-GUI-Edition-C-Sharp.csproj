@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
     <RootNamespace>NVGE</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -10,8 +10,8 @@
     <Authors>XyLe</Authors>
     <Product>waifu2x-ncnn-vulkan GUI Edition Reloaded</Product>
     <Copyright>Copyright (C) 2024 - XyLe. All Rights Reserved.</Copyright>
-    <AssemblyVersion>1.37.2420.303</AssemblyVersion>
-    <FileVersion>1.37.2420.303</FileVersion>
+    <AssemblyVersion>1.38.2620.721</AssemblyVersion>
+    <FileVersion>1.38.2620.303</FileVersion>
     <Version>1.30</Version>
     <Description>Super-Resolution Convolutional Neural Network（SRCNN）Utility.</Description>
     <PackageIcon>csharp-logo.png</PackageIcon>
@@ -24,6 +24,7 @@
     <AnalysisLevel>6.0</AnalysisLevel>
     <AssemblyName>waifu2x-nvger</AssemblyName>
     <UseWPF>True</UseWPF>
+    <DefaultItemExcludes>$(DefaultItemExcludes);bin\**;obj\**;bin/**;obj/**</DefaultItemExcludes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,33 +36,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="13.6.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="OpenCvSharp4" Version="4.9.0.20240103" />
-    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.9.0.20240103" />
-    <PackageReference Include="System.Management" Version="8.0.0" />
-    <PackageReference Include="Vortice.DXGI" Version="3.3.4" />
-    <PackageReference Include="Xabe.FFmpeg" Version="5.2.6" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="14.15.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="OpenCvSharp4" Version="4.13.0.20260627" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.13.0.20260627" />
+    <PackageReference Include="System.Management" Version="10.0.10" />
+    <PackageReference Include="Vortice.DXGI" Version="3.8.3" />
+    <PackageReference Include="Xabe.FFmpeg" Version="6.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Update="Localization\Strings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Update="Localization\Strings.zh.resx">
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,6 +74,10 @@
     <EmbeddedResource Update="Localization\Strings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

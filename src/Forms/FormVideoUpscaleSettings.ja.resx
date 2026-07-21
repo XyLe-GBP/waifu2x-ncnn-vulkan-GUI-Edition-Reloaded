@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -67,8 +127,14 @@
   <data name="checkBox_Advanced.ToolTip" xml:space="preserve">
     <value>高度な設定項目を有効にします。</value>
   </data>
+  <data name="button_FFmpeg_path.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>186, 25</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBox_FFmpeg.ToolTip" xml:space="preserve">
     <value>FFmpeg.exeの場所を指定します。
@@ -89,17 +155,29 @@
   <data name="label5.Text" xml:space="preserve">
     <value>FFmpeg.exe のパス：</value>
   </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 15</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>アップスケール動画のFPS：</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>一般設定</value>
   </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>高度な設定</value>
+  </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>503, 155</value>
@@ -109,6 +187,9 @@
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>動画の生成方法：</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_VOT.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 19</value>
@@ -125,6 +206,9 @@
   <data name="label15.Text" xml:space="preserve">
     <value>H.264プリセット：</value>
   </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="comboBox_preset.Items" xml:space="preserve">
     <value>ultrafast (低画質・高速)</value>
   </data>
@@ -137,6 +221,12 @@
   <data name="checkBox_preset.Text" xml:space="preserve">
     <value>H.264プリセットを指定</value>
   </data>
+  <data name="checkBox_preset.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBox_AE.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 129</value>
   </data>
@@ -146,11 +236,17 @@
   <data name="label14.Text" xml:space="preserve">
     <value>エンコード：</value>
   </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_AE.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 19</value>
   </data>
   <data name="checkBox_AE.Text" xml:space="preserve">
     <value>音声出力コーデックを指定</value>
+  </data>
+  <data name="checkBox_AE.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_AB.Location" type="System.Drawing.Point, System.Drawing">
     <value>535, 73</value>
@@ -161,17 +257,32 @@
   <data name="checkBox_AB.Text" xml:space="preserve">
     <value>音声ビットレートを指定</value>
   </data>
+  <data name="checkBox_AB.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox_CMDF.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 15</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>結合コマンドライン引数：</value>
   </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox_CMDA.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 15</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>音声コマンドライン引数：</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_MAC.Location" type="System.Drawing.Point, System.Drawing">
     <value>383, 73</value>
@@ -182,6 +293,9 @@
   <data name="checkBox_MAC.Text" xml:space="preserve">
     <value>音声コーデックを指定</value>
   </data>
+  <data name="checkBox_MAC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_MVC.Location" type="System.Drawing.Point, System.Drawing">
     <value>238, 73</value>
   </data>
@@ -191,11 +305,29 @@
   <data name="checkBox_MVC.Text" xml:space="preserve">
     <value>動画コーデックを指定</value>
   </data>
+  <data name="checkBox_MVC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_AL.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="button_FC.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 23</value>
   </data>
   <data name="button_FC.Text" xml:space="preserve">
     <value>コーデックを調べる</value>
+  </data>
+  <data name="button_FC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_VL.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox_AL.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 15</value>
@@ -203,14 +335,26 @@
   <data name="label11.Text" xml:space="preserve">
     <value>音声保存先：</value>
   </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox_VL.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 15</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>動画保存先：</value>
   </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox_AB.Location" type="System.Drawing.Point, System.Drawing">
     <value>640, 99</value>
+  </data>
+  <data name="textBox_AB.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_MSOL.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 19</value>
@@ -218,8 +362,14 @@
   <data name="checkBox_MSOL.Text" xml:space="preserve">
     <value>出力ファイルの保存場所を指定</value>
   </data>
+  <data name="checkBox_MSOL.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox_ACodec.Location" type="System.Drawing.Point, System.Drawing">
     <value>454, 99</value>
+  </data>
+  <data name="textBox_CMDV.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>551, 102</value>
@@ -230,11 +380,17 @@
   <data name="label4.Text" xml:space="preserve">
     <value>音声ビットレート：</value>
   </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 15</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>動画コマンドライン引数：</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_MI.Location" type="System.Drawing.Point, System.Drawing">
     <value>325, 48</value>
@@ -245,6 +401,9 @@
   <data name="checkBox_MI.Text" xml:space="preserve">
     <value>メタデータ情報設定</value>
   </data>
+  <data name="checkBox_MI.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>328, 102</value>
   </data>
@@ -254,6 +413,9 @@
   <data name="label3.Text" xml:space="preserve">
     <value>使用する音声コーデック：</value>
   </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_CC.Location" type="System.Drawing.Point, System.Drawing">
     <value>285, 23</value>
   </data>
@@ -262,6 +424,9 @@
   </data>
   <data name="checkBox_CC.Text" xml:space="preserve">
     <value>チャプターコピーを行う</value>
+  </data>
+  <data name="checkBox_CC.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_OAO.Location" type="System.Drawing.Point, System.Drawing">
     <value>413, 23</value>
@@ -281,6 +446,9 @@
   <data name="checkBox_DS.Text" xml:space="preserve">
     <value>データストリームの無効化</value>
   </data>
+  <data name="checkBox_DS.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 102</value>
   </data>
@@ -289,6 +457,9 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>使用する動画コーデック：</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_DSS.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 23</value>
@@ -308,6 +479,9 @@
   <data name="textBox_CRF.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 71</value>
   </data>
+  <data name="textBox_CRF.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 74</value>
   </data>
@@ -316,6 +490,9 @@
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>CRFレベル：</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_EIA.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 19</value>
@@ -332,6 +509,9 @@
   <data name="checkBox_OOF.Text" xml:space="preserve">
     <value>出力ファイルを上書きする</value>
   </data>
+  <data name="checkBox_OOF.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_HI.Location" type="System.Drawing.Point, System.Drawing">
     <value>547, 23</value>
   </data>
@@ -347,10 +527,22 @@
   <data name="checkBox_NVENC.Text" xml:space="preserve">
     <value>NVENC CRFを使用</value>
   </data>
+  <data name="checkBox_NVENC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_OK.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>キャンセル</value>
   </data>
+  <data name="button_Cancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>動画アップスケール設定</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

@@ -8,6 +8,7 @@ namespace NVGE
         public FormImageManualFormat()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
         }
 
         private void FormImageManualFormat_Load(object sender, EventArgs e)

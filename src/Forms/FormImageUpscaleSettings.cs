@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace NVGE
@@ -9,10 +10,532 @@ namespace NVGE
     public partial class FormImageUpscaleSettings : Form
     {
         private static string rdlevel = " -n 3", uplevel = " -s 2", usegpu = " -g default", blocksize = " -t 0", thread = "", format = "", model = "", vboutput = "", tta = "", syncgap = "", cmdparam = "waifu2x-ncnn-vulkan -i $InFile -o $OutFile" + rdlevel +  uplevel + blocksize + usegpu + thread + format + model + vboutput + tta;
+        private bool suppressEngineSelectionChanged;
+        private bool suppressModelSelectionChanged;
+        private bool suppressScaleReductionSelectionChanged;
+        private int lastAvailableEngineIndex = -1;
+        private string[] engineItemTexts;
+        private string[] reductionItemTexts;
+        private List<EngineModel> currentEngineModels = new();
+        private const int RealCuganEngineIndex = 1;
+        private const int RealCuganNoReductionIndex = 0;
+        private const int RealCuganDenoise1Index = 2;
+        private const int RealCuganDenoise2Index = 3;
+        private const int RealCuganDenoise3Index = 4;
+        private const int RealCuganConservativeReductionIndex = 5;
 
         public FormImageUpscaleSettings()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
+        }
+
+        private sealed class IndexedComboBoxItem
+        {
+            public IndexedComboBoxItem(int value, string text)
+            {
+                Value = value;
+                Text = text;
+            }
+
+            public int Value { get; }
+            public string Text { get; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
+        }
+
+        private void ApplyEngineAvailabilityToComboBox()
+        {
+            if (engineItemTexts == null)
+            {
+                engineItemTexts = new string[comboBox_engine.Items.Count];
+                for (int i = 0; i < comboBox_engine.Items.Count; i++)
+                {
+                    engineItemTexts[i] = comboBox_engine.Items[i].ToString();
+                }
+            }
+
+            for (int i = 0; i < comboBox_engine.Items.Count; i++)
+            {
+                string suffix = EnginePackageManager.IsEngineInstalled(i) ? "" : " (not installed)";
+                comboBox_engine.Items[i] = engineItemTexts[i] + suffix;
+            }
+        }
+
+        private int GetAvailableEngineIndex(int preferredEngineIndex)
+        {
+            if (EnginePackageManager.IsEngineInstalled(preferredEngineIndex))
+            {
+                return preferredEngineIndex;
+            }
+
+            return EnginePackageManager.GetFirstInstalledEngineId();
+        }
+
+        private void PopulateModelsForEngine(int engineId, string preferredModelIndexValue)
+        {
+            currentEngineModels = EnginePackageManager.GetAvailableModels(engineId).ToList();
+            comboBox_Model.Items.Clear();
+
+            foreach (EngineModel availableModel in currentEngineModels)
+            {
+                comboBox_Model.Items.Add(availableModel);
+            }
+
+            if (currentEngineModels.Count == 0)
+            {
+                model = "";
+                comboBox_Model.Enabled = false;
+                UpdateRealCuganReductionOptions();
+                cmdparam = RefleshParams();
+                textBox_CMD.Text = cmdparam;
+                return;
+            }
+
+            int selectedIndex = 0;
+            if (int.TryParse(preferredModelIndexValue, out int preferredIndex) &&
+                preferredIndex >= 0 &&
+                preferredIndex < currentEngineModels.Count)
+            {
+                selectedIndex = preferredIndex;
+            }
+
+            suppressModelSelectionChanged = true;
+            comboBox_Model.SelectedIndex = selectedIndex;
+            suppressModelSelectionChanged = false;
+
+            model = currentEngineModels[selectedIndex].CommandArgument;
+            UpdateModelComboEnabled();
+            UpdateRealCuganReductionOptions();
+            NormalizeWaifu2xOptions();
+            NormalizeRealCuganOptions();
+            RefreshScaleCommand(true);
+            RefreshReductionCommand(true);
+        }
+
+        private void UpdateModelComboEnabled()
+        {
+            comboBox_Model.Enabled = checkBox_Advanced.Checked && currentEngineModels.Count > 0;
+        }
+
+        private void ApplySelectedModel()
+        {
+            if (comboBox_Model.SelectedItem is EngineModel selectedModel)
+            {
+                model = selectedModel.CommandArgument;
+            }
+            else if (comboBox_Model.Items.Count == 0)
+            {
+                model = "";
+            }
+        }
+
+        private string GetSelectedModelName()
+        {
+            return comboBox_Model.SelectedItem is EngineModel selectedModel
+                ? selectedModel.DisplayName
+                : comboBox_Model.SelectedItem?.ToString() ?? string.Empty;
+        }
+
+        private bool SelectedModelNameContains(string value)
+        {
+            return GetSelectedModelName().IndexOf(value, StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        private int GetSelectedScaleIndex()
+        {
+            return comboBox_Uplevel.SelectedItem is IndexedComboBoxItem selectedItem
+                ? selectedItem.Value
+                : comboBox_Uplevel.SelectedIndex;
+        }
+
+        private int GetSelectedReductionIndex()
+        {
+            return comboBox_Rdlevel.SelectedItem is IndexedComboBoxItem selectedItem
+                ? selectedItem.Value
+                : comboBox_Rdlevel.SelectedIndex;
+        }
+
+        private void SelectScaleIndex(int scaleIndex)
+        {
+            SelectIndexedComboBoxValue(comboBox_Uplevel, scaleIndex);
+        }
+
+        private void SelectReductionIndex(int reductionIndex)
+        {
+            SelectIndexedComboBoxValue(comboBox_Rdlevel, reductionIndex);
+        }
+
+        private void SelectIndexedComboBoxValue(ComboBox comboBox, int value)
+        {
+            for (int i = 0; i < comboBox.Items.Count; i++)
+            {
+                if (comboBox.Items[i] is IndexedComboBoxItem item && item.Value == value)
+                {
+                    comboBox.SelectedIndex = i;
+                    return;
+                }
+            }
+
+            if (value >= 0 && value < comboBox.Items.Count)
+            {
+                comboBox.SelectedIndex = value;
+            }
+            else if (comboBox.Items.Count > 0)
+            {
+                comboBox.SelectedIndex = 0;
+            }
+        }
+
+        private void EnsureReductionItemTexts()
+        {
+            if (reductionItemTexts != null)
+            {
+                return;
+            }
+
+            reductionItemTexts = new string[5];
+            for (int i = 0; i < reductionItemTexts.Length; i++)
+            {
+                reductionItemTexts[i] = i < comboBox_Rdlevel.Items.Count
+                    ? comboBox_Rdlevel.Items[i].ToString()
+                    : string.Empty;
+            }
+        }
+
+        private void ResetReductionComboBoxItems()
+        {
+            EnsureReductionItemTexts();
+
+            suppressScaleReductionSelectionChanged = true;
+            try
+            {
+                comboBox_Rdlevel.Items.Clear();
+                for (int i = 0; i < reductionItemTexts.Length; i++)
+                {
+                    comboBox_Rdlevel.Items.Add(reductionItemTexts[i]);
+                }
+            }
+            finally
+            {
+                suppressScaleReductionSelectionChanged = false;
+            }
+        }
+
+        private void RefreshModelOptionLists()
+        {
+            EnsureReductionItemTexts();
+
+            int currentScaleIndex = GetSelectedScaleIndex();
+            PopulateIndexedComboBox(
+                comboBox_Uplevel,
+                GetAllowedScaleIndices(),
+                GetScaleOptionText,
+                currentScaleIndex);
+
+            if (!comboBox_Rdlevel.Enabled)
+            {
+                return;
+            }
+
+            int currentReductionIndex = GetSelectedReductionIndex();
+            PopulateIndexedComboBox(
+                comboBox_Rdlevel,
+                GetAllowedReductionIndices(),
+                GetReductionOptionText,
+                currentReductionIndex);
+        }
+
+        private void PopulateIndexedComboBox(
+            ComboBox comboBox,
+            IReadOnlyList<int> values,
+            Func<int, string> textProvider,
+            int preferredValue)
+        {
+            suppressScaleReductionSelectionChanged = true;
+            try
+            {
+                comboBox.Items.Clear();
+                foreach (int value in values)
+                {
+                    comboBox.Items.Add(new IndexedComboBoxItem(value, textProvider(value)));
+                }
+
+                if (comboBox.Items.Count > 0)
+                {
+                    SelectIndexedComboBoxValue(comboBox, values.Contains(preferredValue) ? preferredValue : values[0]);
+                }
+            }
+            finally
+            {
+                suppressScaleReductionSelectionChanged = false;
+            }
+        }
+
+        private IReadOnlyList<int> GetAllowedScaleIndices()
+        {
+            return comboBox_engine.SelectedIndex switch
+            {
+                0 when IsSelectedWaifu2xModelsUpconv() => new[] { 1 },
+                0 => new[] { 0, 1 },
+                RealCuganEngineIndex when IsSelectedRealCuganModelsNose() => new[] { 1 },
+                RealCuganEngineIndex when IsSelectedRealCuganModelsPro() => new[] { 1, 2 },
+                RealCuganEngineIndex when IsSelectedRealCuganModelsSe() => new[] { 1, 2, 3 },
+                RealCuganEngineIndex => new[] { 1, 2, 3 },
+                2 => new[] { 0, 1, 2, 3, 4 },
+                _ => new[] { 0, 1 }
+            };
+        }
+
+        private IReadOnlyList<int> GetAllowedReductionIndices()
+        {
+            return comboBox_engine.SelectedIndex switch
+            {
+                0 => new[] { RealCuganNoReductionIndex, RealCuganDenoise1Index, RealCuganDenoise2Index, RealCuganDenoise3Index },
+                RealCuganEngineIndex when IsSelectedRealCuganModelsNose() => new[] { RealCuganNoReductionIndex },
+                RealCuganEngineIndex when IsSelectedRealCuganModelsPro() => new[] { RealCuganNoReductionIndex, RealCuganDenoise3Index, RealCuganConservativeReductionIndex },
+                RealCuganEngineIndex when IsSelectedRealCuganModelsSe() && GetSelectedScaleIndex() == 1 =>
+                    new[] { RealCuganNoReductionIndex, RealCuganDenoise1Index, RealCuganDenoise2Index, RealCuganDenoise3Index, RealCuganConservativeReductionIndex },
+                RealCuganEngineIndex when IsSelectedRealCuganModelsSe() =>
+                    new[] { RealCuganNoReductionIndex, RealCuganDenoise3Index, RealCuganConservativeReductionIndex },
+                RealCuganEngineIndex => new[] { RealCuganNoReductionIndex, RealCuganDenoise3Index, RealCuganConservativeReductionIndex },
+                _ => new[] { RealCuganNoReductionIndex, 1, RealCuganDenoise1Index, RealCuganDenoise2Index, RealCuganDenoise3Index }
+            };
+        }
+
+        private string GetScaleOptionText(int scaleIndex)
+        {
+            return comboBox_engine.SelectedIndex switch
+            {
+                RealCuganEngineIndex => scaleIndex switch
+                {
+                    1 => "2" + Strings.UplevelCaption,
+                    2 => "3" + Strings.UplevelCaption,
+                    3 => "4" + Strings.UplevelCaption,
+                    _ => "2" + Strings.UplevelCaption
+                },
+                2 => scaleIndex switch
+                {
+                    0 => "4" + Strings.UplevelCaption,
+                    1 => "8" + Strings.UplevelCaption,
+                    2 => "12" + Strings.UplevelCaption,
+                    3 => "16" + Strings.UplevelCaption,
+                    4 => "32" + Strings.UplevelCaption,
+                    _ => "4" + Strings.UplevelCaption
+                },
+                _ => scaleIndex switch
+                {
+                    0 => "1" + Strings.UplevelCaption,
+                    1 => "2" + Strings.UplevelCaption,
+                    _ => "2" + Strings.UplevelCaption
+                }
+            };
+        }
+
+        private string GetReductionOptionText(int reductionIndex)
+        {
+            EnsureReductionItemTexts();
+
+            return reductionIndex == RealCuganConservativeReductionIndex
+                ? GetRealCuganConservativeReductionText()
+                : reductionItemTexts[Math.Max(0, Math.Min(reductionIndex, reductionItemTexts.Length - 1))];
+        }
+
+        private void RefreshScaleCommand(bool updateCommandText)
+        {
+            int scaleIndex = GetSelectedScaleIndex();
+            uplevel = comboBox_engine.SelectedIndex switch
+            {
+                0 => scaleIndex == 0 ? " -s 1" : " -s 2",
+                RealCuganEngineIndex => scaleIndex switch
+                {
+                    0 => " -s 1",
+                    1 => " -s 2",
+                    2 => " -s 3",
+                    _ => " -s 4"
+                },
+                2 => " -s 4",
+                _ => scaleIndex == 0 ? " -s 1" : " -s 2"
+            };
+
+            cmdparam = RefleshParams();
+            if (updateCommandText)
+            {
+                textBox_CMD.Text = cmdparam;
+            }
+        }
+
+        private bool IsSelectedWaifu2xModelsCunet()
+        {
+            return comboBox_engine.SelectedIndex == 0 &&
+                SelectedModelNameContains("models-cunet");
+        }
+
+        private bool IsSelectedWaifu2xModelsUpconv()
+        {
+            return comboBox_engine.SelectedIndex == 0 &&
+                (SelectedModelNameContains("models-upconv_7_anime_style_art_rgb") ||
+                SelectedModelNameContains("models-upconv_7_photo"));
+        }
+
+        private bool IsSelectedWaifu2xReductionAllowed()
+        {
+            return GetSelectedReductionIndex() is
+                RealCuganNoReductionIndex or
+                RealCuganDenoise1Index or
+                RealCuganDenoise2Index or
+                RealCuganDenoise3Index;
+        }
+
+        private static string GetRealCuganConservativeReductionText()
+        {
+            return Common.GetConfigInt("ApplicationLanguage", 0) switch
+            {
+                1 => "保守",
+                2 => "保守",
+                _ => "Conservative"
+            };
+        }
+
+        private bool IsSelectedRealCuganModelsPro()
+        {
+            return comboBox_engine.SelectedIndex == RealCuganEngineIndex &&
+                SelectedModelNameContains("models-pro");
+        }
+
+        private bool IsSelectedRealCuganModelsSe()
+        {
+            return comboBox_engine.SelectedIndex == RealCuganEngineIndex &&
+                SelectedModelNameContains("models-se");
+        }
+
+        private bool IsSelectedRealCuganModelsNose()
+        {
+            return comboBox_engine.SelectedIndex == RealCuganEngineIndex &&
+                (SelectedModelNameContains("models-nose") || SelectedModelNameContains("nose"));
+        }
+
+        private bool SelectedRealCuganModelSupportsConservative()
+        {
+            return IsSelectedRealCuganModelsSe() || IsSelectedRealCuganModelsPro();
+        }
+
+        private void UpdateRealCuganReductionOptions()
+        {
+            RefreshModelOptionLists();
+        }
+
+        private string GetReductionCommandArgument()
+        {
+            if (comboBox_engine.SelectedIndex == RealCuganEngineIndex)
+            {
+                return GetSelectedReductionIndex() switch
+                {
+                    RealCuganNoReductionIndex => " -n 0",
+                    RealCuganConservativeReductionIndex => " -n -1",
+                    _ => GetDefaultReductionCommandArgument(GetSelectedReductionIndex())
+                };
+            }
+
+            return GetDefaultReductionCommandArgument(GetSelectedReductionIndex());
+        }
+
+        private static string GetDefaultReductionCommandArgument(int reductionIndex)
+        {
+            return reductionIndex switch
+            {
+                0 => " -n -1",
+                1 => " -n 0",
+                2 => " -n 1",
+                3 => " -n 2",
+                4 => " -n 3",
+                5 => " -n -1",
+                _ => " -n 2"
+            };
+        }
+
+        private void RefreshReductionCommand(bool updateCommandText)
+        {
+            rdlevel = GetReductionCommandArgument();
+            cmdparam = RefleshParams();
+
+            if (updateCommandText)
+            {
+                textBox_CMD.Text = cmdparam;
+            }
+        }
+
+        private bool ValidateSelectedModelOptions()
+        {
+            switch (comboBox_engine.SelectedIndex)
+            {
+                case 0:
+                    bool usesAllowedWaifu2xScale =
+                        (IsSelectedWaifu2xModelsCunet() && GetSelectedScaleIndex() is 0 or 1) ||
+                        (IsSelectedWaifu2xModelsUpconv() && GetSelectedScaleIndex() == 1);
+                    if (!usesAllowedWaifu2xScale || !IsSelectedWaifu2xReductionAllowed())
+                    {
+                        MessageBox.Show(Strings.ModelNotSupportedOptionCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                    break;
+                case RealCuganEngineIndex:
+                    if (IsSelectedRealCuganModelsNose())
+                    {
+                        if (GetSelectedScaleIndex() != 1 || GetSelectedReductionIndex() != 0)
+                        {
+                            MessageBox.Show(Strings.ModelNotSupportedOptionCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                    else if (IsSelectedRealCuganModelsPro())
+                    {
+                        bool usesAllowedScale = GetSelectedScaleIndex() is 1 or 2;
+                        bool usesAllowedReduction = GetSelectedReductionIndex() is
+                            RealCuganNoReductionIndex or
+                            RealCuganDenoise3Index or
+                            RealCuganConservativeReductionIndex;
+                        if (!usesAllowedScale || !usesAllowedReduction)
+                        {
+                            MessageBox.Show(Strings.ModelNotSupportedOptionCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                    else if (IsSelectedRealCuganModelsSe())
+                    {
+                        bool uses2x = GetSelectedScaleIndex() == 1;
+                        bool uses3xOr4x = GetSelectedScaleIndex() is 2 or 3;
+                        bool usesAllowed2xReduction = GetSelectedReductionIndex() is
+                            RealCuganNoReductionIndex or
+                            RealCuganDenoise1Index or
+                            RealCuganDenoise2Index or
+                            RealCuganDenoise3Index or
+                            RealCuganConservativeReductionIndex;
+                        bool usesAllowed3xOr4xReduction = GetSelectedReductionIndex() is
+                            RealCuganNoReductionIndex or
+                            RealCuganDenoise3Index or
+                            RealCuganConservativeReductionIndex;
+
+                        if ((!uses2x || !usesAllowed2xReduction) &&
+                            (!uses3xOr4x || !usesAllowed3xOr4xReduction))
+                        {
+                            MessageBox.Show(Strings.ModelNotSupportedOptionCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                    else if (GetSelectedScaleIndex() is 2 or 3 &&
+                        GetSelectedReductionIndex() is 2 or 3)
+                    {
+                        MessageBox.Show(Strings.ModelNotSupportedOptionCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                    break;
+            }
+
+            return true;
         }
 
         private void FormImageUpscaleSettings_Load(object sender, EventArgs e)
@@ -111,10 +634,26 @@ namespace NVGE
             
 
             Config.Load(Common.xmlpath);
+            ApplyEngineAvailabilityToComboBox();
 
-            
+            int selectedEngineIndex = GetAvailableEngineIndex(Common.GetConfigInt("ConversionType", 0));
+            if (selectedEngineIndex == -1)
+            {
+                comboBox_engine.Enabled = false;
+                button_OK.Enabled = false;
+                textBox_CMD.Text = "No upscaling engine is installed. Use Engine Manager from the main menu.";
+                MessageBox.Show(
+                    "No upscaling engine is installed.\n\nUse Engine Manager from the main menu to download an engine.",
+                    Strings.MSGWarning,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
 
-            switch (int.Parse(Config.Entry["ConversionType"].Value))
+            lastAvailableEngineIndex = selectedEngineIndex;
+            suppressEngineSelectionChanged = true;
+
+            switch (selectedEngineIndex)
             {
                 case 0: // waifu2x
                     comboBox_Rdlevel.Enabled = true;
@@ -493,6 +1032,7 @@ namespace NVGE
                     }
                     break;
             }
+            suppressEngineSelectionChanged = false;
 
             if (int.Parse(Config.Entry["Blocksize"].Value) != 0)
             {
@@ -606,7 +1146,7 @@ namespace NVGE
 
             ToolTip tt = new();
 
-            switch (int.Parse(Config.Entry["ConversionType"].Value))
+            switch (selectedEngineIndex)
             {
                 case 0: // waifu2x
                     
@@ -726,6 +1266,16 @@ namespace NVGE
                     break;
             }
 
+            PopulateModelsForEngine(selectedEngineIndex, Config.Entry["Model"].Value);
+            int configuredReductionIndex = Common.GetConfigInt("Reduction", comboBox_Rdlevel.SelectedIndex);
+            if (selectedEngineIndex == RealCuganEngineIndex &&
+                configuredReductionIndex == RealCuganConservativeReductionIndex &&
+                SelectedRealCuganModelSupportsConservative())
+            {
+                SelectReductionIndex(RealCuganConservativeReductionIndex);
+                RefreshReductionCommand(true);
+            }
+
             switch (bool.Parse(Config.Entry["Verbose"].Value))
             {
                 case false:
@@ -807,270 +1357,29 @@ namespace NVGE
 
         private void ComboBox_Rdlevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (checkBox_Advanced.Checked != false)
+            if (suppressScaleReductionSelectionChanged)
             {
-                switch (comboBox_Rdlevel.SelectedIndex)
-                {
-                    case 0:
-                        rdlevel = " -n -1";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                    case 1:
-                        rdlevel = " -n 0";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                    case 2:
-                        rdlevel = " -n 1";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                    case 3:
-                        rdlevel = " -n 2";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                    case 4:
-                        rdlevel = " -n 3";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                    default:
-                        rdlevel = " -n 2";
-                        cmdparam = RefleshParams();
-                        textBox_CMD.Text = cmdparam;
-                        break;
-                }
+                return;
             }
-            else
-            {
-                switch (comboBox_Rdlevel.SelectedIndex)
-                {
-                    case 0:
-                        rdlevel = " -n -1";
-                        cmdparam = RefleshParams();
-                        break;
-                    case 1:
-                        rdlevel = " -n 0";
-                        cmdparam = RefleshParams();
-                        break;
-                    case 2:
-                        rdlevel = " -n 1";
-                        cmdparam = RefleshParams();
-                        break;
-                    case 3:
-                        rdlevel = " -n 2";
-                        cmdparam = RefleshParams();
-                        break;
-                    case 4:
-                        rdlevel = " -n 3";
-                        cmdparam = RefleshParams();
-                        break;
-                    default:
-                        rdlevel = " -n 2";
-                        cmdparam = RefleshParams();
-                        break;
-                }
-            }
+
+            RefreshReductionCommand(checkBox_Advanced.Checked != false);
+
+            NormalizeWaifu2xOptions();
+            NormalizeRealCuganOptions();
         }
 
         private void ComboBox_Uplevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (checkBox_Advanced.Checked != false)
+            if (suppressScaleReductionSelectionChanged)
             {
-                switch (comboBox_engine.SelectedIndex)
-                {
-                    case 0: // waifu2x
-                        {
-                            switch (comboBox_Uplevel.SelectedIndex)
-                            {
-                                case 0:
-                                    uplevel = " -s 1";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                case 1:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                default:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                            }
-                        }
-                        break;
-                    case 1: // cugan
-                        {
-                            switch (comboBox_Uplevel.SelectedIndex)
-                            {
-                                case 0:
-                                    uplevel = " -s 1";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                case 1:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                case 2:
-                                    uplevel = " -s 3";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                case 3:
-                                    uplevel = " -s 4";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                case 4:
-                                    uplevel = " -s 4";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                case 5:
-                                    uplevel = " -s 4";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                default:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                            }
-                        }
-                        break;
-                    case 2: // esrgan
-                        {
-                            switch (comboBox_Uplevel.SelectedIndex)
-                            {
-                                default:
-                                    uplevel = " -s 4";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                            }
-                        }
-                        break;
-                    default:
-                        {
-                            switch (comboBox_Uplevel.SelectedIndex)
-                            {
-                                case 0:
-                                    uplevel = " -s 1";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                case 1:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                                default:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    textBox_CMD.Text = cmdparam;
-                                    break;
-                            }
-                        }
-                        break;
-                }
+                return;
             }
-            else
-            {
-                switch (comboBox_engine.SelectedIndex)
-                {
-                    case 0:
-                        {
-                            switch (comboBox_Uplevel.SelectedIndex)
-                            {
-                                case 0:
-                                    uplevel = " -s 1";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                case 1:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                default:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    break;
-                            }
-                        }
-                        break;
-                    case 1:
-                        {
-                            switch (comboBox_Uplevel.SelectedIndex)
-                            {
-                                case 0:
-                                    uplevel = " -s 1";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                case 1:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                case 2:
-                                    uplevel = " -s 3";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                case 3:
-                                    uplevel = " -s 4";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                case 4:
-                                    uplevel = " -s 4";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                case 5:
-                                    uplevel = " -s 4";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                default:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    break;
-                            }
-                        }
-                        break;
-                    case 2:
-                        {
-                            switch (comboBox_Uplevel.SelectedIndex)
-                            {
-                                default:
-                                    uplevel = " -s 4";
-                                    cmdparam = RefleshParams();
-                                    break;
-                            }
-                        }
-                        break;
-                    default:
-                        {
-                            switch (comboBox_Uplevel.SelectedIndex)
-                            {
-                                case 0:
-                                    uplevel = " -s 1";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                case 1:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    break;
-                                default:
-                                    uplevel = " -s 2";
-                                    cmdparam = RefleshParams();
-                                    break;
-                            }
-                        }
-                        break;
-                }
-            }
+
+            RefreshScaleCommand(checkBox_Advanced.Checked != false);
+
+            UpdateRealCuganReductionOptions();
+            NormalizeWaifu2xOptions();
+            NormalizeRealCuganOptions();
         }
 
         private void ComboBox_GPU_SelectedIndexChanged(object sender, EventArgs e)
@@ -1611,7 +1920,7 @@ namespace NVGE
             {
                 comboBox_Thread.Enabled = true;
                 comboBox_Format.Enabled = true;
-                comboBox_Model.Enabled = true;
+                UpdateModelComboEnabled();
                 checkBox_Verbose.Enabled = true;
                 checkBox_TTA.Enabled = true;
                 checkBox_pixel.Enabled = true;
@@ -1634,34 +1943,35 @@ namespace NVGE
                 switch (comboBox_engine.SelectedIndex)
                 {
                     case 0:
-                        if (comboBox_Model.SelectedIndex != 0)
+                        if (comboBox_Model.Items.Count > 0 && comboBox_Model.SelectedIndex != 0)
                         {
                             model = " -m models-cunet";
                             comboBox_Model.SelectedIndex = 0;
                         }
                         break;
                     case 1:
-                        if (comboBox_Model.SelectedIndex != 0)
+                        if (comboBox_Model.Items.Count > 0 && comboBox_Model.SelectedIndex != 0)
                         {
                             model = " -m models-se";
                             comboBox_Model.SelectedIndex = 0;
                         }
                         break;
                     case 2:
-                        if (comboBox_Model.SelectedIndex != 0)
+                        if (comboBox_Model.Items.Count > 0 && comboBox_Model.SelectedIndex != 0)
                         {
                             model = " -n realesrgan-x4plus";
                             comboBox_Model.SelectedIndex = 0;
                         }
                         break;
                     default:
-                        if (comboBox_Model.SelectedIndex != 0)
+                        if (comboBox_Model.Items.Count > 0 && comboBox_Model.SelectedIndex != 0)
                         {
                             model = " -m models-cunet";
                             comboBox_Model.SelectedIndex = 0;
                         }
                         break;
                 }
+                ApplySelectedModel();
                 if (checkBox_Verbose.Checked != false)
                 {
                     vboutput = "";
@@ -1732,6 +2042,7 @@ namespace NVGE
         {
             rdlevel = " -n 2";
             comboBox_Rdlevel.Enabled = true;
+            ResetReductionComboBoxItems();
             comboBox_Rdlevel.SelectedIndex = 3;
             label1.Enabled = true;
             comboBox_Uplevel.Items.Clear();
@@ -1777,12 +2088,41 @@ namespace NVGE
 
         private void ComboBox_engine_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (suppressEngineSelectionChanged)
+            {
+                return;
+            }
+
+            if (comboBox_engine.SelectedIndex < 0)
+            {
+                return;
+            }
+
+            if (!EnginePackageManager.IsEngineInstalled(comboBox_engine.SelectedIndex))
+            {
+                int unavailableEngineIndex = comboBox_engine.SelectedIndex;
+                string engineName = EnginePackageManager.GetEngine(unavailableEngineIndex)?.DisplayName ?? "Selected engine";
+                MessageBox.Show(
+                    engineName + " is not installed.\n\nUse Engine Manager from the main menu to download it.",
+                    Strings.MSGWarning,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                suppressEngineSelectionChanged = true;
+                comboBox_engine.SelectedIndex = lastAvailableEngineIndex;
+                suppressEngineSelectionChanged = false;
+                return;
+            }
+
+            lastAvailableEngineIndex = comboBox_engine.SelectedIndex;
+
             switch (comboBox_engine.SelectedIndex)
             {
                 case 0:
                     {
                         rdlevel = " -n 2";
                         comboBox_Rdlevel.Enabled = true;
+                        ResetReductionComboBoxItems();
                         comboBox_Rdlevel.SelectedIndex = 3;
                         label1.Enabled = true;
                         syncgap = "";
@@ -1810,6 +2150,7 @@ namespace NVGE
                     {
                         rdlevel = " -n 4";
                         comboBox_Rdlevel.Enabled = true;
+                        ResetReductionComboBoxItems();
                         comboBox_Rdlevel.SelectedIndex = 3;
                         label1.Enabled = true;
                         syncgap = " -c 3";
@@ -1865,6 +2206,7 @@ namespace NVGE
                     {
                         rdlevel = " -n 2";
                         comboBox_Rdlevel.Enabled = true;
+                        ResetReductionComboBoxItems();
                         comboBox_Rdlevel.SelectedIndex = 3;
                         label1.Enabled = true;
                         syncgap = "";
@@ -1889,6 +2231,8 @@ namespace NVGE
                     }
                     break;
             }
+
+            PopulateModelsForEngine(comboBox_engine.SelectedIndex, null);
         }
 
         private void ComboBox_Format_SelectedIndexChanged(object sender, EventArgs e)
@@ -1920,6 +2264,22 @@ namespace NVGE
 
         private void ComboBox_Model_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (suppressModelSelectionChanged)
+            {
+                return;
+            }
+
+            if (comboBox_Model.SelectedItem is EngineModel selectedModel)
+            {
+                model = selectedModel.CommandArgument;
+                UpdateRealCuganReductionOptions();
+                NormalizeWaifu2xOptions();
+                NormalizeRealCuganOptions();
+                RefreshScaleCommand(checkBox_Advanced.Checked != false);
+                RefreshReductionCommand(checkBox_Advanced.Checked != false);
+                return;
+            }
+
             switch (comboBox_engine.SelectedIndex)
             {
                 case 0:
@@ -1932,7 +2292,7 @@ namespace NVGE
                                 textBox_CMD.Text = cmdparam;
                                 break;
                             case 1:
-                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                if (GetSelectedScaleIndex() == 1)
                                 {
                                     model = " -m models-upconv_7_anime_style_art_rgb";
                                     cmdparam = RefleshParams();
@@ -1944,7 +2304,7 @@ namespace NVGE
                                     break;
                                 }
                             case 2:
-                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                if (GetSelectedScaleIndex() == 1)
                                 {
                                     model = " -m models-upconv_7_photo";
                                     cmdparam = RefleshParams();
@@ -1973,7 +2333,7 @@ namespace NVGE
                                 textBox_CMD.Text = cmdparam;
                                 break;
                             case 1:
-                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                if (GetSelectedScaleIndex() == 1)
                                 {
                                     model = " -m models-nose";
                                     cmdparam = RefleshParams();
@@ -2034,7 +2394,7 @@ namespace NVGE
                                 textBox_CMD.Text = cmdparam;
                                 break;
                             case 1:
-                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                if (GetSelectedScaleIndex() == 1)
                                 {
                                     model = " -m models-upconv_7_anime_style_art_rgb";
                                     cmdparam = RefleshParams();
@@ -2046,7 +2406,7 @@ namespace NVGE
                                     break;
                                 }
                             case 2:
-                                if (comboBox_Uplevel.SelectedIndex == 1)
+                                if (GetSelectedScaleIndex() == 1)
                                 {
                                     model = " -m models-upconv_7_photo";
                                     cmdparam = RefleshParams();
@@ -2065,6 +2425,151 @@ namespace NVGE
                         }
                     }
                     break;
+            }
+
+            NormalizeWaifu2xOptions();
+            NormalizeRealCuganOptions();
+            RefreshScaleCommand(checkBox_Advanced.Checked != false);
+        }
+
+        private void NormalizeWaifu2xOptions()
+        {
+            if (comboBox_engine.SelectedIndex != 0)
+            {
+                return;
+            }
+
+            UpdateRealCuganReductionOptions();
+
+            if (IsSelectedWaifu2xModelsCunet() && GetSelectedScaleIndex() is not (0 or 1))
+            {
+                SelectScaleIndex(1);
+                return;
+            }
+
+            if (IsSelectedWaifu2xModelsUpconv() && GetSelectedScaleIndex() != 1)
+            {
+                SelectScaleIndex(1);
+                return;
+            }
+
+            if (!IsSelectedWaifu2xReductionAllowed())
+            {
+                SelectReductionIndex(RealCuganNoReductionIndex);
+                return;
+            }
+
+            RefreshReductionCommand(checkBox_Advanced.Checked != false);
+        }
+
+        private void NormalizeRealCuganOptions()
+        {
+            UpdateRealCuganReductionOptions();
+
+            if (comboBox_engine.SelectedIndex != RealCuganEngineIndex)
+            {
+                return;
+            }
+
+            if (IsSelectedRealCuganModelsNose())
+            {
+                if (GetSelectedScaleIndex() != 1)
+                {
+                    SelectScaleIndex(1);
+                    return;
+                }
+
+                if (GetSelectedReductionIndex() != RealCuganNoReductionIndex)
+                {
+                    SelectReductionIndex(RealCuganNoReductionIndex);
+                    return;
+                }
+
+                RefreshReductionCommand(checkBox_Advanced.Checked != false);
+                return;
+            }
+
+            if (IsSelectedRealCuganModelsPro())
+            {
+                if (GetSelectedScaleIndex() is not (1 or 2))
+                {
+                    SelectScaleIndex(1);
+                    return;
+                }
+
+                if (GetSelectedReductionIndex() is not (
+                    RealCuganNoReductionIndex or
+                    RealCuganDenoise3Index or
+                    RealCuganConservativeReductionIndex))
+                {
+                    SelectReductionIndex(RealCuganNoReductionIndex);
+                    return;
+                }
+
+                RefreshReductionCommand(checkBox_Advanced.Checked != false);
+                return;
+            }
+
+            if (IsSelectedRealCuganModelsSe())
+            {
+                if (GetSelectedScaleIndex() is not (1 or 2 or 3))
+                {
+                    SelectScaleIndex(1);
+                    return;
+                }
+
+                bool uses2x = GetSelectedScaleIndex() == 1;
+                bool usesAllowed2xReduction = GetSelectedReductionIndex() is
+                    RealCuganNoReductionIndex or
+                    RealCuganDenoise1Index or
+                    RealCuganDenoise2Index or
+                    RealCuganDenoise3Index or
+                    RealCuganConservativeReductionIndex;
+                bool usesAllowed3xOr4xReduction = GetSelectedReductionIndex() is
+                    RealCuganNoReductionIndex or
+                    RealCuganDenoise3Index or
+                    RealCuganConservativeReductionIndex;
+
+                if ((uses2x && !usesAllowed2xReduction) ||
+                    (!uses2x && !usesAllowed3xOr4xReduction))
+                {
+                    SelectReductionIndex(RealCuganNoReductionIndex);
+                    return;
+                }
+
+                RefreshReductionCommand(checkBox_Advanced.Checked != false);
+                return;
+            }
+
+            bool usesNoseModel = SelectedModelNameContains("models-nose") || SelectedModelNameContains("nose");
+            bool usesScaleAboveTwo = GetSelectedScaleIndex() >= 2;
+            if (usesNoseModel && usesScaleAboveTwo)
+            {
+                int fallbackModelIndex = currentEngineModels.FindIndex(availableModel =>
+                    availableModel.DisplayName.IndexOf("nose", StringComparison.OrdinalIgnoreCase) == -1);
+                if (fallbackModelIndex >= 0)
+                {
+                    comboBox_Model.SelectedIndex = fallbackModelIndex;
+                }
+                else
+                {
+                    SelectScaleIndex(1);
+                }
+                return;
+            }
+
+            if (usesNoseModel && GetSelectedReductionIndex() != 0)
+            {
+                SelectReductionIndex(0);
+                return;
+            }
+
+            bool unavailableDenoiseModel =
+                usesScaleAboveTwo &&
+                GetSelectedReductionIndex() is 2 or 3;
+            if (unavailableDenoiseModel)
+            {
+                SelectReductionIndex(0);
             }
         }
 
@@ -2127,6 +2632,31 @@ namespace NVGE
 
         private void Button_OK_Click(object sender, EventArgs e)
         {
+            if (!EnginePackageManager.IsEngineInstalled(comboBox_engine.SelectedIndex))
+            {
+                MessageBox.Show(
+                    "The selected upscaling engine is not installed.\n\nUse Engine Manager from the main menu to download it.",
+                    Strings.MSGWarning,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (EnginePackageManager.GetAvailableModels(comboBox_engine.SelectedIndex).Count == 0)
+            {
+                MessageBox.Show(
+                    "No usable model was found for the selected upscaling engine.",
+                    Strings.MSGWarning,
+                    MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!ValidateSelectedModelOptions())
+            {
+                return;
+            }
+
             if (textBox_Blocksize.Text == "")
             {
                 MessageBox.Show(Strings.ErrorBlockNot, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2147,15 +2677,17 @@ namespace NVGE
                 MessageBox.Show(Strings.ErrorBlockIncorrect2, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            switch (comboBox_engine.SelectedIndex)
+            if (comboBox_Model.SelectedItem is not EngineModel)
             {
-                case 0: // waifu2x
-                    switch (comboBox_Model.SelectedIndex)
+                switch (comboBox_engine.SelectedIndex)
+                {
+                    case 0: // waifu2x
+                        switch (comboBox_Model.SelectedIndex)
                     {
                         case 0: // cunet
                             break;
                         case 1: // rgb
-                            switch (comboBox_Uplevel.SelectedIndex)
+                            switch (GetSelectedScaleIndex())
                             {
                                 case 0: // x1
                                     MessageBox.Show(Strings.ModelNotSupportedOptionCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2169,7 +2701,7 @@ namespace NVGE
                             }
                             break;
                         case 2: // photo
-                            switch (comboBox_Uplevel.SelectedIndex)
+                            switch (GetSelectedScaleIndex())
                             {
                                 case 0: // x1
                                     MessageBox.Show(Strings.ModelNotSupportedOptionCaption, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2190,14 +2722,14 @@ namespace NVGE
                     switch (comboBox_Model.SelectedIndex)
                     {
                         case 0: // se
-                            switch (comboBox_Uplevel.SelectedIndex)
+                            switch (GetSelectedScaleIndex())
                             {
                                 case 0: // x1
                                     break;
                                 case 1: // x2
                                     break;
                                 case 2: // x3
-                                    switch (comboBox_Rdlevel.SelectedIndex)
+                                    switch (GetSelectedReductionIndex())
                                     {
                                         case 0: // -1
                                             break;
@@ -2216,7 +2748,7 @@ namespace NVGE
                                     }
                                     break;
                                 case 3: // x4
-                                    switch (comboBox_Rdlevel.SelectedIndex)
+                                    switch (GetSelectedReductionIndex())
                                     {
                                         case 0: // -1
                                             break;
@@ -2237,12 +2769,12 @@ namespace NVGE
                             }
                             break;
                         case 1: // nose
-                            switch (comboBox_Uplevel.SelectedIndex)
+                            switch (GetSelectedScaleIndex())
                             {
                                 case 0: // x1
                                     return;
                                 case 1: // x2
-                                    switch (comboBox_Rdlevel.SelectedIndex)
+                                    switch (GetSelectedReductionIndex())
                                     {
                                         case 0: // -1
                                             break;
@@ -2270,14 +2802,14 @@ namespace NVGE
                             }
                             break;
                         default:
-                            switch (comboBox_Uplevel.SelectedIndex)
+                            switch (GetSelectedScaleIndex())
                             {
                                 case 0: // x1
                                     break;
                                 case 1: // x2
                                     break;
                                 case 2: // x3
-                                    switch (comboBox_Rdlevel.SelectedIndex)
+                                    switch (GetSelectedReductionIndex())
                                     {
                                         case 0: // -1
                                             break;
@@ -2296,7 +2828,7 @@ namespace NVGE
                                     }
                                     break;
                                 case 3: // x4
-                                    switch (comboBox_Rdlevel.SelectedIndex)
+                                    switch (GetSelectedReductionIndex())
                                     {
                                         case 0: // -1
                                             break;
@@ -2318,8 +2850,9 @@ namespace NVGE
                             break;
                     }
                     break;
-                case 2: // esrgan
-                    break;
+                    case 2: // esrgan
+                        break;
+                }
             }
             
             if (checkBox_pixel.Checked != false)
@@ -2347,8 +2880,8 @@ namespace NVGE
             }
 
             Config.Entry["ConversionType"].Value = comboBox_engine.SelectedIndex.ToString();
-            Config.Entry["Reduction"].Value = comboBox_Rdlevel.SelectedIndex.ToString();
-            Config.Entry["Scale"].Value = comboBox_Uplevel.SelectedIndex.ToString();
+            Config.Entry["Reduction"].Value = GetSelectedReductionIndex().ToString();
+            Config.Entry["Scale"].Value = GetSelectedScaleIndex().ToString();
             Config.Entry["GPU"].Value = comboBox_GPU.SelectedIndex.ToString();
             Config.Entry["SyncGap"].Value = comboBox_syncgap.SelectedIndex.ToString();
 

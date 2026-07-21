@@ -19,7 +19,7 @@ namespace NVGE.Properties {
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
     // ResGen を実行し直すか、または VS プロジェクトをビルドし直します。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,16 +57,6 @@ namespace NVGE.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap _2021_9_13_18_29_59_Upscaled {
-            get {
-                object obj = ResourceManager.GetObject("_2021_9_13_18_29_59_Upscaled", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -963,6 +953,56 @@ namespace NVGE.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap serika {
+            get {
+                object obj = ResourceManager.GetObject("serika", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap ultra_3 {
+            get {
+                object obj = ResourceManager.GetObject("ultra_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap ultra_5 {
+            get {
+                object obj = ResourceManager.GetObject("ultra_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap ultra_7 {
+            get {
+                object obj = ResourceManager.GetObject("ultra_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap ultra_9 {
+            get {
+                object obj = ResourceManager.GetObject("ultra_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap video_frame {
             get {
                 object obj = ResourceManager.GetObject("video_frame", resourceCulture);
@@ -976,16 +1016,6 @@ namespace NVGE.Properties {
         internal static System.Drawing.Bitmap w2xr_64 {
             get {
                 object obj = ResourceManager.GetObject("w2xr_64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap waifu2x_api {
-            get {
-                object obj = ResourceManager.GetObject("waifu2x_api", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

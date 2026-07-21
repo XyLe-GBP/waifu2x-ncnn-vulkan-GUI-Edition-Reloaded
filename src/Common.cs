@@ -16,6 +16,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -173,21 +174,43 @@ namespace NVGE
 
         public static string CheckVideoAudioCodec(string VideoPath)
         {
-            ProcessStartInfo pi = new();
-            Process ps;
-            pi.FileName = Environment.GetEnvironmentVariable("ComSpec");
-            pi.Arguments = "/c " + FFmpegPath + " -i " + VideoPath;
-            pi.CreateNoWindow = true;
-            pi.UseShellExecute = false;
-            pi.RedirectStandardOutput = true;
-            pi.RedirectStandardInput = false;
-            ps = Process.Start(pi);
+            if (string.IsNullOrWhiteSpace(FFmpegPath) || string.IsNullOrWhiteSpace(VideoPath))
+            {
+                return string.Empty;
+            }
 
-            string fb = ps.StandardOutput.ReadToEnd();
+            ProcessStartInfo pi = new()
+            {
+                FileName = FFmpegPath,
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                RedirectStandardInput = false,
+            };
+            pi.ArgumentList.Add("-i");
+            pi.ArgumentList.Add(VideoPath);
 
+            using Process ps = Process.Start(pi);
+            if (ps == null)
+            {
+                return string.Empty;
+            }
+
+            Task<string> standardOutput = ps.StandardOutput.ReadToEndAsync();
+            Task<string> standardError = ps.StandardError.ReadToEndAsync();
             ps.WaitForExit();
+            string output = standardOutput.Result + standardError.Result;
 
-            return fb.Substring(fb.IndexOf("Audio: ") + 7, 10);
+            int audioIndex = output.IndexOf("Audio: ", StringComparison.OrdinalIgnoreCase);
+            if (audioIndex == -1)
+            {
+                return string.Empty;
+            }
+
+            string audioInfo = output[(audioIndex + "Audio: ".Length)..];
+            int delimiterIndex = audioInfo.IndexOf(',');
+            return delimiterIndex == -1 ? audioInfo.Trim() : audioInfo[..delimiterIndex].Trim();
         }
 
         /// <summary>
@@ -265,7 +288,7 @@ namespace NVGE
         /// <returns>画像ファイルのピクセル</returns>
         public static double[] GetImageSize(string path)
         {
-            double[] array = new double[1];
+            double[] array = new double[2];
             using Bitmap bmp = new(path);
             array[0] = bmp.Width;
             array[1] = bmp.Height;
@@ -459,6 +482,33 @@ namespace NVGE
         /// <summary>
         /// 設定ファイルにデフォルトの設定レコード全てを書き出す
         /// </summary>
+        public static void LoadConfigOrReset()
+        {
+            if (File.Exists(xmlpath))
+            {
+                try
+                {
+                    Config.Load(xmlpath);
+                }
+                catch
+                {
+                    Config.Reset();
+                }
+            }
+            else
+            {
+                Config.Reset();
+            }
+
+            if (Config.Entry == null ||
+                !string.Equals(Config.Entry.Key, "ConfigRoot", StringComparison.Ordinal))
+            {
+                Config.Reset();
+            }
+
+            InitConfig();
+        }
+
         public static void InitConfig()
         {
             if (Config.Entry["FFmpegLocation"].Value == null)
@@ -740,6 +790,11 @@ namespace NVGE
             Config.Save(xmlpath);
         }
 
+        public static int GetConfigInt(string key, int defaultValue)
+        {
+            return int.TryParse(Config.Entry[key].Value, out int value) ? value : defaultValue;
+        }
+
     }
 
     static class Affine
@@ -845,6 +900,77 @@ namespace NVGE
 
     class ImageConvert
     {
+        private const int DefaultPreviewMaximumDimension = 4096;
+
+        public static Bitmap LoadBitmapForPreview(
+            string imagePath,
+            int maximumWidth = DefaultPreviewMaximumDimension,
+            int maximumHeight = DefaultPreviewMaximumDimension)
+        {
+            const int maximumAttempts = 5;
+            Exception lastError = null;
+
+            if (maximumWidth <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(maximumWidth));
+            }
+            if (maximumHeight <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(maximumHeight));
+            }
+
+            for (int attempt = 0; attempt < maximumAttempts; attempt++)
+            {
+                try
+                {
+                    byte[] imageData;
+                    using (var file = new FileStream(
+                        imagePath,
+                        FileMode.Open,
+                        FileAccess.Read,
+                        FileShare.ReadWrite | FileShare.Delete))
+                    {
+                        using var buffer = new MemoryStream();
+                        file.CopyTo(buffer);
+                        imageData = buffer.ToArray();
+                    }
+
+                    using var image = new MagickImage(imageData);
+                    uint previewMaximumWidth = checked((uint)maximumWidth);
+                    uint previewMaximumHeight = checked((uint)maximumHeight);
+                    if (image.Width > previewMaximumWidth || image.Height > previewMaximumHeight)
+                    {
+                        var geometry = new MagickGeometry(
+                            previewMaximumWidth,
+                            previewMaximumHeight)
+                        {
+                            Greater = true
+                        };
+                        image.Resize(geometry);
+                    }
+
+                    image.Strip();
+                    byte[] previewData = image.ToByteArray(MagickFormat.Png32);
+                    using var stream = new MemoryStream(previewData, false);
+                    using var bitmap = new Bitmap(stream);
+                    return new Bitmap(bitmap);
+                }
+                catch (Exception ex) when (
+                    ex is IOException ||
+                    ex is ArgumentException ||
+                    ex.GetType().Namespace == typeof(MagickImage).Namespace)
+                {
+                    lastError = ex;
+                    if (attempt < maximumAttempts - 1)
+                    {
+                        Thread.Sleep(100);
+                    }
+                }
+            }
+
+            throw new ArgumentException($"The image could not be loaded: {imagePath}", lastError);
+        }
+
         /// <summary>
         /// 画像をPNGに変換する
         /// </summary>
@@ -921,6 +1047,112 @@ namespace NVGE
                     return false;
                 }
             }
+        }
+
+        /// <summary>
+        /// Converts an image to a stable 8-bit sRGB PNG for the NCNN engines.
+        /// Opaque images are written without an unnecessary alpha channel.
+        /// </summary>
+        public static bool IMAGEtoEnginePNG(string imagePath, string pngPath)
+        {
+            if (!File.Exists(imagePath))
+            {
+                return false;
+            }
+
+            try
+            {
+                using var image = new MagickImage(imagePath);
+                image.AutoOrient();
+                image.ColorSpace = ColorSpace.sRGB;
+                image.Depth = 8;
+                image.Alpha(AlphaOption.OffIfOpaque);
+                image.Strip();
+                image.Write(
+                    pngPath,
+                    image.HasAlpha ? MagickFormat.Png32 : MagickFormat.Png24);
+                return File.Exists(pngPath);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to prepare the engine input image: {ex}");
+                return false;
+            }
+        }
+
+        public static bool RepairFullyTransparentImage(string imagePath)
+        {
+            if (!File.Exists(imagePath))
+            {
+                return false;
+            }
+
+            try
+            {
+                using var image = new MagickImage(imagePath);
+                if (!image.HasAlpha)
+                {
+                    return false;
+                }
+
+                var statistics = image.Statistics();
+                var alpha = statistics.GetChannel(PixelChannel.Alpha);
+                var red = statistics.GetChannel(PixelChannel.Red);
+                var green = statistics.GetChannel(PixelChannel.Green);
+                var blue = statistics.GetChannel(PixelChannel.Blue);
+                bool isFullyTransparent = alpha is not null && alpha.Maximum == 0;
+                bool hasColorData =
+                    (red?.Maximum ?? 0) > 0 ||
+                    (green?.Maximum ?? 0) > 0 ||
+                    (blue?.Maximum ?? 0) > 0;
+                if (!isFullyTransparent || !hasColorData)
+                {
+                    return false;
+                }
+
+                MagickFormat format = image.Format;
+                image.Alpha(AlphaOption.Off);
+                image.Write(imagePath, format);
+                Debug.WriteLine($"Removed an invalid fully transparent alpha channel: {imagePath}");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to inspect the engine output image: {ex}");
+                return false;
+            }
+        }
+
+        public static bool IsUnexpectedBlackImage(string inputPath, string outputPath)
+        {
+            if (!File.Exists(inputPath) || !File.Exists(outputPath))
+            {
+                return false;
+            }
+
+            try
+            {
+                using var input = new MagickImage(inputPath);
+                using var output = new MagickImage(outputPath);
+                input.Alpha(AlphaOption.Off);
+                output.Alpha(AlphaOption.Off);
+
+                return HasVisibleColor(input) && !HasVisibleColor(output);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to inspect the Real-CUGAN output: {ex}");
+                return false;
+            }
+        }
+
+        private static bool HasVisibleColor(MagickImage image)
+        {
+            var statistics = image.Statistics();
+            return
+                (statistics.GetChannel(PixelChannel.Red)?.Maximum ?? 0) > 0 ||
+                (statistics.GetChannel(PixelChannel.Green)?.Maximum ?? 0) > 0 ||
+                (statistics.GetChannel(PixelChannel.Blue)?.Maximum ?? 0) > 0;
         }
 
         public static bool IMAGEtoPNG32Async(string IMAGEpath, string PNGpath, bool IsImageObj = false, Image image = null)
@@ -1008,7 +1240,7 @@ namespace NVGE
                 {
                     using var image = new MagickImage(IMAGEpath);
 
-                    image.Resize(width, height);
+                    image.Resize(checked((uint)width), checked((uint)height));
                     image.Write(IMAGEpath, fmt);
                     if (File.Exists(IMAGEpath))
                     {
@@ -1040,8 +1272,8 @@ namespace NVGE
             else
             {
                 using var image = new MagickImage(IMAGEpath);
-                buffers[0] = image.Width;
-                buffers[1] = image.Height;
+                buffers[0] = checked((int)image.Width);
+                buffers[1] = checked((int)image.Height);
                 return;
             }
         }
@@ -1515,12 +1747,27 @@ namespace NVGE
             string[] nm = new string[GetCount()];
             long[] rm = new long[GetCount()];
             RegistryKey rKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}");
+            if (rKey == null)
+            {
+                return new VRAMInfo(nm, rm);
+            }
+
             int count = 0;
             foreach (string kn in rKey.GetSubKeyNames())
             {
+                if (count >= nm.Length)
+                {
+                    break;
+                }
+
                 if (kn.Contains('0'))
                 {
                     RegistryKey vk = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\" + kn);
+                    if (vk == null)
+                    {
+                        continue;
+                    }
+
                     foreach (string vs in vk.GetSubKeyNames())
                     {
                         if (vs.Contains("VolatileSettings"))
@@ -1529,11 +1776,15 @@ namespace NVGE
                             {
                                 if (skn.Contains("DriverDesc"))
                                 {
-                                    nm[count] = (string)vk.GetValue("DriverDesc") + " - " + (string)vk.GetValue("DriverVersion");
+                                    nm[count] = Convert.ToString(vk.GetValue("DriverDesc")) + " - " + Convert.ToString(vk.GetValue("DriverVersion"));
                                 }
                                 else if (skn.Contains("HardwareInformation.qwMemorySize"))
                                 {
-                                    rm[count] = (long)vk.GetValue("HardwareInformation.qwMemorySize") / 1048576;
+                                    object memorySize = vk.GetValue("HardwareInformation.qwMemorySize");
+                                    if (memorySize != null)
+                                    {
+                                        rm[count] = Convert.ToInt64(memorySize) / 1048576;
+                                    }
 
                                 }
                                 else if (skn.Contains("HardwareInformation.MemorySize"))
@@ -1542,9 +1793,10 @@ namespace NVGE
                                     {
                                         try
                                         {
-                                            rm[count] = (long)vk.GetValue("HardwareInformation.MemorySize");
+                                            object memorySize = vk.GetValue("HardwareInformation.MemorySize");
+                                            rm[count] = memorySize == null ? 0 : Convert.ToInt64(memorySize);
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
                                             rm[count] = 0;
                                         }
@@ -1583,11 +1835,21 @@ namespace NVGE
         {
             int count = 0;
             RegistryKey rKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}");
+            if (rKey == null)
+            {
+                return 0;
+            }
+
             foreach (string kn in rKey.GetSubKeyNames())
             {
                 if (kn.Contains('0'))
                 {
                     RegistryKey vk = Registry.LocalMachine.OpenSubKey(@"SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\" + kn);
+                    if (vk == null)
+                    {
+                        continue;
+                    }
+
                     foreach (string vs in vk.GetSubKeyNames())
                     {
                         if (vs.Contains("VolatileSettings"))
@@ -1618,6 +1880,11 @@ namespace NVGE
         /// ルートエントリ
         /// </summary>
         public static ConfigEntry Entry = new() { Key = "ConfigRoot" };
+        public static void Reset()
+        {
+            Entry = new ConfigEntry() { Key = "ConfigRoot" };
+        }
+
         public static void Load(string filename)
         {
             if (!File.Exists(filename))
@@ -1626,6 +1893,10 @@ namespace NVGE
             using var streamReader = new StreamReader(filename, Encoding.UTF8);
             using var xmlReader = XmlReader.Create(streamReader, new XmlReaderSettings() { CheckCharacters = false });
             Entry = (ConfigEntry)xmlSerializer.Deserialize(xmlReader); // （3）
+            if (Entry == null)
+            {
+                Reset();
+            }
         }
         public static void Save(string filename)
         {

@@ -20,11 +20,6 @@ namespace NVGE
             bool hasHandle = false;
             try
             {
-                if (!File.Exists(Common.xmlpath))
-                {
-                    Common.InitConfig();
-                }
-
                 try
                 {
                     hasHandle = mutex.WaitOne(0, false);
@@ -39,29 +34,10 @@ namespace NVGE
                     MessageBox.Show("Multiple launch of applications is not allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\engines\waifu2x\waifu2x-ncnn-vulkan.exe"))
-                {
-                    MessageBox.Show("The required file 'waifu2x-ncnn-vulkan.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\engines\realcugan\realcugan-ncnn-vulkan.exe"))
-                {
-                    MessageBox.Show("The required file 'realcugan-ncnn-vulkan.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\engines\realesrgan\realesrgan-ncnn-vulkan.exe"))
-                {
-                    MessageBox.Show("The required file 'realesrgan-ncnn-vulkan.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!File.Exists(Directory.GetCurrentDirectory() + @"\res\updater.exe"))
-                {
-                    MessageBox.Show("The required file 'updater.exe' does not exist.\nClose the application.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
 
-                Config.Load(Common.xmlpath);
-                switch (int.Parse(Config.Entry["ApplicationLanguage"].Value))
+                Common.LoadConfigOrReset();
+                EnginePackageManager.EnsureEngineDirectories();
+                switch (Common.GetConfigInt("ApplicationLanguage", 0))
                 {
                     case 0:
                         Thread.CurrentThread.CurrentUICulture = new CultureInfo("");

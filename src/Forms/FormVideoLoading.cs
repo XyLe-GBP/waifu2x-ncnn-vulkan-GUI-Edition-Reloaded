@@ -16,6 +16,7 @@ namespace NVGE
             outpath = outputpath;
 
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
         }
 
         private async void FormVideoLoading_Load(object sender, EventArgs e)

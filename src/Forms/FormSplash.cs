@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -23,6 +24,7 @@ namespace NVGE
         public FormSplash()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
         }
 
         private void FormSplash_Load(object sender, EventArgs e)
@@ -62,6 +64,8 @@ namespace NVGE
             progressBar1.MarqueeAnimationSpeed = 50;
         }
 
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string ProgressMsg
         {
             set

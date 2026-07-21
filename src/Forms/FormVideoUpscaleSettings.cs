@@ -41,6 +41,7 @@ namespace NVGE
         public FormVideoUpscaleSettings()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
         }
 
         private void FormVideoUpscaleSettings_Load(object sender, EventArgs e)

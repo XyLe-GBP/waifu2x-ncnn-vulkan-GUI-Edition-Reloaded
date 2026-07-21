@@ -8,6 +8,7 @@ namespace NVGE.src.Forms
         public FormImageConvertTarget()
         {
             InitializeComponent();
+            NVGE.ModernWinFormsTheme.Apply(this);
         }
 
         private void FormImageConvertTarget_Load(object sender, EventArgs e)

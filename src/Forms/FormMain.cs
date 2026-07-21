@@ -29,6 +29,14 @@ namespace NVGE
         };
         private static readonly HttpClient appUpdatechecker = new(handler);
         private static readonly HttpClient FFupdatechecker = new(handler);
+        private const string ReleasesUrl = "https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases";
+        private static readonly Color HomeActionBackColor = Color.FromArgb(248, 250, 252);
+        private static readonly Color HomeActionHoverColor = Color.FromArgb(241, 245, 249);
+        private static readonly Color HomeActionPressedColor = Color.FromArgb(226, 232, 240);
+        private static readonly Color HomeActionDisabledBackColor = Color.FromArgb(229, 234, 242);
+        private static readonly Color HomeActionTextColor = Color.FromArgb(30, 41, 59);
+        private static readonly Color HomeActionDisabledTextColor = Color.FromArgb(100, 116, 139);
+        private static readonly Color HomeMutedTextColor = Color.FromArgb(71, 85, 105);
         #endregion
 
         //static FormSplash fs;
@@ -38,10 +46,157 @@ namespace NVGE
         private Task UpdateTask;
         private ProcessStartInfo UpdateProcess;
 
+        private bool CanUseBundledUpdater()
+        {
+            if (File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "res", "updater.exe")))
+            {
+                return true;
+            }
+
+            DialogResult result = MessageBox.Show(
+                this,
+                "The optional updater is unavailable, possibly because it was removed by security software.\n\n" +
+                "The application can continue to run normally. Open GitHub Releases to update manually?",
+                Strings.MSGWarning,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                Common.OpenURI(ReleasesUrl);
+            }
+
+            return false;
+        }
+
+        private string PrepareBundledUpdate()
+        {
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string updaterDirectory = Directory.GetParent(currentDirectory)?.FullName
+                ?? throw new InvalidOperationException("The updater directory could not be determined.");
+            string packagePath = Path.Combine(currentDirectory, "res", "waifu2x-nvger.zip");
+            string updaterSourcePath = Path.Combine(currentDirectory, "res", "updater.exe");
+            string updaterPath = Path.Combine(updaterDirectory, "updater.exe");
+            string stagingDirectory = Path.Combine(updaterDirectory, "updater-temp");
+            string packageDirectory = Path.Combine(
+                stagingDirectory,
+                Common.ApplicationPortable ? "release-portable" : "release");
+
+            if (!File.Exists(packagePath))
+            {
+                throw new FileNotFoundException("The downloaded update package was not found.", packagePath);
+            }
+
+            if (Directory.Exists(stagingDirectory))
+            {
+                Directory.Delete(stagingDirectory, true);
+            }
+
+            ZipFile.ExtractToDirectory(packagePath, stagingDirectory);
+
+            if (!File.Exists(Path.Combine(packageDirectory, "waifu2x-nvger.exe")))
+            {
+                Directory.Delete(stagingDirectory, true);
+                throw new InvalidDataException("The update package does not contain the application executable.");
+            }
+
+            File.Copy(updaterSourcePath, updaterPath, true);
+            File.WriteAllLines(
+                Path.Combine(updaterDirectory, "updater.dat"),
+                new[] { currentDirectory, packageDirectory, Environment.ProcessId.ToString(CultureInfo.InvariantCulture) });
+            File.Delete(packagePath);
+
+            return updaterPath;
+        }
+
+        private static void TryDeleteUpdateFile(string path)
+        {
+            try
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+            catch (IOException)
+            {
+                // The updater may still be exiting. Cleanup can be retried on the next launch.
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Security software may temporarily hold or quarantine updater files.
+            }
+        }
+
+        private static string[] GetUpscaledFrameFiles()
+        {
+            if (string.IsNullOrWhiteSpace(Common.DeletePathFrames2x) || !Directory.Exists(Common.DeletePathFrames2x))
+            {
+                return Array.Empty<string>();
+            }
+
+            string[] frameFiles = Directory.GetFiles(Common.DeletePathFrames2x, "*");
+            Array.Sort(frameFiles, StringComparer.OrdinalIgnoreCase);
+            return frameFiles;
+        }
+
         public FormMain()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
+            ApplyHomeScreenStyle();
             pictureBox_DD.AllowDrop = true;
+        }
+
+        private void ApplyHomeScreenStyle()
+        {
+            groupBox2.BackColor = BackColor;
+
+            ConfigureHomeActionButton(button_Image);
+            ConfigureHomeActionButton(button_Video);
+            ConfigureHomeActionButton(button_Merge);
+
+            label1.ForeColor = HomeMutedTextColor;
+            label1.BackColor = Color.FromArgb(248, 250, 252);
+            label1.Font = new Font(label1.Font, FontStyle.Bold);
+
+            label_default.ForeColor = HomeMutedTextColor;
+            label_File.ForeColor = HomeActionTextColor;
+            label_Size.ForeColor = HomeMutedTextColor;
+            label_File.TextAlign = ContentAlignment.MiddleLeft;
+            label_Size.TextAlign = ContentAlignment.MiddleLeft;
+        }
+
+        private void ConfigureHomeActionButton(Button button)
+        {
+            button.EnabledChanged -= HomeActionButton_EnabledChanged;
+            button.EnabledChanged += HomeActionButton_EnabledChanged;
+            button.TextAlign = ContentAlignment.MiddleCenter;
+            button.Padding = Padding.Empty;
+            button.Font = new Font(button.Font.FontFamily, button.Font.Size + 1F, FontStyle.Bold, button.Font.Unit);
+            UpdateHomeActionButton(button);
+        }
+
+        private void HomeActionButton_EnabledChanged(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                UpdateHomeActionButton(button);
+            }
+        }
+
+        private static void UpdateHomeActionButton(Button button)
+        {
+            button.UseVisualStyleBackColor = false;
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            button.FlatAppearance.BorderColor = HomeActionDisabledBackColor;
+            button.AutoEllipsis = true;
+            button.Cursor = button.Enabled ? Cursors.Hand : Cursors.Default;
+            button.BackColor = button.Enabled ? HomeActionBackColor : HomeActionDisabledBackColor;
+            button.ForeColor = button.Enabled ? HomeActionTextColor : HomeActionDisabledTextColor;
+            button.FlatAppearance.MouseOverBackColor = button.Enabled ? HomeActionHoverColor : HomeActionDisabledBackColor;
+            button.FlatAppearance.MouseDownBackColor = button.Enabled ? HomeActionPressedColor : HomeActionDisabledBackColor;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -63,7 +218,7 @@ namespace NVGE
                 {
                     Config.Load(Common.xmlpath);
 
-                    switch (int.Parse(Config.Entry["ApplicationLanguage"].Value))
+                    switch (Common.GetConfigInt("ApplicationLanguage", 0))
                     {
                         case 0:
                             ChangeLanguageUX("");
@@ -229,8 +384,8 @@ namespace NVGE
                             }
                             File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
                             string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
-                            File.Delete(updpath + @"\updater.exe");
-                            File.Delete(updpath + @"\waifu2x-nvger.zip");
+                            TryDeleteUpdateFile(updpath + @"\updater.exe");
+                            TryDeleteUpdateFile(updpath + @"\waifu2x-nvger.zip");
                             Common.DeleteDirectory(updpath + @"\updater-temp");
                             Thread.Sleep(200);
 
@@ -383,8 +538,8 @@ namespace NVGE
                         {
                             File.Delete(Directory.GetCurrentDirectory() + @"\updated.dat");
                             string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
-                            File.Delete(updpath + @"\updater.exe");
-                            File.Delete(updpath + @"\waifu2x-nvger.zip");
+                            TryDeleteUpdateFile(updpath + @"\updater.exe");
+                            TryDeleteUpdateFile(updpath + @"\waifu2x-nvger.zip");
                             Common.DeleteDirectory(updpath + @"\updater-temp");
 
                             using Form dummy = new();
@@ -481,7 +636,7 @@ namespace NVGE
                             closeFileCToolStripMenuItem.Enabled = true;
                             label1.Visible = false;
                             ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
-                            pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                            SetMainPreview(Directory.GetCurrentDirectory() + @"\tmp.png");
                             Common.IsVideo = false;
                             return;
                         }
@@ -504,7 +659,7 @@ namespace NVGE
                         closeFileCToolStripMenuItem.Enabled = true;
                         label1.Visible = false;
                         ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
-                        pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                        SetMainPreview(Directory.GetCurrentDirectory() + @"\tmp.png");
                         Common.IsVideo = false;
                         return;
                     }
@@ -624,7 +779,7 @@ namespace NVGE
                     button_Image.Enabled = true;
                     closeFileCToolStripMenuItem.Enabled = true;
                     label1.Visible = false;
-                    pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                    SetMainPreview(Directory.GetCurrentDirectory() + @"\tmp.png");
                     Common.ImageFile = new string[1];
                     Common.ImageFile[0] = Directory.GetCurrentDirectory() + @"\tmp.png";
                     Common.IsVideo = false;
@@ -699,6 +854,11 @@ namespace NVGE
 
         private void UpscalingSettingsUToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!EnsureAnyEngineInstalledForUpscaling())
+            {
+                return;
+            }
+
             Config.Load(Common.xmlpath);
 
             using FormImageUpscaleSettings form = new();
@@ -707,8 +867,75 @@ namespace NVGE
             return;
         }
 
+        private void EngineManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using FormEngineManager form = new();
+            form.ShowDialog();
+        }
+
+        private bool EnsureAnyEngineInstalledForUpscaling()
+        {
+            if (EnginePackageManager.HasAnyInstalledEngine())
+            {
+                return true;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "No upscaling engine is installed.\n\nOpen Engine Manager now?",
+                Strings.MSGWarning,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                using FormEngineManager form = new();
+                form.ShowDialog();
+            }
+
+            return false;
+        }
+
+        private bool EnsureEngineInstalled(int engineId)
+        {
+            if (EnginePackageManager.IsEngineInstalled(engineId))
+            {
+                EnginePackage installedEngine = EnginePackageManager.GetEngine(engineId);
+                if (EnginePackageManager.GetAvailableModels(engineId).Count > 0)
+                {
+                    return true;
+                }
+
+                string installedEngineName = installedEngine?.DisplayName ?? "Selected engine";
+                MessageBox.Show(
+                    installedEngineName + " is installed, but no usable model was found.",
+                    Strings.MSGWarning,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return false;
+            }
+
+            EnginePackage engine = EnginePackageManager.GetEngine(engineId);
+            string engineName = engine?.DisplayName ?? "Selected engine";
+            DialogResult result = MessageBox.Show(
+                engineName + " is not installed.\n\nOpen Engine Manager now?",
+                Strings.MSGWarning,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                using FormEngineManager form = new();
+                form.ShowDialog();
+            }
+
+            return false;
+        }
+
         private void VideoUpscalingSettingsVToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!EnsureAnyEngineInstalledForUpscaling())
+            {
+                return;
+            }
+
             Config.Load(Common.xmlpath);
 
             using FormVideoUpscaleSettings form = new();
@@ -753,6 +980,11 @@ namespace NVGE
 
         private void Button_Image_Click(object sender, EventArgs e)
         {
+            if (!EnsureAnyEngineInstalledForUpscaling())
+            {
+                return;
+            }
+
             if (Common.ImageParam.Length < 69 || Common.ImageParam.Length == 0 || string.IsNullOrWhiteSpace(Common.ImageParam))
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -764,7 +996,11 @@ namespace NVGE
             Config.Load(Common.xmlpath);
 
             int fmt = int.Parse(Config.Entry["Format"].Value);
-            int engine = int.Parse(Config.Entry["ConversionType"].Value);
+            int engine = Common.GetConfigInt("ConversionType", 0);
+            if (!EnsureEngineInstalled(engine))
+            {
+                return;
+            }
 
             string ft;
             if (Common.ImageFile.Length != 0)
@@ -2939,6 +3175,11 @@ namespace NVGE
 
         private void Button_Video_Click(object sender, EventArgs e)
         {
+            if (!EnsureAnyEngineInstalledForUpscaling())
+            {
+                return;
+            }
+
             if (Common.ImageParam.Length < 69 || Common.ImageParam.Length == 0 || string.IsNullOrWhiteSpace(Common.ImageParam))
             {
                 MessageBox.Show(Strings.SettingError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2967,7 +3208,11 @@ namespace NVGE
 
             Config.Load(Common.xmlpath);
 
-            int engine = int.Parse(Config.Entry["ConversionType"].Value);
+            int engine = Common.GetConfigInt("ConversionType", 0);
+            if (!EnsureEngineInstalled(engine))
+            {
+                return;
+            }
             string ffp = Config.Entry["FFmpegLocation"].Value;
             int enc = int.Parse(Config.Entry["OutputCodecIndex"].Value);
             string vl = Config.Entry["VideoLocation"].Value;
@@ -3605,7 +3850,7 @@ namespace NVGE
                     ProcessStartInfo pi = new();
                     Process ps;
                     pi.FileName = ffp;
-                    pi.Arguments = "-r " + sfps + " -i \"" + Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x\image-%09d.png" + "\" -vcodec libx264 -pix_fmt yuv420p -r 60 \"" + Common.SFDSavePath + "\"";
+                    pi.Arguments = "-r " + sfps + " -i \"" + Path.Combine(Common.DeletePathFrames2x, "image-%09d.png") + "\" -vcodec libx264 -pix_fmt yuv420p -r 60 \"" + Common.SFDSavePath + "\"";
                     pi.WindowStyle = ProcessWindowStyle.Normal;
                     pi.UseShellExecute = true;
                     ps = Process.Start(pi);
@@ -3697,16 +3942,23 @@ namespace NVGE
                             string sfps = Config.Entry["FPS"].Value;
                             if (sfps != "")
                             {
+                                string[] frameFiles = GetUpscaledFrameFiles();
+                                if (frameFiles.Length == 0)
+                                {
+                                    MessageBox.Show(Strings.VRUPError, Strings.MSGError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+
                                 if (sfps.Contains('.'))
                                 {
                                     float fps = float.Parse(sfps);
                                     Mat mat;
 
-                                    double[] imgsize = Common.GetImageSize(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x", "*")[0]);
+                                    double[] imgsize = Common.GetImageSize(frameFiles[0]);
 
                                     using var writer = new VideoWriter(sfd.FileName, FourCC.H264, fps, new OpenCvSharp.Size(imgsize[0], imgsize[1]));
 
-                                    foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x", "*"))
+                                    foreach (var item in frameFiles)
                                     {
                                         mat = Cv2.ImRead(item);
                                         writer.Write(mat);
@@ -3718,11 +3970,11 @@ namespace NVGE
                                     int fps = int.Parse(sfps);
                                     Mat mat;
 
-                                    double[] imgsize = Common.GetImageSize(Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x", "*")[0]);
+                                    double[] imgsize = Common.GetImageSize(frameFiles[0]);
 
                                     using var writer = new VideoWriter(sfd.FileName, FourCC.H264, fps, new OpenCvSharp.Size(imgsize[0], imgsize[1]));
 
-                                    foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory() + @"\_temp-project\image-frames2x", "*"))
+                                    foreach (var item in frameFiles)
                                     {
                                         mat = Cv2.ImRead(item);
                                         writer.Write(mat);
@@ -4079,9 +4331,15 @@ namespace NVGE
             if (RunUpdate == true)
             {
                 string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
+                string updaterPath = updpath + @"\updater.exe";
+                if (!File.Exists(updaterPath))
+                {
+                    return;
+                }
+
                 UpdateProcess = new()
                 {
-                    FileName = updpath + @"\updater.exe",
+                    FileName = updaterPath,
                     Arguments = null,
                     UseShellExecute = true,
                     WindowStyle = ProcessWindowStyle.Normal,
@@ -4162,7 +4420,7 @@ namespace NVGE
 
                     ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
 
-                    pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                    SetMainPreview(Directory.GetCurrentDirectory() + @"\tmp.png");
                     closeFileCToolStripMenuItem.Enabled = true;
                     return;
                 }
@@ -4183,7 +4441,7 @@ namespace NVGE
 
                         ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
 
-                        pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                        SetMainPreview(Directory.GetCurrentDirectory() + @"\tmp.png");
                         closeFileCToolStripMenuItem.Enabled = true;
                         return;
                     }
@@ -4356,6 +4614,14 @@ namespace NVGE
             }
         }
 
+        private void SetMainPreview(string imagePath)
+        {
+            Image oldImage = pictureBox_DD.Image;
+            pictureBox_DD.ImageLocation = null;
+            pictureBox_DD.Image = ImageConvert.LoadBitmapForPreview(imagePath);
+            oldImage?.Dispose();
+        }
+
         private void PictureBox_DD_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -4407,7 +4673,7 @@ namespace NVGE
 
                     ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
 
-                    pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                    SetMainPreview(Directory.GetCurrentDirectory() + @"\tmp.png");
 
                     closeFileCToolStripMenuItem.Enabled = true;
 
@@ -4429,7 +4695,7 @@ namespace NVGE
 
                         ImageConvert.IMAGEtoPNG32Async(file.FullName, Directory.GetCurrentDirectory() + @"\tmp.png");
 
-                        pictureBox_DD.ImageLocation = Directory.GetCurrentDirectory() + @"\tmp.png";
+                        SetMainPreview(Directory.GetCurrentDirectory() + @"\tmp.png");
 
                         closeFileCToolStripMenuItem.Enabled = true;
 
@@ -4974,6 +5240,11 @@ namespace NVGE
                             DialogResult dr = MessageBox.Show(this, Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.AppUpdateConfirmCaption, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (dr == DialogResult.Yes)
                             {
+                                if (!CanUseBundledUpdater())
+                                {
+                                    return;
+                                }
+
                                 using FormUpdateApplicationType fuat = new();
                                 fuat.ShowDialog();
 
@@ -4993,46 +5264,11 @@ namespace NVGE
                                     return;
                                 }
 
-                                string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
-
-                                if (File.Exists(updpath + @"\updater.exe"))
-                                {
-                                    File.Delete(updpath + @"\updater.exe");
-                                }
-                                if (Directory.Exists(updpath + @"\updater-temp"))
-                                {
-                                    Common.DeleteDirectory(updpath + @"\updater-temp");
-                                }
-                                if (File.Exists(updpath + @"\waifu2x-nvger.zip"))
-                                {
-                                    File.Delete(updpath + @"\waifu2x-nvger.zip");
-                                }
-
-                                File.Move(Directory.GetCurrentDirectory() + @"\res\updater.exe", updpath + @"\updater.exe");
-                                string wtext;
-                                switch (Common.ApplicationPortable)
-                                {
-                                    case false:
-                                        {
-                                            wtext = Directory.GetCurrentDirectory() + "\r\nrelease";
-                                        }
-                                        break;
-                                    case true:
-                                        {
-                                            wtext = Directory.GetCurrentDirectory() + "\r\nportable";
-                                        }
-                                        break;
-                                }
-                                File.WriteAllText(updpath + @"\updater.txt", wtext);
-                                File.Move(updpath + @"\updater.txt", updpath + @"\updater.dat");
-                                if (File.Exists(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip"))
-                                {
-                                    File.Move(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip", updpath + @"\waifu2x-nvger.zip");
-                                }
+                                string updaterPath = PrepareBundledUpdate();
 
                                 ProcessStartInfo pi = new()
                                 {
-                                    FileName = updpath + @"\updater.exe",
+                                    FileName = updaterPath,
                                     Arguments = null,
                                     UseShellExecute = true,
                                     WindowStyle = ProcessWindowStyle.Normal,
@@ -5046,7 +5282,7 @@ namespace NVGE
                                 DialogResult dr2 = MessageBox.Show(this, Strings.UpdateConfirm, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                                 if (dr2 == DialogResult.Yes)
                                 {
-                                    Common.OpenURI("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases");
+                                    Common.OpenURI(ReleasesUrl);
                                     return;
                                 }
                                 else
@@ -5102,6 +5338,11 @@ namespace NVGE
                             DialogResult dr = MessageBox.Show(Strings.LatestString + hv[8..].Replace("\n", "") + "\n" + Strings.CurrentString + ver.FileVersion + "\n" + Strings.AppUpdateConfirmCaption, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (dr == DialogResult.Yes)
                             {
+                                if (!CanUseBundledUpdater())
+                                {
+                                    return;
+                                }
+
                                 using FormUpdateApplicationType fuat = new();
                                 fuat.ShowDialog();
 
@@ -5121,42 +5362,7 @@ namespace NVGE
                                     return;
                                 }
 
-                                string updpath = Directory.GetCurrentDirectory()[..Directory.GetCurrentDirectory().LastIndexOf('\\')];
-
-                                if (File.Exists(updpath + @"\updater.exe"))
-                                {
-                                    File.Delete(updpath + @"\updater.exe");
-                                }
-                                if (Directory.Exists(updpath + @"\updater-temp"))
-                                {
-                                    Common.DeleteDirectory(updpath + @"\updater-temp");
-                                }
-                                if (File.Exists(updpath + @"\waifu2x-nvger.zip"))
-                                {
-                                    File.Delete(updpath + @"\waifu2x-nvger.zip");
-                                }
-
-                                File.Move(Directory.GetCurrentDirectory() + @"\res\updater.exe", updpath + @"\updater.exe");
-                                string wtext;
-                                switch (Common.ApplicationPortable)
-                                {
-                                    case false:
-                                        {
-                                            wtext = Directory.GetCurrentDirectory() + "\r\nrelease";
-                                        }
-                                        break;
-                                    case true:
-                                        {
-                                            wtext = Directory.GetCurrentDirectory() + "\r\nportable";
-                                        }
-                                        break;
-                                }
-                                File.WriteAllText(updpath + @"\updater.txt", wtext);
-                                File.Move(updpath + @"\updater.txt", updpath + @"\updater.dat");
-                                if (File.Exists(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip"))
-                                {
-                                    File.Move(Directory.GetCurrentDirectory() + @"\res\waifu2x-nvger.zip", updpath + @"\waifu2x-nvger.zip");
-                                }
+                                PrepareBundledUpdate();
 
                                 RunUpdate = true;
 
@@ -5167,7 +5373,7 @@ namespace NVGE
                                 DialogResult dr2 = MessageBox.Show(this, Strings.UpdateConfirm, Strings.MSGConfirm, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                                 if (dr2 == DialogResult.Yes)
                                 {
-                                    Common.OpenURI("https://github.com/XyLe-GBP/waifu2x-ncnn-vulkan-GUI-Edition-Reloaded/releases");
+                                    Common.OpenURI(ReleasesUrl);
                                     return;
                                 }
                                 else
@@ -5791,16 +5997,19 @@ namespace NVGE
                     japaneseToolStripMenuItem.Checked = true;
                     englishToolStripMenuItem.Checked = false;
                     chineseToolStripMenuItem.Checked = false;
+                    engineManagerToolStripMenuItem.Text = "エンジンの管理...";
                     break;
                 case "zh":
                     japaneseToolStripMenuItem.Checked = false;
                     englishToolStripMenuItem.Checked = false;
                     chineseToolStripMenuItem.Checked = true;
+                    engineManagerToolStripMenuItem.Text = "管理引擎...";
                     break;
                 default:
                     japaneseToolStripMenuItem.Checked = false;
                     englishToolStripMenuItem.Checked = true;
                     chineseToolStripMenuItem.Checked = false;
+                    engineManagerToolStripMenuItem.Text = "Engine Manager...";
                     break;
             }
         }

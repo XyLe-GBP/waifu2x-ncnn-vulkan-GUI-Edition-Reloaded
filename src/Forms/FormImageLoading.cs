@@ -36,6 +36,7 @@ namespace NVGE
             }
             
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
         }
 
         private async void FormImageLoading_Load(object sender, System.EventArgs e)

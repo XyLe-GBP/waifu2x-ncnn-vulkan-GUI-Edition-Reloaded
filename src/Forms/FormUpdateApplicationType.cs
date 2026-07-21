@@ -8,6 +8,7 @@ namespace NVGE
         public FormUpdateApplicationType()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
         }
 
         private void FormUpdateApplicationType_Load(object sender, EventArgs e)

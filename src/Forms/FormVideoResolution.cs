@@ -8,6 +8,7 @@ namespace NVGE
         public FormVideoResolution()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
         }
 
         private void FormVideoResolution_Load(object sender, EventArgs e)

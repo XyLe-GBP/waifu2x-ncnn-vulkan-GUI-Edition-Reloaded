@@ -49,8 +49,89 @@ namespace NVGE
         public FormProgress(int flag, int useengine = 0)
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
             Flag = flag;
             UseEngine = useengine;
+        }
+
+        private void RunRealCugan(
+            string arguments,
+            string inputPath,
+            string outputPath,
+            BackgroundWorker worker,
+            DoWorkEventArgs e,
+            string progressPath)
+        {
+            bool succeeded = RunRealCuganAttempt(arguments, worker, e, progressPath);
+            if (e.Cancel)
+            {
+                return;
+            }
+            if (succeeded && !ImageConvert.IsUnexpectedBlackImage(inputPath, outputPath))
+            {
+                return;
+            }
+
+            string fallbackArguments = Regex.Replace(arguments, @"(?:^|\s)-t\s+\S+", string.Empty);
+            fallbackArguments = Regex.Replace(fallbackArguments, @"(?:^|\s)-g\s+\S+", string.Empty);
+            fallbackArguments += " -t 128 -g -1";
+            File.Delete(outputPath);
+
+            if (!RunRealCuganAttempt(fallbackArguments, worker, e, progressPath) ||
+                ImageConvert.IsUnexpectedBlackImage(inputPath, outputPath))
+            {
+                throw new InvalidOperationException(
+                    "Real-CUGAN produced an invalid black image with both GPU and CPU fallback settings.");
+            }
+        }
+
+        private bool RunRealCuganAttempt(
+            string arguments,
+            BackgroundWorker worker,
+            DoWorkEventArgs e,
+            string progressPath)
+        {
+            using var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = realcuganPath,
+                    WorkingDirectory = Path.GetDirectoryName(realcuganPath),
+                    Arguments = arguments,
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true
+                }
+            };
+
+            process.Start();
+            var standardOutput = process.StandardOutput.ReadToEndAsync();
+            var standardError = process.StandardError.ReadToEndAsync();
+
+            while (!process.WaitForExit(100))
+            {
+                if (backgroundWorker_Progress.CancellationPending)
+                {
+                    process.Kill(true);
+                    e.Cancel = true;
+                    return false;
+                }
+
+                worker.ReportProgress(Directory.GetFiles(progressPath, "*").Length);
+            }
+
+            string output = standardOutput.GetAwaiter().GetResult();
+            string error = standardError.GetAwaiter().GetResult();
+            if (process.ExitCode != 0)
+            {
+                Debug.WriteLine(output);
+                Debug.WriteLine(error);
+                throw new InvalidOperationException(
+                    $"Real-CUGAN exited with code {process.ExitCode}.{Environment.NewLine}{error}");
+            }
+
+            return true;
         }
 
         private void BackgroundWorker_Progress_DoWork(object sender, DoWorkEventArgs e)
@@ -137,50 +218,30 @@ namespace NVGE
                                         3 => ".ico",
                                         _ => ".png",
                                     };
-                                    string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[0], ".png") + "\"";//FileInfo fi = new(file);
+                                    string inputPath = Path.Combine(
+                                        Directory.GetCurrentDirectory(),
+                                        "_temp-project",
+                                        "images",
+                                        "sources",
+                                        filename.Replace(Common.ImageFileExt[0], ".png"));
+                                    string outputPath = ft == ".ico"
+                                        ? Common.SFDSavePath.Replace(".ico", ".png")
+                                        : Common.SFDSavePath;
+                                    string arguments = Common.ImageParam
+                                        .Replace("$InFile", $"\"{inputPath}\"")
+                                        .Replace("$OutFile", $"\"{outputPath}\"")
+                                        .Replace("realcugan-ncnn-vulkan ", "");
 
-                                    Process ps = new();
-                                    ProcessStartInfo pi = new();
-
-                                    if (ft == ".ico")
+                                    RunRealCugan(
+                                        arguments,
+                                        inputPath,
+                                        outputPath,
+                                        worker,
+                                        e,
+                                        upscaledPath);
+                                    if (e.Cancel)
                                     {
-                                        pi.FileName = realcuganPath;
-                                        pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath.Replace(".ico", ".png") + "\"").Replace("realcugan-ncnn-vulkan ", "");
-                                        pi.WindowStyle = ProcessWindowStyle.Hidden;
-                                        pi.UseShellExecute = true;
-                                        ps = Process.Start(pi);
-                                    }
-                                    else
-                                    {
-                                        pi.FileName = realcuganPath;
-                                        pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.SFDSavePath + "\"").Replace("realcugan-ncnn-vulkan ", "");
-                                        pi.WindowStyle = ProcessWindowStyle.Hidden;
-                                        pi.UseShellExecute = true;
-                                        ps = Process.Start(pi);
-                                    }
-
-                                    while (!ps.HasExited)
-                                    {
-                                        if (backgroundWorker_Progress.CancellationPending)
-                                        {
-                                            if (!ps.HasExited)
-                                            {
-                                                ps.Kill();
-                                            }
-                                            ps.Close();
-                                            e.Cancel = true;
-                                            return;
-                                        }
-                                        else if (ps.HasExited == true)
-                                        {
-                                            worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            worker.ReportProgress(Directory.GetFiles(upscaledPath, "*").Length);
-                                            continue;
-                                        }
+                                        return;
                                     }
                                 }
                             }
@@ -338,52 +399,32 @@ namespace NVGE
                                     foreach (var filename in Common.ImageFileName)
                                     {
 
-                                        string fnf = "\"" + Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + filename.Replace(Common.ImageFileExt[i], ".png") + "\"";
-
-                                        ProcessStartInfo pi = new();
-                                        Process ps = new();
-
-                                        if (ft == ".ico")
-                                        {
-                                            pi.FileName = realcuganPath;
-                                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(".ico", ".png") + "\"").Replace("realcugan-ncnn-vulkan ", "");
-                                            pi.WindowStyle = ProcessWindowStyle.Hidden;
-                                            pi.UseShellExecute = true;
-                                            ps = Process.Start(pi);
-                                        }
-                                        else
-                                        {
-                                            pi.FileName = realcuganPath;
-                                            pi.Arguments = Common.ImageParam.Replace("$InFile", fnf).Replace("$OutFile", "\"" + Common.FBDSavePath + @"\" + filename.Replace(Common.ImageFileExt[i], ft) + "\"").Replace("realcugan-ncnn-vulkan ", "");
-                                            pi.WindowStyle = ProcessWindowStyle.Hidden;
-                                            pi.UseShellExecute = true;
-                                            ps = Process.Start(pi);
-                                        }
+                                        string inputPath = Path.Combine(
+                                            Directory.GetCurrentDirectory(),
+                                            "_temp-project",
+                                            "images",
+                                            "sources",
+                                            filename.Replace(Common.ImageFileExt[i], ".png"));
+                                        string outputName = ft == ".ico"
+                                            ? filename.Replace(".ico", ".png")
+                                            : filename.Replace(Common.ImageFileExt[i], ft);
+                                        string outputPath = Path.Combine(Common.FBDSavePath, outputName);
+                                        string arguments = Common.ImageParam
+                                            .Replace("$InFile", $"\"{inputPath}\"")
+                                            .Replace("$OutFile", $"\"{outputPath}\"")
+                                            .Replace("realcugan-ncnn-vulkan ", "");
 
                                         i++;
-
-                                        while (!ps.HasExited)
+                                        RunRealCugan(
+                                            arguments,
+                                            inputPath,
+                                            outputPath,
+                                            worker,
+                                            e,
+                                            Common.FBDSavePath);
+                                        if (e.Cancel)
                                         {
-                                            if (backgroundWorker_Progress.CancellationPending)
-                                            {
-                                                if (!ps.HasExited)
-                                                {
-                                                    ps.Kill();
-                                                }
-                                                ps.Close();
-                                                e.Cancel = true;
-                                                return;
-                                            }
-                                            else if (ps.HasExited == true)
-                                            {
-                                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
-                                                break;
-                                            }
-                                            else
-                                            {
-                                                worker.ReportProgress(Directory.GetFiles(Common.FBDSavePath, "*.*").Length);
-                                                continue;
-                                            }
+                                            return;
                                         }
                                     }
                                 }
@@ -667,7 +708,17 @@ namespace NVGE
 
         private void BackgroundWorker_Progress_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Cancelled)
+            if (e.Error is not null)
+            {
+                MessageBox.Show(
+                    e.Error.Message,
+                    Strings.MSGError,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                Common.AbortFlag = 1;
+                Close();
+            }
+            else if (e.Cancelled)
             {
                 if (Common.DlcancelFlag != 0)
                 {
@@ -684,6 +735,13 @@ namespace NVGE
             }
             else
             {
+                if (Flag is 0 or 1 && Directory.Exists(upscaledPath))
+                {
+                    foreach (string imagePath in Directory.GetFiles(upscaledPath))
+                    {
+                        ImageConvert.RepairFullyTransparentImage(imagePath);
+                    }
+                }
                 Common.AbortFlag = 0;
                 Close();
             }
@@ -1057,7 +1115,7 @@ namespace NVGE
                 switch (file.Extension.ToUpper())
                 {
                     case ".GIF":
-                        if (ImageConvert.IMAGEtoPNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
+                        if (ImageConvert.IMAGEtoEnginePNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                         {
                             File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                             break;
@@ -1072,7 +1130,7 @@ namespace NVGE
                     default:
                         if (fmt == 1 || fmt == 3 || ext == ".png")
                         {
-                            if (ImageConvert.IMAGEtoPNG32(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
+                            if (ImageConvert.IMAGEtoEnginePNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                             {
                                 File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                 break;
@@ -1087,7 +1145,7 @@ namespace NVGE
                         }
                         else
                         {
-                            if (ImageConvert.IMAGEtoPNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
+                            if (ImageConvert.IMAGEtoEnginePNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                             {
                                 File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                 break;
@@ -1117,7 +1175,7 @@ namespace NVGE
                     switch (file.Extension.ToUpper())
                     {
                         case ".GIF":
-                            if (ImageConvert.IMAGEtoPNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
+                            if (ImageConvert.IMAGEtoEnginePNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                             {
                                 File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                 break;
@@ -1132,7 +1190,7 @@ namespace NVGE
                         default:
                             if (fmt == 1 || fmt == 3 || ext == ".png")
                             {
-                                if (ImageConvert.IMAGEtoPNG32(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
+                                if (ImageConvert.IMAGEtoEnginePNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                                 {
                                     File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                     break;
@@ -1147,7 +1205,7 @@ namespace NVGE
                             }
                             else
                             {
-                                if (ImageConvert.IMAGEtoPNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
+                                if (ImageConvert.IMAGEtoEnginePNG(file.Directory + @"\" + file.Name, file.Directory + @"\" + dest1) != false)
                                 {
                                     File.Move(file.Directory + @"\" + dest1, Directory.GetCurrentDirectory() + @"\_temp-project\images\sources\" + dest2);
                                     break;

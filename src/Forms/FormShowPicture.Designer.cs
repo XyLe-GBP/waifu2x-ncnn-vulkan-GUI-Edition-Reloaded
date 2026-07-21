@@ -97,8 +97,7 @@
             this.ClientSize = new System.Drawing.Size(984, 611);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox_Main);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Name = "FormShowPicture";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -9,6 +9,7 @@ namespace NVGE
         public FormPreferencesSettings()
         {
             InitializeComponent();
+            ModernWinFormsTheme.Apply(this);
         }
 
         private void FormPreferencesSettings_Load(object sender, EventArgs e)
